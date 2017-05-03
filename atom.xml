@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Look4us</title>
+  <title>Log IT</title>
   <subtitle>it is funny in the hello world!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Zhang Jie</name>
+    <name>look4us</name>
     
   </author>
   
