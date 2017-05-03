@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Look4us</title>
+  <subtitle>it is funny in the hello world!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-05-03T15:19:33.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Zhang Jie</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>what is new now</title>
+    <link href="http://yoursite.com/2017/05/02/what-is-new-now/"/>
+    <id>http://yoursite.com/2017/05/02/what-is-new-now/</id>
+    <published>2017-05-02T15:19:57.000Z</published>
+    <updated>2017-05-03T15:19:33.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="写啥是啥" scheme="http://yoursite.com/tags/%E5%86%99%E5%95%A5%E6%98%AF%E5%95%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/05/01/hello-world/"/>
+    <id>http://yoursite.com/2017/05/01/hello-world/</id>
+    <published>2017-05-01T02:10:10.000Z</published>
+    <updated>2017-05-03T15:32:52.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
