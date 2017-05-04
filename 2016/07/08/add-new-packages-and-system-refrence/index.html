@@ -114,28 +114,28 @@
 <meta name="keywords" content="Xamarin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="添加系统引用和包的引用">
-<meta property="og:url" content="http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/index.html">
+<meta property="og:url" content="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="本文接着讲如何添加 dll 库和引用包，开始的时候，我看项目里有 refrence 和 packages 两个部分，搞不清两者关系，后来从添加的内容看， refrence 中添加的都是和 .Net 有关的 dll 库，packages 里添加的是 和网页开发相关的 js 库(当然也包括一部分和后台 C# 相关的 dll 文件)。 后面一篇专门讲 log4net 的文章时会有提到！  要添加系统库，">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-0@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-1@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-2@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-3@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-4@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-5@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-6@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-7@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-8@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-9@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-10@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-12@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-13@2x.png">
-<meta property="og:image" content="http://yoursite.com/images/2016/0708/QQ20160708-14@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-0@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-1@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-2@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-3@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-4@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-5@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-6@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-7@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-8@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-9@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-10@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-12@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-13@2x.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-14@2x.png">
 <meta property="og:updated_time" content="2017-05-04T12:34:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="添加系统引用和包的引用">
 <meta name="twitter:description" content="本文接着讲如何添加 dll 库和引用包，开始的时候，我看项目里有 refrence 和 packages 两个部分，搞不清两者关系，后来从添加的内容看， refrence 中添加的都是和 .Net 有关的 dll 库，packages 里添加的是 和网页开发相关的 js 库(当然也包括一部分和后台 C# 相关的 dll 文件)。 后面一篇专门讲 log4net 的文章时会有提到！  要添加系统库，">
-<meta name="twitter:image" content="http://yoursite.com/images/2016/0708/QQ20160708-0@2x.png">
+<meta name="twitter:image" content="http://googlegis.github.io/images/2016/0708/QQ20160708-0@2x.png">
 
 
 
@@ -144,7 +144,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -163,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/"/>
+  <link rel="canonical" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/"/>
 
 
 
@@ -290,47 +290,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-
-
-
-
-    </div>
   
 </nav>
 
@@ -355,10 +317,10 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="look4us">
+      <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/image/avatar.png">
     </span>
@@ -530,7 +492,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/image/Public.png" alt="look4us wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/image/Public.png" alt="googlegis wechat" style="width: 200px; max-width: 100%;"/>
     <div>关注公众号，获取更多文章。</div>
 </div>
 
@@ -548,6 +510,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      googlegis
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/" title="添加系统引用和包的引用">http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -640,8 +617,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/image/avatar.png"
-               alt="look4us" />
-          <p class="site-author-name" itemprop="name">look4us</p>
+               alt="googlegis" />
+          <p class="site-author-name" itemprop="name">googlegis</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
           
@@ -728,6 +705,11 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -746,7 +728,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">look4us</span>
+  <span class="author" itemprop="copyrightHolder">googlegis</span>
 </div>
 
 
@@ -788,11 +770,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
   </div>
@@ -914,7 +891,7 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/';
+          this.page.url = 'http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/';
           this.page.identifier = '2016/07/08/add-new-packages-and-system-refrence/';
           this.page.title = '添加系统引用和包的引用';
         };
@@ -954,19 +931,6 @@
   
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
