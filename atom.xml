@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-03T15:19:33.000Z</updated>
+  <updated>2017-05-04T11:44:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,27 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>what is new now</title>
-    <link href="http://yoursite.com/2017/05/02/what-is-new-now/"/>
-    <id>http://yoursite.com/2017/05/02/what-is-new-now/</id>
-    <published>2017-05-02T15:19:57.000Z</published>
-    <updated>2017-05-03T15:19:33.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="写啥是啥" scheme="http://yoursite.com/tags/%E5%86%99%E5%95%A5%E6%98%AF%E5%95%A5/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2017/05/01/hello-world/"/>
     <id>http://yoursite.com/2017/05/01/hello-world/</id>
     <published>2017-05-01T02:10:10.000Z</published>
-    <updated>2017-05-03T15:32:52.000Z</updated>
+    <updated>2017-05-04T11:44:52.000Z</updated>
     
     <summary type="html">
     
@@ -50,6 +34,439 @@
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Inconsistent line ending style in svn</title>
+    <link href="http://yoursite.com/2017/02/17/inconsistent-line-ending-style-in-svn/"/>
+    <id>http://yoursite.com/2017/02/17/inconsistent-line-ending-style-in-svn/</id>
+    <published>2017-02-17T03:25:15.000Z</published>
+    <updated>2017-05-04T12:34:43.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2017/02/svnstyle.png&quot;&gt;
+&lt;p&gt;有的时候，SVN 会出来一些莫名其妙的错误，比如这个：&lt;/p&gt;
+&lt;p&gt;Inconsistent line ending style&lt;/p&gt;
+&lt;p&gt;有这个问题的出现说明文件的行尾符号不支持。或者
+    
+    </summary>
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="svn" scheme="http://yoursite.com/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>釜山行</title>
+    <link href="http://yoursite.com/2016/09/23/about-the-train-to-hushan/"/>
+    <id>http://yoursite.com/2016/09/23/about-the-train-to-hushan/</id>
+    <published>2016-09-23T10:28:30.000Z</published>
+    <updated>2017-05-04T12:34:35.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2016/0923/20160923.jpg&quot;&gt;
+&lt;p&gt;釜山行，你不得不看的一部片子。标准的好莱坞式的片子，个人英雄主义，在危急&lt;/p&gt;
+&lt;p&gt;关头转变自己以往的性格，突然的良心发现，而成为某个人或某些人的英雄。&lt;/p&gt;
+&lt;p&gt;如果以前提到僵尸
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://yoursite.com/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="看电影" scheme="http://yoursite.com/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 nvm 来管理 node 的版本</title>
+    <link href="http://yoursite.com/2016/09/16/use-nvm-manage-node-version/"/>
+    <id>http://yoursite.com/2016/09/16/use-nvm-manage-node-version/</id>
+    <published>2016-09-16T10:13:37.000Z</published>
+    <updated>2017-05-04T12:34:27.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用 nodejs 的人都知道，node 是个版本狂魔，你不知道啥时候，它就发布了&lt;/p&gt;
+&lt;p&gt;一个新版本。&lt;/p&gt;
+&lt;p&gt;不过从 nodejs 的发展历程来看，也真是难为它了。&lt;/p&gt;
+&lt;p&gt;不管怎么说，多版本共存的安装和管理工具确实是必不可少的。&lt;/p&gt;
+&lt;p&gt;幸运的
+    
+    </summary>
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="nvm" scheme="http://yoursite.com/tags/nvm/"/>
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>姦臣里的感情</title>
+    <link href="http://yoursite.com/2016/09/15/the-wrost-minister-in-south-korean/"/>
+    <id>http://yoursite.com/2016/09/15/the-wrost-minister-in-south-korean/</id>
+    <published>2016-09-15T04:49:31.000Z</published>
+    <updated>2017-05-04T12:34:19.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2016/0915/20160914.jpg&quot;&gt;
+&lt;p&gt;我能看到这部电影，也是在论坛里看到的标题，大尺度，分级，十八禁…&lt;/p&gt;
+&lt;p&gt;这些都构成了一个成年男人荷尔蒙飙升，冲动的去下载一部电影的重要标志，&lt;/p&gt;
+&lt;p&gt;其实，里面的裸露镜头相比
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://yoursite.com/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="看电影" scheme="http://yoursite.com/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>惊天魔盗团-2</title>
+    <link href="http://yoursite.com/2016/09/06/now-you-see-me-too/"/>
+    <id>http://yoursite.com/2016/09/06/now-you-see-me-too/</id>
+    <published>2016-09-06T02:12:30.000Z</published>
+    <updated>2017-05-04T12:34:13.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2016/0906/0906.jpg&quot;&gt;
+&lt;p&gt;惊天魔盗团，第一部，还是相当不错的，&lt;/p&gt;
+&lt;p&gt;不记得是啥时候看的，也不知道男主角是谁。&lt;/p&gt;
+&lt;p&gt;现在到2的宣传时才明白过来，那是 《社交网络》的扮演马克伯格的男主角。&lt;/p&gt;
+&lt;p&gt;其
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://yoursite.com/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="看电影" scheme="http://yoursite.com/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 section 注册 Js 脚本和 Css 样式</title>
+    <link href="http://yoursite.com/2016/07/11/use-section-in-html/"/>
+    <id>http://yoursite.com/2016/07/11/use-section-in-html/</id>
+    <published>2016-07-11T14:09:13.000Z</published>
+    <updated>2017-05-04T12:34:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们一般写 JavaScript 脚本，都会直接写在页面中，比如我们将一个&lt;/p&gt;
+&lt;p&gt;alert 的提示框写在 layout&lt;/p&gt;
+&lt;p&gt;的页面中，这样每个以此为模版的页面都会弹出一个提示框！&lt;/p&gt;
+&lt;img src=&quot;/images/2016/0711/2016-
+    
+    </summary>
+    
+      <category term="Xamarin" scheme="http://yoursite.com/categories/Xamarin/"/>
+    
+    
+      <category term="Xamarin" scheme="http://yoursite.com/tags/Xamarin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>添加系统引用和包的引用</title>
+    <link href="http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/"/>
+    <id>http://yoursite.com/2016/07/08/add-new-packages-and-system-refrence/</id>
+    <published>2016-07-07T23:20:32.000Z</published>
+    <updated>2017-05-04T12:34:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文接着讲如何添加 dll 库和引用包，开始的时候，我看项目里有&lt;/p&gt;
+&lt;p&gt;refrence 和 packages 两个部分，搞不清两者关系，后来从添加的内容看，&lt;/p&gt;
+&lt;p&gt;refrence 中添加的都是和 .Net 有关的 dll 库，packages 里添加的是
+    
+    </summary>
+    
+      <category term="Xamarin" scheme="http://yoursite.com/categories/Xamarin/"/>
+    
+    
+      <category term="Xamarin" scheme="http://yoursite.com/tags/Xamarin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基本配置和 MVC 文件的结构</title>
+    <link href="http://yoursite.com/2016/07/06/the-files-struct-and-the-common-config/"/>
+    <id>http://yoursite.com/2016/07/06/the-files-struct-and-the-common-config/</id>
+    <published>2016-07-06T11:45:54.000Z</published>
+    <updated>2017-05-04T12:33:52.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一章主要介绍一些文件结构和基本配置&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MVC 文件结构。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因为我们建立的是 MVC 项目，所以，Models-Views-Controllers 的文件夹是&lt;/p&gt;
+&lt;p&gt;最明显可见的。 当然这些文件夹都包含了对应的文件
+    
+    </summary>
+    
+      <category term="Xamarin" scheme="http://yoursite.com/categories/Xamarin/"/>
+    
+    
+      <category term="Xamarin" scheme="http://yoursite.com/tags/Xamarin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Mac 上安装 Xamarin</title>
+    <link href="http://yoursite.com/2016/07/05/install-the-xamarin-on-mac/"/>
+    <id>http://yoursite.com/2016/07/05/install-the-xamarin-on-mac/</id>
+    <published>2016-07-05T06:01:38.000Z</published>
+    <updated>2017-05-04T12:33:44.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近因为工作的原因，要把已有的 .Net Web 项目进行跨平台开发研究，项目部署&lt;/p&gt;
+&lt;p&gt;在 CentOS 上，正好有机会研究一下 Xamarin 的开发，所以决定把这一系列&lt;/p&gt;
+&lt;p&gt;的研究过程都记录下来，备忘和分享！&lt;/p&gt;
+&lt;p&gt;.Net 的跨平台开发，现
+    
+    </summary>
+    
+      <category term="Xamarin" scheme="http://yoursite.com/categories/Xamarin/"/>
+    
+    
+      <category term="Xamarin" scheme="http://yoursite.com/tags/Xamarin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何升级Mac上的git</title>
+    <link href="http://yoursite.com/2016/05/14/how-to-upgrade-git-on-mac/"/>
+    <id>http://yoursite.com/2016/05/14/how-to-upgrade-git-on-mac/</id>
+    <published>2016-05-14T13:24:09.000Z</published>
+    <updated>2017-05-04T12:33:32.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。&lt;/p&gt;
+&lt;p&gt;我不知道我的电脑上是什么时候安装的，但是可以直接用。&lt;/p&gt;
+&lt;p&gt;在 命令行中输入：&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table
+    
+    </summary>
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="Mac git" scheme="http://yoursite.com/tags/Mac-git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 XCode 中合并代码出现 Merge 按钮灰色Bug</title>
+    <link href="http://yoursite.com/2015/12/24/merge-button-disabled-in-xcode/"/>
+    <id>http://yoursite.com/2015/12/24/merge-button-disabled-in-xcode/</id>
+    <published>2015-12-24T14:44:38.000Z</published>
+    <updated>2017-05-04T12:50:24.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt; xCode 貌似有bug， 你打开项目提交过之后，貌似自动修改了某个文件，所以你Merge的时候会&lt;/p&gt;
+&lt;p&gt; 判断有文件修改了，不让Merge，你revert一下就可以了！&lt;/p&gt;
+&lt;hr&gt;
+
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/iOS/"/>
+    
+    
+      <category term="Xcode Merge" scheme="http://yoursite.com/tags/Xcode-Merge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Mac 上使用VSCode开发asp.net5项目</title>
+    <link href="http://yoursite.com/2015/12/05/use-vscode-to-build-aspnet5-web-application/"/>
+    <id>http://yoursite.com/2015/12/05/use-vscode-to-build-aspnet5-web-application/</id>
+    <published>2015-12-05T09:06:30.000Z</published>
+    <updated>2017-05-04T12:33:19.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.安装 vscode&lt;/p&gt;
+&lt;p&gt;vscode:  &lt;a href=&quot;https://go.microsoft.com/fwlink/?LinkID=534106&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://go.microsoft.
+    
+    </summary>
+    
+      <category term="VSCode" scheme="http://yoursite.com/categories/VSCode/"/>
+    
+    
+      <category term="VSCode" scheme="http://yoursite.com/tags/VSCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>头脑特工队</title>
+    <link href="http://yoursite.com/2015/11/22/the-bing-bong-in-outside/"/>
+    <id>http://yoursite.com/2015/11/22/the-bing-bong-in-outside/</id>
+    <published>2015-11-22T07:11:12.000Z</published>
+    <updated>2017-05-04T12:33:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标题留在这里很久了，本来想写可是总觉得的不到位，也许是感觉不到位，也是命题不到位。&lt;/p&gt;
+&lt;p&gt;我是想写 BingBong 呢?还是想写这部电影的整体构思呢？我也不知道。&lt;/p&gt;
+&lt;p&gt;也许写东西本来就不需要命题吧，又不是高中写考试作文，就边想边写吧。写到哪里算哪里！&lt;/
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://yoursite.com/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="看电影" scheme="http://yoursite.com/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写教程是真难！</title>
+    <link href="http://yoursite.com/2015/07/26/www-thing-about-the-now/"/>
+    <id>http://yoursite.com/2015/07/26/www-thing-about-the-now/</id>
+    <published>2015-07-26T13:18:34.000Z</published>
+    <updated>2017-05-04T13:05:44.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  第二章终于写完了，原本打算 3 天写完，结果实际上花费了 7 天时间。&lt;/p&gt;
+&lt;p&gt;  一般我的步骤是按照英文教程先编一遍应用，出来一个可以跑的应用。然后再&lt;/p&gt;
+&lt;p&gt;  按照教程，再来一遍代码，在代码的过程中截图、写作，发现重心全放到文章的梳理和&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 2.0 纯学习之旅 -- 14.UI 优化</title>
+    <link href="http://yoursite.com/2015/07/26/the-ui-things/"/>
+    <id>http://yoursite.com/2015/07/26/the-ui-things/</id>
+    <published>2015-07-26T03:42:26.000Z</published>
+    <updated>2017-05-04T13:05:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好看的颜色和机型的适配是一个应用必不可少的内容。&lt;/p&gt;
+&lt;h3 id=&quot;配色&quot;&gt;&lt;a href=&quot;#配色&quot; class=&quot;headerlink&quot; title=&quot;配色&quot;&gt;&lt;/a&gt;配色&lt;/h3&gt;&lt;p&gt;打开 storyboard, 选择 File inspector 中，的 G
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 2.0 纯学习之旅 -- 13.优化用户体验</title>
+    <link href="http://yoursite.com/2015/07/25/all-about-human-beings/"/>
+    <id>http://yoursite.com/2015/07/25/all-about-human-beings/</id>
+    <published>2015-07-25T12:40:29.000Z</published>
+    <updated>2017-05-04T13:06:07.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;显示事项个数&quot;&gt;&lt;a href=&quot;#显示事项个数&quot; class=&quot;headerlink&quot; title=&quot;显示事项个数&quot;&gt;&lt;/a&gt;显示事项个数&lt;/h3&gt;&lt;p&gt;首先在 Checklist.swift 中添加函数：&lt;/p&gt;
+&lt;figure class=&quot;highligh
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 2.0 纯学习之旅 -- 12.数据模型</title>
+    <link href="http://yoursite.com/2015/07/24/use-data-model/"/>
+    <id>http://yoursite.com/2015/07/24/use-data-model/</id>
+    <published>2015-07-24T12:43:53.000Z</published>
+    <updated>2017-05-04T13:06:07.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当然，我们编程不能仅仅是代码语言的垒砌，需要动脑子去思考，去进步，对代码的重用，数据的重构&lt;/p&gt;
+&lt;p&gt;等等都是在大量编码和思考的基础上积累起来的。如果说一个中级程序员和一个高级程序员的差别，&lt;/p&gt;
+&lt;p&gt;估计也就是在项目的组织和构架上了。语言语法就那些，逻辑也不过if
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 2.0 纯学习之旅 -- 11.多个 Checklist</title>
+    <link href="http://yoursite.com/2015/07/20/multiple-checklists/"/>
+    <id>http://yoursite.com/2015/07/20/multiple-checklists/</id>
+    <published>2015-07-20T15:17:01.000Z</published>
+    <updated>2017-05-04T13:06:07.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。&lt;/p&gt;
+&lt;p&gt;多类别情况下，至少要再有两个界面，一个用来显示所有的list，一个用来添加和修改list的名称&lt;/p&gt;
+&lt;p&gt;Project Navigator 中，选择项目，右键 New File –&amp;gt
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift 2.0 纯学习之旅-- 10.Save and loading 数据</title>
+    <link href="http://yoursite.com/2015/07/19/save-and-load-data/"/>
+    <id>http://yoursite.com/2015/07/19/save-and-load-data/</id>
+    <published>2015-07-19T15:16:33.000Z</published>
+    <updated>2017-05-04T13:06:07.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当然，一个真正的程序不仅仅前面讲到的一些内容。如果你的程序关闭之后再重启呢？&lt;/p&gt;
+&lt;p&gt;前面写入的内容就会全部消失了，用户还得要重新再写一遍，可以预见，哪个用户都不愿意用这样&lt;/p&gt;
+&lt;p&gt;的软件。所以我们要学会保存数据和加载数据。&lt;/p&gt;
+&lt;h3 id=&quot;存储数据&quot;&gt;
+    
+    </summary>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/Swift/"/>
+    
+    
+      <category term="iOS Apprentice" scheme="http://yoursite.com/tags/iOS-Apprentice/"/>
     
   </entry>
   

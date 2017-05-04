@@ -1,0 +1,875 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swifttour," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Log IT" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。  ｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。">
+<meta name="keywords" content="swifttour">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift 通览">
+<meta property="og:url" content="http://yoursite.com/2014/07/24/a-swift-tour/index.html">
+<meta property="og:site_name" content="Log IT">
+<meta property="og:description" content="5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。  ｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。">
+<meta property="og:updated_time" content="2017-05-04T13:02:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="swift 通览">
+<meta name="twitter:description" content="5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。  ｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/07/24/a-swift-tour/"/>
+
+
+
+
+
+  <title>swift 通览 | Log IT</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-52348223-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Log IT</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">it is funny in the hello world!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/07/24/a-swift-tour/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="look4us">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                swift 通览
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-24T23:23:09+08:00">
+                2014-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/07/24/a-swift-tour/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/07/24/a-swift-tour/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。</p>
+</blockquote>
+<p>｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。</p>
+<p><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1" target="_blank" rel="external">本文参考链接：</a></p>
+<h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//var 表示变量， let表示常量，无需指定变量类型，swift可更加值自动判断</div><div class="line"></div><div class="line">println(<span class="string">"Hello,world"</span>)</div><div class="line"></div><div class="line">var myVariable = <span class="number">42</span></div><div class="line"></div><div class="line">myVariable = <span class="number">50</span></div><div class="line"></div><div class="line">let myConstant = <span class="number">42</span></div><div class="line"></div><div class="line">let implicitInteger = <span class="number">70</span></div><div class="line"></div><div class="line">let implicitDouble = <span class="number">70.0</span></div><div class="line"></div><div class="line">//显式定义变量类型</div><div class="line">let explicitDouble:Double = <span class="number">70</span></div><div class="line"></div><div class="line">let explicitFloat:Float32 = <span class="number">4</span></div></pre></td></tr></table></figure>
+<h3 id="2-字符串及转意符"><a href="#2-字符串及转意符" class="headerlink" title="2. 字符串及转意符"></a>2. 字符串及转意符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 拼接字符串，</div><div class="line">let label = <span class="string">"The width is "</span></div><div class="line"></div><div class="line">let width = <span class="number">4</span></div><div class="line"></div><div class="line">//<span class="number">1.</span>直接强制转换，</div><div class="line">let widthLabel = label + String(width)</div><div class="line"></div><div class="line">let widthLabel2 = label + <span class="string">"\(width)"</span></div><div class="line"></div><div class="line">//<span class="number">2.</span> 利用  \() 进行转义</div><div class="line">let apples = <span class="number">3</span></div><div class="line"></div><div class="line">let oranges = <span class="number">5</span></div><div class="line"></div><div class="line">let appleSummary  = <span class="string">"I Have \(apples) apples"</span></div><div class="line"></div><div class="line">let orangesSummary = <span class="string">"I Have \(apples + oranges) pieces of fruit"</span></div></pre></td></tr></table></figure>
+<h3 id="3-数组和字典"><a href="#3-数组和字典" class="headerlink" title="3. 数组和字典"></a>3. 数组和字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 直接赋值数组</div><div class="line">var shoppingList = [<span class="string">"catfish"</span>,<span class="string">"water"</span>,<span class="string">"tulips"</span>,<span class="string">"blue paint"</span>]</div><div class="line"></div><div class="line">// 修改数组值</div><div class="line">shoppingList[<span class="number">1</span>] = <span class="string">"bottle of water"</span></div><div class="line"></div><div class="line">shoppingList[<span class="number">1</span>]</div><div class="line"></div><div class="line">//直接赋值字典</div><div class="line">var occupations = [</div><div class="line">    <span class="string">"Malcolm"</span>:<span class="string">"Captain"</span>,<span class="string">"Kaylee"</span>:<span class="string">"Mechanic"</span>]</div><div class="line"></div><div class="line">//直接添加字典值</div><div class="line">occupations[<span class="string">"Jayne"</span>] = <span class="string">"Public Relations"</span></div><div class="line"></div><div class="line">//初始化一个字符空数组</div><div class="line">let emptyArray = [String]()</div><div class="line">//初始化一个空字典</div><div class="line">let emptyDictionary = Dictionary&lt;String,Float&gt;()</div><div class="line">//数组赋值为空</div><div class="line">shoppingList = []</div></pre></td></tr></table></figure>
+<h3 id="4-控制流"><a href="#4-控制流" class="headerlink" title="4. 控制流"></a>4. 控制流</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// for..in  类似于C＃中的 foreach string in ［string］</div><div class="line"></div><div class="line">let individualScores = [75,43,103,87,12]</div><div class="line"></div><div class="line">var teamScore = 0</div><div class="line"></div><div class="line">for score in individualScores &#123;</div><div class="line"></div><div class="line">    if score &gt; 50 &#123;</div><div class="line"></div><div class="line">        teamScore += 3</div><div class="line">    &#125; else &#123;</div><div class="line">        teamScore += 1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">teamScore</div><div class="line"></div><div class="line">// if..else</div><div class="line">var optionalString: String? = "Hello"</div><div class="line"></div><div class="line">optionalString == nil</div><div class="line"></div><div class="line">var optionalName : String? = "John Appleseed"</div><div class="line">var greeting = "Hello!"</div><div class="line"></div><div class="line">if let name = optionalName &#123;</div><div class="line">    greeting = "Hello, \(name)"</div><div class="line">&#125;</div><div class="line"></div><div class="line">greeting</div><div class="line"></div><div class="line">// switch case－－不需要break。执行完case后自动跳出。</div><div class="line"></div><div class="line">let vegetable = "red pepper"</div><div class="line">var vegetableComment = ""</div><div class="line"></div><div class="line">switch vegetable &#123;</div><div class="line">case "celery":</div><div class="line">    vegetableComment = "Add some raisins and make ants on a log."</div><div class="line"></div><div class="line">case "cucumber","watercress":</div><div class="line">    vegetableComment = "That would make a good tea sandwich."</div><div class="line"></div><div class="line">case let x where x.hasSuffix("pepper"):</div><div class="line">    vegetableComment = "Is it a spicy \(x)?"</div><div class="line"></div><div class="line">default:</div><div class="line">    vegetableComment = "Everything tastes good in soup."</div><div class="line">&#125;</div><div class="line"></div><div class="line">vegetableComment</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//for..in 在dictionary中的使用</div><div class="line"></div><div class="line">let interestingNumbers = [</div><div class="line">    "Prime": [2,3,5,7,11,13],</div><div class="line">    "Fibonacci": [1,1,2,3,5,8],</div><div class="line">    "Square": [1,4,9,16,25],</div><div class="line">]</div><div class="line"></div><div class="line">var largest = 0</div><div class="line"></div><div class="line">for (kind,numbers) in interestingNumbers &#123;</div><div class="line">    for number in numbers &#123;</div><div class="line">        if number &gt; largest &#123;</div><div class="line">            largest = number</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">largest</div><div class="line"></div><div class="line"></div><div class="line">//while 循环</div><div class="line"></div><div class="line">var n = 2</div><div class="line">while n &lt; 100 &#123;</div><div class="line">    n = n * 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">n</div><div class="line"></div><div class="line">//do...while 循环</div><div class="line"></div><div class="line">var m = 2</div><div class="line">do &#123;</div><div class="line">    m = m * 2</div><div class="line">&#125; while m &lt; 100</div><div class="line"></div><div class="line">m</div><div class="line"></div><div class="line">// ..&lt; 表示 大于等于0小于4</div><div class="line">var firstForLoop = 0</div><div class="line">for i in 0..&lt;4 &#123;</div><div class="line">    firstForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">firstForLoop</div><div class="line"></div><div class="line">var secondForLoop = 0</div><div class="line">for var i = 0; i &lt; 4 ;++i &#123;</div><div class="line">    secondForLoop += 1</div><div class="line">&#125;</div><div class="line"></div><div class="line">secondForLoop</div><div class="line"></div><div class="line">// ... 表示 大于等于0 小于等于 4</div><div class="line"></div><div class="line">var thirdForLoop = 0</div><div class="line">for i in 0...4 &#123;</div><div class="line">    thirdForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">thirdForLoop</div></pre></td></tr></table></figure>
+<h3 id="5-函数和闭包"><a href="#5-函数和闭包" class="headerlink" title="5. 函数和闭包"></a>5. 函数和闭包</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//返回单值</div><div class="line">func greet(name:String,day:String) -&gt; String &#123;</div><div class="line">    return "Hello \(name) , today is \(day)."</div><div class="line">&#125;</div><div class="line"></div><div class="line">greet("Bob","Tuesday")</div><div class="line"></div><div class="line">//返回多值</div><div class="line">func getGasPrices() -&gt; (Double,Double,Double) &#123;</div><div class="line">    return (3.59,3.69,3.79)</div><div class="line">&#125;</div><div class="line"></div><div class="line">getGasPrices()</div><div class="line"></div><div class="line"></div><div class="line">//不定参数</div><div class="line">func sumOf(numbers: Int...) -&gt; Int &#123;</div><div class="line">        var sum = 0</div><div class="line">    for number in numbers &#123;</div><div class="line">        sum += number</div><div class="line">    &#125;</div><div class="line">    return sum</div><div class="line">&#125;</div><div class="line"></div><div class="line">sumOf()</div><div class="line">sumOf(42,59,12)</div><div class="line"></div><div class="line">//函数嵌套</div><div class="line">func returnFifteen() -&gt; Int &#123;</div><div class="line">    var y = 10</div><div class="line">    func add() &#123;</div><div class="line">        y += 5</div><div class="line">    &#125;</div><div class="line">    add()</div><div class="line">    return y</div><div class="line">&#125;</div><div class="line"></div><div class="line">returnFifteen()</div><div class="line"></div><div class="line">//函数作为返回值</div><div class="line">func makeIncrementer() -&gt; (Int -&gt; Int)&#123;</div><div class="line">    func addOne(number:Int) -&gt; Int &#123;</div><div class="line">        return 1 + number</div><div class="line">    &#125;</div><div class="line">    return addOne</div><div class="line">&#125;</div><div class="line"></div><div class="line">var increment = makeIncrementer()</div><div class="line"></div><div class="line">increment(7)</div><div class="line"></div><div class="line">//函数作参数</div><div class="line">func hasAnyMatches(list:[Int],condition:Int -&gt; Bool) -&gt; Bool &#123;</div><div class="line">    for item in list &#123;</div><div class="line">        if condition(item) &#123;</div><div class="line">            return true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">func lessThanTen(number:Int) -&gt; Bool &#123;</div><div class="line">    return number &lt; 10</div><div class="line">&#125;</div><div class="line"></div><div class="line">var numbers = [20,19,7,12]</div><div class="line"></div><div class="line">hasAnyMatches(numbers, lessThanTen)</div><div class="line"></div><div class="line">numbers</div><div class="line"></div><div class="line">// map 函数</div><div class="line">numbers.map(&#123;</div><div class="line">    (number:Int)-&gt; Int in</div><div class="line">    let result = 3 * number</div><div class="line">    return result</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">let mappedNumbers = numbers.map(&#123;number in 3 * number&#125;)</div><div class="line"></div><div class="line">mappedNumbers</div><div class="line"></div><div class="line">let sortedNumbers = sorted(numbers) &#123;$0 &gt; $1&#125;</div><div class="line">sortedNumbers</div></pre></td></tr></table></figure>
+<h3 id="6-对象和类"><a href="#6-对象和类" class="headerlink" title="6. 对象和类"></a>6. 对象和类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Shape &#123;</div><div class="line">    var numberOfSides = 0</div><div class="line">    func simpleDescription () -&gt; String &#123;</div><div class="line">        return "A shape with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var shape = Shape()</div><div class="line">shape.numberOfSides = 7</div><div class="line">var shapeDescrition = shape.simpleDescription()</div><div class="line"></div><div class="line">class NamedShape &#123;</div><div class="line">    var numberOfSides: Int = 0</div><div class="line">    var name :String</div><div class="line">    init(name:String)&#123;</div><div class="line">        self.name = name</div><div class="line">    &#125;</div><div class="line">    func simpleDescription() -&gt; String&#123;</div><div class="line">        return "A shape \(name) with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//let nameshape = NamedShape(numberOfSides:5,name:"Jay")</div><div class="line"></div><div class="line">class Square:NamedShape &#123;</div><div class="line">    var sideLength: Double</div><div class="line">    init(sideLength: Double,name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 4</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	func area() -&gt; Double &#123;</div><div class="line">        return sideLength * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "A square with sides of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let test = Square(sideLength:5.2,name:"my test square")</div><div class="line"></div><div class="line">test.area()</div><div class="line">test.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">//属性的getter和setter</div><div class="line">class EquilateralTriangle: NamedShape &#123;</div><div class="line">    var sideLength: Double = 0.0</div><div class="line"></div><div class="line">    init(sideLength: Double, name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 3</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var perimeter: Double &#123;</div><div class="line">    get &#123;</div><div class="line">        return 3.0 * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    set &#123;</div><div class="line">        sideLength = newValue / 3.0</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "An equilateral triangle with side of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangle  = EquilateralTriangle(sideLength:3.1,name:"a triangle")</div><div class="line">triangle.perimeter</div><div class="line">triangle.perimeter = 9.9</div><div class="line">triangle.sideLength</div><div class="line"></div><div class="line">//willSet</div><div class="line"></div><div class="line">class TriangleAndSquare &#123;</div><div class="line"></div><div class="line">    var triangle: EquilateralTriangle&#123;</div><div class="line">    willSet &#123;</div><div class="line">        square.sideLength  = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var square: Square &#123;</div><div class="line">    willSet &#123;</div><div class="line">        triangle.sideLength = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    init(size:Double,name:String)&#123;</div><div class="line">        square = Square(sideLength: size,name: name)</div><div class="line"></div><div class="line">        triangle = EquilateralTriangle(sideLength: size, name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangleAndSquare = TriangleAndSquare(size:10,name:"another test shape")</div><div class="line"></div><div class="line">triangleAndSquare.square.sideLength</div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line">triangleAndSquare.square = Square(sideLength:50,name:"Larger Square")</div><div class="line"></div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line"></div><div class="line"></div><div class="line">class Counter &#123;</div><div class="line">    var count: Int = 0</div><div class="line">    func incrementBy(amount: Int,numberOfTimes times:Int)&#123;</div><div class="line">        count += amount * times</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var counter = Counter()</div><div class="line">counter.incrementBy(2,numberOfTimes:7)</div><div class="line">let optionalSquare: Square? = Square(sideLength: 2.5,name: "optional square")</div><div class="line">let sideLength = optionalSquare?.sideLength</div></pre></td></tr></table></figure>
+<h3 id="7-枚举和结构体"><a href="#7-枚举和结构体" class="headerlink" title="7. 枚举和结构体"></a>7. 枚举和结构体</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">enum Rank: Int &#123;</div><div class="line">    case Ace = 1</div><div class="line">    case TWO,Three,Four,Five,Six,Seven,Eight,Nine,Ten</div><div class="line">    case Jack,Queen,King</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Ace:</div><div class="line">            return "ace"</div><div class="line">        case .Jack:</div><div class="line">            return "jack"</div><div class="line">        case .Queen:</div><div class="line">            return "queen"</div><div class="line">        case .King:</div><div class="line">            return "king"</div><div class="line">        default:</div><div class="line">            return String(self.toRaw())</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let ace = Rank.Ace</div><div class="line"></div><div class="line">let aceRawValue = ace.toRaw()</div><div class="line"></div><div class="line">let acesimpleDescription = ace.simpleDescription()</div><div class="line"></div><div class="line">if let convertedRank = Rank.fromRaw(3) &#123;</div><div class="line">    let threeDesciption = convertedRank.simpleDescription()</div><div class="line">&#125;</div><div class="line"></div><div class="line">enum Suit &#123;</div><div class="line"></div><div class="line">    case Spades,Hearts,Diamonds,Clubs</div><div class="line"></div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Spades:</div><div class="line">            return "spades"</div><div class="line">        case .Hearts:</div><div class="line">            return "hearts"</div><div class="line">        case .Diamonds:</div><div class="line">            return "diamonds"</div><div class="line">        case .Clubs:</div><div class="line">            return "clubs"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let hearts = Suit.Hearts</div><div class="line"></div><div class="line">let heartsDescription = hearts.simpleDescription()</div><div class="line"></div><div class="line">//结构体</div><div class="line"></div><div class="line">struct Card &#123;</div><div class="line">    var rank: Rank</div><div class="line">    var suit: Suit</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let threeOfSpades = Card(rank:.Three,suit:.Spades)</div><div class="line"></div><div class="line">let threeOfSpadesDescription = threeOfSpades.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">enum ServerResponse &#123;</div><div class="line">    case Result(String,String)</div><div class="line">    case Error(String)</div><div class="line">&#125;</div><div class="line"></div><div class="line">let success = ServerResponse.Result("6:00 am","8:09 pm")</div><div class="line">let failure = ServerResponse.Error("Out of cheese")</div><div class="line"></div><div class="line">switch success &#123;</div><div class="line">case let .Result(sunrise,sunset):</div><div class="line">    let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."</div><div class="line">case let .Error(error):</div><div class="line">    let serverResponse = "Failure... \(error)."</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="8-协议和扩展—-协议是否类似于C-中的接口-或者基类"><a href="#8-协议和扩展—-协议是否类似于C-中的接口-或者基类" class="headerlink" title="8. 协议和扩展—-协议是否类似于C#中的接口 或者基类"></a>8. 协议和扩展—-协议是否类似于C#中的接口 或者基类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">protocol ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String &#123;get&#125;</div><div class="line">    mutating func adjust()</div><div class="line">&#125;</div><div class="line"></div><div class="line">class SimpleClass: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A very simple class."</div><div class="line">    var anotherProperty: Int = 69105</div><div class="line"></div><div class="line">    func adjust() &#123;</div><div class="line">        simpleDescription += " Now 100% adjusted."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = SimpleClass()</div><div class="line">a.adjust()</div><div class="line">let aDescription = a.simpleDescription</div><div class="line"></div><div class="line"></div><div class="line">struct SimpleStructure: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A simple structure</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        simpleDescription += " (adjusted)"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var b = SimpleStructure()</div><div class="line">b.adjust()</div><div class="line">let bDescription = b.simpleDescription</div><div class="line"></div><div class="line">//对整数类型Int的扩展</div><div class="line">extension Int:ExampleProtocol &#123;</div><div class="line">    var simpleDescription:String &#123;</div><div class="line">    return "The number \(self)"</div><div class="line">    &#125;</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        self += 42</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">7.simpleDescription</div><div class="line"></div><div class="line">let protocolValue:ExampleProtocol = a</div><div class="line">protocolValue.simpleDescription</div></pre></td></tr></table></figure>
+<h3 id="9-泛型"><a href="#9-泛型" class="headerlink" title="9. 泛型"></a>9. 泛型</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">func repeat&lt;ItemType&gt;(item:ItemType,times:Int)-&gt;[ItemType] &#123;</div><div class="line">    var result = [ItemType]()</div><div class="line">    for i in 0..&lt;times &#123;</div><div class="line">        result += item</div><div class="line">    &#125;</div><div class="line">    return result</div><div class="line">&#125;</div><div class="line"></div><div class="line">repeat("know",4)</div><div class="line"></div><div class="line">enum OptionalValue&lt;T&gt; &#123;</div><div class="line">    case None</div><div class="line">    case Some(T)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var possibleInteger: OptionalValue&lt;Int&gt; = .None</div><div class="line">possibleInteger = .Some(100)</div><div class="line"></div><div class="line">func anyCommonElements &lt;T,U where T: Sequence, U:Sequence,T.GeneratorType.Element:Equatable,T.GeneratorType.Element == U.GeneratorType.Element&gt;(lhs:T,rhs:U)-&gt;Bool&#123;</div><div class="line">    for lhsItem in lhs &#123;</div><div class="line">        for rhsItem in rhs &#123;</div><div class="line">            if lhsItem == rhsItem &#123;</div><div class="line">                return true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">anyCommonElements([1,2,3],[3])</div></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/image/wechatPublic.png" alt="look4us wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注公众号，获取更多文章。</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swifttour/" rel="tag"># swifttour</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" rel="next" title="解决搜狗输入法引起yosemite卡死在登录界面">
+                <i class="fa fa-chevron-left"></i> 解决搜狗输入法引起yosemite卡死在登录界面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/27/how-to-change-the-path-variable-in-mac/" rel="prev" title="如何在mac下修改path中的环境变量">
+                如何在mac下修改path中的环境变量 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/image/avatar.png"
+               alt="look4us" />
+          <p class="site-author-name" itemprop="name">look4us</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/googlegis" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/googlegis" target="_blank" title="instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  instagram
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-变量"><span class="nav-number">1.</span> <span class="nav-text">1. 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字符串及转意符"><span class="nav-number">2.</span> <span class="nav-text">2. 字符串及转意符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数组和字典"><span class="nav-number">3.</span> <span class="nav-text">3. 数组和字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-控制流"><span class="nav-number">4.</span> <span class="nav-text">4. 控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-函数和闭包"><span class="nav-number">5.</span> <span class="nav-text">5. 函数和闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-对象和类"><span class="nav-number">6.</span> <span class="nav-text">6. 对象和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-枚举和结构体"><span class="nav-number">7.</span> <span class="nav-text">7. 枚举和结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-协议和扩展—-协议是否类似于C-中的接口-或者基类"><span class="nav-number">8.</span> <span class="nav-text">8. 协议和扩展—-协议是否类似于C#中的接口 或者基类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-泛型"><span class="nav-number">9.</span> <span class="nav-text">9. 泛型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">look4us</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://googlegis.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2014/07/24/a-swift-tour/';
+          this.page.identifier = '2014/07/24/a-swift-tour/';
+          this.page.title = 'swift 通览';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://googlegis.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
