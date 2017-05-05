@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2017-05-04T11:44:52.000Z</updated>
+  <updated>2017-05-05T14:58:58.000Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -16,11 +16,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://googlegis.github.io/2017/05/01/hello-world/"/>
-    <id>http://googlegis.github.io/2017/05/01/hello-world/</id>
+    <title>the blue kite</title>
+    <link href="http://googlegis.github.io/2017/05/05/the-blue-kite/"/>
+    <id>http://googlegis.github.io/2017/05/05/the-blue-kite/</id>
+    <published>2017-05-05T14:58:00.000Z</published>
+    <updated>2017-05-05T14:58:58.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://googlegis.github.io/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="看电影" scheme="http://googlegis.github.io/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello hexo！</title>
+    <link href="http://googlegis.github.io/2017/05/01/hello-hexo/"/>
+    <id>http://googlegis.github.io/2017/05/01/hello-hexo/</id>
     <published>2017-05-01T02:10:10.000Z</published>
-    <updated>2017-05-04T11:44:52.000Z</updated>
+    <updated>2017-05-05T14:59:48.000Z</updated>
     
     <summary type="html">
     
@@ -437,29 +455,6 @@
       &lt;p&gt;前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。&lt;/p&gt;
 &lt;p&gt;多类别情况下，至少要再有两个界面，一个用来显示所有的list，一个用来添加和修改list的名称&lt;/p&gt;
 &lt;p&gt;Project Navigator 中，选择项目，右键 New File –&amp;gt
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://googlegis.github.io/categories/Swift/"/>
-    
-    
-      <category term="iOS Apprentice" scheme="http://googlegis.github.io/tags/iOS-Apprentice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 2.0 纯学习之旅-- 10.Save and loading 数据</title>
-    <link href="http://googlegis.github.io/2015/07/19/save-and-load-data/"/>
-    <id>http://googlegis.github.io/2015/07/19/save-and-load-data/</id>
-    <published>2015-07-19T15:16:33.000Z</published>
-    <updated>2017-05-04T13:06:07.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当然，一个真正的程序不仅仅前面讲到的一些内容。如果你的程序关闭之后再重启呢？&lt;/p&gt;
-&lt;p&gt;前面写入的内容就会全部消失了，用户还得要重新再写一遍，可以预见，哪个用户都不愿意用这样&lt;/p&gt;
-&lt;p&gt;的软件。所以我们要学会保存数据和加载数据。&lt;/p&gt;
-&lt;h3 id=&quot;存储数据&quot;&gt;
     
     </summary>
     

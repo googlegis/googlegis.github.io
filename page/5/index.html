@@ -299,6 +299,210 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/31/google-map-ios-sdk-swift-demo-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/31/google-map-ios-sdk-swift-demo-4/" itemprop="url">
+                  使用Swift和GoogleMapiOSSDK开发地图应用示例(4)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-31T23:16:56+08:00">
+                2015-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/31/google-map-ios-sdk-swift-demo-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/31/google-map-ios-sdk-swift-demo-4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="给路线添加-Waypoints"><a href="#给路线添加-Waypoints" class="headerlink" title="给路线添加 Waypoints"></a>给路线添加 Waypoints</h2><p>Waypoints 在路线的起点和终点之间添加的位置点,实际上就是路线的一部分。目前位置，我们能够创建一个起<br>点到终点的路线，但是中间没有waypoints，下面我们要学习的是添加这个功能。这样我们的应用就越来越有趣<br>了。这次我们不按照上面的那样弹出一个输入框输入路线的waypoints,我们只需要在地图上点击一下，线路就会<br>从新计算。一个新的标识也会被放置到点击的地图位置上。</p>
+<p>根据这个思路，第一步要做的就是在定义并初始化两个数组:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var markersArray: Array&lt;GMSMarker&gt; = []</div><div class="line"></div><div class="line">var waypointsArray: Array&lt;String&gt; = []</div></pre></td></tr></table></figure>
+<p>第一个存储所有的waypoints的标识， 第二个存储所有waypoints转化为的字符串对象。</p>
+<p>为了捕获到点击地图时的位置，我们必须声明一个 GMSMapViewDelegate 协议的委托方法。在实现之前必须<br>先添加协议。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同样，我们还需要 ViewController 类作为 mapView的委托。在 viewDidLoad 添加这行代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    ...</div><div class="line">    viewMap.delegate = self</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们先看委托方法，再来详细讲述:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        let positionString = String(format: &quot;%f&quot;, coordinate.latitude) + &quot;,&quot; + String(format: &quot;%f&quot;, coordinate.longitude)</div><div class="line">        waypointsArray.append(positionString)</div><div class="line"></div><div class="line">        recreateRoute()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先一个重要的细节就是，要有一个路线能够让我们来添加waypoints。这个检测很简单，我们只需要确保<br>路线的 polyline不空就行。然后我们就使用坐标参数根据地图上的点击位置来把经纬度拼凑成一个字符串，确<br>保字符串里没有空格，否则对Direction API的请求将会失败。描述位置的字符串准备好之后,添加到<br>waypointsArray 中，然后我们再调用一个新的自定义函数 recreateRoute() 。</p>
+<p>在我们重新画出包含新waypoints的路线之前,必须要已有的清除掉。所以，在实现 recreateRoute() 函数<br>前, 我们先定义一个 clearRoute()的函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func clearRoute() &#123;</div><div class="line">    originMarker.map = nil</div><div class="line">    destinationMarker.map = nil</div><div class="line">    routePolyline.map = nil</div><div class="line"></div><div class="line">    originMarker = nil</div><div class="line">    destinationMarker = nil</div><div class="line">    routePolyline = nil</div><div class="line"></div><div class="line">    if markersArray.count &gt; 0 &#123;</div><div class="line">        for marker in markersArray &#123;</div><div class="line">            marker.map = nil</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        markersArray.removeAll(keepCapacity: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有地图上的路线信息都被移除或置空.注意一点是，我们甚至把 markersArray 中的 markers 的 map<br>属性也赋值为 nil (我们还没有写添加markers的代码, 但仍然可以这么做)。</p>
+<p>现在开始实现函数 recreateRoute():</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func recreateRoute() &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        clearRoute()</div><div class="line"></div><div class="line">        mapTasks.getDirections(mapTasks.originAddress, destination: mapTasks.destinationAddress, waypoints: waypointsArray, travelMode: nil, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line"></div><div class="line">            if success &#123;</div><div class="line">                self.configureMapAndMarkersForRoute()</div><div class="line">                self.drawRoute()</div><div class="line">                self.displayRouteInfo()</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                println(status)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先判断是否有路线，有的话清除掉。然后请求Direction API，这次我们把waypointsArray也作为参数<br>传递进来。如果一切就绪，我们就和前面一样，调用同样的函数，然后画路线。</p>
+<p>最主要的内容已经完成，但是还有一些工作要做。第一个就是查看configureMapAndMarkersForRoute()<br>函数，确保它对添加waypoints标识兼容，我们来看一下需要添加的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">func configureMapAndMarkersForRoute() &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    if waypointsArray.count &gt; 0 &#123;</div><div class="line">        for waypoint in waypointsArray &#123;</div><div class="line">            let lat: Double = (waypoint.componentsSeparatedByString(&quot;,&quot;)[0] as NSString).doubleValue</div><div class="line">            let lng: Double = (waypoint.componentsSeparatedByString(&quot;,&quot;)[1] as NSString).doubleValue</div><div class="line"></div><div class="line">            let marker = GMSMarker(position: CLLocationCoordinate2DMake(lat, lng))</div><div class="line">            marker.map = viewMap</div><div class="line">            marker.icon = GMSMarker.markerImageWithColor(UIColor.purpleColor())</div><div class="line"></div><div class="line">            markersArray.append(marker)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到我们循环取每个waypoint的值，然后把它转换为经度和纬度的double值，以便我们在初始化新标识时能<br>够用到。一旦每个标识匹配好一个waypoint, 我们把它们添加到 markersArray 数组.</p>
+<p>第二个工作就是更新 MapTasks.swift 文件中的 getDirections(…) 函数。在函数开始的地方, 需要更新<br>directionsURLString 字符串的拼接方式, 要把 waypoints 中的内容添加到请求的字符串中。需要注意<br>的是，除了传递了waypoints参数，我们还传递了一个 optimize 参数来标示当前路线是否使用waypoints。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: AnyObject!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line"></div><div class="line">            if let routeWaypoints = waypoints &#123;</div><div class="line">                directionsURLString += &quot;&amp;waypoints=optimize:true&quot;</div><div class="line"></div><div class="line">                for waypoint in routeWaypoints &#123;</div><div class="line">                    directionsURLString += &quot;|&quot; + waypoint</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再次运行程序，当创建了一个路线后，点击路线附近的任意一点，会看到点击的那个点也包含到路线当中了。</p>
+<img src="/images/2015/05/googlemap/t33_26_waypoint.png">
+<h2 id="Travel-Modes"><a href="#Travel-Modes" class="headerlink" title="Travel Modes"></a>Travel Modes</h2><p>当创建线路时, the driving mode 是 Directions API 默认的模式. 同时 Google Maps SDK还支持<br>以下模式：</p>
+<blockquote>
+<p>Driving mode<br>Walking mode<br>Bicycling mode</p>
+</blockquote>
+<p>改变 travel mode 是非常有趣的事情，同时也是一个比较重要的功能。所以我们开始来做这部分功能。<br>首先我们要创建一个枚举包含所有支持的 travel mode. 在 ViewController.swift 文件中，在顶部<br>class开始的上面，添加下面内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">enum TravelModes: Int &#123;</div><div class="line">    case driving</div><div class="line">    case walking</div><div class="line">    case bicycling</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在class里，我们声明一个变量来标示默认的 travel mode:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var travelMode = TravelModes.driving</div></pre></td></tr></table></figure>
+<p>我们在 changeTravelMode(_:) IBAction 函数中切换 travel mode。我们给用户创建一个新的动作表<br>来提供所有可能的选项，根据使用者的选择来设定 travel mode参数。我们来看代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@IBAction func changeTravelMode(sender: AnyObject) &#123;</div><div class="line">    let actionSheet = UIAlertController(title: &quot;Travel Mode&quot;, message: &quot;Select travel mode:&quot;, preferredStyle: UIAlertControllerStyle.ActionSheet)</div><div class="line"></div><div class="line">    let drivingModeAction = UIAlertAction(title: &quot;Driving&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.driving</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let walkingModeAction = UIAlertAction(title: &quot;Walking&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.walking</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let bicyclingModeAction = UIAlertAction(title: &quot;Bicycling&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.bicycling</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    actionSheet.addAction(drivingModeAction)</div><div class="line">    actionSheet.addAction(walkingModeAction)</div><div class="line">    actionSheet.addAction(bicyclingModeAction)</div><div class="line">    actionSheet.addAction(closeAction)</div><div class="line"></div><div class="line">    presentViewController(actionSheet, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看到，每个动作设定了一个travelmode，然后调用我们前面已经实现的 recreateRoute() 函数。<br>当然，在取消这么简单的动作里我们不需要做任何其他额外的处理。</p>
+<p>目前为止，前面的代码不会起任何作用，因为还没有更新 recreateRoute() 函数. 在这个函数里面调用<br>MapTasks 类 getDirections(…) 的时候，我们仅仅是设了空值，没有给tavelMode传递任何变量，<br>我们修改一下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func recreateRoute() &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        ...</div><div class="line"></div><div class="line">        mapTasks.getDirections(mapTasks.originAddress, destination: mapTasks.destinationAddress, waypoints: waypointsArray, travelMode: travelMode, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line"></div><div class="line">            ...</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>唯一的变化就是 travelMode 参数. 所以，我们还需要更新 MapTasks.swift 文件中的 getDirections<br>函数，判断travelmode，并添加到请求的参数中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: TravelModes!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">            if let travel = travelMode &#123;</div><div class="line">                var travelModeString = &quot;&quot;</div><div class="line"></div><div class="line">                switch travelMode.rawValue &#123;</div><div class="line">                case TravelModes.walking.rawValue:</div><div class="line">                    travelModeString = &quot;walking&quot;</div><div class="line"></div><div class="line">                case TravelModes.bicycling.rawValue:</div><div class="line">                    travelModeString = &quot;bicycling&quot;</div><div class="line"></div><div class="line">                default:</div><div class="line">                    travelModeString = &quot;driving&quot;</div><div class="line">                &#125;</div><div class="line"></div><div class="line"></div><div class="line">                directionsURLString += &quot;&amp;mode=&quot; + travelModeString</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意 if let travel = travelMode{ … } 这句, 我们把 travelMode 参数类型从 AnyObject!<br>转换为了 TravelModes! (前面我们定义的枚举类型)。</p>
+<p>现在我们可以好好的测试一下程序了。改变 travel mode, 注意一下路线信息也会跟着改变，尤其是路线的行<br>进时间。</p>
+<h2 id="最终的完成"><a href="#最终的完成" class="headerlink" title="最终的完成"></a>最终的完成</h2><p>现在我们的程序几乎完成了，我说几乎是因为我们还有一些代码细节部分需要修改一下，让它变得更好。</p>
+<p>第一个就是如果一个路线已经存在的话，我们在创建新路线的时候，要清除掉已有路线。所以在<br>createRoute(_:) 函数中,createRouteAction 代码块中, 我们需要判断是否已经存在路线，如果存在，<br>则清除路线:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@IBAction func createRoute(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    let createRouteAction = UIAlertAction(title: &quot;Create Route&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        if let polyline = self.routePolyline &#123;</div><div class="line">            self.clearRoute()</div><div class="line">            self.waypointsArray.removeAll(keepCapacity: false)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到我们除了清除路线，waypointsArray对象中的所有内容也被清除。要确保在我们创建新的路线之前，<br>保证所有的waypoints已经被清除。</p>
+<p>第二个要处理的还是在这个 IBAction 函数中，因为前面我们对travel mode 仅仅是传递了一个空值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@IBAction func createRoute(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    let createRouteAction = UIAlertAction(title: &quot;Create Route&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        ...</div><div class="line"></div><div class="line">        self.mapTasks.getDirections(origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line">            ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完成上面两个任务后，我们就真的把程序完成了!</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>这篇教程最想做到的是，当一个开发人员能够使用GoogleMapsSD做一个地图应用,前面所有章节中讲到的内容都<br>可能在你开发的过程中用到。毫无疑问，Google Maps SDK中有大量的细节和内容在这篇教程中没有提到，当然<br>也不可能仅仅通过一篇教程就覆盖所有内容。然后，你知道一些SDK中的基本知识和重点，就能够在<br><a href="https://developers.google.com/maps/documentation/ios/" target="_blank" rel="external">Google文档</a>,找到你所需要的其他信息。<br>地图开发是一个相当有趣的专题, 不管遇到什么困难，最后总会被解决。如论如何，如果你正在使用或者准备使用<br>Google Maps SDK, 我希望这篇教程中提到的内容能够帮助你。作为一个引导，只要你深入进去，没有什么能<br>够阻挡你获取API全部优越性能的脚步。</p>
+<p>你可以在github上下载<a href="https://github.com/googlegis/GoogleMapSDKSwiftDemo" target="_blank" rel="external">完整的项目代码</a>。欢迎评论并分享你的想法。</p>
+<h2 id="Icons-copyright-icons8"><a href="#Icons-copyright-icons8" class="headerlink" title="Icons copyright: icons8"></a>Icons copyright: icons8</h2><p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/30/google-map-ios-sdk-swift-demo-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2130,209 +2334,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/10/16/tiags-first-quickly-build-the-model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/16/tiags-first-quickly-build-the-model/" itemprop="url">
-                  The iOS Apprentice:Getting Started.1:快速建立应用模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-16T23:19:39+08:00">
-                2014-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/16/tiags-first-quickly-build-the-model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/10/16/tiags-first-quickly-build-the-model/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近跟随 @MacTalk 购买了两本英文版的iOS教材。完全英文版的，以前都没有想到过在自己可以完整的看完一部英文教材。</p>
-<p>深有几点感触：</p>
-<ol>
-<li><p>有些事情不是你不会，你不能，而是你不想，如果去做了，80%都会成功。不要给自己找不会的借口。</p>
-</li>
-<li><p>外国人的知识真值钱，一部书300-400RMB，团购下来也是150-200RMB，国人的不行了，好不容易写本电子版的书，能卖30RMB已经算比较高的了。</p>
-</li>
-<li><p>任何事情都要自己愿意静下心来学，不然效率会很低。</p>
-</li>
-<li><p>感觉自己以前的学习效率就是shit，学习效率是要思考的，是要自己能再现的，不是从脑子里过一遍就好了，也不是你跟着书本敲遍代码就掌握的。</p>
-</li>
-<li><p>虚度了几十年的人生，突然感觉时间不够了。还要再加油。</p>
-</li>
-</ol>
-<p>为了自己能掌握的更牢固点，决定自己还是把教程复述一遍。自己掌握了，这个钱就花得值了。</p>
-<p>初步计划：</p>
-<p>The iOS Apprentice：Getting Started 1：快速建立应用模型</p>
-<p>The iOS Apprentice：Getting Started 2：添加控件</p>
-<p>The iOS Apprentice：Getting Started 3：计算分数</p>
-<p>The iOS Apprentice：Getting Started 4：完成应用</p>
-<p>The iOS Apprentice：Getting Started 5：应用适配</p>
-<p>首先来张完成后的截图</p>
-<img src="/images/2014/iosapp/20141016-0@2x.png">
-<p>俗话说的好：磨刀不误砍柴工，计划，然后实施，最后成功。建议大家都按照书上的建议，列一个ToDOList的表，至少大方向上不会偏离，而且还可以把握开发进度。</p>
-<p>Bulls Eye 的列表基本树下：</p>
-<ul>
-<li><p>在窗体上放一个按钮，名称为：Hit Me</p>
-</li>
-<li><p>当用户点击 “Hit Me” 按钮时，弹出用户当前的分数，这里需要牵涉到分数的计算。</p>
-</li>
-<li><p>在窗体上放两个标签，一个是“Score”，一个是“Round”，每局完成都会根据分数和局数进行变化。</p>
-</li>
-<li><p>在窗体上放一个滑块，值域在1..100之间。</p>
-</li>
-<li><p>当用户点击“Hit Me”按钮时，计算滑块值。</p>
-</li>
-<li><p>上方放置一个目标值标签，每局随机生成一个数值作为目标值。</p>
-</li>
-<li><p>比较目标值和滑块值，然后计算分数，点击按钮后弹出提示，告诉用户分数。</p>
-</li>
-<li><p>放置重玩按钮，点击后清空分数和局数，从新计算。</p>
-</li>
-</ul>
-<p>当前面的一切完成后，开始今天的第一部分，快速建立应用模型。</p>
-<p>我们来开始做第一步： 新建一个程序BullsEye</p>
-<img src="/images/2014/iosapp/20141016-1@2x.png">
-<img src="/images/2014/iosapp/20141016-2@2x.png">
-<img src="/images/2014/iosapp/20141016-3@2x.png">
-<img src="/images/2014/iosapp/20141016-4@2x.png">
-<img src="/images/2014/iosapp/20141016-5@2x.png">
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2382,7 +2383,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2393,7 +2394,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2404,7 +2405,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
