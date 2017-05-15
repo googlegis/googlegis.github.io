@@ -299,6 +299,424 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/15/compile-android-source-in-mac/" itemprop="url">
+                  在Mac下编译Android源码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-15T13:28:03+08:00">
+                2014-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/05/15/compile-android-source-in-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/05/15/compile-android-source-in-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最好的教程就是官方文档。</p>
+<p>1.需要至少15G大的大小写敏感分区，以免build debug版本空间不够</p>
+<p>  在Mac下编译android的源代码需要一个大小写敏感(Case Sensitive)的分区格式如果你原来的分区不是HFS一类大小写敏感的文件格式，那么最简单的办法就是新建一个这种分区格式的dmg出来，命令如下：</p>
+<p>  sudo hdiutil create -size 15g -type UDIF -fs HFSX -volname android  ~/android.dmg<br>  sudo chown $USER  ~/android.dmg</p>
+<p>  1)双击android.dmg，mount volume到/Volumes/android。</p>
+<p>  2)进入系统偏好设置–&gt;帐户–&gt;登录项–&gt;点”+”，选android.dmg这样系统启动的时候会自动mount volume</p>
+<p>2.下载代码或者直接拷贝已有源代码到/Volumes/android目录下</p>
+<p>  下载源码需要安装Repo工具，该工具是为了更好的使用Git源代码管理软件（类似于CVS等版本控制系统），执行以下命令创建~/bin目录：</p>
+<p>  $ cd ~<br>  $ mkdir bin<br>  $ echo $PATH</p>
+<p>  下载Repo：</p>
+<p>  $ curl <a href="http://git-repo.googlecode.com/files/repo-1.13" target="_blank" rel="external">http://git-repo.googlecode.com/files/repo-1.13</a> &gt; ~/bin/repo<br>  $ chmod a+x ~/bin/repo</p>
+<p>  之后在/Volumes/android目录下创建android目录以存放android源码：</p>
+<p>  $ cd /Volumes/android<br>  $ mkdir android<br>  $ cd android</p>
+<p>接着初始化Repo客户端：</p>
+<p>  $ r~bin/repo init -u <a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">https://android.googlesource.com/platform/manifest</a> -b master</p>
+<p>成功后显示：</p>
+<p>  repo initialized in /Volumes/android/android</p>
+<p>这时在/Volumes/android/android目录下就会有.repo的目录用来同步manifest文件，该文件是用来同步源码的，下载源码使用命令：</p>
+<p>  $ repo sync</p>
+<p>  大概要下载4G多的文件，所有下载过程会比较长。</p>
+<p>非常重要的，下载完成之后需要打几个补丁，请分别执行以下命令，按顺序打以下四个补丁：<br>  cd build<br>git pull git://android.git.kernel.org/platform/build refs/changes/74/12074/3</p>
+<p>cd system/core<br>git pull git://android.git.kernel.org/platform/system/core refs/changes/45/11845/3</p>
+<p>cd external/qemu<br>git pull git://android.git.kernel.org/platform/external/qemu refs/changes/46/11846/3</p>
+<p>cd system/core<br>git pull git://android.git.kernel.org/platform/system/core refs/changes/97/12597/1</p>
+<p>3.下载并安装XCode和MacPorts</p>
+<p>  首先下载安装最新的XCode，下载地址：<a href="http://developer.apple.com" target="_blank" rel="external">http://developer.apple.com</a><br>  然后下载MacPorts，下载地址： <a href="http://www.macports.org/" target="_blank" rel="external">http://www.macports.org/</a><br>  修改~/.profile文件，添加：</p>
+<h1 id="set-the-number-of-open-files-to-be-1024"><a href="#set-the-number-of-open-files-to-be-1024" class="headerlink" title="set the number of open files to be 1024"></a>set the number of open files to be 1024</h1><p>  ulimit -S -n 1024</p>
+<p>4.编译源码</p>
+<p>  首先修改~/.profile文件，内容类似：</p>
+<h1 id="MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-PATH-variable-for-use-with-MacPorts"><a href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-PATH-variable-for-use-with-MacPorts" class="headerlink" title="MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate PATH variable for use with MacPorts."></a>MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate PATH variable for use with MacPorts.</h1><p>export ANDROID_PRODUCT_OUT=/Volumes/android/Android-Source/out/target/product/generic</p>
+<p>export ANDROID_PRODUCT_OUT_BIN=/Volumes/android/Android-Source/out/host/darwin-x86/bin</p>
+<p>export PATH=/opt/local/bin:/opt/local/sbin:${ANDROID_PRODUCT_OUT_BIN}:${ANDROID_PRODUCT_OUT}:$PATH</p>
+<h1 id="Finished-adapting-your-PATH-environment-variable-for-use-with-MacPorts"><a href="#Finished-adapting-your-PATH-environment-variable-for-use-with-MacPorts" class="headerlink" title="Finished adapting your PATH environment variable for use with MacPorts."></a>Finished adapting your PATH environment variable for use with MacPorts.</h1><h1 id="MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-MANPATH-variable-for-use-with-MacPorts"><a href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-MANPATH-variable-for-use-with-MacPorts" class="headerlink" title="MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate MANPATH variable for use with MacPorts."></a>MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate MANPATH variable for use with MacPorts.</h1><p>export MANPATH=/opt/local/share/man:$MANPATH</p>
+<h1 id="Finished-adapting-your-MANPATH-environment-variable-for-use-with-MacPorts"><a href="#Finished-adapting-your-MANPATH-environment-variable-for-use-with-MacPorts" class="headerlink" title="Finished adapting your MANPATH environment variable for use with MacPorts."></a>Finished adapting your MANPATH environment variable for use with MacPorts.</h1><p>  然后打开一个新的命令行窗口，执行以下命令：</p>
+<p>  $ cd /Volumes/android/Android-Source<br>  $ make</p>
+<p>  源码编译时间较长，大概需要4～5个小时，请耐心等待，编译完成之后，执行命令：</p>
+<p>  $ emulator</p>
+<p>将 调出模拟器，说明编译成功！</p>
+<ol>
+<li>打最后补丁时出错，错误如下：<br> “Pull is not possible because you have unmerged files.<br>Please, fix them up in the work tree, and then use ‘git add/rm ‘<br>as appropriate to mark resolution, or use ‘git commit -a’.”<br> 改用命令：<br>“git clone git://android.git.kernel.org/platform/system/core  refs/changes/97/12597/1″</li>
+</ol>
+<p>出错原因：<br>./external/elfutils/config-compat-darwin.h:42: error: static declaration of ‘strnlen’ follows non-static declaration<br>/usr/include/string.h:143: error: previous declaration of ‘strnlen’ was here<br>make: <em>*</em> [out/host/darwin-x86/obj/STATIC_LIBRARIES/libelf_intermediates/lib/xmalloc.o] Error 1</p>
+<p>解决方案：参考别人些的文章<br><a href="http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/" target="_blank" rel="external">http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/</a></p>
+<p>modify ./external/elfutils/config-compat-darwin.h.</p>
+<p>replace:</p>
+<p>static inline size_t strnlen (const char *<strong>string, size_t </strong>maxlen)</p>
+<p>{</p>
+<p>int len = 0;</p>
+<p>while (<strong>maxlen– &amp;&amp; *</strong>string++)</p>
+<p>len++;</p>
+<p>return len;</p>
+<p>}</p>
+<p>with:</p>
+<p> #if 0</p>
+<p>static inline size_t strnlen (const char *<strong>string, size_t </strong>maxlen)</p>
+<p>{</p>
+<p>int len = 0;</p>
+<p>while (<strong>maxlen– &amp;&amp; *</strong>string++)</p>
+<p>len++;</p>
+<p>return len;</p>
+<p>}</p>
+<p> #endif</p>
+<p>Well, at the end of the process I just edited the Android.mk makefile into external/skia adding a new entry for BUILD_STATIC_LIBRARY and the next command was simply:</p>
+<p>mmm external/skia<br>which produced the required libskia.a file to be linked in my project.</p>
+<p>第二个问题：<br>warning: ignoring file out/host/darwin-x86/obj/STATIC_LIBRARIES/<br>libSDL_intermediates/libSDL.a, file was built for archive which is not<br>the architecture being linked (i386)<br>Undefined symbols for architecture i386:</p>
+<p>Do this by commenting out all lines in</p>
+<p>external/qemu/Android.mk</p>
+<p>The toolchain problem stems from the fact that Android actually supports the mac toolchain from Snow Leopard and onwards. So put homebrew path LAST in $PATH, so that it uses the Mac toolchain first.</p>
+<p>When building DevNull/Oxygen ROM you in addition to the steps above also need to make a symlink in /usr/local/bin from sed to gsed, since they explicitly call gsed at one point. Also you have to disable WITH_DEXPREOPT like so:<br>make -j8 ［devnull］ WITH_DEXPREOPT=false</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/05/01/study-the-iphone-dev/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/01/study-the-iphone-dev/" itemprop="url">
+                  学习iPhone开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-01T14:09:07+08:00">
+                2014-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/05/01/study-the-iphone-dev/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/05/01/study-the-iphone-dev/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>14年的第一个计划就是要学习iPhone开发。</p>
+<p>计划两个月时间，把Stanford 的视频和书籍教程看完，</p>
+<p>我知道我自己的进度和能力。</p>
+<p>每次都说要学习，结果都是半途而废，这次无论如何不能放弃。</p>
+<p>如果我能活到70岁古稀的话，我的人生已经过了一半了。</p>
+<p>争取两年内完全丢弃Windows开发，使自己在技术能力上再上升到一个新的层次。</p>
+<p>我知道octopress是按照时间排序的，今天是2014.3.7号。 但是我把时间写在了2014.5.1。</p>
+<p>是为了提醒自己，在2014.5.1时，第一个学习计划应该结束了。</p>
+<p>这篇文章会随时记录学习进度。权当催促自己吧。</p>
+<p>使用教材  stanford scs 193p</p>
+<p>视频： <a href="https://itunes.apple.com/us/itunes-u/ipad-iphone-application-development/id473757255?mt=10" target="_blank" rel="external"> https://itunes.apple.com/us/itunes-u/ipad-iphone-application-development/id473757255?mt=10</a>  </p>
+<p>书籍： <a href="https://itunes.apple.com/us/book/ipad-iphone-app-development/id571023793?mt=13" target="_blank" rel="external">https://itunes.apple.com/us/book/ipad-iphone-app-development/id571023793?mt=13</a></p>
+<p>代码下载：本人根据教程自己编写，供做记录。<br><a href="https://github.com/googlegis/iOSstudy" target="_blank" rel="external">https://github.com/googlegis/iOSstudy</a></p>
+<blockquote>
+<ul>
+<li><p>2014.3.6 夜，视频1. MVC and Introduction to Objective-C (September 27, 2011) - SD</p>
+</li>
+<li><p>2014.3.7 昼，书籍。 1.2.  </p>
+</li>
+<li><p>2014.3.7 夜，视频2. My First iOS App (September 29, 2011) - SD</p>
+</li>
+<li><p>2014.3.8 昼夜， 书籍。 3.4.5.</p>
+</li>
+<li><p>2014.3.9 昼，视频3. Objective-C (October 4, 2011) - SD</p>
+</li>
+<li><p>2014.3.10 昼夜  书籍。 6.7</p>
+</li>
+<li><p>2014.3.11 夜 4. Views (October 6, 2011) - SD</p>
+</li>
+<li><p>2014.3.12 夜，controls 代码示例</p>
+</li>
+<li><p>2014.3.13   ，修改iEagleLite无作为</p>
+</li>
+<li><p>2014.3.14   , 从郑州回上海无作为</p>
+</li>
+<li><p>2014.3.15-2014.3.19 无作为。目前问题： Caculator 的Enter键按下去出错。  </p>
+<pre><code>Smile项目手势不起作用。
+</code></pre></li>
+</ul>
+<ul>
+<li>2014.4.15 时间突然很紧张。1个月没有作为。</li>
+</ul>
+</blockquote>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/03/09/how-to-study-english-course/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1799,398 +2217,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2008/04/17/my-love-on-food-three/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2008/04/17/my-love-on-food-three/" itemprop="url">
-                  我的吃饭情结3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2008-04-17T19:55:03+08:00">
-                2008-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2008/04/17/my-love-on-food-three/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2008/04/17/my-love-on-food-three/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>终于轮到写豆腐脑的这一刻了。</p>
-<p>心中不免有一点点小激动，</p>
-<p>也许就有人说了：激动个屁啊，不就是豆腐脑吗？</p>
-<p>哈哈，豆腐脑不是这么吃滴。</p>
-<p>首先，我没有亲手做过豆腐脑哦，</p>
-<p>不过我自己打过豆浆，</p>
-<p>生豆浆的味道很好闻哦，有股青草的味道，</p>
-<p>怪不得这么好喝呢，原来是绿色的。</p>
-<p>只是豆渣就有点难吃了，</p>
-<p>打下来的渣滓糊糊的沉在底下，</p>
-<p>煮豆浆的时候可要十分的小心，</p>
-<p>要用勺子不停的搅，</p>
-<p>不然豆渣会糊在锅底上，</p>
-<p>豆浆的味道不但变了，</p>
-<p>就连刷锅刷碗也要多费事呢，</p>
-<p>哈哈。</p>
-<p>不过如果技术过硬的话，</p>
-<p>熬出来的豆浆可是很美的。</p>
-<p>香醇可口，是居家必备的哦。</p>
-<p>既然豆浆都那么好喝，</p>
-<p>豆腐脑也必定wonderful。</p>
-<p>不过我没有自己亲自做过豆腐脑，</p>
-<p>有点遗憾。</p>
-<p>老家的豆腐脑我觉得还是比较好喝，</p>
-<p>先用家乡的胡辣汤给你盛大半碗，</p>
-<p>然后才在一个大坛里用东西切出一片一片的豆腐脑放在碗里，</p>
-<p>还要放上油和醋，</p>
-<p>其实和老家的胡辣汤差不多，</p>
-<p>只不过是放了豆腐脑。</p>
-<p>好像我们那里叫鸡汤豆腐脑，</p>
-<p>至于里面放了鸡汤没有那就不得而知了。</p>
-<p>反正小时候最好吃的就是豆腐脑了，</p>
-<p>因为麻糊和胡辣汤都能喝到，</p>
-<p>但是就是豆腐脑喝不到，</p>
-<p>感觉豆腐脑可高尚了。</p>
-<p>那不是一般人能吃到的东西。</p>
-<p>不过西安的话，豆腐脑可不一样了。</p>
-<p>这边都叫 蒸碗豆腐脑，</p>
-<p>为什么叫这个名字呢，</p>
-<p>我想可能是和制作方式有关。</p>
-<p>这里制作的豆腐脑都是先把豆腐脑放在碗里，</p>
-<p>然后把这些碗都放在锅里，</p>
-<p>慢慢的蒸出来的，</p>
-<p>所以你去吃豆腐脑的话，</p>
-<p>老板都会直接把碗拿出来，</p>
-<p>每个碗里早就是蒸好的豆腐脑，</p>
-<p>然后在碗里面放上香菜，黄豆，辣椒</p>
-<p>还有一种汤不知道是什么，我不喜欢</p>
-<p>每次都是让老板少放点，</p>
-<p>哈哈，拿着金丝饼或者鸡蛋饼</p>
-<p>一边吃饼一边喝豆腐脑，</p>
-<p>又是人生一大美事啊。</p>
-<p>哈哈哈。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2008/04/16/my-love-on-food-two/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2008/04/16/my-love-on-food-two/" itemprop="url">
-                  我的吃饭情结2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2008-04-16T19:55:03+08:00">
-                2008-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2008/04/16/my-love-on-food-two/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2008/04/16/my-love-on-food-two/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>哈哈，本来昨天想写的是豆腐脑，结果写着写着变成米粥和葱花炒蛋了。</p>
-<p>不过那也是我的最爱哦。</p>
-<p>不过说回来为什么我爱喝豆腐脑呢？</p>
-<p>也许是因为它像鸡蛋羹呢。</p>
-<p>鸡蛋羹，最美丽的东西。</p>
-<p>是我小时候的梦想啊。</p>
-<p>烧一壶开水，</p>
-<p>拿两个鸡蛋打开放在碗里，</p>
-<p>放上一点盐，</p>
-<p>用筷子哗哗的快速的搅匀，</p>
-<p>搅的差不多的时候就用开水慢慢浇进去。</p>
-<p>边浇边搅，</p>
-<p>看着发黄的鸡蛋变成了乳白色。</p>
-<p>里面慢慢的有鸡蛋花出来呢，</p>
-<p>有大半碗就可以。</p>
-<p>放在锅里用火慢慢的蒸，</p>
-<p>用心慢慢的等，</p>
-<p>不过这个时间你大可以去做其它的事情，</p>
-<p>只要你锅里水够多不会把锅烧炸，</p>
-<p>就尽量的不用去管它。</p>
-<p>哈哈，半个小时过去了。</p>
-<p>有点迫不及待了。</p>
-<p>打开锅盖，看见那一碗鸡蛋羹，</p>
-<p>美的很呢。</p>
-<p>用抹布垫在碗沿上，</p>
-<p>端出来，放点醋，滴点香油，</p>
-<p>用勺子轻轻的划开，</p>
-<p>好像怕弄破了，</p>
-<p>看那一碗玉都被自己割成一片一片的，</p>
-<p>嘴里早就流下口水了。</p>
-<p>醋和香油和慢慢浸入了鸡蛋羹里，</p>
-<p>呵呵，终于可以动口了。</p>
-<p>鸡蛋羹就是美啊。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2240,7 +2266,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2262,7 +2288,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

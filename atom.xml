@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2017-05-05T14:58:58.000Z</updated>
+  <updated>2017-05-15T12:20:15.000Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -16,13 +16,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>总有一天，爸爸不能站在旁边为你加油</title>
+    <link href="http://googlegis.github.io/2017/05/15/it-is-the-dangal/"/>
+    <id>http://googlegis.github.io/2017/05/15/it-is-the-dangal/</id>
+    <published>2017-05-15T06:28:03.000Z</published>
+    <updated>2017-05-15T12:20:15.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2017/05/20170515/p2457746352.jpg&quot;&gt;
+&lt;p&gt;最近，你会发现整个朋友圈被一部印度电影刷屏了，就是这部《摔跤吧，爸爸》&lt;/p&gt;
+&lt;p&gt;其实，知道这部片子，是在去年的12月份，当时已经在印度上映了。对于其中的主演，&lt;/
+    
+    </summary>
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="摔跤吧爸爸" scheme="http://googlegis.github.io/tags/%E6%91%94%E8%B7%A4%E5%90%A7%E7%88%B8%E7%88%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我们家的小宠物</title>
+    <link href="http://googlegis.github.io/2017/05/06/the-little-pets-in-my-home/"/>
+    <id>http://googlegis.github.io/2017/05/06/the-little-pets-in-my-home/</id>
+    <published>2017-05-06T15:09:37.000Z</published>
+    <updated>2017-05-06T16:43:59.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大地回春，万物复苏，转眼间就到要大踏步的进入夏季了。&lt;/p&gt;
+&lt;p&gt;宠物年年有，今年特别多。今天特意统计了一下，目前家里养的宠物，共有九种活物了。&lt;/p&gt;
+&lt;p&gt;小乌龟，小龙虾，小金鱼，泥鳅，小鱼，黄鳝，蛤蜊，兔子，蚕。还有曾经放生的小青蛙。&lt;/p&gt;
+&lt;p&gt;小乌龟，是从小区
+    
+    </summary>
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>the blue kite</title>
     <link href="http://googlegis.github.io/2017/05/05/the-blue-kite/"/>
     <id>http://googlegis.github.io/2017/05/05/the-blue-kite/</id>
     <published>2017-05-05T14:58:00.000Z</published>
-    <updated>2017-05-05T14:58:58.000Z</updated>
+    <updated>2017-05-06T16:27:34.000Z</updated>
     
     <summary type="html">
+    
+      &lt;p&gt;…&lt;/p&gt;
+
     
     </summary>
     
@@ -106,24 +156,21 @@
     <link href="http://googlegis.github.io/2016/09/16/use-nvm-manage-node-version/"/>
     <id>http://googlegis.github.io/2016/09/16/use-nvm-manage-node-version/</id>
     <published>2016-09-16T10:13:37.000Z</published>
-    <updated>2017-05-04T12:34:27.000Z</updated>
+    <updated>2017-05-06T15:10:54.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;使用 nodejs 的人都知道，node 是个版本狂魔，你不知道啥时候，它就发布了&lt;/p&gt;
-&lt;p&gt;一个新版本。&lt;/p&gt;
+      &lt;p&gt;使用 nodejs 的人都知道，node 是个版本狂魔，你不知道啥时候，它就发布了&lt;br&gt;一个新版本。&lt;/p&gt;
 &lt;p&gt;不过从 nodejs 的发展历程来看，也真是难为它了。&lt;/p&gt;
 &lt;p&gt;不管怎么说，多版本共存的安装和管理工具确实是必不可少的。&lt;/p&gt;
-&lt;p&gt;幸运的
+&lt;p&gt;幸运的是 nv
     
     </summary>
     
       <category term="Mac" scheme="http://googlegis.github.io/categories/Mac/"/>
     
     
-      <category term="nvm" scheme="http://googlegis.github.io/tags/nvm/"/>
-    
-      <category term="nodejs" scheme="http://googlegis.github.io/tags/nodejs/"/>
+      <category term="Nodejs" scheme="http://googlegis.github.io/tags/Nodejs/"/>
     
   </entry>
   
@@ -272,7 +319,7 @@
     <link href="http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/"/>
     <id>http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/</id>
     <published>2016-05-14T13:24:09.000Z</published>
-    <updated>2017-05-04T12:33:32.000Z</updated>
+    <updated>2017-05-06T15:10:54.000Z</updated>
     
     <summary type="html">
     
@@ -286,7 +333,7 @@
       <category term="Mac" scheme="http://googlegis.github.io/categories/Mac/"/>
     
     
-      <category term="Mac git" scheme="http://googlegis.github.io/tags/Mac-git/"/>
+      <category term="Git" scheme="http://googlegis.github.io/tags/Git/"/>
     
   </entry>
   
@@ -295,7 +342,7 @@
     <link href="http://googlegis.github.io/2015/12/24/merge-button-disabled-in-xcode/"/>
     <id>http://googlegis.github.io/2015/12/24/merge-button-disabled-in-xcode/</id>
     <published>2015-12-24T14:44:38.000Z</published>
-    <updated>2017-05-04T12:50:24.000Z</updated>
+    <updated>2017-05-06T15:10:54.000Z</updated>
     
     <summary type="html">
     
@@ -309,7 +356,7 @@
       <category term="iOS" scheme="http://googlegis.github.io/categories/iOS/"/>
     
     
-      <category term="Xcode Merge" scheme="http://googlegis.github.io/tags/Xcode-Merge/"/>
+      <category term="Xcode" scheme="http://googlegis.github.io/tags/Xcode/"/>
     
   </entry>
   
@@ -411,50 +458,6 @@
     
       &lt;h3 id=&quot;显示事项个数&quot;&gt;&lt;a href=&quot;#显示事项个数&quot; class=&quot;headerlink&quot; title=&quot;显示事项个数&quot;&gt;&lt;/a&gt;显示事项个数&lt;/h3&gt;&lt;p&gt;首先在 Checklist.swift 中添加函数：&lt;/p&gt;
 &lt;figure class=&quot;highligh
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://googlegis.github.io/categories/Swift/"/>
-    
-    
-      <category term="iOS Apprentice" scheme="http://googlegis.github.io/tags/iOS-Apprentice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 2.0 纯学习之旅 -- 12.数据模型</title>
-    <link href="http://googlegis.github.io/2015/07/24/use-data-model/"/>
-    <id>http://googlegis.github.io/2015/07/24/use-data-model/</id>
-    <published>2015-07-24T12:43:53.000Z</published>
-    <updated>2017-05-04T13:06:07.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当然，我们编程不能仅仅是代码语言的垒砌，需要动脑子去思考，去进步，对代码的重用，数据的重构&lt;/p&gt;
-&lt;p&gt;等等都是在大量编码和思考的基础上积累起来的。如果说一个中级程序员和一个高级程序员的差别，&lt;/p&gt;
-&lt;p&gt;估计也就是在项目的组织和构架上了。语言语法就那些，逻辑也不过if
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://googlegis.github.io/categories/Swift/"/>
-    
-    
-      <category term="iOS Apprentice" scheme="http://googlegis.github.io/tags/iOS-Apprentice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 2.0 纯学习之旅 -- 11.多个 Checklist</title>
-    <link href="http://googlegis.github.io/2015/07/20/multiple-checklists/"/>
-    <id>http://googlegis.github.io/2015/07/20/multiple-checklists/</id>
-    <published>2015-07-20T15:17:01.000Z</published>
-    <updated>2017-05-04T13:06:07.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。&lt;/p&gt;
-&lt;p&gt;多类别情况下，至少要再有两个界面，一个用来显示所有的list，一个用来添加和修改list的名称&lt;/p&gt;
-&lt;p&gt;Project Navigator 中，选择项目，右键 New File –&amp;gt
     
     </summary>
     

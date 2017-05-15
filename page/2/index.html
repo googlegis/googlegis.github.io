@@ -299,6 +299,395 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/08/add-new-packages-and-system-refrence/" itemprop="url">
+                  添加系统引用和包的引用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-08T07:20:32+08:00">
+                2016-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/08/add-new-packages-and-system-refrence/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/08/add-new-packages-and-system-refrence/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文接着讲如何添加 dll 库和引用包，开始的时候，我看项目里有</p>
+<p>refrence 和 packages 两个部分，搞不清两者关系，后来从添加的内容看，</p>
+<p>refrence 中添加的都是和 .Net 有关的 dll 库，packages 里添加的是</p>
+<p>和网页开发相关的 js 库(当然也包括一部分和后台 C# 相关的 dll 文件)。</p>
+<p>后面一篇专门讲 log4net 的文章时会有提到！</p>
+<img src="/images/2016/0708/QQ20160708-0@2x.png">
+<p>要添加系统库，需要在 Refrences 文件夹上右键，选择 Edit Refrences…</p>
+<p>或者直接双击 Refrences 文件夹。</p>
+<img src="/images/2016/0708/QQ20160708-1@2x.png">
+<p>然后选择自己需要的库，这里添加最常见的 System.Data 库，</p>
+<p>因为你要保存查询出来的数据库结果集，这个使用非常方便。 打勾-OK！</p>
+<img src="/images/2016/0708/QQ20160708-2@2x.png">
+<p>然后就可以看到 Refrences 中的 System.Data 引用。</p>
+<img src="/images/2016/0708/QQ20160708-3@2x.png">
+<p>在.cs 文件中，添加 using 。然后在代码中就可以直接用 DataTable class</p>
+<p>进行代码处理了。</p>
+<img src="/images/2016/0708/QQ20160708-4@2x.png">
+<p>添加包的引用和 Refrences 差不多，文件夹上右键，Add Packages… 或者双击，</p>
+<img src="/images/2016/0708/QQ20160708-5@2x.png">
+<p>然后弹出添加引用的窗口，这里是使用官方 NuGet Gallery。 如果你够仔细的话，可以</p>
+<p>在配置中找到包源的配置界面，可以自己添加包源配置。</p>
+<img src="/images/2016/0708/QQ20160708-6@2x.png">
+<p>比如，我们搜索 jQuery 。会出来 jQuery 库， 和 jQuery UI 库，我们选中</p>
+<p>jQuery UI 库， 能够看到在右侧的说明中，有 Dependencies 依赖， jQuery(≥1.6)。</p>
+<img src="/images/2016/0708/QQ20160708-7@2x.png">
+<p>直接勾选 jQuery UI，点击 Add Package，然后能够看到正在安装的过程。</p>
+<img src="/images/2016/0708/QQ20160708-8@2x.png">
+<p>安装好之后，就能在 Packages 中看到 jQuery  和 jQuery UI。</p>
+<p>这说明不需要担心你选择的库的依赖，直接点击安装，其它的事情，IDE 来帮你做。</p>
+<img src="/images/2016/0708/QQ20160708-9@2x.png">
+<p>然后我们打开项目中的 packages.config 文件，来看一下我们项目中 yij</p>
+<p>引用的类库和包！</p>
+<img src="/images/2016/0708/QQ20160708-10@2x.png">
+<p>打开 Scripts 文件夹，能够看到引用 jQuery 的文件都在这里了。</p>
+<img src="/images/2016/0708/QQ20160708-12@2x.png">
+<p>这里需要严重吐槽一下，这种依赖添加只会按照最小版本进行添加，这里添加</p>
+<p>进来的 jQuery 的版本就是 1.6.4 ，所以如果想要使用更新版本的 jQuery，</p>
+<p>还需要自己手动添加。</p>
+<p>但是还有另外一点支持不好的地方，每个库都只能引用 NuGet 中最新的版本，</p>
+<p>比如这里的 jQuery 库是 1.6.4 版本，太旧了，想更新到新版本，就会直接更新</p>
+<p>到最新版本，而现在 NuGet 上最新的版本是 3.0.0, 而且其它依赖 jQuery 的</p>
+<p>库的版本还没有来得及更新到 3.0.0 的版本，所以这里就又是一个坑。</p>
+<p>需要自己手动下载 jQuery 库，进行添加引用。 我想如果添加库时，能够有一个</p>
+<p>版本选择的功能的话，是不是方便很多。</p>
+<img src="/images/2016/0708/QQ20160708-13@2x.png">
+<img src="/images/2016/0708/QQ20160708-14@2x.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/06/the-files-struct-and-the-common-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/06/the-files-struct-and-the-common-config/" itemprop="url">
+                  基本配置和 MVC 文件的结构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T19:45:54+08:00">
+                2016-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/06/the-files-struct-and-the-common-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/06/the-files-struct-and-the-common-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一章主要介绍一些文件结构和基本配置</p>
+<ol>
+<li>MVC 文件结构。</li>
+</ol>
+<p>因为我们建立的是 MVC 项目，所以，Models-Views-Controllers 的文件夹是</p>
+<p>最明显可见的。 当然这些文件夹都包含了对应的文件和相关内容。</p>
+<img src="/images/2016/0706/QQ20160706-1@2x.png">
+<p>比如：HomeController.cs 文件里就是在 Index 的 Action 中返回 View。</p>
+<img src="/images/2016/0706/QQ20160706-2@2x.png">
+<p>这里是项目中引用的软件包</p>
+<img src="/images/2016/0706/QQ20160706-3@2x.png">
+<p>这里是引用的 .Net 的类库<br><img src="/images/2016/0706/QQ20160706-4@2x.png"></p>
+<p>_Layout.cshtml 文件模版，添加新的 view 时，可以选择以此为模版。</p>
+<p>可以看到这里调用了全局的变量 ViewBag.Title 和 RenderBody 进行渲染body</p>
+<img src="/images/2016/0706/QQ20160706-5@2x.png">
+<p>这里是主页的 body 中的 html 内容。</p>
+<img src="/images/2016/0706/QQ20160706-6@2x.png">
+<p>路由注册</p>
+<img src="/images/2016/0706/QQ20160706-7@2x.png">
+<p>程序启动时的函数，用来注册信息，后面还会有很多信息会写在这里。</p>
+<img src="/images/2016/0706/QQ20160706-8@2x.png">
+<p>项目的引用库配置文件</p>
+<img src="/images/2016/0706/QQ20160706-9@2x.png">
+<p>每次加载一个新的 View 时 都会先运行一次 _ViewState.cshtml ,是为了防止已</p>
+<p>加载的内容影响模版的内容，所以重新加载。</p>
+<img src="/images/2016/0706/QQ20160706-10@2x.png">
+<p>项目的配置信息，对应的 SDK 版本，可以看到支持 Mono 和 .Net 。</p>
+<img src="/images/2016/0706/QQ20160706-11@2x.png">
+<p>项目版本号，所在路径，名称信息：</p>
+<img src="/images/2016/0706/QQ20160706-12@2x.png">
+<p>输出信息：</p>
+<img src="/images/2016/0706/QQ20160706-13@2x.png">
+<p>web 服务信息，Xamarin 使用的 XSP Web Server 作为 web 服务器，就是</p>
+<p>windows 下面的 IIS。</p>
+<img src="/images/2016/0706/QQ20160706-14@2x.png">
+<p>Xamarin 的配置信息。Dark 比较酷！</p>
+<img src="/images/2016/0706/QQ20160706-15@2x.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/05/install-the-xamarin-on-mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1746,476 +2135,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/24/use-data-model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/24/use-data-model/" itemprop="url">
-                  Swift 2.0 纯学习之旅 -- 12.数据模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-24T20:43:53+08:00">
-                2015-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/24/use-data-model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/24/use-data-model/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>当然，我们编程不能仅仅是代码语言的垒砌，需要动脑子去思考，去进步，对代码的重用，数据的重构</p>
-<p>等等都是在大量编码和思考的基础上积累起来的。如果说一个中级程序员和一个高级程序员的差别，</p>
-<p>估计也就是在项目的组织和构架上了。语言语法就那些，逻辑也不过if else,对代码的设计，模块的</p>
-<p>设计，对数据结构的设计，对整体构架的设计。都是不可低估的。 我以前对构架师，或者是那些只做</p>
-<p>设计，不写代码的人不理解，后来在一个项目遇到构架问题才知道，一个好的构架设计，能够节省</p>
-<p>多少人力，物力。</p>
-<p>如果让你来对这个 Checklist 来进行数据重构，你会怎么做呢？</p>
-<h3 id="添加数据模型"><a href="#添加数据模型" class="headerlink" title="添加数据模型"></a>添加数据模型</h3><p>首先，在项目中添加  Swift 文件，名称为 DataModel.swift 。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import Foundation</div><div class="line"></div><div class="line">class DataModel &#123;</div><div class="line"></div><div class="line">  var lists = [Checklist]()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将 AlllistsViewController.swift 中的下面几个函数剪切到 DataModel.swift。</p>
-<ul>
-<li><p>func documentsDirectory()</p>
-</li>
-<li><p>func dataFilePath()</p>
-</li>
-<li><p>func saveChecklists()</p>
-</li>
-<li><p>func loadChecklist()</p>
-</li>
-</ul>
-<p>并且添加函数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">init() &#123;</div><div class="line"></div><div class="line">  loadChecklists()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中，删除函数：</p>
-<ul>
-<li><p>所有 lists 变量</p>
-</li>
-<li><p>init(coder) 函数</p>
-</li>
-</ul>
-<p>添加函数 ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var dataModel:DataModel!</div></pre></td></tr></table></figure>
-<p>然后将所有有 lists 的地方，替换为 dataModel.lists</p>
-<p>在 AppDelegate.swift 中，</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">let dataModel = DataModel()</div><div class="line"></div><div class="line">func saveData() &#123;</div><div class="line"></div><div class="line"> dataModel.saveChecklists()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func application(application:UIApplication,</div><div class="line"></div><div class="line">      didFinishLaunchingWithOptions launchOptions:[NSObject: AnyObject]?)</div><div class="line"></div><div class="line">      -&gt; Bool &#123;</div><div class="line"></div><div class="line">    let navigationController = window!.rootViewController</div><div class="line"></div><div class="line">                                as! UINavigationController</div><div class="line"></div><div class="line">    let controller = navigationController.viewControllers[0]</div><div class="line"></div><div class="line">                                as! AllListsViewController</div><div class="line"></div><div class="line">    controller.dataModel = dataModel</div><div class="line"></div><div class="line">    return true</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用-NSUserDefaults"><a href="#使用-NSUserDefaults" class="headerlink" title="使用 NSUserDefaults"></a>使用 NSUserDefaults</h3><p>AllListsViewController.swift 中，修改 函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">                        didSelectRowAtIndexPath indexPath:NSIndexPath) &#123;</div><div class="line"></div><div class="line">      NSUserDefaults.standardUserDefaults().setInteger(</div><div class="line"></div><div class="line">                                        indexPath.row,forKey:<span class="string">"ChecklistIndex"</span>)</div><div class="line"></div><div class="line">     let checklist = dataModel.lists[indexPath.row]</div><div class="line"></div><div class="line">     preformSegueWithIdentifier(<span class="string">"ShowChecklist"</span>,sender:checklist)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中添加协议：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllListsViewController</span>:</span> UITableViewController,</div><div class="line"></div><div class="line">      ListDetailViewControllerDelegate, UINavigationControllerDelegate&#123;</div></pre></td></tr></table></figure>
-<p>在 AddListViewController.swift 中添加:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func navigaionController(navigationController: UINavigationController,</div><div class="line"></div><div class="line">            willShowViewController viewController: UIViewController,</div><div class="line"></div><div class="line">            animated: Bool) &#123;</div><div class="line"></div><div class="line">    if viewController === self &#123;</div><div class="line"></div><div class="line">        NSUserDefaults.standardUserDefaults().setInteger(</div><div class="line"></div><div class="line">                                                -1,forKey:"ChecklistIndex")</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func viewDidAppear(animated: Bool) &#123;</div><div class="line"></div><div class="line">  super.viewDidAppear(animated)</div><div class="line"></div><div class="line">  navigationController?.delegate = self</div><div class="line"></div><div class="line">  let index = NSUserDefaults.standardUserDefaults().integerForKey(</div><div class="line"></div><div class="line">                                                            "ChecklistIndex")</div><div class="line"></div><div class="line">  if index != 1 &#123;</div><div class="line"></div><div class="line">      let checklist = dataModel.lists[index]</div><div class="line"></div><div class="line">      perforSegueWithIdentifier("ShowChecklist",sender:checklist)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 DataModel.swift 修改函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func registerDefaults() &#123;</div><div class="line"></div><div class="line">  let dictionary = [<span class="string">"ChecklistIndex"</span>:<span class="number">-1</span>]</div><div class="line"></div><div class="line">  NSUserDefaults.standardUserDefaults().registerDefaults(dictionary)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">init() &#123;</div><div class="line"></div><div class="line">  loadChecklists()</div><div class="line"></div><div class="line">  registerDefaults()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">var indexOfSelectedChecklist:Int &#123;</div><div class="line"></div><div class="line">    get &#123;</div><div class="line"></div><div class="line">      <span class="keyword">return</span> NSUserDefaults.standardUserDefaults().integerForKey(</div><div class="line"></div><div class="line">                                                      <span class="string">"ChecklistIndex"</span>)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    set &#123;</div><div class="line"></div><div class="line">      NSUserDefaults.standardUserDefaults().setInteger(newValue,</div><div class="line"></div><div class="line">                                                    forKey:<span class="string">"ChecklistIndex"</span>)</div><div class="line"></div><div class="line">      NSUserDefaults.standardUserDefaults().synchronize()</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改 AllListViewController.swift 中函数:</p>
-<p>override func viewDidAppear(animated: Bool) {</p>
-<p>  super.viewDidAppear(animated)</p>
-<p>  navigationController?.delegate = self</p>
-<p>  let index = dataModel.indexOfSelectedChecklist</p>
-<p>  let index &gt;= 0 &amp;&amp; index &lt; dataModel.lists.count {</p>
-<pre><code>let checklist = dataModel.lists[index]
-
-performSegueWithIdentifier(&quot;ShowChecklist&quot;,sender:checklist)
-</code></pre><p>  }</p>
-<p>}</p>
-<p>override func tableView(tableView:UITableView,</p>
-<pre><code>                    didSelectRowAtIndexPath indexPath:NSIndexPath) {
-
-dataModel.indexOfSelectedChecklist = indexPath.row
-
-let checklist = dataModel.lists[indexPath.row]
-
-performSegueWithIdentifier(&quot;ShowChecklist&quot;,sender:checklist)
-</code></pre><p>}</p>
-<p>func navigationController(navigationController:UINavigationController!,</p>
-<pre><code>        willShowViewController viewController: UIViewController!,
-
-        animated:Bool) {
-
-if viewController === self {
-
-  dataModel.indexOfSelectedChecklist = -1
-
-}
-</code></pre><p>  }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 第一次</div><div class="line"></div><div class="line">谁都有第一次，第一次运行应该给做点什么呢？比如每个软件第一次运行时会有个说明或者导航，</div><div class="line"></div><div class="line">这里会介绍一下，第一次该怎么做，疼吗？</div><div class="line"></div><div class="line">修改 DataModel.swift 中的函数 ：</div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">func registerDefaults() &#123;</div><div class="line"></div><div class="line">  let dictionary = [&quot;ChecklistIndex&quot;:-1,&quot;FirstTime&quot;:true]</div><div class="line"></div><div class="line">  NSUserDefaults.standardUserDefaults().registerDefaults(dictionary)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func handleFirstTime() &#123;</div><div class="line"></div><div class="line">  let userDefaults =NSUserDefaults.standardUserDefaults()</div><div class="line"></div><div class="line">  let firstTime = userDefaults.boolForKey(&quot;FirstTime&quot;)</div><div class="line"></div><div class="line">  if firstTime &#123;</div><div class="line"></div><div class="line">    let checklist = Checklist(name:&quot;List&quot;)</div><div class="line"></div><div class="line">    lists.append(checklist)</div><div class="line"></div><div class="line">    indexOfSelectedChecklist = 0</div><div class="line"></div><div class="line">    userDefaults.setBool(false,forKey:&quot;firstTime&quot;)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">init() &#123;</div><div class="line"></div><div class="line">  loadChecklists()</div><div class="line"></div><div class="line">  registerDefaults()</div><div class="line"></div><div class="line">  handleFirstTime()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/20/multiple-checklists/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/20/multiple-checklists/" itemprop="url">
-                  Swift 2.0 纯学习之旅 -- 11.多个 Checklist
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-20T23:17:01+08:00">
-                2015-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/20/multiple-checklists/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/20/multiple-checklists/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。</p>
-<p>多类别情况下，至少要再有两个界面，一个用来显示所有的list，一个用来添加和修改list的名称</p>
-<p>Project Navigator 中，选择项目，右键 New File –&gt; Source –&gt; Cocoa Touch Class,</p>
-<p>Name: AllListsViewController, subclass: UITableViewController , language:Swift.</p>
-<p>在 AllListsViewController.swift 中， 删除 numberOfSectionsInTableView() 方法。</p>
-<p>修改函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">overide func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                      numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">     return 3</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>添加函数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">overrid func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">        cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">    let cellIdentifier = "Cell"</div><div class="line"></div><div class="line">    var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(</div><div class="line"></div><div class="line">                                cellIdentifier) as UITableViewCell?</div><div class="line"></div><div class="line">    if cell == nil &#123;</div><div class="line"></div><div class="line">      cell = UITableViewCell(style:.Default,reuseIdentifier:cellIdentifier)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    cell.textlabel!.text = "List "</div><div class="line"></div><div class="line">    return cell</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>删除 AllListViewController.swift 中的其他函数。</p>
-<p>在 storyboard 中拖一个 TableViewController 放在第一个 navController 附近，然后从</p>
-<p>第一个 naviationController ctrl+ 拖动 到新的 tableViewController 上，然后在弹出</p>
-<p>框中选择 Relationship Segue –&gt; root view controller</p>
-<p>选中新的 tableViewController,在 Identity inspector 中的 Class 选择</p>
-<p>AllListViewController。 双击导航栏，输入 Checklists</p>
-<p>删除当前的 Table view cell， 从 viewController ctrl+ 拖动至 Checklist View</p>
-<p>Controller. 双击 Checklist ViewController 的导航栏，输入 Name of the Checklist.</p>
-<p>选择新建的 Segue, 然后在 Attributes inspector 中输入 ShowChecklist</p>
-<p>在 AllListsViewController.swift 中， 添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                        didSelectRowAtIndexPath indexPath:NSIndexPath) &#123;</div><div class="line"></div><div class="line">     performSegueWithIdentifier(<span class="string">"ShowChecklist"</span>)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>选择项目， 右键 New File -&gt; Cocoa Touch Class .</p>
-<p>Name: Checklist</p>
-<p>subClass: NSObject</p>
-<p>然后在 Checklist.swift 中， 添加内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checklist</span>:</span> NSObject &#123;</div><div class="line"></div><div class="line">  var name = <span class="string">""</span></div><div class="line"></div><div class="line">  init(name:String) &#123;</div><div class="line"></div><div class="line">    self.name = name</div><div class="line"></div><div class="line">    super.init()</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中添加</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var lists: [Checklist]</div><div class="line"></div><div class="line">required init(coder aDecoder: NSCoder) &#123;</div><div class="line"></div><div class="line">  lists = [Checklist]()</div><div class="line"></div><div class="line">  super.init(coder:aDecoder)</div><div class="line"></div><div class="line">  var list = Checklist(name: <span class="string">"Birthdays"</span>)</div><div class="line">  lists.append(list)</div><div class="line"></div><div class="line">  list = Checklist(name: <span class="string">"Groceries"</span>)</div><div class="line">  lists.append(list)</div><div class="line"></div><div class="line">  list = Checklist(name: <span class="string">"Cool Apps"</span>)</div><div class="line">  lists.append(list)</div><div class="line"></div><div class="line">  list = Checklist(name: <span class="string">"To Do"</span>)</div><div class="line">  lists.append(list)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                      numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">    return lists.count</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath:NSIndexPath)-&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">      let cellIdentifier = "Cell"</div><div class="line"></div><div class="line">      var cell: UITableViewCell! =</div><div class="line"></div><div class="line">               tableView.dequeueReusableCellWithIdentifier(cellIdentifier)</div><div class="line"></div><div class="line">               as UITableViewCell?</div><div class="line"></div><div class="line">      if cell == nil &#123;</div><div class="line"></div><div class="line">        cell = UITableViewCell(style:.Default,reusaIdentifier:cellIdentifier)</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">      let checklist = lists[indexPath.row]</div><div class="line"></div><div class="line">      cell.textlabel!.text = checklist.name</div><div class="line"></div><div class="line">      cell.accessoryType = .DetailDisclosureButton</div><div class="line"></div><div class="line">      return cell</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在ChecklistViewController.swift 函数中添加</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var checklist: Checklist!</div></pre></td></tr></table></figure>
-<p>修改函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func viewDidLoad() &#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  tableView.rowHeight = <span class="number">44</span></div><div class="line"></div><div class="line">  title = checklist.name</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">                        didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line"></div><div class="line">        let checklist = lists[indexPath.row]</div><div class="line"></div><div class="line">        performSegueWithIdentifier(<span class="string">"ShowChecklist"</span>, sender:checklist)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中 添加函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func prepareForSegue(segue:UIStoryboardSegue,</div><div class="line"></div><div class="line">                              sender:AnyObject?) &#123;</div><div class="line"></div><div class="line">      if segue.identifier == "ShowChecklist" &#123;</div><div class="line"></div><div class="line">        let controller = segue.destinationViewController</div><div class="line"></div><div class="line">                        as! ChecklistViewController</div><div class="line"></div><div class="line">        controller.checklist = sender as! Checklist</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="添加和修改-Checklist"><a href="#添加和修改-Checklist" class="headerlink" title="添加和修改 Checklist"></a>添加和修改 Checklist</h3><p>添加新文件到项目中，name: ListDetailViewController.swift,sunclass: UITableViewCell</p>
-<p>将 ListDetailViewController.swift 中替换为：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import UIKit</div><div class="line"></div><div class="line">protocol ListDetailViewControllerDelegate: class &#123;</div><div class="line"></div><div class="line">  func listDetailViewControllerDidCancel(controller:ListDetailViewController)</div><div class="line"></div><div class="line">  func listDetailViewController(controller: ListDetailViewController,</div><div class="line"></div><div class="line">                                didFinshAddingChecklist checklist:Checklist)</div><div class="line"></div><div class="line">  func listDetailViewController(controller: ListDetailViewController,</div><div class="line"></div><div class="line">                                didFinishEditingChecklist checklist:Checklist)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class ListDetailViewController:UITableViewController,UITextFieldDelegate &#123;</div><div class="line"></div><div class="line">  @IBOutlet weak var textField: UITextField!</div><div class="line"></div><div class="line">  @IBOutlet weak var doneBarButton: UIBarButtonItem!</div><div class="line"></div><div class="line">  weak var delegate: ListDetailViewControllerDelegate?</div><div class="line"></div><div class="line">  var checklistToEdit:Checklist?</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func viewDidLoad() &#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  tableView.rowHeight = 44</div><div class="line"></div><div class="line">  if let checklist = checklistToEdit &#123;</div><div class="line"></div><div class="line">    title = "Edit Checklist"</div><div class="line"></div><div class="line">    textField.text = checklist.name</div><div class="line"></div><div class="line">    doneBarButton.enabled = true</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override func viewWillAppear(animated:Bool) &#123;</div><div class="line"></div><div class="line">  super.viewWillAppear(animated)</div><div class="line"></div><div class="line">  textField.becomeFirstResponder()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBAction func cancel() &#123;</div><div class="line"></div><div class="line">  delegate?.listDetailViewControllerDidCancel(self)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBAction func done() &#123;</div><div class="line"></div><div class="line">  if let checklist = checklistToEdit &#123;</div><div class="line"></div><div class="line">    checklist.name = textField.text!</div><div class="line"></div><div class="line">    delegate?.listDetailViewController(self,didFinishEditingChecklist:checklist)</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">    if checklist = Checklist(name:textField.text!)</div><div class="line"></div><div class="line">    delegate?.listDetailViewController(self,didFinishAddingChecklist:checklist)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tabelView(tableView:UITabelView,</div><div class="line"></div><div class="line">                willSelectRowAtIndexPath indexPath:NSIndexPath) -&gt; NSIndexPath?&#123;</div><div class="line"></div><div class="line">      return nil</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func textField(textField: UITextField,</div><div class="line"></div><div class="line">               shouldChangeCharactersInRange range:</div><div class="line"></div><div class="line">               replacementString string:String) -&gt; Bool &#123;</div><div class="line"></div><div class="line">    let oldText: NSString = textField.text</div><div class="line"></div><div class="line">    let newText: NSString = oldText.stringByReplaceingCharactersInRange(</div><div class="line"></div><div class="line">                                        range,withString: string)</div><div class="line"></div><div class="line">     doneBarButton.enabled = (newText.length &gt; 0)</div><div class="line"></div><div class="line">     return true</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>打开 storyboard ，拖放一个 Navigation Controller 在下列。选择新的 RootViewController,</p>
-<p>在Identity inspector –&gt; class –&gt; ListDetailViewController.</p>
-<p>设置 navigation titile 为 Add Checklist</p>
-<p>添加 Cancel 和 Done  bar button 到当前的 viewController 上，连接 Done Button 到</p>
-<p>doneBarButton 的 outlet 上， 并且设置 Enable 取消勾选</p>
-<p>设置 Table View 为 Static Cell, style 为 Grouped。 删除多余的两个 cell。</p>
-<p>在 Table View Cell 中添加一个 Text Field。</p>
-<p>Boder Style: none</p>
-<p>Font Size: 17</p>
-<p>Placeholder text: Name of the List</p>
-<p>Adjust to Fit: disabled</p>
-<p>Capitalization: Sentences</p>
-<p>Return Key; Done</p>
-<p>Auto-enable Return key: check</p>
-<p>链接 Text Field 到 textField 的 outlet。</p>
-<p>然后反过来拖动， ctrl+拖动， 从 Text Field 到 ViewController， 选择 Outlets 下面的</p>
-<p>delegate。</p>
-<p>然后从 Did End on Exit ctrl + 拖到 done IBAction</p>
-<p>在 All Lists View Controller（title 为 Checklists）的界面上，拖一个 Bar Button Item</p>
-<p>到 navigation bar。改 text 为 Add。</p>
-<p>ctrl + 拽 从 add button 到下面的 navigation ViewController，选择 present modally</p>
-<p>选中新的 segue ，Identifier 设为 AddChecklist</p>
-<p>现在你的 storyboard 应该是这个样子的了。</p>
-<p>下面修改代码：</p>
-<p>首先，在 AllListViewController.swift 中添加协议代理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllListsViewController</span>:</span> UITableViewController,</div><div class="line"></div><div class="line">                              ListDetailViewControllerDelegate&#123;</div></pre></td></tr></table></figure>
-<p>修改代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func prepareForSegue(segue:UIStoryboardSegue,sender:AnyObject?) &#123;</div><div class="line"></div><div class="line">  if segue.identifer == "ShowChecklist" &#123;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">  &#125; else if segue.identifer == "AddChecklist" &#123;</div><div class="line"></div><div class="line">    let navigationController = segue.destinationViewController</div><div class="line"></div><div class="line">                                as! UINavigationController</div><div class="line"></div><div class="line">    let controller = navigationController.topViewController</div><div class="line"></div><div class="line">                                as! ListDetailViewController</div><div class="line"></div><div class="line">    controller.delegate = self</div><div class="line"></div><div class="line">    controller.checklistToEdit = nil</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AllListViewController.swift 中添加方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">func listDetailViewControllerDidCancel(</div><div class="line"></div><div class="line">                                  controller:ListDetailViewController) &#123;</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func listDetailViewController(controller:ListDetailViewController,</div><div class="line"></div><div class="line">                            didFinishAddingChecklist checklist:Checklist) &#123;</div><div class="line"></div><div class="line">    let newRowIndex = lists.count</div><div class="line"></div><div class="line">    lists.append(checklist)</div><div class="line"></div><div class="line">    let indexPath = NSIndexPath(forRow:newRowIndex,inSection:<span class="number">0</span>)</div><div class="line"></div><div class="line">    let indexPaths = [indexPath]</div><div class="line"></div><div class="line">    tableView.insertRowsAtIndexPaths(indexPaths,WithRowAnimation:.Automatic)</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func listDetailViewController(controller:ListDetailViewController,</div><div class="line"></div><div class="line">                              didFinishEditingChecklist checklist:Checklist)&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> let index = lists.indexOf(checklist) &#123;</div><div class="line"></div><div class="line">      let indexPath = NSIndexPath(forRow:index,inSection:<span class="number">0</span>)</div><div class="line"></div><div class="line">      <span class="keyword">if</span> let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</div><div class="line"></div><div class="line">        cell.textLabel!.text = checklist.name</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">                commitEditingStyle editingStyle:UITableViewCellEditingStyle,</div><div class="line"></div><div class="line">                forRowAtIndexPath indexPath:NSIndexPath)&#123;</div><div class="line"></div><div class="line">      lists.removeAtIndex(indexPath.row)</div><div class="line"></div><div class="line">      let indexPaths = [indexPath]</div><div class="line"></div><div class="line">      tableView.deleteRowAtIndexPaths(indexPaths,WithRowAnimation:.Automatic)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">            accessoryButtonTappedForRowWithIndexPath indexPath:NSIndexPath)&#123;</div><div class="line"></div><div class="line">    let navigationController =</div><div class="line"></div><div class="line">       storyboard!.instantiateViewControllerWithIdentifier(</div><div class="line"></div><div class="line">       <span class="string">"ListNavigationController"</span>) <span class="keyword">as</span>! UINavigationController</div><div class="line"></div><div class="line">    let controller = navigationController.topViewController</div><div class="line"></div><div class="line">                              <span class="keyword">as</span>! ListDetailViewController</div><div class="line"></div><div class="line">    controller.delegate = self</div><div class="line"></div><div class="line">    let checklist = lists[indexPath.row]</div><div class="line"></div><div class="line">    controller.checklistToEdit = checklist</div><div class="line"></div><div class="line">    presentViewController(navigationController,animated:true,completion:nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>打开 下面的 navigationController，在 Identity inspector 的 storyboard ID 中输入</p>
-<p>ListNavigationController。</p>
-<h3 id="给-Checklist-添加-item"><a href="#给-Checklist-添加-item" class="headerlink" title="给 Checklist 添加 item"></a>给 Checklist 添加 item</h3><p>给 Checklist.swift</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checklist</span>:</span> NSObject &#123;</div><div class="line"></div><div class="line">  var name = <span class="string">""</span></div><div class="line"></div><div class="line">  var items = [ChecklistItem]()</div></pre></td></tr></table></figure>
-<p>删除 ChecklistViewController.swift 中的 item 变量。</p>
-<p>修改函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                        numberOfRowsInSection section: Int) -&gt; &#123;</div><div class="line"></div><div class="line">  return checklist.items.count</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">  let item = checklist.items[indexPath.row]</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override tableView(tableView:UITableView,</div><div class="line"></div><div class="line">                  didSelectRowAtIndexPath indexPath:NSIndexPath) &#123;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">  let item = checklist.items[indexPath.row]</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">        commitEditingStyle editingStyle:UITableViewCellEditingStyle,</div><div class="line"></div><div class="line">        forRowAtIndexPath indexPath:NSIndexPath) &#123;</div><div class="line"></div><div class="line">      checklist.items.removeAtIndex(indexPath.row)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func itemDetailViewController(controller: ItemDetailViewController,</div><div class="line"></div><div class="line">                              didFinishAddingItem item:ChecklistItem)&#123;</div><div class="line"></div><div class="line">      let newRowIndex = checklist.items.count</div><div class="line"></div><div class="line">      checklist.items.append(item)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func itemDetailViewController(controller: ItemDetailViewController,</div><div class="line"></div><div class="line">                              didFinishEditingItem item:ChecklistItem) &#123;</div><div class="line"></div><div class="line">       if let index = checklist.items.indexOf(item) &#123;</div><div class="line"></div><div class="line">       ...</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func prepareForSegue(segue:UIStoryboardSegue,</div><div class="line"></div><div class="line">                              sender:AnyObject?) &#123;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    controller.itemToEdit = checklist.items[indexPath.row]</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>删除 ChecklistViewController.swift 中的这些 函数：</p>
-<p>func documentDirectory()</p>
-<p>func dataFilePath()</p>
-<p>func saveChecklistItems()</p>
-<p>func loadChecklistItems()</p>
-<p>init(coder)</p>
-<p>在 AllListsViewController.swift 中，添加函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func documentDirectory() -&gt; String &#123;</div><div class="line"></div><div class="line">  let paths = NSSearchPathForDirectoriesInDomains(</div><div class="line"></div><div class="line">              .DocumnetDirectory,.UserDomainMask,true) as! [String]</div><div class="line"></div><div class="line">   return paths[0]</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func dataFilePath() -&gt; String &#123;</div><div class="line"></div><div class="line">  return documentDirectory().stringByAppendingPathComponent("Checklists.plist")</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func saveChecklists()&#123;</div><div class="line"></div><div class="line">  let data = NSMutableData()</div><div class="line"></div><div class="line">  let archiver = NSKeyedArchiver(forWritingWithMutableData:data)</div><div class="line"></div><div class="line">  archiver.encodeObject(lists,forKey:"Checklists")</div><div class="line"></div><div class="line">  archiver.finishEncoding()</div><div class="line"></div><div class="line">  data.writeToFile(dataFilePath(),atomically:true)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">func loadChecklists() &#123;</div><div class="line"></div><div class="line">  let path = dataFilePath()</div><div class="line"></div><div class="line">  if NSFileManager.defaultManager().fileExistsAtPath(path) &#123;</div><div class="line"></div><div class="line">    if let data = NSData(contentsOfFile:path) &#123;</div><div class="line"></div><div class="line">      let unarchiver = NSKeyedUnarchiver(forReadingWithData:data)</div><div class="line"></div><div class="line">      lists = unarchiver.decodeObjectForKey("Checklists") as! [Checklist]</div><div class="line"></div><div class="line">      unarchiver.finishDecoding()</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改函数 init(coder)：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">required init(coder aDecoder:NSCoder) &#123;</div><div class="line"></div><div class="line">  lists =  [Checklist]()</div><div class="line"></div><div class="line">  super.init(coder:aDecoder)</div><div class="line"></div><div class="line">  loadChecklists()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 Checklist.swift 中添加：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checklist</span>:</span> NSObject,NSCoding &#123;</div><div class="line"></div><div class="line"></div><div class="line">required init(coder aDecoder:NSCoder) &#123;</div><div class="line"></div><div class="line">  name = aDecoder.decodeObjectForKey(<span class="string">"Name"</span>) <span class="keyword">as</span>! String</div><div class="line"></div><div class="line">  items = aDecoder.decodeObjectForKey(<span class="string">"Items"</span>) <span class="keyword">as</span>! [ChecklistItem]</div><div class="line"></div><div class="line">  super.init()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func encodeWithCoder(aCoder:NSCoder) &#123;</div><div class="line"></div><div class="line">  aCoder.encodeObject(name,forKey:<span class="string">"Name"</span>)</div><div class="line"></div><div class="line">  aCoder.encodeObject(items,forKey:<span class="string">"Items"</span>)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="保存数据"><a href="#保存数据" class="headerlink" title="保存数据"></a>保存数据</h3><p>在 AppDelegate.swift 中，添加：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">func saveData() &#123;</div><div class="line"></div><div class="line">  let navigationController = windows!.rootViewController</div><div class="line"></div><div class="line">                             <span class="keyword">as</span>! UINavigationController</div><div class="line"></div><div class="line">  let controller = navigationController.viewControllers[<span class="number">0</span>]</div><div class="line"></div><div class="line">                             <span class="keyword">as</span>! AllListsViewController</div><div class="line"></div><div class="line">  controller.saveChecklists()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func applicationDidEnterBackground(applicatoin:UIApplication!)&#123;</div><div class="line"></div><div class="line">  saveData()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func applicationWillTerminate(application:UIApplication!) &#123;</div><div class="line"></div><div class="line">  saveData()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2265,7 +2184,7 @@ if viewController === self {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2287,7 +2206,7 @@ if viewController === self {
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
