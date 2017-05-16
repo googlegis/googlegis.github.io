@@ -299,6 +299,232 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/12/the-ios-apprentice-one-bull-eyes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/12/the-ios-apprentice-one-bull-eyes/" itemprop="url">
+                  Swift 2.0 纯学习之旅 -- 1.弹出提示框 和 Landscape 模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-12T22:02:25+08:00">
+                2015-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/12/the-ios-apprentice-one-bull-eyes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/12/the-ios-apprentice-one-bull-eyes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>我在 2014-10-16日的文章中已经写过这篇，但是恍惚之间，大半年的时间过去了。而今迈步从头跃。啥都不说了，眼泪哗哗的！
+</code></pre><ol>
+<li>新建项目</li>
+</ol>
+<p>打开Xcode，</p>
+<img src="/images/2015/06/newproject/QQ20150615-1@2x.png">
+<p>新建，Single View Application</p>
+<img src="/images/2015/06/newproject/QQ20150615-2@2x.png">
+<p>填写内容：</p>
+<img src="/images/2015/06/newproject/QQ20150615-3@2x.png">
+<p>Save Folder:</p>
+<img src="/images/2015/06/newproject/QQ20150615-4@2x.png">
+<pre><code>如果你只看到了ViewControll.h 和 ViewControll.m 文件，说明你创建项目时，语言选择的
+</code></pre><p>Objective－C，而不是Swift。</p>
+<p>点击运行测试程序。</p>
+<ol>
+<li>放置按钮</li>
+</ol>
+<p>从右侧 object library 中找到 button 按钮，然后拖动到 Main.storyboard中，</p>
+<img src="/images/2015/06/newproject/QQ20150615-6@2x.png">
+<ol>
+<li>添加代码</li>
+</ol>
+<p>在左侧导航栏中选择ViewController.swift 文件，在最下面加入下面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func showAlert() &#123;</div><div class="line"></div><div class="line">let alert = UIAlertController(title: &quot;Hello, World&quot;,</div><div class="line"></div><div class="line">message: &quot;This is my first app!&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">let action = UIAlertAction(title: &quot;Awesome&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">alert.addAction(action)</div><div class="line"></div><div class="line">presentViewController(alert, animated: true, completion: nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>将函数与按钮联系</li>
+</ol>
+<p>我最习惯的方式，安装control键，鼠标左键拖动按钮控件到 View Controll 中，在sendEvent中</p>
+<p>选择showAlert完成绑定。</p>
+<img src="/images/2015/06/newproject/QQ20150615-7@2x.png">
+<img src="/images/2015/06/newproject/QQ20150615-8@2x.png">
+<p>在代码中能看到</p>
+<p>showAlert函数前的圆点，表明已经绑定动作了。</p>
+<img src="/images/2015/06/newproject/QQ20150615-10@2x.png">
+<p>另外如果在Main.storyboard 中选定button，然后右侧选择 Show the Connections</p>
+<p>inspector，能够看到已经绑定的各种链接。也可以在此查看绑定是否成功或完成。</p>
+<img src="/images/2015/06/newproject/QQ20150615-9@2x.png">
+<p>运行显示弹出框</p>
+<img src="/images/2015/06/newproject/QQ20150615-11@2x.png">
+<ol>
+<li>Disable SizeClass</li>
+</ol>
+<p>从iOS8开始，Xcode提供了一个 size classes 或者叫做 universal storyboards的</p>
+<p>功能，能够让你一次设计，处处运行，也就是你在这里一次性设计完成，就不论它是iPad还是iPhone</p>
+<p>还是iPod，不论它是 3.5-4-4.7-5.5-8.9 英寸了。但是这里我们先不讨论，我们要把该功能关闭。</p>
+<p>左侧导航栏选中 Main.storyboard, 右侧点击 File inspector，取消勾选的 Use Size Classes。</p>
+<p>当Xcode提示你是否确认时，点击 Disable Size Classes 继续，你会看到你的画布大小变为了实际的</p>
+<p>的iPhone大小。</p>
+<img src="/images/2015/06/newproject/QQ20150615-12@2x.png">
+<img src="/images/2015/06/newproject/QQ20150615-13@2x.png">
+<p>然后运行程序测试。</p>
+<img src="/images/2015/06/newproject/QQ20150615-14@2x.png">
+<p>－－－－</p>
+<pre><code>如果使用了Size Classes，因为是要面对所有尺寸的设备，所以需要对button的相对位置重新
+定义，而不是简单放置在中间就可以了，在Size Classes 模式下， 你手动放在中间，运行的
+时候并不在中间；而取消掉了Size Classes模式，你放在哪里就出现在哪里，因为只需要对一种
+类型设备负责。
+</code></pre><p>－－－</p>
+<p>6.landscape 模式</p>
+<p>在Main.storyboard 中选中 View Controller，</p>
+<img src="/images/2015/06/newproject/QQ20150616-1@2x.png">
+<p>或者在 Outline pane中，选中View Controller，</p>
+<img src="/images/2015/06/newproject/QQ20150616-2@2x.png">
+<p>然后在 show Attributes Inspector 中的 simulated Metrics节点中，将 Orientation 中的</p>
+<p>Inferred 改变为 landscape。</p>
+<img src="/images/2015/06/newproject/QQ20150616-3@2x.png">
+<p>然后运行试试，没有变？没有变就对了。还要改个地方。左侧导航栏选中项目，选择 General，然后在</p>
+<p>Deployment info 中的 Device Orientation 中，取消勾选 Portrait。 只留 Landscape Left</p>
+<p>和Landscape Right。</p>
+<img src="/images/2015/06/newproject/QQ20150616-1.png">
+<p>再运行测试，OK。</p>
+<img src="/images/2015/06/newproject/QQ20150616-2.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/11/the-wwdc-of-2015/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2117,187 +2343,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/13/How-to-install-nodejs-on-windows/" itemprop="url">
-                  在Windows下安装Node.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-13T21:40:54+08:00">
-                2015-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/13/How-to-install-nodejs-on-windows/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/13/How-to-install-nodejs-on-windows/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
-<img src="/images/2015/05/nodejs.png">
-<p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
-<p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
-<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
-<h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
-<li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
-<li>按照默认的选项和步骤，一路next下去。</li>
-<li>重启。</li>
-</ol>
-<img src="/images/2015/05/installer.png">
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
-<h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
-<h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
-<h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
-<p>命令行运行到当前的文件目录，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
-<p>运行后返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
-<p>说明Node.js 已经安装成功！</p>
-<img src="/images/2015/05/output.png">
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2347,7 +2392,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2369,7 +2414,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

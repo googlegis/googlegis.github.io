@@ -299,6 +299,198 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/11/use-section-in-html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/11/use-section-in-html/" itemprop="url">
+                  使用 section 注册 Js 脚本和 Css 样式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-11T22:09:13+08:00">
+                2016-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/11/use-section-in-html/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/11/use-section-in-html/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们一般写 JavaScript 脚本，都会直接写在页面中，比如我们将一个</p>
+<p>alert 的提示框写在 layout</p>
+<p>的页面中，这样每个以此为模版的页面都会弹出一个提示框！</p>
+<img src="/images/2016/0711/2016-07-11-1.png">
+<img src="/images/2016/0711/2016-07-11-2.png">
+<p>下面，我们看一下如何使用 section 在 layout 中注册该段代码。</p>
+<p>首先，我们将代码段以 section 名称的样式写在 index 的页面中，</p>
+<img src="/images/2016/0711/2016-07-11-4.png">
+<p>然后在 layout 中注册该 section 名称。</p>
+<img src="/images/2016/0711/2016-07-11-5.png">
+<p>然后再运行代码，出现如下提示，这说明我们注册 section 中的代码</p>
+<p>段成功了！</p>
+<img src="/images/2016/0711/2016-07-11-3.png">
+<p>RendeSection 是注册 section 的函数，参数1标识 section</p>
+<p>的名称， required 标识该 section 是否是必须的。如果该参数标识为</p>
+<p> true ，则每个以 layout 为模版的页面都必须要有 PartJavaScript</p>
+<p>的 section 代码段；如果为 false ，以 layout 的模版的页面，</p>
+<p>可有可无以 PartJavaScript 的 section代码段。</p>
+<p>当然了，section 标识不仅仅能够写 JavaScript 代码段那么简单，</p>
+<p>添加引用的 js 库和 css 库也同样适用。</p>
+<p>首先在 index 中注册 jquery 的 js 库引用，使用名称为 RenderPartJs</p>
+<p>的 section。</p>
+<img src="/images/2016/0711/2016-07-11-6.png">
+<p>然后在 layout 的 head 部分注册名称 RenderPartJs 的 section。</p>
+<img src="/images/2016/0711/2016-07-11-7.png">
+<p>然后运行代码，发现弹出提示框，说明引用成功！</p>
+<img src="/images/2016/0711/2016-07-11-8.png">
+<p>这里说明一个问题，就是 section 的位置在哪里并不重要，重要的是注册</p>
+<p>section 的位置。</p>
+<p>如果是在 head 部位注册 section，就是在 head部位参与了 js 库的引用。</p>
+<p>这种方法同样适用注册 css 样式。</p>
+<p>如图，在 index 注册名为 RenderPartStyle 的 css 样式。</p>
+<img src="/images/2016/0711/2016-07-11-9.png">
+<p>然后在 layout 中进行注册。</p>
+<img src="/images/2016/0711/2016-07-11-10.png">
+<p>运行代码后，同样弹出提示框，并且页面的字体样式发生了改变。说明我们注册</p>
+<p>引用的 css 文件起作用了。</p>
+<p>如果在网页中查看页面源码的话，就能够看到页面里引用的 js 库和 css 库。</p>
+<img src="/images/2016/0711/2016-07-11-11.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1930,211 +2122,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/25/all-about-human-beings/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/25/all-about-human-beings/" itemprop="url">
-                  Swift 2.0 纯学习之旅 -- 13.优化用户体验
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-25T20:40:29+08:00">
-                2015-07-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/25/all-about-human-beings/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/25/all-about-human-beings/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="显示事项个数"><a href="#显示事项个数" class="headerlink" title="显示事项个数"></a>显示事项个数</h3><p>首先在 Checklist.swift 中添加函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func countUnCheckedItems() -&gt; Int &#123;</div><div class="line"></div><div class="line">  var count = 0</div><div class="line"></div><div class="line">  for item in items &#123;</div><div class="line"></div><div class="line">    if !item.checked &#123;</div><div class="line"></div><div class="line">      count += 1</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return count</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中 修改函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">          cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">  let cellIdentifier = "Cell"</div><div class="line"></div><div class="line">  var cell:UITableViewCell !=</div><div class="line"></div><div class="line">                    tableView.dequeueReusableCellWithIdentifier(cellIdentifier)</div><div class="line"></div><div class="line">                    as? UITableViewCell</div><div class="line"></div><div class="line">  if cell == nil &#123;</div><div class="line"></div><div class="line">      cell = UITableViewCell(style:.Subtitle,reuseIdentifier:cellIdentifier)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  let checklist = dataModel.lists[indexPath.row]</div><div class="line"></div><div class="line">  cell.textLabel!.text = checklist.name</div><div class="line"></div><div class="line">  cell.accessoryType = .DetailDisclosuerButton</div><div class="line"></div><div class="line">  let count = checklist.countUnCheckedItems()</div><div class="line"></div><div class="line">  if checklist.items.count == 0 &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "(No Items)"</div><div class="line"></div><div class="line">  &#125; else if count == 0 &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "All Done!"</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "\(count) Remaining"</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return cell</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override func viewWillAppear(animated: Bool)&#123;</div><div class="line"></div><div class="line">  super.viewWillAppear(animated)</div><div class="line"></div><div class="line">  tableView.reloadData()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="对list-排序"><a href="#对list-排序" class="headerlink" title="对list 排序"></a>对list 排序</h3><p>修改 AllListsViewController.swift 中函数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func ListDetailViewController(controller:ListDetailViewController,</div><div class="line"></div><div class="line">                          didFinishAddingChecklist checklist:Checklist)&#123;</div><div class="line"></div><div class="line">    dataModel.lists.append(checklist)</div><div class="line"></div><div class="line">    dataModel.sortChecklists()</div><div class="line"></div><div class="line">    tableView.reloadData()</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func ListDetailViewController(controller:ListDetailViewController,</div><div class="line"></div><div class="line">                        didFinishEditingChecklist checklist:Checklist) &#123;</div><div class="line"></div><div class="line">    dataModel.sortChecklists()</div><div class="line"></div><div class="line">    tableView.reloadData()</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 DataModel.swift 中添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func sortChecklists() &#123;</div><div class="line"></div><div class="line">  lists.sort(&#123; checklist1,checklist2 <span class="keyword">in</span> <span class="keyword">return</span></div><div class="line"></div><div class="line">        checklist1.name.localizedStandardCompare(checklist2.name) ==</div><div class="line"></div><div class="line">                                NSComparisonResult.OrderedAscending&#125;)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后修改 函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func loadChecklist() &#123;</div><div class="line"></div><div class="line">  let path = dataFilePath()</div><div class="line"></div><div class="line">  <span class="keyword">if</span> NSFileManager.defaultManager().fileExistsAtPath(path) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> let data = NSData(contentsOfFile:path) &#123;</div><div class="line">      ...</div><div class="line"></div><div class="line">      sortChecklists()</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="对-list-添加图标"><a href="#对-list-添加图标" class="headerlink" title="对 list 添加图标"></a>对 list 添加图标</h3><p>选择项目中 Image.xcassets , 点击 + ， Import… , 选择 Checklist Icons 中的文件，</p>
-<p>打开后导入到项目中，</p>
-<p>在 Checklist.swift 添加变量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var iconName: String</div><div class="line"></div><div class="line">required init(coder aDecoder: NSCoder)&#123;</div><div class="line"></div><div class="line">  name = aDecoder.decodeObjectForKey(<span class="string">"Name"</span>) <span class="keyword">as</span>! String</div><div class="line"></div><div class="line">  items = aDecoder.decodeObjectForKey(<span class="string">"Items"</span>) <span class="keyword">as</span>! [ChecklistItem]</div><div class="line"></div><div class="line">  iconName = aDecoder.decodeObjectForKey(<span class="string">"IconName"</span>) <span class="keyword">as</span>!  String</div><div class="line"></div><div class="line">  super.init()</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func encodeWithCoder(aDecoder: NSCoder) &#123;</div><div class="line"></div><div class="line">  aCoder.encoderObject(name,forKey:<span class="string">"Name"</span>)</div><div class="line"></div><div class="line">  aCoder.encoderObject(items,forKey:<span class="string">"Items"</span>)</div><div class="line"></div><div class="line">  aCoder.encoderObject(iconName,forKey:<span class="string">"IconName"</span>)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">init(name:String) &#123;</div><div class="line"></div><div class="line">  self.name = name</div><div class="line"></div><div class="line">  iconName = <span class="string">"No Icon"</span></div><div class="line"></div><div class="line">  super.init()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 AllListsViewController.swift 中修改函数:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">               cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    cell.imageView!.image = UIImage(named:checklist.iconName)</div><div class="line"></div><div class="line">    return cell</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>添加新的 Swift 文件，名称为： IconPickerViewController</p>
-<p>替换 IconPickerViewController.swift 中的内容：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import UIKit</div><div class="line"></div><div class="line">protocol IconPickerViewControllerDelegate:class &#123;</div><div class="line"></div><div class="line">  func iconPicker(picker:IconPickerViewController,</div><div class="line"></div><div class="line">                 didPickIcon iconName:String)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class IconPickerViewController: UITableViewController &#123;</div><div class="line"></div><div class="line">    weak var delegate: IconPickerViewControllerDelegate?</div><div class="line"></div><div class="line">    let icons = [</div><div class="line"></div><div class="line">        "No Icon",</div><div class="line"></div><div class="line">        "Appointments",</div><div class="line"></div><div class="line">        "Birthdays",</div><div class="line"></div><div class="line">        "Chores",</div><div class="line"></div><div class="line">        "Drinks",</div><div class="line"></div><div class="line">        "Folder",</div><div class="line"></div><div class="line">        "Groceries",</div><div class="line"></div><div class="line">        "Inbox",</div><div class="line"></div><div class="line">        "Photos",</div><div class="line"></div><div class="line">        "Trips"]</div><div class="line"></div><div class="line">  override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">                numberOfRowsInSelection section:Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">        return icons.count</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITabelViewCell &#123;</div><div class="line"></div><div class="line">        let cell = tableView.dequeueReusableCellWithIdentifier("IconCell")</div><div class="line"></div><div class="line">                                        as! UITableViewCell</div><div class="line"></div><div class="line">        let iconName = icons[indexPath.row]</div><div class="line"></div><div class="line">        cell.textLabel!.text = iconName</div><div class="line"></div><div class="line">        cell.imageView!.image = UIIMage(named:iconName)</div><div class="line"></div><div class="line">        return cell</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>打开 storyboard ，拖放一个 TableViewController, 放在那个 “Add Checklist” 附近，</p>
-<p>然后在 Identity inspector 中定义 class 为 IconPickerViewController,</p>
-<p>设置 Style -&gt; Basic , Idenifier -&gt; IconCell</p>
-<p>然后在 ListDetailViewController 中的 tableView 添加一个section, 可以通过 Attributes</p>
-<p>inspector 中的 Sections 属性，将 1 改为 2， 会复制一个相同的 cell。</p>
-<p>删除第二个 cell 中的 textField. 添加一个 Label ，命名为 Icon 。</p>
-<p>设置 cell 的 Accessory 为 Disclosure Indeicator . 添加一个 ImageView 到 cell 中，</p>
-<p>在 Size inspector 中设置为 36 x 36 。</p>
-<p>在 ListDetailViewController.swift 中为 ImageView 创建 Outlet ,命名为 iconImageView</p>
-<p>ctrl+拖 从 imageView 上到 IconPickerViewController，选中 Selection Segue 中的 show。</p>
-<p>并且给 segue 的 identifier 设为 PickIcon</p>
-<p>添加 segue 后， 新的 viewController 添加了一个 navigation bar ，双击修改名称为</p>
-<p>Choose Icon 。</p>
-<p>在 ListDetailViewController.swift 中， 修改函数：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                willSelectRowAtIndexPath indexPath: NSIndexPath) -&gt; NSIndexPath?&#123;</div><div class="line"></div><div class="line">  if indexPath.section == 1 &#123;</div><div class="line"></div><div class="line">      return indexPath</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">      return nil</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">var iconName = "Folder"</div><div class="line"></div><div class="line">override func viewDidLoad() &#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  tabeleView.rowHeight = 44</div><div class="line"></div><div class="line">  if let checklist = checklistToEdit &#123;</div><div class="line"></div><div class="line">    title = "Edit Checklist"</div><div class="line"></div><div class="line">    textField.text = checklist.name</div><div class="line"></div><div class="line">    doneBarButton.enabled = true</div><div class="line"></div><div class="line">    iconName = Checklist.iconName</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  iconImageView.image = UIImage(named:iconName)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func prepareForSegue(segue: UIStoryboardSegue,sender:AnyObject?)&#123;</div><div class="line"></div><div class="line">  if segue.identifier = "PickIcon" &#123;</div><div class="line"></div><div class="line">    let controller = segue.destinationViewController as! IconPickerViewController</div><div class="line"></div><div class="line">    controller.delegate = self</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>修改 ListDetailViewController.swift 的协议：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class ListDetailViewController: UITableViewController ,</div><div class="line"></div><div class="line">                UITextFieldDelegate,IconPickerViewControllerDelegate &#123;</div><div class="line"></div><div class="line"></div><div class="line">func iconPicker(picker: IconPickerViewController,</div><div class="line"></div><div class="line">                didPickIcon iconName:String) &#123;</div><div class="line"></div><div class="line">    self.iconName = iconName</div><div class="line"></div><div class="line">    iconImageView.image = UIImage(named:iconName)</div><div class="line"></div><div class="line">    navigationController?.popViewControllerAnimated(true)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBAction func done() &#123;</div><div class="line"></div><div class="line">  if let checklist = ChecklistToEdit &#123;</div><div class="line"></div><div class="line">    checklist.name = textField.text</div><div class="line"></div><div class="line">    checklist.iconName = iconName</div><div class="line"></div><div class="line">    delegate?.listDetailViewController(self,</div><div class="line"></div><div class="line">                    didFinishEditingChecklist:checklist)</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">     let checklist = Checklist(name:textField.text)</div><div class="line"></div><div class="line">     checklist.iconName = iconName</div><div class="line"></div><div class="line">     delegate?.ilstDetailViewController(self,</div><div class="line"></div><div class="line">                        didFinishAddingChecklist:checklist)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 IconPickerViewController.swift 中， 添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                    didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> let delegate = delegate &#123;</div><div class="line"></div><div class="line">      let iconName = icons[indexPath.row]</div><div class="line"></div><div class="line">      delegate.iconPicker(self,didPickIcon:iconName)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个时候可能回出现 ImageView 对不齐的现象，</p>
-<p>选择 Image View ，选择 Pin menu, 取消勾选 Constrain to margins。 选择上右激活，</p>
-<p>勾选高度和宽度，Update Frames 中选择 Items of New Constraints, 然后点击</p>
-<p>Add 4 Constraints,</p>
-<p>在 done() 函数中， 修改：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">let checklist = Checklist(name:textField.text)</div><div class="line"></div><div class="line">checklist.name = iconName</div></pre></td></tr></table></figure>
-<p>为</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">let checklist = Checklist(name:textField.text,iconName:iconName)</div></pre></td></tr></table></figure>
-<p>在 Checklist.swift 中，添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">init(name:String,iconName:String)&#123;</div><div class="line"></div><div class="line">  self.name = name</div><div class="line"></div><div class="line">  self.iconName = iconName</div><div class="line"></div><div class="line">  super.init()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>替换函数 init(name)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">init(name: String)&#123;</div><div class="line"></div><div class="line">  self.name = name</div><div class="line"></div><div class="line">  iconName = <span class="string">"No Icon"</span></div><div class="line"></div><div class="line">  super.init()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>为</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">convenience init(name: String) &#123;</div><div class="line"></div><div class="line">  self.init(name:name,iconName:<span class="string">"No Icon"</span>)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2184,7 +2171,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2206,7 +2193,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

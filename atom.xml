@@ -221,6 +221,27 @@
   </entry>
   
   <entry>
+    <title>我看捉妖记</title>
+    <link href="http://googlegis.github.io/2016/09/01/the-monster-hunter/"/>
+    <id>http://googlegis.github.io/2016/09/01/the-monster-hunter/</id>
+    <published>2016-09-01T14:28:42.000Z</published>
+    <updated>2017-05-16T14:34:57.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;img src=&quot;/images/2016/0901/20160901.jpg&quot;&gt;
+&lt;p&gt;这个是两年前的片子了，现在突然想起来了，也就是想说说，其实这个片也没有那么炫！&lt;br&gt;我依稀记得当时是各种宣传，正面的，反面的，铺天盖地，又在那里炫耀技术如何牛逼的了，&lt;br&gt;反正就是开创
+    
+    </summary>
+    
+      <category term="看电影" scheme="http://googlegis.github.io/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="捉妖记" scheme="http://googlegis.github.io/tags/%E6%8D%89%E5%A6%96%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用 section 注册 Js 脚本和 Css 样式</title>
     <link href="http://googlegis.github.io/2016/07/11/use-section-in-html/"/>
     <id>http://googlegis.github.io/2016/07/11/use-section-in-html/</id>
@@ -436,27 +457,6 @@
     
       &lt;p&gt;好看的颜色和机型的适配是一个应用必不可少的内容。&lt;/p&gt;
 &lt;h3 id=&quot;配色&quot;&gt;&lt;a href=&quot;#配色&quot; class=&quot;headerlink&quot; title=&quot;配色&quot;&gt;&lt;/a&gt;配色&lt;/h3&gt;&lt;p&gt;打开 storyboard, 选择 File inspector 中，的 G
-    
-    </summary>
-    
-      <category term="Swift" scheme="http://googlegis.github.io/categories/Swift/"/>
-    
-    
-      <category term="iOS Apprentice" scheme="http://googlegis.github.io/tags/iOS-Apprentice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift 2.0 纯学习之旅 -- 13.优化用户体验</title>
-    <link href="http://googlegis.github.io/2015/07/25/all-about-human-beings/"/>
-    <id>http://googlegis.github.io/2015/07/25/all-about-human-beings/</id>
-    <published>2015-07-25T12:40:29.000Z</published>
-    <updated>2017-05-04T13:06:07.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;显示事项个数&quot;&gt;&lt;a href=&quot;#显示事项个数&quot; class=&quot;headerlink&quot; title=&quot;显示事项个数&quot;&gt;&lt;/a&gt;显示事项个数&lt;/h3&gt;&lt;p&gt;首先在 Checklist.swift 中添加函数：&lt;/p&gt;
-&lt;figure class=&quot;highligh
     
     </summary>
     

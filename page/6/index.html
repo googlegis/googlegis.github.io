@@ -299,6 +299,187 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/13/How-to-install-nodejs-on-windows/" itemprop="url">
+                  在Windows下安装Node.js
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-13T21:40:54+08:00">
+                2015-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/13/How-to-install-nodejs-on-windows/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/13/How-to-install-nodejs-on-windows/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
+<img src="/images/2015/05/nodejs.png">
+<p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
+<p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
+<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
+<h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
+<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
+<li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
+<li>按照默认的选项和步骤，一路next下去。</li>
+<li>重启。</li>
+</ol>
+<img src="/images/2015/05/installer.png">
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
+<h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
+<h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
+<h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
+<p>命令行运行到当前的文件目录，然后输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
+<p>运行后返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
+<p>说明Node.js 已经安装成功！</p>
+<img src="/images/2015/05/output.png">
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
+<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/11/github-page-addd-custom-domain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1849,173 +2030,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/24/a-swift-tour/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/07/24/a-swift-tour/" itemprop="url">
-                  swift 通览
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-24T23:23:09+08:00">
-                2014-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/07/24/a-swift-tour/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/07/24/a-swift-tour/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。</p>
-</blockquote>
-<p>｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。</p>
-<p><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1" target="_blank" rel="external">本文参考链接：</a></p>
-<h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//var 表示变量， let表示常量，无需指定变量类型，swift可更加值自动判断</div><div class="line"></div><div class="line">println(<span class="string">"Hello,world"</span>)</div><div class="line"></div><div class="line">var myVariable = <span class="number">42</span></div><div class="line"></div><div class="line">myVariable = <span class="number">50</span></div><div class="line"></div><div class="line">let myConstant = <span class="number">42</span></div><div class="line"></div><div class="line">let implicitInteger = <span class="number">70</span></div><div class="line"></div><div class="line">let implicitDouble = <span class="number">70.0</span></div><div class="line"></div><div class="line">//显式定义变量类型</div><div class="line">let explicitDouble:Double = <span class="number">70</span></div><div class="line"></div><div class="line">let explicitFloat:Float32 = <span class="number">4</span></div></pre></td></tr></table></figure>
-<h3 id="2-字符串及转意符"><a href="#2-字符串及转意符" class="headerlink" title="2. 字符串及转意符"></a>2. 字符串及转意符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 拼接字符串，</div><div class="line">let label = <span class="string">"The width is "</span></div><div class="line"></div><div class="line">let width = <span class="number">4</span></div><div class="line"></div><div class="line">//<span class="number">1.</span>直接强制转换，</div><div class="line">let widthLabel = label + String(width)</div><div class="line"></div><div class="line">let widthLabel2 = label + <span class="string">"\(width)"</span></div><div class="line"></div><div class="line">//<span class="number">2.</span> 利用  \() 进行转义</div><div class="line">let apples = <span class="number">3</span></div><div class="line"></div><div class="line">let oranges = <span class="number">5</span></div><div class="line"></div><div class="line">let appleSummary  = <span class="string">"I Have \(apples) apples"</span></div><div class="line"></div><div class="line">let orangesSummary = <span class="string">"I Have \(apples + oranges) pieces of fruit"</span></div></pre></td></tr></table></figure>
-<h3 id="3-数组和字典"><a href="#3-数组和字典" class="headerlink" title="3. 数组和字典"></a>3. 数组和字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 直接赋值数组</div><div class="line">var shoppingList = [<span class="string">"catfish"</span>,<span class="string">"water"</span>,<span class="string">"tulips"</span>,<span class="string">"blue paint"</span>]</div><div class="line"></div><div class="line">// 修改数组值</div><div class="line">shoppingList[<span class="number">1</span>] = <span class="string">"bottle of water"</span></div><div class="line"></div><div class="line">shoppingList[<span class="number">1</span>]</div><div class="line"></div><div class="line">//直接赋值字典</div><div class="line">var occupations = [</div><div class="line">    <span class="string">"Malcolm"</span>:<span class="string">"Captain"</span>,<span class="string">"Kaylee"</span>:<span class="string">"Mechanic"</span>]</div><div class="line"></div><div class="line">//直接添加字典值</div><div class="line">occupations[<span class="string">"Jayne"</span>] = <span class="string">"Public Relations"</span></div><div class="line"></div><div class="line">//初始化一个字符空数组</div><div class="line">let emptyArray = [String]()</div><div class="line">//初始化一个空字典</div><div class="line">let emptyDictionary = Dictionary&lt;String,Float&gt;()</div><div class="line">//数组赋值为空</div><div class="line">shoppingList = []</div></pre></td></tr></table></figure>
-<h3 id="4-控制流"><a href="#4-控制流" class="headerlink" title="4. 控制流"></a>4. 控制流</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// for..in  类似于C＃中的 foreach string in ［string］</div><div class="line"></div><div class="line">let individualScores = [75,43,103,87,12]</div><div class="line"></div><div class="line">var teamScore = 0</div><div class="line"></div><div class="line">for score in individualScores &#123;</div><div class="line"></div><div class="line">    if score &gt; 50 &#123;</div><div class="line"></div><div class="line">        teamScore += 3</div><div class="line">    &#125; else &#123;</div><div class="line">        teamScore += 1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">teamScore</div><div class="line"></div><div class="line">// if..else</div><div class="line">var optionalString: String? = "Hello"</div><div class="line"></div><div class="line">optionalString == nil</div><div class="line"></div><div class="line">var optionalName : String? = "John Appleseed"</div><div class="line">var greeting = "Hello!"</div><div class="line"></div><div class="line">if let name = optionalName &#123;</div><div class="line">    greeting = "Hello, \(name)"</div><div class="line">&#125;</div><div class="line"></div><div class="line">greeting</div><div class="line"></div><div class="line">// switch case－－不需要break。执行完case后自动跳出。</div><div class="line"></div><div class="line">let vegetable = "red pepper"</div><div class="line">var vegetableComment = ""</div><div class="line"></div><div class="line">switch vegetable &#123;</div><div class="line">case "celery":</div><div class="line">    vegetableComment = "Add some raisins and make ants on a log."</div><div class="line"></div><div class="line">case "cucumber","watercress":</div><div class="line">    vegetableComment = "That would make a good tea sandwich."</div><div class="line"></div><div class="line">case let x where x.hasSuffix("pepper"):</div><div class="line">    vegetableComment = "Is it a spicy \(x)?"</div><div class="line"></div><div class="line">default:</div><div class="line">    vegetableComment = "Everything tastes good in soup."</div><div class="line">&#125;</div><div class="line"></div><div class="line">vegetableComment</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//for..in 在dictionary中的使用</div><div class="line"></div><div class="line">let interestingNumbers = [</div><div class="line">    "Prime": [2,3,5,7,11,13],</div><div class="line">    "Fibonacci": [1,1,2,3,5,8],</div><div class="line">    "Square": [1,4,9,16,25],</div><div class="line">]</div><div class="line"></div><div class="line">var largest = 0</div><div class="line"></div><div class="line">for (kind,numbers) in interestingNumbers &#123;</div><div class="line">    for number in numbers &#123;</div><div class="line">        if number &gt; largest &#123;</div><div class="line">            largest = number</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">largest</div><div class="line"></div><div class="line"></div><div class="line">//while 循环</div><div class="line"></div><div class="line">var n = 2</div><div class="line">while n &lt; 100 &#123;</div><div class="line">    n = n * 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">n</div><div class="line"></div><div class="line">//do...while 循环</div><div class="line"></div><div class="line">var m = 2</div><div class="line">do &#123;</div><div class="line">    m = m * 2</div><div class="line">&#125; while m &lt; 100</div><div class="line"></div><div class="line">m</div><div class="line"></div><div class="line">// ..&lt; 表示 大于等于0小于4</div><div class="line">var firstForLoop = 0</div><div class="line">for i in 0..&lt;4 &#123;</div><div class="line">    firstForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">firstForLoop</div><div class="line"></div><div class="line">var secondForLoop = 0</div><div class="line">for var i = 0; i &lt; 4 ;++i &#123;</div><div class="line">    secondForLoop += 1</div><div class="line">&#125;</div><div class="line"></div><div class="line">secondForLoop</div><div class="line"></div><div class="line">// ... 表示 大于等于0 小于等于 4</div><div class="line"></div><div class="line">var thirdForLoop = 0</div><div class="line">for i in 0...4 &#123;</div><div class="line">    thirdForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">thirdForLoop</div></pre></td></tr></table></figure>
-<h3 id="5-函数和闭包"><a href="#5-函数和闭包" class="headerlink" title="5. 函数和闭包"></a>5. 函数和闭包</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//返回单值</div><div class="line">func greet(name:String,day:String) -&gt; String &#123;</div><div class="line">    return "Hello \(name) , today is \(day)."</div><div class="line">&#125;</div><div class="line"></div><div class="line">greet("Bob","Tuesday")</div><div class="line"></div><div class="line">//返回多值</div><div class="line">func getGasPrices() -&gt; (Double,Double,Double) &#123;</div><div class="line">    return (3.59,3.69,3.79)</div><div class="line">&#125;</div><div class="line"></div><div class="line">getGasPrices()</div><div class="line"></div><div class="line"></div><div class="line">//不定参数</div><div class="line">func sumOf(numbers: Int...) -&gt; Int &#123;</div><div class="line">        var sum = 0</div><div class="line">    for number in numbers &#123;</div><div class="line">        sum += number</div><div class="line">    &#125;</div><div class="line">    return sum</div><div class="line">&#125;</div><div class="line"></div><div class="line">sumOf()</div><div class="line">sumOf(42,59,12)</div><div class="line"></div><div class="line">//函数嵌套</div><div class="line">func returnFifteen() -&gt; Int &#123;</div><div class="line">    var y = 10</div><div class="line">    func add() &#123;</div><div class="line">        y += 5</div><div class="line">    &#125;</div><div class="line">    add()</div><div class="line">    return y</div><div class="line">&#125;</div><div class="line"></div><div class="line">returnFifteen()</div><div class="line"></div><div class="line">//函数作为返回值</div><div class="line">func makeIncrementer() -&gt; (Int -&gt; Int)&#123;</div><div class="line">    func addOne(number:Int) -&gt; Int &#123;</div><div class="line">        return 1 + number</div><div class="line">    &#125;</div><div class="line">    return addOne</div><div class="line">&#125;</div><div class="line"></div><div class="line">var increment = makeIncrementer()</div><div class="line"></div><div class="line">increment(7)</div><div class="line"></div><div class="line">//函数作参数</div><div class="line">func hasAnyMatches(list:[Int],condition:Int -&gt; Bool) -&gt; Bool &#123;</div><div class="line">    for item in list &#123;</div><div class="line">        if condition(item) &#123;</div><div class="line">            return true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">func lessThanTen(number:Int) -&gt; Bool &#123;</div><div class="line">    return number &lt; 10</div><div class="line">&#125;</div><div class="line"></div><div class="line">var numbers = [20,19,7,12]</div><div class="line"></div><div class="line">hasAnyMatches(numbers, lessThanTen)</div><div class="line"></div><div class="line">numbers</div><div class="line"></div><div class="line">// map 函数</div><div class="line">numbers.map(&#123;</div><div class="line">    (number:Int)-&gt; Int in</div><div class="line">    let result = 3 * number</div><div class="line">    return result</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">let mappedNumbers = numbers.map(&#123;number in 3 * number&#125;)</div><div class="line"></div><div class="line">mappedNumbers</div><div class="line"></div><div class="line">let sortedNumbers = sorted(numbers) &#123;$0 &gt; $1&#125;</div><div class="line">sortedNumbers</div></pre></td></tr></table></figure>
-<h3 id="6-对象和类"><a href="#6-对象和类" class="headerlink" title="6. 对象和类"></a>6. 对象和类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Shape &#123;</div><div class="line">    var numberOfSides = 0</div><div class="line">    func simpleDescription () -&gt; String &#123;</div><div class="line">        return "A shape with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var shape = Shape()</div><div class="line">shape.numberOfSides = 7</div><div class="line">var shapeDescrition = shape.simpleDescription()</div><div class="line"></div><div class="line">class NamedShape &#123;</div><div class="line">    var numberOfSides: Int = 0</div><div class="line">    var name :String</div><div class="line">    init(name:String)&#123;</div><div class="line">        self.name = name</div><div class="line">    &#125;</div><div class="line">    func simpleDescription() -&gt; String&#123;</div><div class="line">        return "A shape \(name) with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//let nameshape = NamedShape(numberOfSides:5,name:"Jay")</div><div class="line"></div><div class="line">class Square:NamedShape &#123;</div><div class="line">    var sideLength: Double</div><div class="line">    init(sideLength: Double,name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 4</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	func area() -&gt; Double &#123;</div><div class="line">        return sideLength * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "A square with sides of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let test = Square(sideLength:5.2,name:"my test square")</div><div class="line"></div><div class="line">test.area()</div><div class="line">test.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">//属性的getter和setter</div><div class="line">class EquilateralTriangle: NamedShape &#123;</div><div class="line">    var sideLength: Double = 0.0</div><div class="line"></div><div class="line">    init(sideLength: Double, name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 3</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var perimeter: Double &#123;</div><div class="line">    get &#123;</div><div class="line">        return 3.0 * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    set &#123;</div><div class="line">        sideLength = newValue / 3.0</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "An equilateral triangle with side of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangle  = EquilateralTriangle(sideLength:3.1,name:"a triangle")</div><div class="line">triangle.perimeter</div><div class="line">triangle.perimeter = 9.9</div><div class="line">triangle.sideLength</div><div class="line"></div><div class="line">//willSet</div><div class="line"></div><div class="line">class TriangleAndSquare &#123;</div><div class="line"></div><div class="line">    var triangle: EquilateralTriangle&#123;</div><div class="line">    willSet &#123;</div><div class="line">        square.sideLength  = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var square: Square &#123;</div><div class="line">    willSet &#123;</div><div class="line">        triangle.sideLength = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    init(size:Double,name:String)&#123;</div><div class="line">        square = Square(sideLength: size,name: name)</div><div class="line"></div><div class="line">        triangle = EquilateralTriangle(sideLength: size, name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangleAndSquare = TriangleAndSquare(size:10,name:"another test shape")</div><div class="line"></div><div class="line">triangleAndSquare.square.sideLength</div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line">triangleAndSquare.square = Square(sideLength:50,name:"Larger Square")</div><div class="line"></div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line"></div><div class="line"></div><div class="line">class Counter &#123;</div><div class="line">    var count: Int = 0</div><div class="line">    func incrementBy(amount: Int,numberOfTimes times:Int)&#123;</div><div class="line">        count += amount * times</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var counter = Counter()</div><div class="line">counter.incrementBy(2,numberOfTimes:7)</div><div class="line">let optionalSquare: Square? = Square(sideLength: 2.5,name: "optional square")</div><div class="line">let sideLength = optionalSquare?.sideLength</div></pre></td></tr></table></figure>
-<h3 id="7-枚举和结构体"><a href="#7-枚举和结构体" class="headerlink" title="7. 枚举和结构体"></a>7. 枚举和结构体</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">enum Rank: Int &#123;</div><div class="line">    case Ace = 1</div><div class="line">    case TWO,Three,Four,Five,Six,Seven,Eight,Nine,Ten</div><div class="line">    case Jack,Queen,King</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Ace:</div><div class="line">            return "ace"</div><div class="line">        case .Jack:</div><div class="line">            return "jack"</div><div class="line">        case .Queen:</div><div class="line">            return "queen"</div><div class="line">        case .King:</div><div class="line">            return "king"</div><div class="line">        default:</div><div class="line">            return String(self.toRaw())</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let ace = Rank.Ace</div><div class="line"></div><div class="line">let aceRawValue = ace.toRaw()</div><div class="line"></div><div class="line">let acesimpleDescription = ace.simpleDescription()</div><div class="line"></div><div class="line">if let convertedRank = Rank.fromRaw(3) &#123;</div><div class="line">    let threeDesciption = convertedRank.simpleDescription()</div><div class="line">&#125;</div><div class="line"></div><div class="line">enum Suit &#123;</div><div class="line"></div><div class="line">    case Spades,Hearts,Diamonds,Clubs</div><div class="line"></div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Spades:</div><div class="line">            return "spades"</div><div class="line">        case .Hearts:</div><div class="line">            return "hearts"</div><div class="line">        case .Diamonds:</div><div class="line">            return "diamonds"</div><div class="line">        case .Clubs:</div><div class="line">            return "clubs"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let hearts = Suit.Hearts</div><div class="line"></div><div class="line">let heartsDescription = hearts.simpleDescription()</div><div class="line"></div><div class="line">//结构体</div><div class="line"></div><div class="line">struct Card &#123;</div><div class="line">    var rank: Rank</div><div class="line">    var suit: Suit</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let threeOfSpades = Card(rank:.Three,suit:.Spades)</div><div class="line"></div><div class="line">let threeOfSpadesDescription = threeOfSpades.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">enum ServerResponse &#123;</div><div class="line">    case Result(String,String)</div><div class="line">    case Error(String)</div><div class="line">&#125;</div><div class="line"></div><div class="line">let success = ServerResponse.Result("6:00 am","8:09 pm")</div><div class="line">let failure = ServerResponse.Error("Out of cheese")</div><div class="line"></div><div class="line">switch success &#123;</div><div class="line">case let .Result(sunrise,sunset):</div><div class="line">    let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."</div><div class="line">case let .Error(error):</div><div class="line">    let serverResponse = "Failure... \(error)."</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="8-协议和扩展—-协议是否类似于C-中的接口-或者基类"><a href="#8-协议和扩展—-协议是否类似于C-中的接口-或者基类" class="headerlink" title="8. 协议和扩展—-协议是否类似于C#中的接口 或者基类"></a>8. 协议和扩展—-协议是否类似于C#中的接口 或者基类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">protocol ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String &#123;get&#125;</div><div class="line">    mutating func adjust()</div><div class="line">&#125;</div><div class="line"></div><div class="line">class SimpleClass: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A very simple class."</div><div class="line">    var anotherProperty: Int = 69105</div><div class="line"></div><div class="line">    func adjust() &#123;</div><div class="line">        simpleDescription += " Now 100% adjusted."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = SimpleClass()</div><div class="line">a.adjust()</div><div class="line">let aDescription = a.simpleDescription</div><div class="line"></div><div class="line"></div><div class="line">struct SimpleStructure: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A simple structure</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        simpleDescription += " (adjusted)"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var b = SimpleStructure()</div><div class="line">b.adjust()</div><div class="line">let bDescription = b.simpleDescription</div><div class="line"></div><div class="line">//对整数类型Int的扩展</div><div class="line">extension Int:ExampleProtocol &#123;</div><div class="line">    var simpleDescription:String &#123;</div><div class="line">    return "The number \(self)"</div><div class="line">    &#125;</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        self += 42</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">7.simpleDescription</div><div class="line"></div><div class="line">let protocolValue:ExampleProtocol = a</div><div class="line">protocolValue.simpleDescription</div></pre></td></tr></table></figure>
-<h3 id="9-泛型"><a href="#9-泛型" class="headerlink" title="9. 泛型"></a>9. 泛型</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">func repeat&lt;ItemType&gt;(item:ItemType,times:Int)-&gt;[ItemType] &#123;</div><div class="line">    var result = [ItemType]()</div><div class="line">    for i in 0..&lt;times &#123;</div><div class="line">        result += item</div><div class="line">    &#125;</div><div class="line">    return result</div><div class="line">&#125;</div><div class="line"></div><div class="line">repeat("know",4)</div><div class="line"></div><div class="line">enum OptionalValue&lt;T&gt; &#123;</div><div class="line">    case None</div><div class="line">    case Some(T)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var possibleInteger: OptionalValue&lt;Int&gt; = .None</div><div class="line">possibleInteger = .Some(100)</div><div class="line"></div><div class="line">func anyCommonElements &lt;T,U where T: Sequence, U:Sequence,T.GeneratorType.Element:Equatable,T.GeneratorType.Element == U.GeneratorType.Element&gt;(lhs:T,rhs:U)-&gt;Bool&#123;</div><div class="line">    for lhsItem in lhs &#123;</div><div class="line">        for rhsItem in rhs &#123;</div><div class="line">            if lhsItem == rhsItem &#123;</div><div class="line">                return true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">anyCommonElements([1,2,3],[3])</div></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2065,7 +2079,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2087,7 +2101,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
