@@ -299,6 +299,569 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/22/why-typescript-is-hot-now-and-forward/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/22/why-typescript-is-hot-now-and-forward/" itemprop="url">
+                  为什么TypeScript现在和将来都会更加流行！
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-22T20:29:35+08:00">
+                2015-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/22/why-typescript-is-hot-now-and-forward/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/22/why-typescript-is-hot-now-and-forward/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/images/2015/05/typescript.png">
+<p>当前对于JavaScript开发者来说，是一个空前的好机遇！从一个网站的前端到后台Javascript已经是无处不<br>在，甚至于很多桌面版本的文本编辑器都是由Javascript驱动的。事实上，你现在可以用web技术来实现一个<br>桌面应用程序的全部功能。在你的JavaScript技术越来越熟练的情况下，最重要的一点就是保证你的代码在你<br>的掌控之中，免得变成一堆错综复杂的玩意。</p>
+<p>##TypeScript</p>
+<p><a href="http://typescriptlang.org/" target="_blank" rel="external">TypeScript</a> 遵守 ECMAScript 6(ES6) 中的可选类型规范。</p>
+<p>###ECMASCRIPT6</p>
+<p><a href="http://en.wikipedia.org/wiki/ECMAScript" target="_blank" rel="external">ECMASCript</a> 是JavaScript语言的标准规范，<br>有时被称为ECMAScript Harmony或者ES.再者，当前的JavaScript的规范是ECMAScript5。 仅有几个<br>浏览器支持ES6规范，但是支持的浏览器肯定会越来越多。既然ES6是默认兼容ES5的语法，那么你就可以不需要<br>改动任何代码就能在ES6下面运行。然而最重要的一点就是，学习TypeScript语法就是在学习ES6语法，所以<br>你是在学习将来的JavaScript语法，而不是在学习一门完全新的语法，比如<a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a></p>
+<p>###可选类型<br>TypeScript 自己的可选类型。 类型语言如Java,C#,Object-C 需要你在初始化变量时指定类型。<br>Java中Srtring name =”Andrew”,C#中 string name =”Andrew”; 而在 Object-C中，<br>NSString name = “Andrew”.</p>
+<p>而在TypeScript中，可以定义为：var name:string = “Andrew”. 而作为可选的，也可以声明为<br>var name = “Andrew”. 在严格类型语言中，你必须时刻定义变量类型，在TypeScript中，则不需要。</p>
+<p>在代码中定义变量类型有助于文本编辑器和IDE在不需要编译代码的情况下就能快速给出智能提示。</p>
+<img src="/images/2015/05/ts.gif">
+<p>同样，它也可以帮你自动完成代码。有些文本编辑器是根据你的项目文件，它不可能知道你所有变量的类型，但是<br>当你调用函数时，传递了一个类似名称的变量，其实是另外一个对应的类型。但是在TypeScript中，在调用函数<br>时，代码编辑器能够更加智能提示合适的变量。这个效率非常高，相当于是代码在写代码。</p>
+<p>而且还减少了在方法调用或者方法调用返回值的时候，前后频繁查看文档查找各个变量注释的麻烦。</p>
+<h3 id="TypeScript无处不在"><a href="#TypeScript无处不在" class="headerlink" title="TypeScript无处不在"></a>TypeScript无处不在</h3><p>凭借简洁的ES6语法，智能代码完成和可选类型提示，TypeScript极大提高了效率，并且已经被应用在许多大型<br>的项目和框架上如：<a href="https://angular.io/" target="_blank" rel="external">AngularJS</a> 2.0 和 <a href="http://ionicframework.com/" target="_blank" rel="external">Ionic Framework</a> 2.0.</p>
+<p>在你的JavaScript项目还没有开始之前，你可以记得给TypeScript留有一席之地。TypeScript可以在各种<br>环境下从浏览器到Node.js都可以帮你提高效率。当你编写代码时，可以获得自动完成和提示。</p>
+<h3 id="Typeing-正在成为你身边的一个编程语言"><a href="#Typeing-正在成为你身边的一个编程语言" class="headerlink" title="Typeing 正在成为你身边的一个编程语言"></a>Typeing 正在成为你身边的一个编程语言</h3><p>有些程序员喜欢动态类型，但是你不需要在你写代码的时候声明一个变量，主要的一个原因是代码不长。<br>然而，这似乎是一个趋势，很多编程语言汇聚了很多功能，从generics，固定变量，异步编程，可选类型甚至<br>智能编译。甚至Ruby之父-Yukihiro Matsumoto说：静态类型将要到达版本3.0.</p>
+<p>在代码中书写类型不只帮助提高编写效率，还能在程序运行时帮助解释和编译代码。</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>打开 <a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript官网</a>,查看一下主页介绍，当然也可以在交互式<a href="http://www.typescriptlang.org/Playground" target="_blank" rel="external">Playground</a>中测试TypeScript。<br>也可以下载跨平台的智能代码提示文本编辑器-<a href="https://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>.你也可以查看我们的 <a href="https://trello.com/b/r5R1JZNO/treehouse-javascript-content-roadmap" target="_blank" rel="external">JavaScript<br>路线图</a> 中的TypeScript。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>正因为TypeScript的清晰的ES6语法和可选类型，而不是一个完全不同的语法，它不但提高了工作效率还可能<br>成为JavaScript的未来和趋势。TypeScript的流行来自于一些流行框架的使用比如AngularJS.<br>可选类型也可能是你最喜欢的动态类型语言的未来和趋势。谁知道，TypeScript会不会成为JavaScript的一个<br>新的版本呢。现在不只是一个学习JavaScript的机会，也是一个了解TypeScript的好机会。</p>
+<hr>
+<p>此文为翻译文章，原文地址:<a href="http://blog.teamtreehouse.com/typescript-hot-now-looking-forward" target="_blank" rel="external">http://blog.teamtreehouse.com/typescript-hot-now-looking-forward</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/21/how-to-install-nodejs-on-linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/21/how-to-install-nodejs-on-linux/" itemprop="url">
+                  在Linux下安装nodejs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-21T21:05:37+08:00">
+                2015-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/21/how-to-install-nodejs-on-linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/21/how-to-install-nodejs-on-linux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>可以说 JavaScript 无处不在，从19世纪中叶它的出生地Netscape 浏览器到现在进入到各种现在流行的web<br>浏览器，各种手机开发，并在Node.js的帮助下已经发展成为了羽翼丰满的web开发的服务器端语言。</p>
+<img src="/images/2015/05/nodejs.png">
+<p>Node.js 是一种非阻塞式引擎，也就它在聊天服务、分析、合作工具、交互游戏等一些实时web程序中成为了<br>首选模式。</p>
+<p>为了使用nodejs来开发应用程序，你需要安装NPM(Node Package MaManager)工具，它主要用来下载和安装<br>一些能够比较优秀的第三方开源的JavaScript库。</p>
+<h2 id="必要条件"><a href="#必要条件" class="headerlink" title="必要条件"></a>必要条件</h2><p>###* 熟悉Linux命令行工具<br>用来安装和测试Node、NPM，也可以用来调用Node.js 和NPM。</p>
+<p>###* 依赖项</p>
+<p>####1.Ruby 和 GCC。 你需要安装Ruby1.8.6或更高版本，GCC4.2或更高版本。<br>  对于Ubuntu和Debian的linux版本，运行以下命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</div></pre></td></tr></table></figure>
+<p>询问时，选择Y继续安装。</p>
+<p>  对于Fedora的linux版本，运行以下命令行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum groupinstall &apos;Development Tools&apos; &amp;&amp; sudo yum install curl git m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</div></pre></td></tr></table></figure>
+<p>  询问时，选择Y继续安装。</p>
+<h4 id="2-Homebrew"><a href="#2-Homebrew" class="headerlink" title="2.Homebrew."></a>2.Homebrew.</h4><p>  Homebrew 是mac上的包管理工具，在linux下被移植为Linuxbrew，<br>  对于很多开源库来说，更加方便安装。比如Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<p>  想要了解更多请到<a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>官网和<a href="http://brew.sh/linuxbrew" target="_blank" rel="external">Linuxbrew</a>官网。<br>  想要在linux下安装Homebrew，在命令行工具下输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)&quot;</div></pre></td></tr></table></figure>
+<p>  然后更加说明完成安装即可。</p>
+<p>  linuxbrew 安装完成后，需要添加下面三行到.bashrc 或者<br>  .zshrc 文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;$HOME/.linuxbrew/bin:$PATH&quot;</div><div class="line">export MANPATH=&quot;$HOME/.linuxbrew/share/man:$MANPATH&quot;</div><div class="line">export INFOPATH=&quot;$HOME/.linuxbrew/share/info:$INFOPATH&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>为什么要用 HOMEBREW/LINUXBREW?<br>或许你会问，为什么一定非得要用第三方库的管理工具呢？以下是几个<br>优点:</p>
+</li>
+<li><p>能够直接安装软件到主目录而不需要sudo权限</p>
+</li>
+<li>安装软件而不是压缩包到本地</li>
+<li>当本地软件有版本更新时，可以直接安装更新。</li>
+<li>使用管理工具能够同时管理Mac和linux机器。</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用Linuxbrew安装Node.js 和NPM十分直接和方便，下载-解压-编译<br>-安装 动作一气呵成。如果你已经安装Linuxbrew，Node.js和<br>NPM的安装只需要几分钟即可完成。</p>
+<ul>
+<li>1.打开命令行输入：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<ul>
+<li>2.坐好，等</li>
+</ul>
+<p>Linxubrew 会自动下载编译安装，然后就完成了。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>用几个简单的命令来测试一下你的Node和NPM是否已经安装成功。<br>node -v 测试Node版本<br>nom -v  测试NPM版本</p>
+<img src="/images/2015/05/node-install-check.png">
+<h3 id="更新Node-和-NPM"><a href="#更新Node-和-NPM" class="headerlink" title="更新Node 和 NPM"></a>更新Node 和 NPM</h3><p>Node和NPM的版本发布十分频繁，你可以使用Linuxbrew来进行<br>软件更新。</p>
+<ul>
+<li><ol>
+<li>保持 Linuxbrew是node包得最新版本，然后在命令行中输入：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew update</div></pre></td></tr></table></figure>
+<ul>
+<li><ol>
+<li>更新Node</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew upgrade node</div></pre></td></tr></table></figure>
+<h3 id="卸载Node和NPM"><a href="#卸载Node和NPM" class="headerlink" title="卸载Node和NPM"></a>卸载Node和NPM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew uninstall node</div></pre></td></tr></table></figure>
+<h3 id="其它平台"><a href="#其它平台" class="headerlink" title="其它平台"></a>其它平台</h3><p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></p>
+<p>##总结：</p>
+<p>Node.js 和NPM安装完毕，现在 使用node.js来开发一些漂亮的网站了。<br>或者使用一些比较好的库i完善和优化前端到后端的工作流和逻辑。</p>
+<hr>
+<p><a href="http://blog.teamtreehouse.com/install-node-js-npm-linux" target="_blank" rel="external">原文地址:http://blog.teamtreehouse.com/install-node-js-npm-linux</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/18/how-to-install-nodejs-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/18/how-to-install-nodejs-on-mac/" itemprop="url">
+                  在Mac上安装Nodejs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-18T20:44:24+08:00">
+                2015-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/18/how-to-install-nodejs-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/18/how-to-install-nodejs-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
+<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a></p>
+<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a>,</p>
+<p>点击安装，下载最新的安装包。</p>
+<img src="/images/2015/05/osxnodejs.png">
+<p>打开下载的.dmg 文件，按照提示安装的话，node和npm都会自动安装。npm 就是 Node Package Manager,其实就是nodejs的各种库的安装管理工具。</p>
+<img src="/images/2015/05/osxnodejsinstall.png">
+<p>安装完成后确保 /usr/local/bin 在你的path路径下，打开命令行工具输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eecho $PATH</div></pre></td></tr></table></figure></p>
+<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a href="http://coolestguidesontheplanet.com/add-shell-path-osx/" target="_blank" rel="external">添加</a>。</p>
+<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">node</div><div class="line">&gt; console.log(&apos;hello node&apos;);</div><div class="line">hello node</div><div class="line">undefined</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>退出nodejs的编辑模式，按两次‘control+c’即可。</p>
+<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure></p>
+<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm search</div></pre></td></tr></table></figure>
+<p>将会返回一个完整的可用的库包列表，使用install来进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install easyimage</div></pre></td></tr></table></figure>
+<p>查看已安装库包，使用ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm ls</div></pre></td></tr></table></figure></p>
+<p>升级库包使用 update<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm update</div></pre></td></tr></table></figure></p>
+<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a href="http://nodejs.org/" target="_blank" rel="external">nodejs.org</a>。</p>
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
+<hr>
+<p><a href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/" target="_blank" rel="external">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1529,512 +2092,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/30/ios-simulator-library-logs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/30/ios-simulator-library-logs/" itemprop="url">
-                  ios simulator提示Logs文件在资源库中已经存在
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-30T22:18:00+08:00">
-                2014-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/30/ios-simulator-library-logs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/30/ios-simulator-library-logs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>屋漏偏逢连阴雨</p>
-<p>学习iOS的开发速度本来就很慢了，结果还是遇到问题重重。</p>
-<p>今天安装了Xcode6beta6，然后又改了用户名文件夹，然后在xcode中运行simulator时就出现这里这个问题，原问题已经解决了，没有再出现，所以也没有办法截图了。</p>
-<p>大概意思就是 Logs 这个文件已经在 资源库中存在了，想要继续，要么删除文件，要么另外命名。</p>
-<p>按照提示，google，没有信息；Bing，没有信息。我想可能是因为重新命名了用户文件夹的问题，所以把xcode卸载重新安装了一遍，问题依然存在。</p>
-<p>我想可能是simulator的问题，想直接运行一个simulator，然后看是什么情况，结果运行simulator之后，点击 菜单 iOS simulator－－》 Reset Content and Settings…  之后，貌似可以运行了。看来这个是重新设置simulator的菜单。</p>
-<p>原因可能是Yosemit 的beta版本＋Xcode的beta版本＋修改用户文件夹名等综合因素引起的，究竟哪个是致命因素，不得而知。</p>
-<p>不过解决了总算是好事。 继续学习去。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/27/how-to-change-the-path-variable-in-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/27/how-to-change-the-path-variable-in-mac/" itemprop="url">
-                  如何在mac下修改path中的环境变量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-27T10:28:21+08:00">
-                2014-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/27/how-to-change-the-path-variable-in-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/27/how-to-change-the-path-variable-in-mac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>How To Edit Your PATH Environment Variables On Mac OS X</p>
-<p>If you are new to Mac OS X, you may need to know how to edit your PATH. The good news is that this is an easy task on Mac OS X.</p>
-<p>The recommended way is by editing your .bash_profile file. This file is read and the commands in it executed by Bash every time you log in to the system. The best part is that this file is specific to your user so you won’t affect other users on the same system by changing it.</p>
-<p>Step 1: Open up a Terminal window (this is in your Applications/Utilites folder by default)</p>
-<p>Step 2: Enter the follow commands:</p>
-<p>touch ~/.bash_profile; open ~/.bash_profile</p>
-<p>This will open the .bash_profile file in Text Edit (the default text editor included on your system). The file allows you to customize the environment your user runs in.</p>
-<p>Step 3: Add the following line to the end of the file adding whatever additional directory you want in your path:</p>
-<p>export PATH=”$HOME/.rbenv/bin:$PATH”</p>
-<p>That example would add ~/.rbenv to the PATH. The $PATH part is important as it appends the existing PATH to preserve it in the new value.</p>
-<p>Step 4: Save the .bash_profile file and Quit (Command + Q) Text Edit.</p>
-<p>Step 5: Force the .bash_profile to execute. This loads the values immediately without having to reboot. In your Terminal window, run the following command.</p>
-<p>source ~/.bash_profile</p>
-<p>That’s it! Now you know how to edit the PATH on your Mac OS X computer system. You can confirm the new path by opening a new Terminal windows and running:</p>
-<p>echo $PATH</p>
-<p>You should now see the values you want in your PATH.</p>
-<p>[Updated 2/10/2012] The instructions now use the .bash_profile method of editing your PATH. This is preferred as it keeps the changes specific to your user. I also updated the instructions to use Text Edit instead of vim so it is easier for a beginner.</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/14/love-is-now/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/14/love-is-now/" itemprop="url">
-                  我得了脂肪肝
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-14T09:24:07+08:00">
-                2014-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爱就趁现在/" itemprop="url" rel="index">
-                    <span itemprop="name">爱就趁现在</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/14/love-is-now/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/14/love-is-now/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>病从气上出，不出所料，得病了。这个是我想都不敢想的病，竟然会得脂肪肝。</p>
-<p>总结一下可能的几个原因：</p>
-<ol>
-<li><p>心情：已经很长一段时间没用开心过了。心情是极度的压抑和抑郁。</p>
-</li>
-<li><p>饮食：自从丈母娘来到之后，老婆想着每天都要吃点好的，所以基本上每天晚上<br> 都要吃肉，而且一吃就是吃三年，如果白天上班的时候再吃肉的话，基本上每天就是两顿肉，天天如此，饮食结构坏掉了。而且丈母娘有个坏习惯，她以为你吃的多，吃撑了是好事，所以每次必做多，每次吃饭必劝饭，很多时候，为了照顾她的颜面，不自觉的会多吃了一点；她认为如果不做肉吃，炒菜多放油也是能够提供营养的，所以无论炒什么菜，都是油当先。<br> 也怪自己立场不定，为了照顾他人颜面，必定会对自己造成伤害。</p>
-</li>
-<li><p>运动：锻炼都是断断续续，没有坚持下来，也从来没有考虑过自己会得病。跑步跑了一段时间，没有坚持下来，仰卧起坐一段时间，没有坚持下来。好多时候都是自己放弃了。都是自己放弃了。</p>
-</li>
-</ol>
-<p>书到用时方恨少，病到身上才知多。</p>
-<p>决定从几个方面做改善：</p>
-<ol>
-<li>心情：把工作和锻炼放在第一位，不把注意力放在生活琐事上，这样就能转移注意力。必要的时候才会专门讨论这些事情。</li>
-</ol>
-<p>2.饮食：坚持健康的饮食习惯，坚持自己的原则。不因为别人的言语而改变。</p>
-<p>3.运动：暴走，从家里去公司约5公里，每天来回一次10公里。周末到世纪公园来回15公里。</p>
-<p>一个月后看情况。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2079,7 +2141,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">92</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2101,7 +2163,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
