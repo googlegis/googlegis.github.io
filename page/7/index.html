@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/18/how-to-install-nodejs-on-mac/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/17/checklist-and-checkitem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -321,8 +321,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/05/18/how-to-install-nodejs-on-mac/" itemprop="url">
-                  在Mac上安装Nodejs
+                <a class="post-title-link" href="/2015/07/17/checklist-and-checkitem/" itemprop="url">
+                  Swift 2.0 纯学习之旅--8.checklist and checkitem 
                 </a>
               
             
@@ -338,737 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-18T20:44:24+08:00">
-                2015-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/18/how-to-install-nodejs-on-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/18/how-to-install-nodejs-on-mac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
-<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a></p>
-<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a>,</p>
-<p>点击安装，下载最新的安装包。</p>
-<img src="/images/2015/05/osxnodejs.png">
-<p>打开下载的.dmg 文件，按照提示安装的话，node和npm都会自动安装。npm 就是 Node Package Manager,其实就是nodejs的各种库的安装管理工具。</p>
-<img src="/images/2015/05/osxnodejsinstall.png">
-<p>安装完成后确保 /usr/local/bin 在你的path路径下，打开命令行工具输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eecho $PATH</div></pre></td></tr></table></figure></p>
-<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a href="http://coolestguidesontheplanet.com/add-shell-path-osx/" target="_blank" rel="external">添加</a>。</p>
-<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">node</div><div class="line">&gt; console.log(&apos;hello node&apos;);</div><div class="line">hello node</div><div class="line">undefined</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>退出nodejs的编辑模式，按两次‘control+c’即可。</p>
-<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure></p>
-<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm search</div></pre></td></tr></table></figure>
-<p>将会返回一个完整的可用的库包列表，使用install来进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install easyimage</div></pre></td></tr></table></figure>
-<p>查看已安装库包，使用ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm ls</div></pre></td></tr></table></figure></p>
-<p>升级库包使用 update<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm update</div></pre></td></tr></table></figure></p>
-<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a href="http://nodejs.org/" target="_blank" rel="external">nodejs.org</a>。</p>
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
-<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<hr>
-<p><a href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/" target="_blank" rel="external">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/13/How-to-install-nodejs-on-windows/" itemprop="url">
-                  在Windows下安装Node.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-13T21:40:54+08:00">
-                2015-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/13/How-to-install-nodejs-on-windows/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/13/How-to-install-nodejs-on-windows/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
-<img src="/images/2015/05/nodejs.png">
-<p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
-<p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
-<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
-<h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
-<li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
-<li>按照默认的选项和步骤，一路next下去。</li>
-<li>重启。</li>
-</ol>
-<img src="/images/2015/05/installer.png">
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
-<h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
-<h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
-<h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
-<p>命令行运行到当前的文件目录，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
-<p>运行后返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
-<p>说明Node.js 已经安装成功！</p>
-<img src="/images/2015/05/output.png">
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/11/github-page-addd-custom-domain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/11/github-page-addd-custom-domain/" itemprop="url">
-                  GitHub Page 绑定域名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-11T22:51:05+08:00">
-                2015-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/11/github-page-addd-custom-domain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/11/github-page-addd-custom-domain/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>   做GitHub Page 倒是很久了，兴起时来写两句，想不起来也就不来了。</p>
-<p>   有的时候，一点也想不起来或者自己很懒了，就真的一点也不想来了。</p>
-<p>   孩子和老婆回老家了。</p>
-<p>   短暂的清静和沉静，让我能够安安静静地坐下来写些什么东西。</p>
-<p>   我曾经说过，我的一生的愿望就是能够安安安静的写东西，写自己喜欢的东西。不为生活所迫，</p>
-<p>   不为它人所动。</p>
-<p>   想不到幸福来的太突然了！</p>
-<p>   今天就先来一篇 Github Page 绑定域名的技术性文章，开个技术头。</p>
-<p>   以我自己的账号为例，概括来说需要以下几个步骤：</p>
-<p>   1.创建自己的github page 主页，就是说你不用域名也能访问。比如：googlegis.github.io</p>
-<ol>
-<li><p>在你的source 目录下添加 CNAME文件，内容为：<br> lookfour.me</p>
-<ol>
-<li><p>在GoDaddy的管理页：</p>
-</li>
-<li><p>添加“A(Host)” 记录， ‘host’＝@， ‘Points to’＝192.30.252.153</p>
-</li>
-<li><p>添加“CNAME(Alias)”记录，‘host’＝www，‘Points to’＝googlegis.github.io</p>
-</li>
-<li><p>只要你的填写都正确，剩下的就是等待了。</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>---
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/04/05/love-is-now/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/05/love-is-now/" itemprop="url">
-                  这里没有人
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T18:47:39+08:00">
-                2015-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爱就趁现在/" itemprop="url" rel="index">
-                    <span itemprop="name">爱就趁现在</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/04/05/love-is-now/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/04/05/love-is-now/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>没有人欠我任何东西，只有我欠他们的。他们还依然愿意听我的吼呵，完</p>
-<p>全是因为我是他们的亲人。所以，我对他们越是吼呵，越是欠他们的更</p>
-<p>多，作为亲人我吼了他们，因为亲人，他们忍受着我的吼喝。</p>
-<p>父母不欠我任何东西，辛苦把我养大到30岁，而自己前后加一起也不过是</p>
-<p>养了十个月，有什么资格对父母颐指气使，对他们吼来喝去。如果是我哥</p>
-<p>的话做事情肯定会冷静许多。</p>
-<p>娃子刚三岁，正是调皮淘气的时候，更不能对她横竖指责，压灭了天性，</p>
-<p>摧毁了信心。娃子受我责骂还依然不离不弃，因为是对我的依赖和信任，</p>
-<p>更不能作为我变本加厉的资本。</p>
-<p>妻子从08年认识以来，对我也是信任有加，结婚、买房、生娃，也是顶着</p>
-<p>巨大的压力和对我无比的信任和我一起跌跌撞撞走到今天。身无黄金万</p>
-<p>两，头无遮风片瓦，只凭当初一句话陪我走到今天，我怎么能够严加指</p>
-<p>责，又怎忍心呼来喝去。其实她的压力和负担也不比我小，人不能只考虑</p>
-<p>一面，换位思考一下或许会心地更宽。</p>
-<p>有次看三舅文章，他把三妗子当作自己生命的一部分，我就在想，到底是</p>
-<p>一种什么境界才能把对方当作生命保护，要经历多少风雨才能比翼双飞，</p>
-<p>同结连理。</p>
-<p>清明节，夜，雷雨交加，爸妈已睡，鼾声阵阵；娃子横睡在枕头上，半个</p>
-<p>头枕在我这边；老婆和岳母在那屋也已入睡。只有屋外隆隆雷声翻滚，闪</p>
-<p>电时时划过长空，急雨啪啪的点在玻璃上。其它再无声响。</p>
-<p>小鱼与小蝌蚪估计也已入睡，小乌龟吃了三个小蝌蚪，今天应该会美美睡</p>
-<p>一顿。春天真的来了，万物更新，自己也要把自己的思想更新到新的层</p>
-<p>次，不然根本无法应对新的人新的事，无法完成自己身负的责任。只凭自</p>
-<p>己的冲动和义气做事，只会伤人伤己，事情也会一塌糊涂，工作也会一塌</p>
-<p>糊涂。</p>
-<p>古人的每日必三醒吾身，真的是至理名言，自己要一点一滴的慢慢做起</p>
-<p>来，不能让父母受责委屈，不能让妻子举步维艰，不能让娃子每日看我脸</p>
-<p>色惴惴不安。</p>
-<p>哎！就从今天开始。</p>
-<p>======================</p>
-<ol>
-<li>为什么和老婆吵架？<br>工作没有找到，自己能力不够。 怨不得别人。<br>小娃生病，动不动就哭，怨不得别人。<br>娃子没有照顾好，怨不得别人。<br>别人终究是别人。不是自己人，<br>自己累死像条狗，也没有人来同情你。<br>只有自己有钱，才能有人来同情你。<br>为什么关了电视？<br>为什么看什么都不顺眼，有本事就自己去做，别总是指望别人来做。</li>
-</ol>
-<ol>
-<li><p>房子的事情，为什么那么烦心。<br>合肥买房子的时候，自己总是一概不问，不问的下场就是自己后悔。<br>为什么不问，生气，为什么生气？<br>结果落得两地都落实不下来。<br>有的时候，自己生气就什么都不问，不问的后果就是结果不如意，不如意到最后就是生气。</p>
-</li>
-<li><p>俺妈不能生气，不能生气，对眼睛不好。</p>
-</li>
-<li><p>学习的事情，不能怨别人，只能怨自己。自己不学，什么都别想会，别想得到。<br>总是为自己的学习找借口， 总是不能坚持下来，不能坚持下来，还能做什么？还有什么能够成功。</p>
-</li>
-</ol>
-<p>–••–•–•–•–•–•–•–•–••–•–•–•–•–•–•–•–••–•–•</p>
-<h2 id="4-努力什么的原来只说说并不起作用，需要自己去做。"><a href="#4-努力什么的原来只说说并不起作用，需要自己去做。" class="headerlink" title="4. 努力什么的原来只说说并不起作用，需要自己去做。"></a>4. 努力什么的原来只说说并不起作用，需要自己去做。</h2><p>个人原创，转载请注明出处：<a href="https://www.github.com/googlegis" target="_blank" rel="external">GitHub</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/10/16/tiags-first-quickly-build-the-model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/16/tiags-first-quickly-build-the-model/" itemprop="url">
-                  The iOS Apprentice:Getting Started.1:快速建立应用模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-16T23:19:39+08:00">
-                2014-10-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T23:15:49+08:00">
+                2015-07-17
               </time>
             
 
@@ -1108,9 +379,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/10/16/tiags-first-quickly-build-the-model/#comments" itemprop="discussionUrl">
+                <a href="/2015/07/17/checklist-and-checkitem/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/10/16/tiags-first-quickly-build-the-model/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/07/17/checklist-and-checkitem/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1137,57 +408,1516 @@
       
         
           
-            <p>最近跟随 @MacTalk 购买了两本英文版的iOS教材。完全英文版的，以前都没有想到过在自己可以完整的看完一部英文教材。</p>
-<p>深有几点感触：</p>
-<ol>
-<li><p>有些事情不是你不会，你不能，而是你不想，如果去做了，80%都会成功。不要给自己找不会的借口。</p>
-</li>
-<li><p>外国人的知识真值钱，一部书300-400RMB，团购下来也是150-200RMB，国人的不行了，好不容易写本电子版的书，能卖30RMB已经算比较高的了。</p>
-</li>
-<li><p>任何事情都要自己愿意静下心来学，不然效率会很低。</p>
-</li>
-<li><p>感觉自己以前的学习效率就是shit，学习效率是要思考的，是要自己能再现的，不是从脑子里过一遍就好了，也不是你跟着书本敲遍代码就掌握的。</p>
-</li>
-<li><p>虚度了几十年的人生，突然感觉时间不够了。还要再加油。</p>
-</li>
-</ol>
-<p>为了自己能掌握的更牢固点，决定自己还是把教程复述一遍。自己掌握了，这个钱就花得值了。</p>
-<p>初步计划：</p>
-<p>The iOS Apprentice：Getting Started 1：快速建立应用模型</p>
-<p>The iOS Apprentice：Getting Started 2：添加控件</p>
-<p>The iOS Apprentice：Getting Started 3：计算分数</p>
-<p>The iOS Apprentice：Getting Started 4：完成应用</p>
-<p>The iOS Apprentice：Getting Started 5：应用适配</p>
-<p>首先来张完成后的截图</p>
-<img src="/images/2014/iosapp/20141016-0@2x.png">
-<p>俗话说的好：磨刀不误砍柴工，计划，然后实施，最后成功。建议大家都按照书上的建议，列一个ToDOList的表，至少大方向上不会偏离，而且还可以把握开发进度。</p>
-<p>Bulls Eye 的列表基本树下：</p>
+            <p>既然有了Checklist，就要想方设法的完善它的逻辑才能算的上一个完整的应用，对于我们程序来说</p>
+<p>逻辑上的流程不外乎三种，添加、修改、删除。</p>
+<p>下面我要讨论往这三种逻辑流程。</p>
+<h3 id="导航控件"><a href="#导航控件" class="headerlink" title="导航控件"></a>导航控件</h3><p>打开 Main.storyboard , 选择 Checklist View Controller ，然后选择菜单中 Editor -&gt;</p>
+<p>Embed In -&gt; Navigation Controller 。然后就自动添加了一个 NavigationViewController</p>
+<img src="/images/2015/07/tableview/QQ20150718-01.png">
+<img src="/images/2015/07/tableview/QQ20150718-02.png">
+<p>运行看一下，是不是比添加 NavigationViewController 之前好看多了。</p>
+<p>在 storyboard 中双击ChecklistViewController 中的 navigation bar 中的title，输入</p>
+<p>Checklists。</p>
+<img src="/images/2015/07/tableview/QQ20150718-3.png">
+<h3 id="添加-Item"><a href="#添加-Item" class="headerlink" title="添加 Item"></a>添加 Item</h3><p>拖动一个 Bar Button Item 到 navigation bar 的右侧，然后在 System Item 中选择 Add。</p>
+<img src="/images/2015/07/tableview/QQ20150718-4.png">
+<p>在 ChecklistViewController.swift 中，添加函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func addItem() &#123;</span></div><div class="line"></div><div class="line">    let newRowIndex = items.count</div><div class="line"></div><div class="line">    let item = ChecklistItem()</div><div class="line"></div><div class="line">    item.text = <span class="string">"I am a new Row"</span></div><div class="line"></div><div class="line">    item.checked = false</div><div class="line"></div><div class="line">    items.append(item)</div><div class="line"></div><div class="line">    let indexPath = NSIndexPath(forRow: newRowIndex, inSection: <span class="number">0</span>)</div><div class="line"></div><div class="line">    let indexPaths = [indexPath]</div><div class="line"></div><div class="line">    tableView.insertRowsAtIndexPaths(indexPaths,withRowAnimation: .Automatic)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>连接 Add button 到 addItem 函数。(在storyboard中，ctrl+拖动按钮到viewController，在</p>
+<p>弹出框中选择 addItem 函数)</p>
+<img src="/images/2015/07/tableview/QQ20150718-7.png">
+<p>然后运行，你每点一次 ＋ 按钮，都会出来一条新的记录。</p>
+<h3 id="删除-Item"><a href="#删除-Item" class="headerlink" title="删除 Item"></a>删除 Item</h3><p>在 ChecklistViewController.swift 中，添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                  commitEditingStyle editingStyle: UITableViewCellEditingStyle,</div><div class="line"></div><div class="line">                  forRowAtIndexPath indexPath: NSIndexPath)&#123;</div><div class="line"></div><div class="line">       items.removeAtIndex(indexPath.row)  </div><div class="line"></div><div class="line">       let indexPaths = [indexPath]</div><div class="line"></div><div class="line">       tableView.deleteRowsAtIndexPaths(indexPaths,withRowAnimation:.Automatic)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<img src="/images/2015/07/tableview/QQ20150718-8.png">
+<h3 id="添加-Item-的界面"><a href="#添加-Item-的界面" class="headerlink" title="添加 Item 的界面"></a>添加 Item 的界面</h3><p>拖一个 tableView Controller 的控件到 storyboard 中，从刚才的 Checklist</p>
+<p>ViewController 中 ＋ 按钮，ctrl 拖拉一条线到新建的 TableViewController 中，然后在</p>
+<p>弹出框中选择 show。</p>
+<p>然后两个viewController中间出现一个连接线(segue)，点击加号到新的界面，点击 Checklists</p>
+<p>返回主界面。</p>
+<p>选中 ＋ 按钮，然后在 Connections inspector 中，删除 addItem</p>
+<img src="/images/2015/07/tableview/QQ20150718-10.png">
+<p>选中 segue， 在 Attributes inspector 中，选中 Segue：Present Modally。</p>
+<img src="/images/2015/07/tableview/QQ20150718-9.png">
+<p>选中新的 TableViewController，然后在菜单 Editor -&gt; Embed In -&gt;</p>
+<p>Navigation Controller ,然后就可以依次看到四个viewController， 1、3 分别为</p>
+<p>Navigation Controller， 2、4 分别为 TableViewController。修改 ViewController4 的</p>
+<p>title 为 Add Item.</p>
+<p>拖放两个Bar Button Items 到 navigation bar 4中，左边的按钮在 Attributes inspector</p>
+<p>中选择 Identifier：Cancel，右边的按钮在 Attirbutes inspector 中选择 Identifier 和</p>
+<p>Style 都为 Done。</p>
+<img src="/images/2015/07/tableview/QQ20150718-11.png">
+<img src="/images/2015/07/tableview/QQ20150718-12.png">
+<h3 id="添加-AddItem-Class"><a href="#添加-AddItem-Class" class="headerlink" title="添加 AddItem Class"></a>添加 AddItem Class</h3><p>在文件导航栏中，选中项目，右键， New File… ,选择 Cocoa Touch Class 。</p>
+<img src="/images/2015/07/tableview/QQ20150718-14.png">
+<img src="/images/2015/07/tableview/QQ20150718-15.png">
+<p>创建文件，然后在 Storyboard 中，选择 viewController4 ，在Identity inspector 中，</p>
+<p>Custom Class–&gt; AddItemViewController 。这样的作用，你懂得！</p>
+<img src="/images/2015/07/tableview/QQ20150718-16.png">
+<p>在 AddItemViewController.swift 中，删除所有内容，然后添加以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdditemViewController</span>:</span> UITableViewController &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@IBAction func cancel() &#123;</span></div><div class="line"></div><div class="line">  dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@IBAction func done()&#123;</span></div><div class="line"></div><div class="line">  dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后把 cancel 按钮，连接到 IBAction cancel 上，done 按钮连接到 IBAction done 上。</p>
+<p>这个时候，如果点击主界面的 ＋ 应该能够弹出新的界面，在新界面点击 Cancel 或者 Done 就会</p>
+<p>关闭新界面回到主界面。</p>
+<h3 id="static-table-cells"><a href="#static-table-cells" class="headerlink" title="static table cells"></a>static table cells</h3><p>一直在想，这个用中文怎么说呢？ 静态表格单元格 还是 静态单元格？ 还是不翻译了吧，直接用</p>
+<p>英文说，意思更明了简单些。</p>
+<p>在 storyboard 中选择 AddItem ViewController 中的 TableView ,然后在 Attributes</p>
+<p>inspector 中的 Content 设置为 Static Cells。 这里默认的是三行数据，需要删除下面两行。</p>
+<img src="/images/2015/07/tableview/QQ20150719-1.png">
+<img src="/images/2015/07/tableview/QQ20150719-2.png">
+<p>在 Style 中设置为 Grouped。 拖一个 TextField 控件到 cell 中，把长度增加。</p>
+<img src="/images/2015/07/tableview/QQ20150719-3.png">
+<p>然后设置 Border Style 设置为 none。</p>
+<img src="/images/2015/07/tableview/QQ20150719-4.png">
+<p>在 AddItemViewController.swift 中，添加下面函数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">              willSelectRowAtIndexPath indexPath: NSIndexPath) -&gt; NSIndexPath?&#123;</div><div class="line"></div><div class="line">              return nil</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你在 textField 中输入字符时，是不是变灰色了呢？因为你上面返回的是个空值呢，如何在返回</p>
+<p>空值的时候也能不变灰呢？</p>
+<p>选择 Table view Cell，然后在 Attributes inspector 中的 Selection 设为 None。</p>
+<p>再试一下，是不是舒爽多了？</p>
+<h3 id="读取-TextField-值"><a href="#读取-TextField-值" class="headerlink" title="读取 TextField 值"></a>读取 TextField 值</h3><p>在 AddItemViewController.swift 创建对应的 IBOutlet。一般步骤为：打开 Assistant</p>
+<p>editor，就是右上角的那个双环图标，</p>
+<img src="/images/2015/07/tableview/QQ20150719-5.png">
+<p>从路径地方切换到一个是 storyboard，一个是 swift 代码。</p>
+<p>然后从 storyboard 中 ctrl + 拖动 textField 到swift 代码中，在弹出的界面中输入以下内容：</p>
+<img src="/images/2015/07/tableview/QQ20150719-6.png">
+<img src="/images/2015/07/tableview/QQ20150719-7.png">
+<p>然后生成的代码应该是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var textField: UITextField!</span></div></pre></td></tr></table></figure>
+<p>然后修改 AddItemViewController.swift 中的 done（） 函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func done() &#123;</span></div><div class="line"></div><div class="line">  print(<span class="string">"Content of the textField:\(textField.text)"</span>)</div><div class="line"></div><div class="line">  dismissViewControllerAnimated(true,completion: nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你想再做的友好点，比如用户一打开添加界面，鼠标自动跑到输入框，等着输入呢。</p>
+<p>这么精心的服务，谁不喜欢呢。那需要再 AddItemViewController.swift 中添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func viewWillAppear(animated: Bool) &#123;</div><div class="line"></div><div class="line">  super.viewWillAppear(animated)</div><div class="line"></div><div class="line">  textField.becomeFirstResponder()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再美化下 textField 样式：</p>
+<p>Placeholder： Name of the Item</p>
+<p>Font: System 17</p>
+<p>Adjust to Fit: Uncheck this</p>
+<p>Capitalization: Sentences</p>
+<p>Return Key: Done</p>
+<p>再打开 Connection inspector, 拖动 Did End on Exit 事件到 ViewController 上，</p>
+<p>选择 done 。</p>
+<img src="/images/2015/07/tableview/QQ20150719-8.png">
+<p>在 Attributes inspector 中，勾选 Auto-enable Return Key.</p>
+<img src="/images/2015/07/tableview/QQ20150719-11.png">
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>委托，如果有其它的编程语言基础，应该也能够碰到很多委托的概念，比如 C# 中就有很多委托的概念。</p>
+<p>委托，在实际生活中也会碰到，如果有件事，你自己办不了，或者不方便直接出面办，就找个中间人，</p>
+<p>委托它去办，如果是到政府机构里办事，还需要写个委托书。我们这里所要了解的也就是委托书。</p>
+<p>在 AddItemViewController.swift 中，修改类头：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AddItemViewController</span>:</span> UITableViewController,UITextFieldDelegate</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>在 AddItemViewController.swift 中给 doneButton 创建一个 IBOutlet。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBOutlet weak var doneBarButton: UIBarButtonItem!</div><div class="line"></div><div class="line">func textField(textField: UITextField,</div><div class="line"></div><div class="line">               shouldChangCharactersInRange range: NSRange,</div><div class="line"></div><div class="line">               replacementString string: String) -&gt; Bool &#123;</div><div class="line"></div><div class="line">    let oldText: NSString = textField.text！</div><div class="line"></div><div class="line">    let newText: NSString = oldText.stringByReplaceingCharactersInRanger(</div><div class="line"></div><div class="line">                                            range, withString: string)</div><div class="line"></div><div class="line">    doneBarButton.enabled = (newText.length &gt; 0)</div><div class="line"></div><div class="line">    return true</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里是根据你输入的字符长度来判定 Done 按钮是否被激活，所以当然初始化的时候，这个按钮应该</p>
+<p>是 Disable 的。 选中 Done 按钮，在 Attributes inspector 中， 取消勾选 Enabled。</p>
+<img src="/images/2015/07/tableview/QQ20150719-10.png">
+<p>下面一步就是比较重要的委托了，如果你在 AddItemViewController 中输入一个 text ，然后怎么</p>
+<p>把这个值传到主界面， 因为你要在主界面显示 lists 啊。有委托，就要有委托书，在程序里，</p>
+<p>委托书就是协议- protocol。</p>
+<p>在 AddItemViewController.swift 中的 import 和 class 中间加入下面代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">protocol AddItemViewControllerDelegate: class &#123;</div><div class="line"></div><div class="line">    func addItemViewControllerDidCancel(controller: AddItemViewController)</div><div class="line"></div><div class="line">    func AddItemViewController(controller: AddItemViewController,</div><div class="line"></div><div class="line">                              didFinishAddingItem item:ChecklistItem)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在 class 中添加以下代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">weak var delegate: AddItemViewControllerDelegate?</div></pre></td></tr></table></figure>
+<p>然后修改函数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func cancel() &#123;</div><div class="line"></div><div class="line">  delegate?.addItemViewControllerDidCancel(self)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@IBAction func done()&#123;</div><div class="line"></div><div class="line">  let item = ChecklistItem()</div><div class="line"></div><div class="line">  item.text = textField.text！</div><div class="line"></div><div class="line">  item.checked = false</div><div class="line"></div><div class="line">  delegate?.addItemViewController(self,didFinishAddingItem: item)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，写到这里当然是不够的。 委托人和委托书都有了，那被委托人在哪里，它还没有干活呢！</p>
+<p>在 ChecklistViewController.swift 中，</p>
+<p>修改类头：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChecklistViewController</span>:</span> UITableVIewController,</div><div class="line"></div><div class="line">                                AddItemViewControllerDelegate &#123;</div></pre></td></tr></table></figure>
+<p>添加函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func addItemViewControllerDidCancel(controller:AddItemViewController) &#123;</div><div class="line"></div><div class="line">  dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func addItemViewController(controller: addItemViewController,</div><div class="line"></div><div class="line">                          didFinishAddingItem item: ChecklistItem) &#123;</div><div class="line"></div><div class="line">    let newRowIndex = items.count</div><div class="line"></div><div class="line">    items.append(item)</div><div class="line"></div><div class="line">    let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)</div><div class="line"></div><div class="line">    let indexPaths = [indexPath]</div><div class="line"></div><div class="line">    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation:.Automatic)</div><div class="line"></div><div class="line">    dismissViewControllerAnimated(true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)&#123;</div><div class="line"></div><div class="line">  if segue.Identifier == "AddItem" &#123;</div><div class="line"></div><div class="line">    let naviationController = segue.destinationViewController</div><div class="line"></div><div class="line">                                        as! UINavigationController</div><div class="line"></div><div class="line">    let controller = navigationController.topViewController</div><div class="line"></div><div class="line">                                        as! addItemViewController</div><div class="line"></div><div class="line">    controller.delegate = self</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>选中 view2 - View3 之间连接 segue，然后在 Attributes inspector 中的 Identifier 中</p>
+<p>输入： AddItem 。</p>
+<p>删除 addItem() 函数，因为已经用不到它了。！！</p>
+<img src="/images/2015/07/tableview/QQ20150719-9.png">
+<p>知道上图中有个空白是什么造成的吗？肯定是添加了一个空白的 text 呗，点击 done 的时候，text</p>
+<p>还是空白，也就是说，判断 dongButton.enabled 那句话没有起作用，仔细检查一下，原来是</p>
+<p>doneButton 的初始化界面时，Enable 没有取消勾选。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/16/red-bean/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/16/red-bean/" itemprop="url">
+                  红豆生南国的红豆
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-16T09:09:49+08:00">
+                2015-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/育儿经/" itemprop="url" rel="index">
+                    <span itemprop="name">育儿经</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/16/red-bean/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/16/red-bean/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/images/2015/07/redbean.jpg">
+<p>  红豆生南国</p>
+<p>  春来发几枝</p>
+<p>  愿君多采撷</p>
+<p>  此物最相思</p>
+<p>遇见路边花摊，小朋友说：妈妈，买束花吧！</p>
+<p>卖花阿姨说：买红豆吧，很特别。</p>
+<p>小朋友脱口说：是红豆生南国的红豆吗？</p>
+<p>阿姨说：是啊！</p>
+<p>小朋友就顺口背开了：红豆生南国，春来发几枝….</p>
+<p>然后，阿姨就奖励了小朋友一枝红豆，她高高兴兴的扛回来了。</p>
+<hr>
+<p>个人原创，转载请注明出处：<a href="https://www.github.com/googlegis" target="_blank" rel="external">GitHub</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/15/tableviewcontroller/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/15/tableviewcontroller/" itemprop="url">
+                  Swift 2.0 纯学习之旅--7.tableviewController
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-15T23:14:47+08:00">
+                2015-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/15/tableviewcontroller/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/15/tableviewcontroller/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>这里是学习 iOS Apprentice 的第二课 Checklist 的笔记记录，仅供自己查阅。
+</code></pre><p>tableView 和 nagView 是 iOS 开发中最常用到的两个 viewController，不论你的主界面就是</p>
+<p>tableView 的列表显示，还是仅仅用 tableView  来显示属性设置，它都是一个普遍而又重要的</p>
+<p>组件。</p>
+<p>在 Checklist 的开发过程就大量使用了 tableView 和 navView，navView 是从一个 scence</p>
+<p>跳转到另外一个 scence 的重要纽带，这两者结合在一起，恐怕缺少的就只是你的想象力了。</p>
+<pre><code>everything is possible here!
+</code></pre><h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>打开 Xcode ，新建 Single View Application ，</p>
+<img src="/images/2015/07/tableview/QQ20150717-1.png">
+<p>在 TARGETS 选中 Checklists，然后在 General–&gt;Deployment Info–&gt;Device Orientation</p>
+<p>中确保只有 Portrait 被勾选。</p>
+<img src="/images/2015/07/tableview/QQ20150717-2.png">
+<h3 id="添加-tableviewController"><a href="#添加-tableviewController" class="headerlink" title="添加 tableviewController"></a>添加 tableviewController</h3><p>选中 Main.storyboard 中的 viewController ， 然后 Delete 键删除，如果不好选择，可以</p>
+<p>通过 Outline pane 中的控件选择，不得不说， outline  pane 是个好东西。</p>
+<p>然后，在 ViewController.swift 中,修改类名为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChecklistViewController</span>:</span>UITableViewController&#123;</div></pre></td></tr></table></figure>
+<p>然后在文件导航栏中，双击修改 ViewController.swift 文件名为 ChecklistViewController</p>
+<p>.swift ,如果有提示，就 Save Anyway。</p>
+<p>然后在 Identity inspector 中，Custom Class 选择为 ChecklistViewControllerself.</p>
+<img src="/images/2015/07/tableview/QQ20150717-3.png">
+<p>到这里一切似乎都很熟悉，就是把 storyboard 中的 viewcontroller 与代码中的 swift 文件</p>
+<p>绑定， 其实可以不是同一个名称，也可以是不同的名称，同一个名称是为了更好的同其他的</p>
+<p>viewController 区分开来，因为我们在这个项目里将会不只一个 viewController 。</p>
+<p>然后在 Attributes inspector 中，勾选 Is Initial View Controller , 使其作为默认的</p>
+<p>起始 ViewController ，这和其他编程语言和 IDE 类似， 如 “C#” WinForm 中 的 main 函数</p>
+<p>中初始化一个窗体作为起始窗体。</p>
+<img src="/images/2015/07/tableview/QQ20150717-4.png">
+<p>跑一下试试，当然是空白，因为还没有加入内容。</p>
+<p>选中 Table View Cell(当然可以在 outline pane 中选)，拖动一个 label 按钮到 cell 中，</p>
+<p>然后拉动 label 足够宽，在 cell 的右边留下一小部分空白。</p>
+<img src="/images/2015/07/tableview/QQ20150717-5.png">
+<p>再次选择 Table View Cell ，然后在 Attributes inspector 中，选择 Accessory 为</p>
+<p>Checkmark ，然后你就可以看到变化了。</p>
+<img src="/images/2015/07/tableview/QQ20150717-6.png">
+<p>是的，右边出现了一个漂亮的符号 √ 。</p>
+<img src="/images/2015/07/tableview/QQ20150717-7.png">
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>因为 tableViewController 一般都是和不固定数据量绑定有关，也就说，你在设计程序写代码</p>
+<p>时更不不知道将会有多少行数据，所以你需要将这个 Table View Cell 设置为可重复使用的控件。</p>
+<p>以便在后面使用时，省去重复的繁琐劳动。</p>
+<p>在 Identifier 中输入 ChecklistItem 。</p>
+<p>在 ChecklistViewController.swift 文件中，键入下面的函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">               numberOfRowsInSection section:Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">      return 5</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell&#123;</div><div class="line"></div><div class="line">      let cell =</div><div class="line"></div><div class="line">      tableView.dequeueReusableCellWithIdentifier("ChecklistItem")</div><div class="line"></div><div class="line">                as UITableViewCell！</div><div class="line"></div><div class="line">      return cell</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跑一下，看出来什么了。</p>
+<img src="/images/2015/07/tableview/QQ20150717-8.png">
+<p>不错，是 5 行相同的数据。</p>
+<p>在 storyboard 中选中 cell 中的 label， 然后在 Attributes inspector 中 Tag 设为 1000</p>
+<p>然后修改 ChecklistViewController.swift 中的 tableView(cellForRowAtIndexPath) 函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">          cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">  let cell = tableView.dequeueReusableCellWithIdentifier("ChecklistItem")</div><div class="line"></div><div class="line">                      as UITableViewCell!</div><div class="line"></div><div class="line">  let label = cell.viewWithTag(1000) as! UILabel</div><div class="line"></div><div class="line">  if indexPath.row == 0 &#123;</div><div class="line"></div><div class="line">      label.text = "Walk the dog"</div><div class="line"></div><div class="line">  &#125; else if indexPath.row == 1 &#123;</div><div class="line"></div><div class="line">      label.text = "Brush my teeth"</div><div class="line"></div><div class="line">  &#125; else if indexPath.row == 2 &#123;</div><div class="line"></div><div class="line">      label.text = "Learn iOS development"</div><div class="line"></div><div class="line">  &#125; else if indexPath.row == 3 &#123;</div><div class="line"></div><div class="line">      label.text = "Soccer practice"</div><div class="line"></div><div class="line">  &#125; else if indexPath.row == 4 &#123;</div><div class="line"></div><div class="line">      label.text = "Eat ice cream"</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再跑一遍，应该能够看到内容了。</p>
+<img src="/images/2015/07/tableview/QQ20150717-9.png">
+<p>关键问题是，看到是能看到内容了，这里只有 5 条信息，那要是 100 条呢？</p>
+<p>你要写 100 个 if … else 来判断吗？</p>
+<p>首先修改函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">    return 100</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell&#123;</div><div class="line"></div><div class="line">    let cell = tableView.dequeueReusableCellWithIdentifier("ChecklistItem")</div><div class="line"></div><div class="line">                  as UITableViewCell!</div><div class="line"></div><div class="line">    let label = cell.viewWithTag(1000) as! UILabel</div><div class="line"></div><div class="line">    if indexPath.row % 5 == 0 &#123;</div><div class="line"></div><div class="line">        label.text = "Walk the dog"</div><div class="line"></div><div class="line">    &#125; else if indexPath.row % 5 == 1 &#123;</div><div class="line"></div><div class="line">        label.text = "Brush my teeth"</div><div class="line"></div><div class="line">    &#125; else if indexPath.row % 5 == 2 &#123;</div><div class="line"></div><div class="line">        label.text = "Learn iOS development"</div><div class="line"></div><div class="line">    &#125; else if indexPath.row % 5 == 3 &#123;</div><div class="line"></div><div class="line">        label.text = "Soccer practice"</div><div class="line"></div><div class="line">    &#125; else if indexPath.row % 5 == 4 &#123;</div><div class="line"></div><div class="line">        label.text = "Eat ice cream"</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return cell</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里用余数判断解决了 100 个数据的问题，但是要知道，实际的数据根本不可能试这样的。</p>
+<p>这里只是做个例子，后面会详细讲到实际的应用。</p>
+<h3 id="点击效果"><a href="#点击效果" class="headerlink" title="点击效果"></a>点击效果</h3><p>我们一般都是点击一行后，后面的 √ 应该是取消的，再点击，√ 是出来的。</p>
+<p>在 ChecklistViewController.swift 文件添加函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">overrid func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">            didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</div><div class="line"></div><div class="line">                  <span class="keyword">if</span> cell.accessoryType == .<span class="keyword">None</span> &#123;</div><div class="line"></div><div class="line">                     cell.accessoryType = .Checkmark</div><div class="line"></div><div class="line">                  &#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">                     cell.accessoryType = .<span class="keyword">None</span></div><div class="line"></div><div class="line">                  &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    tableView.deselectRowAtIndexPath(indexPath,animated: true)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>首先在类的前面添加几个变量：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class ChecklistViewController: UITableViewController &#123;</div><div class="line"></div><div class="line">   var row0text  = "Walk the dog"</div><div class="line"></div><div class="line">   var row1text = "Brush teeth"</div><div class="line"></div><div class="line">   var row2text = "Learn iOS development"</div><div class="line"></div><div class="line">   var row3text = "Soccer practice"</div><div class="line"></div><div class="line">   var row4text = "Eat ice cream"</div><div class="line"></div><div class="line">   var row0checked = false</div><div class="line"></div><div class="line">   var row1checked = false</div><div class="line"></div><div class="line">   var row2checked = false</div><div class="line"></div><div class="line">   var row3checked = false</div><div class="line"></div><div class="line">   var row4checked = false</div><div class="line"></div><div class="line">   ...</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">overide func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">   return 5</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">overide func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">        cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">      let cell = tableView.dequeueReusableCellWithIdentifier("ChecklistItem")</div><div class="line"></div><div class="line">                  as UITableViewCell!</div><div class="line"></div><div class="line">      let label = cell.viewWithTag(1000) as! UILabel</div><div class="line"></div><div class="line">      if indexPath.row == 0 &#123;</div><div class="line"></div><div class="line">        label.text = row0text</div><div class="line"></div><div class="line">      &#125; else if indexPath.row == 1 &#123;</div><div class="line"></div><div class="line">        label.text = row1text</div><div class="line"></div><div class="line">      &#125; else if indexPath.row == 2 &#123;</div><div class="line"></div><div class="line">        label.text = row2text</div><div class="line"></div><div class="line">      &#125; else if indexPath.row == 3 &#123;</div><div class="line"></div><div class="line">        label.text = row3text</div><div class="line"></div><div class="line">      &#125; else if indexPath.row == 4 &#123;</div><div class="line"></div><div class="line">        label.text = row4text</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">      configureCheckmarkForCell(cell,indexPath: indexPath)</div><div class="line"></div><div class="line">     return cell</div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line"></div><div class="line">    if let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</div><div class="line"></div><div class="line">        var isChecked = false</div><div class="line"></div><div class="line">        if indexPath.row == 0 &#123;</div><div class="line"></div><div class="line">            row0checked = !row0checked</div><div class="line"></div><div class="line">        &#125; else if indexPath.row == 1 &#123;</div><div class="line"></div><div class="line">                    row1checked = !row1checked</div><div class="line"></div><div class="line">        &#125; else if indexPath.row == 2 &#123;</div><div class="line"></div><div class="line">                    row2checked = !row2checked</div><div class="line"></div><div class="line">        &#125; else if indexPath.row == 3 &#123;</div><div class="line"></div><div class="line">                    row3checked = !row3checked</div><div class="line"></div><div class="line">        &#125; else if indexPath.row == 4 &#123;</div><div class="line"></div><div class="line">                    row4checked = !row4checked</div><div class="line">        &#125;</div><div class="line"></div><div class="line">       configureCheckmarkForCell(cell,indexPath: indexPath)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    tableView.deselectRowAtIndexPath(indexPath,animated: true)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func configureCheckmarkForCell(cell: UITableViewCell,indexPath: NSIndexPath)&#123;</div><div class="line"></div><div class="line">var isChecked = false</div><div class="line"></div><div class="line">if indexPath.row == 0 &#123;</div><div class="line"></div><div class="line">    isChecked = row0checked</div><div class="line"></div><div class="line">&#125; else if indexPath.row == 1 &#123;</div><div class="line"></div><div class="line">            isChecked = row1checked</div><div class="line"></div><div class="line">&#125; else if indexPath.row == 2 &#123;</div><div class="line"></div><div class="line">            isChecked = row2checked</div><div class="line"></div><div class="line">&#125; else if indexPath.row == 3 &#123;</div><div class="line"></div><div class="line">            isChecked = row3checked</div><div class="line"></div><div class="line">&#125; else if indexPath.row == 4 &#123;</div><div class="line"></div><div class="line">            isChecked = row4checked</div><div class="line">&#125;</div><div class="line"></div><div class="line">if isChecked &#123;</div><div class="line"></div><div class="line">  cell.accessoryType = .Checkmark</div><div class="line"></div><div class="line">&#125; else &#123;</div><div class="line"></div><div class="line">  cell.accessoryType = .None</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>如果稍微懂点编程或者数学知识的话，应该对数组这个概念不陌生。一般用来存储一组相同属性的东西。</p>
+<p>给项目添加 swift 文件，命名为 ChecklistItem.swift</p>
+<img src="/images/2015/07/tableview/QQ20150718-1.png">
+<img src="/images/2015/07/tableview/QQ20150718-2.png">
+<p>添加内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class ChecklistItem &#123;</div><div class="line"></div><div class="line">    var text = ""</div><div class="line"></div><div class="line">    var checked = false</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 ChecklistViewController.swift 文件中，删除前面的变量，添加数组变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var row0item: ChecklistItem</div><div class="line"></div><div class="line">var row1item: ChecklistItem</div><div class="line"></div><div class="line">var row2item: ChecklistItem</div><div class="line"></div><div class="line">var row3item: ChecklistItem</div><div class="line"></div><div class="line">var row4item: ChecklistItem</div></pre></td></tr></table></figure>
+<p>然后添加函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">required init(coder aDecoder: NSCoder) &#123;</div><div class="line"></div><div class="line">row0item = ChecklistItem()</div><div class="line"></div><div class="line">row0item.text = <span class="string">"Walk the dog"</span></div><div class="line"></div><div class="line">row0item.checked = false</div><div class="line"></div><div class="line"></div><div class="line">row1item = ChecklistItem()</div><div class="line"></div><div class="line">row1item.text = <span class="string">"Brush teeth"</span></div><div class="line"></div><div class="line">row1item.checked = true</div><div class="line"></div><div class="line"></div><div class="line">row2item = ChecklistItem()</div><div class="line"></div><div class="line">row2item.text = <span class="string">"Learn iOS development"</span></div><div class="line"></div><div class="line">row2item.checked = true</div><div class="line"></div><div class="line"></div><div class="line">row3item = ChecklistItem()</div><div class="line"></div><div class="line">row3item.text = <span class="string">"Soccer practice"</span></div><div class="line"></div><div class="line">row3item.checked = false</div><div class="line"></div><div class="line"></div><div class="line">row4item = ChecklistItem()</div><div class="line"></div><div class="line">row4item.text = <span class="string">"Eat ice cream"</span></div><div class="line"></div><div class="line">row4item.checked = true</div><div class="line"></div><div class="line"> super.init(coder: aDecoder)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>既然，前面已经提到了数组，这里是不是可以优化成数组呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var items: [ChecklistItem]</div></pre></td></tr></table></figure>
+<p>修改函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">required init(coder aDecoder: NSCoder) &#123;</div><div class="line"></div><div class="line">    items = [ChecklistItem]</div><div class="line"></div><div class="line">    let row0item = ChecklistItem()</div><div class="line"></div><div class="line">    row0item.text = &quot;Walk the dog&quot;</div><div class="line"></div><div class="line">    row0item.checked = false</div><div class="line"></div><div class="line">    items.append(row0item)</div><div class="line"></div><div class="line"></div><div class="line">    let row1item = ChecklistItem()</div><div class="line"></div><div class="line">    row1item.text = &quot;Brush my teeth&quot;</div><div class="line"></div><div class="line">    row1item.checked = true</div><div class="line"></div><div class="line">    items.append(row1item)</div><div class="line"></div><div class="line"></div><div class="line">    let row2item = ChecklistItem()</div><div class="line"></div><div class="line">    row2item.text = &quot;Learn iOS development&quot;</div><div class="line"></div><div class="line">    row2item.checked = false</div><div class="line"></div><div class="line">    items.append(row2item)</div><div class="line"></div><div class="line"></div><div class="line">    let row3item = ChecklistItem()</div><div class="line"></div><div class="line">    row3item.text = &quot;Soccer practice&quot;</div><div class="line"></div><div class="line">    row3item.checked = false</div><div class="line"></div><div class="line">    items.append(row3item)</div><div class="line"></div><div class="line"></div><div class="line">    let row4item = ChecklistItem()</div><div class="line"></div><div class="line">    row4item.text = &quot;Eat ice cream&quot;</div><div class="line"></div><div class="line">    row4item.checked = true</div><div class="line"></div><div class="line">    items.append(row4item)</div><div class="line"></div><div class="line">    super.init(coder: aDecoder)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              cellForRowAtIndexPath indexPath: NSIndexPath)-&gt;UITableViewCell &#123;</div><div class="line"></div><div class="line">        let cell = tableView.dequeueReusableCellWithIdentifier(&quot;ChecklistItem&quot;)</div><div class="line"></div><div class="line">            as! UITableViewCell</div><div class="line"></div><div class="line">        let item = items[indexPath.row]</div><div class="line"></div><div class="line">        configureTextForCell(cell,withChecklistItem: item)</div><div class="line"></div><div class="line">        configureCheckmarkForCell(cell,withChecklistItem: item)</div><div class="line"></div><div class="line">        return cell</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">              didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</div><div class="line"></div><div class="line">if let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</div><div class="line"></div><div class="line">    let item = items[indexPath.row]</div><div class="line"></div><div class="line">    item.toggleChecked()</div><div class="line"></div><div class="line">    configureCheckmarkForCell(cell,withChecklistItem: item)</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">  tableView.deselectRowAtIndexPath(indexPath,animated:true)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func configureCheckmarkForCell(cell:UITableViewCell,</div><div class="line"></div><div class="line">                               withChecklistItem item: ChecklistItem)&#123;</div><div class="line"></div><div class="line">  if item.checked &#123;</div><div class="line"></div><div class="line">    cell.accessoryType = .Checkmark</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">    cell.accessoryType = .None</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">override func tableView(tableView: UITableView,</div><div class="line"></div><div class="line">                numberOfRowsInSection section: Int) -&gt; Int &#123;</div><div class="line"></div><div class="line">    return items.count</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">func configureTextForCell(cell: UITableViewCell,</div><div class="line"></div><div class="line">                          withChecklistItem item: ChecklistItem) &#123;</div><div class="line"></div><div class="line">      let label = cell.viewWithTag(1000) as! UILabel</div><div class="line"></div><div class="line">      label.text = item.text</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同时需要在 ChecklistItem.swift 中添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func toggleChecked() &#123;</div><div class="line"></div><div class="line">  checked = !checked</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到这里，你是不是看到了，使用数组和数据对象是不是比前面一个一个的撸方便多了呢？</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/14/kings-man-the-secret-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/14/kings-man-the-secret-service/" itemprop="url">
+                  王的男人之秘密服务
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-14T20:58:24+08:00">
+                2015-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/看电影/" itemprop="url" rel="index">
+                    <span itemprop="name">看电影</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/14/kings-man-the-secret-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/14/kings-man-the-secret-service/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/images/2015/07/kingsman.jpg">
+<p>王的男人-秘密服务，这个是我最近看到的最逗比的翻译，可是这个翻译可是正规的公司翻译的。</p>
+<p>这个片子也是因为听说好看才去看的，也是传统的故事情节，小人物的成长史。</p>
+<p>一个足够聪明和足够有能力的小混混，因为某些原因不得志，整日混来混去，幸得一位极好</p>
+<p>的老师指点，成为一代人才并最终力挽狂澜的故事。</p>
+<p>这样的故事情节被周星驰老师不知道炒了多少剩饭了，国内观众应该比较认可这样的故事套路，</p>
+<p>稍加处理就可以很容易得到好评，但是整个故事看完，就记住了男主角的师傅在教堂大开杀戒，</p>
+<p>杀的昏天暗地，神哭鬼号的那段，和结尾瑞典公主的大屁股。</p>
+<p>估计也只有瑞典的公主可以被影片拿来调戏吧。</p>
+<p>不过教堂杀戮那段拍的实在是太过瘾了，死的太惨太真实了，一个个活人在你眼前就那么眼睁睁的被</p>
+<p>杀死了，还都能看到被砍的位置，我想应该是位中国的武指设计的吧。国外的动作设计根本设计不了</p>
+<p>这么精细的动作和场面。</p>
+<p>如果非要王的男人和疯狂的max有个比较的话，但就导演功力上，王的男人要高疯狂的max一头。</p>
+<p>疯狂的max是用机械的轰鸣和躁动的电吉他，配上模特的身材刺激你的肾上腺，让你无暇思考它的故事</p>
+<p>情节啊，故事推动啊，合理性啊。 这要是在中国，被一个中国导演拍出个这样的片子，肯定被批个</p>
+<p>傻大粗装(如姜文);而王的男人则更注重细节，情节推动，故事的叙述性和完整性(再如姜文)。</p>
+<p>单个打斗场面细腻而清晰，是人物推动故事发展，而不是导演推动故事发展。</p>
+<p>虽然我找了疯狂的max和王的男人这么多缺点，但不可否认它们还都是好电影，只不过不是那种让人</p>
+<p>能记住的电影。</p>
+<p>疯狂的max导演就是要不走寻常路，王的男人导演是要突破007的极限。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/13/what-about-the-mad-max/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/13/what-about-the-mad-max/" itemprop="url">
+                  疯狂的max
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-13T19:34:11+08:00">
+                2015-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/看电影/" itemprop="url" rel="index">
+                    <span itemprop="name">看电影</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/13/what-about-the-mad-max/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/13/what-about-the-mad-max/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="/images/2015/07/085712.jpg">
+<p>说实话，我是被影评吸引来看疯狂的麦克斯的，以前我都不知道是梅尔吉布森演了前面的三部，</p>
+<p>更不知道还有这样一部影片，如果只看海报，我是不会被它吸引的，但是我还是被微信里的好评给吸引</p>
+<p>了。其实是很老套的好莱坞式的个人英雄式影片，在我的个人观影生涯里不会留下太深印象，</p>
+<p>就如同匆匆过客，来的快去的快。</p>
+<p>有的人说是小成本电影，什么什么的….</p>
+<p>我其实不知道它的投资，但就整个影片的节奏来说，闹腾，闹心，除了那几个模特的身材看着还</p>
+<p>可以外其他都不怎么样？</p>
+<p>里面的造型恶心，音乐聒噪，故事推动简单粗暴，这样的影片在好莱坞应该有很多很多。</p>
+<p>但是它出来的太是时候，从温暖的大白之后，这段时间根本没有什么能够拿得出手的外国大片，</p>
+<p>它的太是时候，简单的节奏，粗狂的线条，有负责养眼的，有负责耍酷的，有负责恶心的，有负责良心</p>
+<p>救赎的。</p>
+<p>我不知道这个片子在国外是什么级别，就单开始的从人身上抽血补血我就受不了，更不用说那些头上</p>
+<p>刻着蚊香盘，嘴用针缝了一圈的野蛮人了。我想这部片子在国外应该不适合未成年人观看吧。</p>
+<p>然后就是负责追车和电吉他。</p>
+<p>比较意外的是女主角的查理斯塞隆，一开始我都没有看出来，无论外形和演技都更胜一筹。</p>
+<p>里面女主角的过去和男主角的过去，可能是为了续集做铺垫。</p>
+<p>这样的电影，正符合现在社会浮躁的心态，刺激and丑陋，恶心and漂亮，机械轰鸣and高音吉他，</p>
+<p>什么都是这样的快速而激情。</p>
+<p>其中比较有印象的就是模特的好身材，和那个会给枪装子弹的女孩，或许是阿富汗，塔利班之类的。</p>
+<p>续集或许会有她的戏！</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/09/could-not-find-developer-disk-image/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/09/could-not-find-developer-disk-image/" itemprop="url">
+                  could not find developer Disk image
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-09T20:53:35+08:00">
+                2015-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/09/could-not-find-developer-disk-image/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/09/could-not-find-developer-disk-image/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iOS新升级到8.4后，Xcode 7.0 beat版运行程序到真机报错，提示Could not find developer</p>
+<p> disk image，Xcode Device栏处的真机右侧显示“（unavailable）”</p>
+<p>原因是你的Xcode很有可能没有8.4的包！</p>
+<p>解决方法:</p>
+<p>如果你有 Xcode 6.4的话，可以从Xcode 6.4中拷贝8.4(12H141)的文件夹到Xcode 7下</p>
+<p>Xcode 6.4路径为</p>
+<p>/Applications（应用程序）/Xcode（右键显示包内容）/Contents/Developer/Platforms/</p>
+<p>iPhoneOS.platform/DeviceSupport</p>
+<p>Xcode 7.0 beta路径为</p>
+<p>/Applications（应用程序）/Xcode-beta（右键显示包内容）/Contents/Developer/Platforms</p>
+<p>/iPhoneOS.platform/DeviceSupport</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/04/steps-10-to-profession-developer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/04/steps-10-to-profession-developer/" itemprop="url">
+                  10步成为专业的iOS开发者
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-04T08:53:00+08:00">
+                2015-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/04/steps-10-to-profession-developer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/04/steps-10-to-profession-developer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>你想在手机应用开发中分一杯羹吗？这是时下最火的技术。 绝对正确的决定。</p>
+<p>应用开发很火，毫无疑问可能在未来几年里也会很火。无论你身在何地，将会有大量的工作机会在等待</p>
+<p>你们。公司在搜寻各个级别的开发人员，小白，菜鸟，中级，高级，专家。这篇文章也适合起步者-</p>
+<p>我将会帮助你作为一个iOS程序员获得第一份工作。</p>
+<h3 id="我为什么要听你的？"><a href="#我为什么要听你的？" class="headerlink" title="我为什么要听你的？"></a>我为什么要听你的？</h3><p>你也许会这么问，是个好问题！听从一个毫无所知的人的错误建议并不是一个好主意。</p>
+<p>我不是一个毫无疑问的真相的源头，甚至我还不是一个经验丰富的iOS开发者-但是我有足够的能力帮助</p>
+<p>你。</p>
+<p>我是从几个非主流的低收入app做起的，但是这些收入却足以够我吃饭和应付账单，以便我能够专心</p>
+<p>在app上，然后我作为高级iOS开发人员加入了一家公司，最终还是辞职，再次完全专心的在我自己的</p>
+<p>应用开发上而不用担心明天。如果我想的话我还是可以回去帮别人打工。(但是不太可能而来，自己</p>
+<p>  当老板的意愿由来已久了！)。</p>
+<p>所以，少说多做，—我们还是来谈谈要想成为一个iOS开发人员都需要做些什么？</p>
+<h3 id="1-如果你还没有Mac和iPhone，那就买个"><a href="#1-如果你还没有Mac和iPhone，那就买个" class="headerlink" title="1. 如果你还没有Mac和iPhone，那就买个"></a>1. 如果你还没有Mac和iPhone，那就买个</h3><img src="/images/2015/07/10steps/ios1.jpeg">
+<p>想要开发iOS，你需要个Mac</p>
+<p>当然也有很多变通的方法(黑苹果或者云端Mac)，但是要正式的告诉你，作为一个iOS开发者，Mac是</p>
+<p>你主要的工作工具，你不必有一个最新最快最贵的，但是你确实需要一个Mac。如果你确实想入手一个</p>
+<p>设备，考虑一下Mac Mini-或许这是性价比最高的一个Mac了。如果你和我一样，应用开发是你的首要</p>
+<p>任务，买个Air吧，它的大屏非常爽。你完全没有必要去买个新的，从eBay买个二手的就OK！</p>
+<h3 id="2-Install-Xcode"><a href="#2-Install-Xcode" class="headerlink" title="2. Install Xcode"></a>2. Install Xcode</h3><img src="/images/2015/07/10steps/ios2.png">
+<p>现在，你有一个闪闪发亮的新Mac(二手Mac你擦干净的也算新的)摆在桌子上了，现在开始安装一些</p>
+<p>用来iOS开发的重要的软件了-XCode。 XCode 是你开发iOS 应用的开发环境(IDE-integrated development</p>
+<p>environment)。你可以从 Mac 应用商店免费下载，或许你现在正在下载。</p>
+<p>在Xcode下，你可以编写代码，调试代码，绘制界面，单元测试以及很多很多其他的事情，你也可以</p>
+<p>使用Xcode上传你的app到应用商店。掌握并熟悉Xcode，这是每个iOS开发者最重要的软件。</p>
+<h3 id="3-学习编程基础-可能是最难的部分"><a href="#3-学习编程基础-可能是最难的部分" class="headerlink" title="3. 学习编程基础(可能是最难的部分)"></a>3. 学习编程基础(可能是最难的部分)</h3><img src="/images/2015/07/10steps/ios3.png">
+<p>现在是最难得部分了，你需要直接编写代码。如果你有其他的编程背景，学些Objective-C(较难)和</p>
+<p>Swift(较容易)不会太难，它们是标准的，面向对象的编程语言。如果你之前的人生中都没有编写过</p>
+<p>一句代码，别担心，这里有两个针对初学者的很不错的资源网站。</p>
+<p>1.<a href="http://rypress.com/tutorials/objective-c/" target="_blank" rel="external">Ry’s Objective-C tutorial</a>–Objective-C 粉丝的老学校，你不必真的去完全掌握</p>
+<p>Objective-C(Swift才是王道),至少要懂得基本语法，能够读写代码。</p>
+<p>2.<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309" target="_blank" rel="external">Swift language guide</a> 这是我们要学的Swift语言的官方文档，Apple出品，必属精品。</p>
+<p>你不必对所有的知识点都有深度的了解，这些会在以后的实际工作经验中接触到，但是你要把自己完全</p>
+<p>沉浸在变量、指针、类、数据类型和递归这些知识的海洋里，它提供给你更进一步学习的环境。</p>
+<h3 id="4-根据教程一步一步写一些不同的app"><a href="#4-根据教程一步一步写一些不同的app" class="headerlink" title="4. 根据教程一步一步写一些不同的app"></a>4. 根据教程一步一步写一些不同的app</h3><img src="/images/2015/07/10steps/ios4.jpeg">
+<p>当你想要做些什么有用的app时，这些网站也许能帮助你。</p>
+<p>1.<a href="http://www.appcoda.com/" target="_blank" rel="external">AppCoda</a>-比较适合初学者，你将会发现很多不同的教程，跟着说明一步一步来，</p>
+<p>确保能够完整的走一遍。</p>
+<p>2.<a href="http://www.raywenderlich.com/" target="_blank" rel="external">Ray Wdnderlick</a>–另外一个有着海量iOS开发教程的网站，一步一步学习是最重要的。</p>
+<p>但是不要只在这些网上教程上来回学习，自己亲自动手做一些app，比如计算器，天气，货币转换，</p>
+<p>音乐app，任何你可以在教程上找到的都可以做。</p>
+<p>跟着这些app教程学习，直到你觉得对Xcode 和 编程语言(Swift) 比较熟悉了。就要开始下面的步骤。</p>
+<p>###5. 编写自己的app</p>
+<img src="/images/2015/07/10steps/ios5.jpeg">
+<p>现在是重点部分了，你需要做一个自己的app将来可以在面试的时候给你未来的雇主演示。</p>
+<p>但是，别紧张，你不必做再做一个Facebook出来，你只是要找一个低级职位，OK？一个你需要从竞争</p>
+<p>对手那里学习，而不是需要你一个需要5年经验的专家。</p>
+<p>所以，冷静下来想一下，你要开发在哪个行业或者领域的app.</p>
+<p>可能你写的是一个使用了网络传输的app，也可能是你使用UIKit设计了一个非常舒服的复杂用户接口。</p>
+<p>或者可能你最擅长的开发是一个音乐或声音播放器。使用这些有趣的知识创建自己的app，主要要一个</p>
+<p>干净、清晰、能够正常工作的代码。</p>
+<p>###6. 同时，尽可能多的学习软件开发技能</p>
+<img src="/images/2015/07/10steps/ios6.jpeg">
+<p>如果你读到这里，你可能不希望去大学再花费几年时间学习计算机科学。好消息是你不必这么做。</p>
+<p>很多计算机科学/编程/软件科学 可能都能在家里在线学习。</p>
+<p>当然，这样肯定是拿不到学位的，但是获得一个iOS开发者的工作不需要这个，参看上面的图片，学习</p>
+<p>这些知识点。我不会给出链接–搜索信息是一个开发者的技巧中最重要的一点。</p>
+<p>开始学习吧，Google 是你的朋友。</p>
+<p>###7. 完成你的app</p>
+<img src="/images/2015/07/10steps/ios7.jpeg">
+<p>在经历了几天，几周，甚至几个月的学习和工作在你的app上，你应该有一个完整的app了，这个app就</p>
+<p>是你的简历，你应该把它当成你最好的项目，这里有一些公司主要看中的几个点：</p>
 <ul>
-<li><p>在窗体上放一个按钮，名称为：Hit Me</p>
+<li><p>可以运行的app</p>
 </li>
-<li><p>当用户点击 “Hit Me” 按钮时，弹出用户当前的分数，这里需要牵涉到分数的计算。</p>
+<li><p>干净的代码</p>
 </li>
-<li><p>在窗体上放两个标签，一个是“Score”，一个是“Round”，每局完成都会根据分数和局数进行变化。</p>
+<li><p>代码组织–类的粒度，变量合适的名字，Xcode项目中合适的文件分组。</p>
 </li>
-<li><p>在窗体上放一个滑块，值域在1..100之间。</p>
+<li><p>storyboard的使用（如果你能同时使用storyboard和代码进行用户界面编写会加分）</p>
 </li>
-<li><p>当用户点击“Hit Me”按钮时，计算滑块值。</p>
+<li><p>CocoaPds 使用。</p>
 </li>
-<li><p>上方放置一个目标值标签，每局随机生成一个数值作为目标值。</p>
+<li><p>简单的单元测试。</p>
 </li>
-<li><p>比较目标值和滑块值，然后计算分数，点击按钮后弹出提示，告诉用户分数。</p>
-</li>
-<li><p>放置重玩按钮，点击后清空分数和局数，从新计算。</p>
+<li><p>扩展库的使用（比如Github上的一些开源库，实际工作中确实经常用到这些库。）</p>
 </li>
 </ul>
-<p>当前面的一切完成后，开始今天的第一部分，快速建立应用模型。</p>
-<p>我们来开始做第一步： 新建一个程序BullsEye</p>
-<img src="/images/2014/iosapp/20141016-1@2x.png">
-<img src="/images/2014/iosapp/20141016-2@2x.png">
-<img src="/images/2014/iosapp/20141016-3@2x.png">
-<img src="/images/2014/iosapp/20141016-4@2x.png">
-<img src="/images/2014/iosapp/20141016-5@2x.png">
+<p>当然，所有的一切都取决公司和你工作需要的内容，但是这些技能基本就能让你适应基本的初级iOS</p>
+<p>开发人员职位。</p>
+<p>OK，现在你有一个漂亮，闪闪发亮的app了，下一步骤是：</p>
+<p>###8. 把你的app发布到商店</p>
+<img src="/images/2015/07/10steps/ios8.jpeg">
+<p>OK，首先必须要声明一下：这一步是可选的，因为要做这一步，你必须需要一个每年99$的 iOS 开发</p>
+<p>账号，而这笔花费对你的app将是一个大的挑战。</p>
+<p>你有没有app在应用商店上架，是大多数公司给你简历加分的重要标准。</p>
+<p>在应用商店中有app说明你懂得发布应用的流程，Apple 对app的限制是什么？除了app本身还需要什么<br>（说明，关键字，截图，说明视频）等等。</p>
+<p>你不必非得做这个步骤，但是我强烈建议你完成。(我在应用商店的app帮助我找到了第一个工作。)</p>
+<p>###9. 上传你的app到Github</p>
+<img src="/images/2015/07/10steps/ios9.jpeg">
+<p>GitHub 是一个以代码分享为主的社交平台(第二貌似是Bitbucket)</p>
+<p>在这里，你可以上传你的代码，可以查看别人的代码，你也可以给开源项目贡献代码。它是如此广泛</p>
+<p>的被使用，甚至如果你是个人开发者也能从中获益。更好的组织代码和更好的备份代码。</p>
+<p>为什么要上传代码？好吧，是为了给你未来的雇主查看。</p>
+<p>千万不要用Email发送代码，我们又不是在90年代。</p>
+<p>###10. 联系你想工作的公司</p>
+<img src="/images/2015/07/10steps/ios10.jpeg">
+<p>现在你准备开始作为iOS开发者的第一份工作了，重要的是你已经有了获取第一份工作的技能。</p>
+<p>当你做到这一点时，剩下的就看命运了。</p>
+<p>####所以，准备好简历，找一家好公司，去开发一些牛逼的app吧。</p>
+<p>假如你现在有了开发技能，在你开始找工作之前，想作为一个个人开发者，但是不知道想做什么样</p>
+<p>的app，想要寻找一些灵感，来订阅我的<a href="http://iosappsweekly.com/" target="_blank" rel="external">iOS应用和游戏</a>新闻吧。</p>
+<p>主要是我打理，这里有iOS开发者的各种app。</p>
+<p>如果已经在应用商店里有了非常酷的app，你可以在 <a href="https://twitter.com/pawel_bialecki" target="_blank" rel="external">Twitter</a> 上给我发消息，</p>
+<p>或许下次的推荐里就会有你的app出现。</p>
 <hr>
+<h2 id="此文为翻译文章-原文地址"><a href="#此文为翻译文章-原文地址" class="headerlink" title="此文为翻译文章 原文地址"></a>此文为翻译文章 <a href="https://medium.com/ios-os-x-development/10-steps-to-become-a-professional-ios-developer-11b82b6aea4c" target="_blank" rel="external">原文地址</a></h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/01/wave-us-company-to-china/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/01/wave-us-company-to-china/" itemprop="url">
+                  一大波美国互联网公司成功登陆中国--它想要啥就给它啥
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-01T06:30:15+08:00">
+                2015-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/01/wave-us-company-to-china/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/07/01/wave-us-company-to-china/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一大波，确实，是一大波。</p>
+<p>2009年，Facebook 发现它被中国墙在外面了，同年twitter也被封锁。</p>
+<p>2010年，Google 在一次政府hack行为之后也从中国大陆撤出了搜索服务。</p>
+<p>北京，在给这些牛逼的美国互联网公司发出一个强烈的信号：想玩就按我的规则来玩，要么就别玩。</p>
+<p>自从 Google 退出之后，这三家公司一直没有回归的迹象。但是近些年，一些其他美国互联网公司</p>
+<p>在中国貌似已经取得了一定的成功–至少目前看来比它们前面那三家公司安全。</p>
+<p>方法很简单–公司交出数据和控制权，中国政府交给你进入市场的机会。</p>
+<p>中国市场研究集团的首席告诉 Quartz: 如果你想在中国发展互联网商业，就必需</p>
+<p>要把中国政府伺候舒服了，哪怕是内容审查和数据获取权利。</p>
+<h3 id="大象笔记-Evernote"><a href="#大象笔记-Evernote" class="headerlink" title="大象笔记 Evernote"></a>大象笔记 Evernote</h3><p>2o12年，这家位于加利福尼亚的笔记软件公司 Evernote，宣布他们将为中国用户一个独立的产品。</p>
+<p>公司配备了一个独立自主的本地团队来运营中国产品–印象笔记。并把他们自己的大象logo放上去。</p>
+<p>公司为印象笔记启用了单独的API以和国际版的Evernote区别开，包括社交分享功能，本地支付服务，</p>
+<p>和中国版的帮助界面。</p>
+<p>并且 Evernote 向中国政府屈服，公司CEO Phil Libin 在 2012 年 6 月的一篇博客中声明：</p>
+<p>印象笔记的用户数据存储在中国服务器上，以便当局能够有权获取。国际版Evernote的数据存储在</p>
+<p>加州服务器。</p>
+<p>中国政府从公司的一直以来的条款中移除了相矛盾的内容：这里的内容：与我们相关的事情，</p>
+<p>我们反对的事情，和我们做的每一个决定都息息相关的事情–就是说用户的数据就是 个人的，</p>
+<p>受保护的，自由的。</p>
+<p>这些战略部署是至少在用户数量方面是卓有成效的，2014年11月，Libin 宣布，印象笔记在中国已有</p>
+<p> 1150万用户，成为继美国之后的第二大市场。</p>
+<p>2015年1月，因为香港的雨伞行动，迫于政府的新的要求，公司停止了公开分享功能。</p>
+<h3 id="领英-LinkedIn的中国技巧"><a href="#领英-LinkedIn的中国技巧" class="headerlink" title="领英  LinkedIn的中国技巧"></a>领英  LinkedIn的中国技巧</h3><p>LinkedIn ,一家面向工作的社交网络公司，也同样同意在中国接受内容审查！</p>
+<p>从2014年2月，LinkedIn像Evernote一样，建立一个单独的中国版网站，开始在中国服务器上存储</p>
+<p>用户数据，不久，该公司就面临了严重的公关危机，澳大利亚记者 Fergus Ryan 发现，在中国能够对</p>
+<p>国外数据进行内容审核。LinkedIn 不久就改变了政策，中国只能对来自中国的用户数据进行审核。</p>
+<p>LinkedIn CEO Jeff Wiener 接受华尔街日报采访时坦言：接收审核是公司发展的一个折中方法，</p>
+<p>我们坚决支持言论自由，反对审查制度。但是如果我们想要在我们的会员数量上有所增加，就必须向</p>
+<p>这种制度屈服。</p>
+<p>这种策略也明显有成效，2014年6月，公司宣布，亚太地区收入从64分增长到 460 万美元，</p>
+<p>其中大部分来自中国。</p>
+<h3 id="Uber-推动社会稳定"><a href="#Uber-推动社会稳定" class="headerlink" title="Uber 推动社会稳定"></a>Uber 推动社会稳定</h3><p>Uber 貌似在中国的汹涌的波涛中顺风顺水，尽管最近有些因为它的外国资质和引起的一些抗议。</p>
+<p>在Uber进入中国不到一年的时间里，CEO Travis Kalanick 宣布，中国每日的用车量达到</p>
+<p>1 million，尽管有些人认为这个数字有些虚高。最近Uber在国内找到了一个重量级的投资者和</p>
+<p>合作伙伴–百度，将会投资10亿用来加快中国的扩张。</p>
+<p>Uber与其他的互联网公司不太一样的是，它对当地的经济有直接的影响。在当地，Uber让出租车司机</p>
+<p>失业，但是给另外的人创造了更多的就业机会，使得它远远超过了LinkedIn 和 Evernote，</p>
+<p>至少在争论的级别上更接近 Google  和 Facebook。</p>
+<p>在中国本地层面，Uber 正在其他市场积极部署，完全忽视晃动的拳头，政府镇压，和要求离境的呼声。</p>
+<p>尽管看起来态度傲慢，但是Uber已经明确表态在对待问题上和政府保持统一的战线–中国政府表述</p>
+<p>的社会稳定。</p>
+<p>当中国的两个南方城市，杭州和广州爆发支持hailing公司的抗议时，Uber 公司发表了反对示威游行</p>
+<p>的声明。</p>
+<p>它也曾被报道跟踪司机的GPS信息，告诫司机如果他们接近这些暴乱城市，就将会被公司开除。如果政府</p>
+<p>方面指责Uber推动暴乱，Uber公司就能够把上面这些拿出来作为证明表明自己的立场！</p>
+<p>这与Uber公司在美国的风格大相径庭，在美国，Uber公司不停的鼓励旅客和司机去游行集会以获取更</p>
+<p>多的利益。</p>
+<p>Uber，Evernote，LinkedIn， 都在中国存储用户数据，也就是说中国政府可能很容易就能获取公司</p>
+<p>用户和司机的动向。比如Uber，至少中国版的个人隐私条款和美国的个人隐私条款有很大区别，这也导</p>
+<p>致了大量的批评。</p>
+<h3 id="理想和现实"><a href="#理想和现实" class="headerlink" title="理想和现实"></a>理想和现实</h3><p>Evernote，Uber 和 LinkedIn 这样的公司，就该为同意中国政府获取用户数据和内容审核而羞愧吗？</p>
+<p>现在，这种问题的质疑声已经越来越少了。像 Google 和 Facebook 这样的被中国政府关在门外的</p>
+<p>互联网巨头也在想办法敲开中国市场的大门了。Facebook 被报道已经在北京建立了一家办公室，</p>
+<p>意在开发一个面向用户的产品;同时，Google 也有传言说将会开发一个中国版应用商店，不必通过</p>
+<p>它们的搜索引擎就能提供给用户使用。</p>
+<p>Cavender 说，Google 决定建立一个标准，有效的把自己锁在市场之外，但是中国市场对公司的发展</p>
+<p>和长期战略措施有着重要的意义。</p>
+<p>审查监控防火墙的隐藏发言人，Charlie Smith相信，大多数公司就算不把自己处于因屈从于中国的</p>
+<p>审查制度而丧失道德底线的地步，也同样能够从中国市场赚到钱。他特别指出Twitter公司作为其他</p>
+<p>公司从中国市场赚钱的榜样，Twitter公司以对中国商业卖广告位，而避免了社交网络审查而造成的</p>
+<p>道德沦丧。</p>
+<p>它们认识到中国的审查制度，但是他们不能到那种严格的自我审核的制度平台下，或许他能，但是他</p>
+<p>决定不过这个整天审查得日子，但是在中国，他们举办会议，让中国广告商在Twitter上打广告。</p>
+<p>这非常棒。</p>
+<p>Smith 认为，LinkedIn 和 Evernote 给其他想要在中东读取赚钱的互联网公司起了一个危险的开头。</p>
+<p>更多的美国公司将会认为把中国作为第二个信息处理中心会很好。</p>
+<hr>
+<p>此文为翻译文章，<a href="http://qz.com/435764/a-new-wave-of-us-internet-companies-is-succeeding-in-china-by-giving-the-government-what-it-wants/" target="_blank" rel="external">原文地址</a></p>
+<hr>
+<p>个人原创，转载请注明出处：<a href="https://www.github.com/googlegis" target="_blank" rel="external">GitHub</a></p>
 
           
         
@@ -1231,7 +1961,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/10/04/simple-table-view-error/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/27/ios-developer-eleven-sites/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1253,8 +1983,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/10/04/simple-table-view-error/" itemprop="url">
-                  表格视图控制器容易犯的一个小错误
+                <a class="post-title-link" href="/2015/06/27/ios-developer-eleven-sites/" itemprop="url">
+                  iOS 开发人员应该去的11个牛逼🐂的网站
                 </a>
               
             
@@ -1270,8 +2000,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-04T17:19:24+08:00">
-                2014-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-27T16:37:56+08:00">
+                2015-06-27
               </time>
             
 
@@ -1293,8 +2023,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
                   </a>
                 </span>
 
@@ -1311,9 +2041,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/10/04/simple-table-view-error/#comments" itemprop="discussionUrl">
+                <a href="/2015/06/27/ios-developer-eleven-sites/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/10/04/simple-table-view-error/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/06/27/ios-developer-eleven-sites/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1340,11 +2070,66 @@
       
         
           
-            <p>“Failed to instantiate the default view controller for UIMainStoryboardFile ‘Main’ - perhaps the designated entry point is not set?</p>
-<p>如果你是在做表格视图，然后你刚刚删除了Main.storyboard 上的viewControl，然后添加了  Table View Controller 之后显示这个错误，很显然，大家都犯了个错误，就是<br>没有 勾选 Is initial View Control这个选项。 勾上，就OK了。</p>
-<img src="/images/2014/2014100401.png">
+            <p>想要变的强大，我相信必须不停的学习，尽早适应新的技术和工具。除了 <a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">Apple官方文档</a></p>
+<p>外，下面是包含了大量的能够让我们提高的文章和资源的几个网站。</p>
+<p>首先我们来看几个原创博客：</p>
+<p>####<a href="http://www.objc.io/" target="_blank" rel="external">objc.io</a></p>
+<p>这是一个由全世界iOS工程师来进行每月更新的博客，尤其擅长针对某一专题的高质量和高深度的</p>
+<p>文章分析，同时提供<a href="https://itunes.apple.com/hk/app/objc.io-best-practices-advanced/id683718429?mt=8" target="_blank" rel="external">newsstand iPad app</a>订阅更新。由 <a href="https://twitter.com/chriseidhof" target="_blank" rel="external">Chris Eidhof</a>，<a href="https://twitter.com/danielboedewadt" target="_blank" rel="external">Daniel Eggert</a>，</p>
+<p>和 <a href="https://twitter.com/floriankugler" target="_blank" rel="external">Folrian Kugler</a> 创建。</p>
+<p>####<a href="http://subjc.com/" target="_blank" rel="external">Subjective-C</a></p>
+<p>这是一个以对创新图案的解析和重组，以及他们在知名app上的UI而最近十分火的网站，同时，</p>
+<p>他们对实验性项目提供程序文章和代码库。由 <a href="https://twitter.com/sampage" target="_blank" rel="external">Sam Page</a>主编。</p>
+<p>遗憾的是作者决定暂停对网站的更新，但是一些旧的文章还是很好的。😢</p>
+<p>####<a href="http://nshipster.com/" target="_blank" rel="external">NSHipster</a></p>
+<p>对类用示例代码进行深度解析的网站，主要讨论代码样式和对最新类的使用和实现，由发布了</p>
+<p><a href="http://afnetworking.com/" target="_blank" rel="external">AFNetworking</a> 的 <a href="http://mattt.me/" target="_blank" rel="external">Matt Thompson</a> 创建，现在由 <a href="http://twitter.com/@nnnnnnnn" target="_blank" rel="external">Nate Cook</a> 负责管理。</p>
+<p>####<a href="http://petersteinberger.com/" target="_blank" rel="external">Peter Steinberger</a></p>
+<p>是已经被 Dropbox 和 Evernote等大牌公司使用的最流行的<a href="https://pspdfkit.com/" target="_blank" rel="external">商业pdfiOS库</a>作者的个人博客，</p>
+<p>包含大量疯狂的破解内容和调试资源可以学习和在开发中应用。</p>
+<p>####<a href="http://oleb.net/" target="_blank" rel="external">Ole Begemann</a></p>
+<p>博客主要集中在个人开发经验分享，对代码样式和API设计的讨论，偶尔披露一些Apple内部自己</p>
+<p>使用的有趣的私有类。</p>
+<p>####<a href="http://floriankugler.com/" target="_blank" rel="external">Florian Kugler</a></p>
+<p>objc.io 作者的个人网站，你可以发现大量的性能检测和讨论的文章，包括利用多线程在UI界面</p>
+<p>写入Core Data数据。</p>
+<p>####<a href="https://www.mikeash.com/pyblog/" target="_blank" rel="external">NSBlog</a></p>
+<p>以有趣的问答格式编写，包含大量包括Objective-C在内的深度问题，如果你是在重建如NSObject</p>
+<p>类方面有问题的开发者，请问 <a href="https://www.mikeash.com/" target="_blank" rel="external">Mike Ash</a></p>
+<p>####<a href="http://cocoa.tumblr.com/" target="_blank" rel="external">Cocoa</a></p>
+<p>随机但有效的使用了一些Tumblr上的iOS开发者博客和iOS开发组中信息。</p>
 <hr>
-
+<p>下面是一些好的信息博客网站</p>
+<p>####<a href="http://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a></p>
+<p>2011年创建的周更新订阅网站，已经超过20000订阅者。帮助搜集网络上一些有价值的iOS 文章。</p>
+<p>同时提供 Safari 通知。 由 <a href="http://twitter.com/daveverwer" target="_blank" rel="external">Dave Verwer</a>创建。</p>
+<p>####<a href="http://iosdevelopertips.com/" target="_blank" rel="external">iOS Developer Tips</a></p>
+<p>2008年开盘的第一批 iOS 每日订阅源，内容非常广泛，包括开发提示，UX，泄密，个人经验和故事</p>
+<p>等等，由 <a href="https://twitter.com/JohnMuchow" target="_blank" rel="external">John Muchow</a>打理。</p>
+<p>####<a href="http://ios-goodies.com/" target="_blank" rel="external">iOS Goodies</a></p>
+<p>相当新的 iOS 邮件订阅站点，内容包括文章，控件/工具、商业、UI 和 各种类型媒体文件。</p>
+<p>由 <a href="http://ios-goodies.com/mytwitter" target="_blank" rel="external">Rui Peres</a> 和 <a href="http://ios-goodies.com/tiagotwitter" target="_blank" rel="external">Tiago Almedia</a> 负责每周更新。</p>
+<hr>
+<p>还有两个全网站</p>
+<p>####<a href="https://designcode.io/" target="_blank" rel="external">Desing+Code</a></p>
+<p>我最近经常在这个网站上写教程、设计和原型，包括一步一步的截屏演示，图片资源和项目实例。</p>
+<p>由 <a href="http://twitter.com/@mengto" target="_blank" rel="external">Meng To</a>创建，个人认为他有谜一样的经历。</p>
+<p>####<a href="http://www.appcoda.com/" target="_blank" rel="external">AppCode</a></p>
+<p>由我香港的一位朋友创建，他目前已经辞职全职处理这个网站，包括在线的付费下载文章，主要</p>
+<p>集中在新的API和框架实现上，可以参见 <a href="http://twitter.com/@simonng" target="_blank" rel="external">Simon Ng</a></p>
+<hr>
+<p>添加两个值得订阅的个人原创博客</p>
+<p>####<a href="http://www.merowing.info/" target="_blank" rel="external">Krzysztof Zabłocki</a></p>
+<p>在代码构架、工具使用、Xcode提示方面有用的提示。我们能够从这些高手的文章中学到很多！</p>
+<p>####<a href="http://iosdevtips.co/" target="_blank" rel="external">iOS Development tips</a></p>
+<p>一个相当新的博客，在Xcode 和 APIs 中有效率的简短提示，就算你已经知道了也值得一看，</p>
+<p>由<a href="https://twitter.com/@r0unak" target="_blank" rel="external">Rounak Jain</a>编写。</p>
+<hr>
+<p>一个人的学习时间是有限的，所以我们必须谨慎而且聪明的选择我们的信息源。</p>
+<p>   The better you read, the better you produce.</p>
+<p>   The more you read, the less you produce.</p>
+<hr>
+<h2 id="此文为翻译文章，原文地址"><a href="#此文为翻译文章，原文地址" class="headerlink" title="此文为翻译文章，原文地址"></a>此文为翻译文章，<a href="https://medium.com/ios-apprentice/11-insanely-great-ios-developers-sites-95686a523ea8" target="_blank" rel="external">原文地址</a></h2>
           
         
       
@@ -1387,7 +2172,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/31/ios-mvc-vs－girls/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/26/support-iphone6-and-plus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1409,8 +2194,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/08/31/ios-mvc-vs－girls/" itemprop="url">
-                  iOS中MVC的理解
+                <a class="post-title-link" href="/2015/06/26/support-iphone6-and-plus/" itemprop="url">
+                  Swift 2.0 纯学习之旅－6.支持iPhone6 and others
                 </a>
               
             
@@ -1426,8 +2211,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-31T11:18:00+08:00">
-                2014-08-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-26T06:30:15+08:00">
+                2015-06-26
               </time>
             
 
@@ -1449,8 +2234,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
                   </a>
                 </span>
 
@@ -1467,9 +2252,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/08/31/ios-mvc-vs－girls/#comments" itemprop="discussionUrl">
+                <a href="/2015/06/26/support-iphone6-and-plus/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/31/ios-mvc-vs－girls/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/06/26/support-iphone6-and-plus/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1496,512 +2281,48 @@
       
         
           
-            <p>A女善吹拉弹唱，B女善诗词歌赋，C女善环肥燕瘦，D女善唇红齿白。分别取名为春香，夏香，秋香，冬香。想要听曲，直接找春香唱曲；想诵读诗词，直接找夏香谈遣词造句；想要体形优美，直接找秋香金莲可握；想要面容娇美，直接找冬香闭月羞花。</p>
-<p>这就是iOS开发中control－IBoutlet－Event 中的关系，ABCD指不同control不同属性和用途；春香、夏香、秋香、冬香指IBOutlet对应的名称；唱曲、诵读、金莲、闭羞就是Event事件了。好一个MVC。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/31/ios-Thread-1-signal－sigabrt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/31/ios-Thread-1-signal－sigabrt/" itemprop="url">
-                  iOS开发中的 Thread 1:signal SIGABRT
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-31T07:18:00+08:00">
-                2014-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/31/ios-Thread-1-signal－sigabrt/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/31/ios-Thread-1-signal－sigabrt/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Thread 1:signal SIGABRT</p>
-<p>我擦，又一个错误。❌</p>
-<p>做一个小测试，出来这个错误。</p>
-<p>Google，有很多种解释。其中很多都是说，其它地方的 错误，引起此类血案，但是具体情况具体对待，等于没说。</p>
-<pre><code>1.tap on the breakpoint tab (the 6th tab over)
-2.tap on the + button in the bottom left of the window
-3.tap &apos;add exception breakpoint&apos;
-4.tap &apos;done&apos; on the popup
-</code></pre><p>没有找到对应的方法，然后查看output区域，有这样一个错误提示：</p>
-<pre><code>this class is not key value coding-compliant for the key ＊＊＊
-</code></pre><p>大概意思就是没有找到这个key对应的代码编译信息。</p>
-<p>再根据这个提示Google，</p>
-<p><a href="http://stackoverflow.com/questions/3088059/this-class-is-not-key-value-coding-compliant-for-the-key" target="_blank" rel="external">http://stackoverflow.com/questions/3088059/this-class-is-not-key-value-coding-compliant-for-the-key</a></p>
-<p>这里有个答案写到：</p>
-<pre><code>1. Select the object in IB and go to the &apos;Connections Inspector&apos;.
-2. Under &apos;Referencing Outlets&apos; make sure that your object isn&apos;t still connected to the old property name... if it is, click the small &apos;x&apos; to delete the reference and build again.
-</code></pre><p>解决之，问题就是我的label定义了两次IBOutlet，然后删除的时候只删除了代码，但是control对应的outlet还存在，有两个outlet，但是其中一个已经不存在对应的代码了。所以运行时引起错误了。</p>
-<p>奇怪的是，xcode检测不出来，一个outlet没有定义属性代码吗？ 为什么？</p>
-<p>或许我的就是标题错误中的一种。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/30/ios-simulator-library-logs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/30/ios-simulator-library-logs/" itemprop="url">
-                  ios simulator提示Logs文件在资源库中已经存在
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-30T22:18:00+08:00">
-                2014-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/30/ios-simulator-library-logs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/30/ios-simulator-library-logs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>屋漏偏逢连阴雨</p>
-<p>学习iOS的开发速度本来就很慢了，结果还是遇到问题重重。</p>
-<p>今天安装了Xcode6beta6，然后又改了用户名文件夹，然后在xcode中运行simulator时就出现这里这个问题，原问题已经解决了，没有再出现，所以也没有办法截图了。</p>
-<p>大概意思就是 Logs 这个文件已经在 资源库中存在了，想要继续，要么删除文件，要么另外命名。</p>
-<p>按照提示，google，没有信息；Bing，没有信息。我想可能是因为重新命名了用户文件夹的问题，所以把xcode卸载重新安装了一遍，问题依然存在。</p>
-<p>我想可能是simulator的问题，想直接运行一个simulator，然后看是什么情况，结果运行simulator之后，点击 菜单 iOS simulator－－》 Reset Content and Settings…  之后，貌似可以运行了。看来这个是重新设置simulator的菜单。</p>
-<p>原因可能是Yosemit 的beta版本＋Xcode的beta版本＋修改用户文件夹名等综合因素引起的，究竟哪个是致命因素，不得而知。</p>
-<p>不过解决了总算是好事。 继续学习去。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/27/how-to-change-the-path-variable-in-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/27/how-to-change-the-path-variable-in-mac/" itemprop="url">
-                  如何在mac下修改path中的环境变量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-27T10:28:21+08:00">
-                2014-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/27/how-to-change-the-path-variable-in-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/27/how-to-change-the-path-variable-in-mac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>How To Edit Your PATH Environment Variables On Mac OS X</p>
-<p>If you are new to Mac OS X, you may need to know how to edit your PATH. The good news is that this is an easy task on Mac OS X.</p>
-<p>The recommended way is by editing your .bash_profile file. This file is read and the commands in it executed by Bash every time you log in to the system. The best part is that this file is specific to your user so you won’t affect other users on the same system by changing it.</p>
-<p>Step 1: Open up a Terminal window (this is in your Applications/Utilites folder by default)</p>
-<p>Step 2: Enter the follow commands:</p>
-<p>touch ~/.bash_profile; open ~/.bash_profile</p>
-<p>This will open the .bash_profile file in Text Edit (the default text editor included on your system). The file allows you to customize the environment your user runs in.</p>
-<p>Step 3: Add the following line to the end of the file adding whatever additional directory you want in your path:</p>
-<p>export PATH=”$HOME/.rbenv/bin:$PATH”</p>
-<p>That example would add ~/.rbenv to the PATH. The $PATH part is important as it appends the existing PATH to preserve it in the new value.</p>
-<p>Step 4: Save the .bash_profile file and Quit (Command + Q) Text Edit.</p>
-<p>Step 5: Force the .bash_profile to execute. This loads the values immediately without having to reboot. In your Terminal window, run the following command.</p>
-<p>source ~/.bash_profile</p>
-<p>That’s it! Now you know how to edit the PATH on your Mac OS X computer system. You can confirm the new path by opening a new Terminal windows and running:</p>
-<p>echo $PATH</p>
-<p>You should now see the values you want in your PATH.</p>
-<p>[Updated 2/10/2012] The instructions now use the .bash_profile method of editing your PATH. This is preferred as it keeps the changes specific to your user. I also updated the instructions to use Text Edit instead of vim so it is easier for a beginner.</p>
-<hr>
+            <h3 id="支持iPhone6"><a href="#支持iPhone6" class="headerlink" title="支持iPhone6"></a>支持iPhone6</h3><p>iPhone6 系列确实是开发人员的噩梦，比如你看这个。</p>
+<img src="/images/2015/06/newproject/QQ20150626-1.png">
+<p>要想应用能够支持 iPhone6，首先必须删除 LauchScreen，也就是 LaunchSCreen.xib,在项目导航</p>
+<p>栏中选中该文件，Delete 删除， 当询问的时候，选择 Move to Trash。</p>
+<img src="/images/2015/06/newproject/QQ20150626-2.png">
+<img src="/images/2015/06/newproject/QQ20150626-3.png">
+<p>只是删除文件还不行，要让项目知道，我们在启动的时候不再需要启动界面了！</p>
+<img src="/images/2015/06/newproject/QQ20150626-4.png">
+<p>项目导航栏，选中 BullsEye 文件夹，右键，Add Files to “BullsEye”，</p>
+<img src="/images/2015/06/newproject/QQ20150626-6.png">
+<p>从Launch Image文件夹中选择 Default@2x.png 和 Default-568h@2x.png。</p>
+<p>勾选 Copy items if needed.点击 Add ,把文件添加到项目中。</p>
+<img src="/images/2015/06/newproject/QQ20150626-7.png">
+<p>现在在运行测试，iPhone 6 系列是不是已经正常显示了呢！</p>
+<img src="/images/2015/06/newproject/QQ20150626-8.png">
+<h3 id="淡化特效"><a href="#淡化特效" class="headerlink" title="淡化特效"></a>淡化特效</h3><p>选中ViewController.swift, class上面加入引用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> QuartzCore</div></pre></td></tr></table></figure>
+<p>修改 startOver() 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@IBAction func startOver()&#123;</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">  let transition = CATransition()</div><div class="line"></div><div class="line">  transition.type = kCATransitionFade</div><div class="line"></div><div class="line">  transition.duration = 1</div><div class="line"></div><div class="line">  transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)</div><div class="line"></div><div class="line">  view.layer.addAnimation(transition,forKey:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>打开 Images.xcassets，选择 AppIcon：</p>
+<p>在 Finder 中选择 Icon 文件夹中的 icon-58.png,鼠标拖动到 29pt中 2x 格子里。将</p>
+<p>icon-87.png 拖到到 29pt 的 3x 格子里。将 Icon-80.png 拖到 40pt 的2x格子里，</p>
+<p>将 Icon-120.png 拖到 40pt 得 3x 格子里。将 Icon-120.png 拖到 60pt 的 2x 格子里，</p>
+<p>将 Icon-180.png 拖到 60pt 的 3x 格子里。</p>
+<img src="/images/2015/06/newproject/QQ20150626-9.png">
+<img src="/images/2015/06/newproject/QQ20150626-10.png">
+<p>打开 Attributes inspector, 选中  iPad iOS 7 and later Sizes.</p>
+<img src="/images/2015/06/newproject/QQ20150626-13.png">
+<p>根据 pt 的倍数添加对应的 png 图片到对应的格子里。填完之后应如下图：</p>
+<img src="/images/2015/06/newproject/QQ20150626-11.png">
+<p>完成之后，运行程序，然后切换到 Home 上，可以看到图标。</p>
+<img src="/images/2015/06/newproject/QQ20150626-12.png">
+<pre><code>Icon-1024.png
+</code></pre><h3 id="显示名称"><a href="#显示名称" class="headerlink" title="显示名称"></a>显示名称</h3><p>应用程序名称为 BullsEye，但是你想在Icon上显示 Bull’s Eye。 该如何做呢？</p>
+<p>导航栏选择项目下的Supporting Files 中的 Info.plist。</p>
+<p>Bundle name 是项目名称， 而 Bundle display name 则是可以填写任何你想要的名字。</p>
+<p>如 Bull’s Eye.</p>
+<img src="/images/2015/06/newproject/QQ20150626-14.png">
+<img src="/images/2015/06/newproject/QQ20150626-15.png">
+<h3 id="真机测试。"><a href="#真机测试。" class="headerlink" title="真机测试。"></a>真机测试。</h3><pre><code>自从有了Xcode7之后，就可以直接在真机上部署程序测试了，不用像以前那样
+注册为交费会员然后再下载证书才能部署了。
+</code></pre><hr>
 
           
         
@@ -2040,7 +2361,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2085,7 +2406,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">156</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2096,7 +2417,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2107,7 +2428,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

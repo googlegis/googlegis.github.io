@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/09/could-not-find-developer-disk-image/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/06/the-files-struct-and-the-common-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -321,8 +321,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/09/could-not-find-developer-disk-image/" itemprop="url">
-                  could not find developer Disk image
+                <a class="post-title-link" href="/2016/07/06/the-files-struct-and-the-common-config/" itemprop="url">
+                  基本配置和 MVC 文件的结构
                 </a>
               
             
@@ -338,8 +338,797 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-09T20:53:35+08:00">
-                2015-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T19:45:54+08:00">
+                2016-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/06/the-files-struct-and-the-common-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/06/the-files-struct-and-the-common-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一章主要介绍一些文件结构和基本配置</p>
+<ol>
+<li>MVC 文件结构。</li>
+</ol>
+<p>因为我们建立的是 MVC 项目，所以，Models-Views-Controllers 的文件夹是</p>
+<p>最明显可见的。 当然这些文件夹都包含了对应的文件和相关内容。</p>
+<img src="/images/2016/0706/QQ20160706-1@2x.png">
+<p>比如：HomeController.cs 文件里就是在 Index 的 Action 中返回 View。</p>
+<img src="/images/2016/0706/QQ20160706-2@2x.png">
+<p>这里是项目中引用的软件包</p>
+<img src="/images/2016/0706/QQ20160706-3@2x.png">
+<p>这里是引用的 .Net 的类库<br><img src="/images/2016/0706/QQ20160706-4@2x.png"></p>
+<p>_Layout.cshtml 文件模版，添加新的 view 时，可以选择以此为模版。</p>
+<p>可以看到这里调用了全局的变量 ViewBag.Title 和 RenderBody 进行渲染body</p>
+<img src="/images/2016/0706/QQ20160706-5@2x.png">
+<p>这里是主页的 body 中的 html 内容。</p>
+<img src="/images/2016/0706/QQ20160706-6@2x.png">
+<p>路由注册</p>
+<img src="/images/2016/0706/QQ20160706-7@2x.png">
+<p>程序启动时的函数，用来注册信息，后面还会有很多信息会写在这里。</p>
+<img src="/images/2016/0706/QQ20160706-8@2x.png">
+<p>项目的引用库配置文件</p>
+<img src="/images/2016/0706/QQ20160706-9@2x.png">
+<p>每次加载一个新的 View 时 都会先运行一次 _ViewState.cshtml ,是为了防止已</p>
+<p>加载的内容影响模版的内容，所以重新加载。</p>
+<img src="/images/2016/0706/QQ20160706-10@2x.png">
+<p>项目的配置信息，对应的 SDK 版本，可以看到支持 Mono 和 .Net 。</p>
+<img src="/images/2016/0706/QQ20160706-11@2x.png">
+<p>项目版本号，所在路径，名称信息：</p>
+<img src="/images/2016/0706/QQ20160706-12@2x.png">
+<p>输出信息：</p>
+<img src="/images/2016/0706/QQ20160706-13@2x.png">
+<p>web 服务信息，Xamarin 使用的 XSP Web Server 作为 web 服务器，就是</p>
+<p>windows 下面的 IIS。</p>
+<img src="/images/2016/0706/QQ20160706-14@2x.png">
+<p>Xamarin 的配置信息。Dark 比较酷！</p>
+<img src="/images/2016/0706/QQ20160706-15@2x.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/05/install-the-xamarin-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/05/install-the-xamarin-on-mac/" itemprop="url">
+                  在 Mac 上安装 Xamarin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-05T14:01:38+08:00">
+                2016-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/05/install-the-xamarin-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/05/install-the-xamarin-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近因为工作的原因，要把已有的 .Net Web 项目进行跨平台开发研究，项目部署</p>
+<p>在 CentOS 上，正好有机会研究一下 Xamarin 的开发，所以决定把这一系列</p>
+<p>的研究过程都记录下来，备忘和分享！</p>
+<p>.Net 的跨平台开发，现在无非是两种方式， 一种是 Mono SDK, 一种是</p>
+<p>Asp.Net Core. 但是 Asp.Net Core 还是太新，只能作为对比，还不敢拿</p>
+<p>来直接作为开发使用。所以，默认使用 Mono。</p>
+<p>Mono 是一个跨平台的 .Net 解决方案，最后被微软收购并进行维护和支持。</p>
+<p>应该说还是有一定的群众基础的。</p>
+<p>在 Linux 系统下推荐的是 MonoDeveloper</p>
+<p><a href="http://www.monodevelop.com" target="_blank" rel="external">http://www.monodevelop.com</a></p>
+<p>在 Windows 和 Mac 系统下推荐的是 Xamarin Studio。</p>
+<p><a href="http://www.monodevelop.com/download/" target="_blank" rel="external">http://www.monodevelop.com/download/</a></p>
+<p>从 Mono-Develop 的官方页面下载的版本是 5.6</p>
+<p>但是从 Xamarin 的官方页面下载的是 6.0</p>
+<p><a href="https://store.xamarin.com/account/my/subscription/downloads" target="_blank" rel="external">https://store.xamarin.com/account/my/subscription/downloads</a></p>
+<p>如果只是开发 Web 页面，只下载 Xamarin Studio 的安装包即可。</p>
+<img src="/images/2016/0705/QQ20160705-0.png">
+<p>然后直接双击安装， 如果没有安装 Mono SDK，会提示要先安装 SDK。当然也可以</p>
+<p>从网站先下载安装 Mono SDK，安装再安装 Xamarin Studio。</p>
+<p><a href="http://www.mono-project.com/download/" target="_blank" rel="external">http://www.mono-project.com/download/</a></p>
+<p>打开 Xamarin Studio，新建 Asp.Net Mvc 项目进行测试。</p>
+<img src="/images/2016/0705/QQ20160705-1@2x.png">
+<img src="/images/2016/0705/QQ20160705-2@2x.png">
+<img src="/images/2016/0705/QQ20160705-3@2x.png">
+<img src="/images/2016/0705/QQ20160705-4@2x.png">
+<img src="/images/2016/0705/QQ20160705-5@2x.png">
+<img src="/images/2016/0705/QQ20160705-6@2x.png">
+<img src="/images/2016/0705/QQ20160705-7@2x.png">
+<img src="/images/2016/0705/QQ20160705-8@2x.png">
+<p>至此，说明 Xamarin Studio 安装成功！</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/17/one-spring-and-another-spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/17/one-spring-and-another-spring/" itemprop="url">
+                  春夏秋冬又一春
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-17T08:04:26+08:00">
+                2016-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/17/one-spring-and-another-spring/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/17/one-spring-and-another-spring/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>二八佳人我绣楼坐，</p>
+<p>朱唇轻点思念我的郎。</p>
+<p>自从那年离家去，</p>
+<p>至今无见归故乡。</p>
+<p>如有郎君身边伴，</p>
+<p>当年哪有武媚娘；</p>
+<p>都说一日夫妻百日恩，</p>
+<p>可知烟筒冒烟也平常。</p>
+<p>郎啊郎，你在哪圪垯逛？</p>
+<p>何日才能回家乡？</p>
+<p>想起我的郎呀泪汪汪，</p>
+<p>你在它乡过得还好吗？</p>
+<p>纵有千般思念情，</p>
+<p>也比你在家受罪强。</p>
+<p>爹让你向南你向北，</p>
+<p>娘让你打狗你撵鸡；</p>
+<p>兄让你向东你向西，</p>
+<p>姊妹都哭你笑嘻嘻；</p>
+<p>你说众人皆醉你独醒，</p>
+<p>我说众人皆凶你是吉。</p>
+<p>别人说你七分罪，</p>
+<p>我独爱你三分囍。</p>
+<p>可是你不该一去不复返，</p>
+<p>劳燕分飞各分离。</p>
+<p>你说要读书立志出头地，</p>
+<p>半夜三更服侍你；</p>
+<p>你说要星星读书好明亮，</p>
+<p>我偷偷摸摸学车胤；</p>
+<p>你说月亮今晚不太圆，</p>
+<p>我买上一屋蜡烛用体己；</p>
+<p>你说要离家前去求名功，</p>
+<p>我打包收拾最积极；</p>
+<p>你说明日踩着晨露走，</p>
+<p>我眼泪滚滚似马匹。</p>
+<p>春夏秋冬又一春，</p>
+<p>年年逢春盼你归。</p>
+<p>不知你到哪里去？</p>
+<p>不知你还记得绣楼的小奴婢？</p>
+<p>不知你功名得到否？</p>
+<p>不知你还记得咱家门朝西？</p>
+<p>不知你银两够用否？</p>
+<p>不知你还记得当年的甜甜蜜蜜？</p>
+<p>不知你是否受得了苦？</p>
+<p>不知你还记得那条大路朝向西？</p>
+<p>不知你是否无盘缠？</p>
+<p>不知你还记得咱家还有小孩提？</p>
+<p>不知你是否无颜回？</p>
+<p>不知道你还记得小奴家对你生死相依？</p>
+<p>不知你形容槁枯否？</p>
+<p>不知你还记得大树下的九月菊？</p>
+<p>奴家念你绣楼依，</p>
+<p>心血成滴杜鹃泣。</p>
+<p>日日思君日日思，</p>
+<p>年年盼君君不回。</p>
+<p>花花世界纵有千般好，</p>
+<p>只是无有家中的小奴婢。</p>
+<p>或言你就是那陈世美，</p>
+<p>或言你就是那断了线的风筝不再归。</p>
+<p>天下总有一条路，</p>
+<p>天下总有一颗心，</p>
+<p>天下总有一个人，</p>
+<p>天下总有一出戏，</p>
+<p>天下总有一郎君，</p>
+<p>天下总有一奴婢，</p>
+<p>天下总有一顿饭，</p>
+<p>天下总有一吃完就散席，</p>
+<p>天下总有一杯酒，</p>
+<p>天下总有一团麻，</p>
+<p>天下总有一瞬间，</p>
+<p>天下总有一条路向西，</p>
+<p>天下总有一个家，</p>
+<p>天下总有一个你，</p>
+<p>天下总有一株草，</p>
+<p>天下总有一枝花，</p>
+<p>天下总有一个阆苑仙葩，</p>
+<p>天下总有一个美玉无瑕，</p>
+<p>天下总有一个水中月，</p>
+<p>天下总有一个镜中花，</p>
+<p>天下总有一个春，</p>
+<p>天下总有一个夏，</p>
+<p>天下总有一个从秋流到冬，</p>
+<p>天下总有一个从春流到夏，</p>
+<p>天下总有一个枉自嗟，</p>
+<p>天下总有一个空牵挂。</p>
+<p>–完–</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/14/how-to-upgrade-git-on-mac/" itemprop="url">
+                  如何升级Mac上的git
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-14T21:24:09+08:00">
+                2016-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/14/how-to-upgrade-git-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/14/how-to-upgrade-git-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。</p>
+<p>我不知道我的电脑上是什么时候安装的，但是可以直接用。</p>
+<p>在 命令行中输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">1.8</span><span class="number">.5</span></div></pre></td></tr></table></figure>
+<p>下面开始升级：</p>
+<p>首先，从官网下载升级包，</p>
+<p>git-2.8.1-intel-universal-mavericks.dmg</p>
+<p>加载后，打开 readme，里面有个卸载的命令，先运行一下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/git/uninstall.sh</div></pre></td></tr></table></figure>
+<p>双击安装包</p>
+<p> git-2.8.1-intel-universal-mavericks.pkg</p>
+<p>一路Next。</p>
+<p>默认安装 Git 到 /usr/local/git (需要输入mac密码赋予权限)</p>
+<p>然后完成安装。</p>
+<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">2.8</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+<p>这样就完成了 git 的生机。</p>
+<p>如果命令行中仍然显示旧的版本号，不要着急，只是程序的路径没有添加到环境变量中。</p>
+<p>打开命令行工具：</p>
+<p>jays-MacBook-Pro:~ jay$ vim ~/.bash_profile</p>
+<p>把下面这行添加到 .bash_profile 文件的后面，</p>
+<p>export PATH=/usr/local/git/bin:$PATH</p>
+<p>保存文件，退出编辑！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</div><div class="line">Executing Terminal bash profile...</div><div class="line"></div><div class="line">jays-MacBook-Pro:~ jay$</div></pre></td></tr></table></figure>
+<p>再验证版本，就会看到最新的升级版本号。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/24/merge-button-disabled-in-xcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/24/merge-button-disabled-in-xcode/" itemprop="url">
+                  在 XCode 中合并代码出现 Merge 按钮灰色Bug
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-24T22:44:38+08:00">
+                2015-12-24
               </time>
             
 
@@ -379,9 +1168,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/07/09/could-not-find-developer-disk-image/#comments" itemprop="discussionUrl">
+                <a href="/2015/12/24/merge-button-disabled-in-xcode/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/09/could-not-find-developer-disk-image/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/12/24/merge-button-disabled-in-xcode/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,17 +1197,8 @@
       
         
           
-            <p>iOS新升级到8.4后，Xcode 7.0 beat版运行程序到真机报错，提示Could not find developer</p>
-<p> disk image，Xcode Device栏处的真机右侧显示“（unavailable）”</p>
-<p>原因是你的Xcode很有可能没有8.4的包！</p>
-<p>解决方法:</p>
-<p>如果你有 Xcode 6.4的话，可以从Xcode 6.4中拷贝8.4(12H141)的文件夹到Xcode 7下</p>
-<p>Xcode 6.4路径为</p>
-<p>/Applications（应用程序）/Xcode（右键显示包内容）/Contents/Developer/Platforms/</p>
-<p>iPhoneOS.platform/DeviceSupport</p>
-<p>Xcode 7.0 beta路径为</p>
-<p>/Applications（应用程序）/Xcode-beta（右键显示包内容）/Contents/Developer/Platforms</p>
-<p>/iPhoneOS.platform/DeviceSupport</p>
+            <p> xCode 貌似有bug， 你打开项目提交过之后，貌似自动修改了某个文件，所以你Merge的时候会</p>
+<p> 判断有文件修改了，不让Merge，你revert一下就可以了！</p>
 <hr>
 
           
@@ -463,7 +1243,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/04/steps-10-to-profession-developer/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/11/is-mac-worth/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -485,8 +1265,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/04/steps-10-to-profession-developer/" itemprop="url">
-                  10步成为专业的iOS开发者
+                <a class="post-title-link" href="/2015/12/11/is-mac-worth/" itemprop="url">
+                  mac 到底值不值这么贵
                 </a>
               
             
@@ -502,8 +1282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-04T08:53:00+08:00">
-                2015-07-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-11T08:31:06+08:00">
+                2015-12-11
               </time>
             
 
@@ -525,8 +1305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
                   </a>
                 </span>
 
@@ -543,9 +1323,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/07/04/steps-10-to-profession-developer/#comments" itemprop="discussionUrl">
+                <a href="/2015/12/11/is-mac-worth/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/04/steps-10-to-profession-developer/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/12/11/is-mac-worth/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -572,516 +1352,20 @@
       
         
           
-            <p>你想在手机应用开发中分一杯羹吗？这是时下最火的技术。 绝对正确的决定。</p>
-<p>应用开发很火，毫无疑问可能在未来几年里也会很火。无论你身在何地，将会有大量的工作机会在等待</p>
-<p>你们。公司在搜寻各个级别的开发人员，小白，菜鸟，中级，高级，专家。这篇文章也适合起步者-</p>
-<p>我将会帮助你作为一个iOS程序员获得第一份工作。</p>
-<h3 id="我为什么要听你的？"><a href="#我为什么要听你的？" class="headerlink" title="我为什么要听你的？"></a>我为什么要听你的？</h3><p>你也许会这么问，是个好问题！听从一个毫无所知的人的错误建议并不是一个好主意。</p>
-<p>我不是一个毫无疑问的真相的源头，甚至我还不是一个经验丰富的iOS开发者-但是我有足够的能力帮助</p>
-<p>你。</p>
-<p>我是从几个非主流的低收入app做起的，但是这些收入却足以够我吃饭和应付账单，以便我能够专心</p>
-<p>在app上，然后我作为高级iOS开发人员加入了一家公司，最终还是辞职，再次完全专心的在我自己的</p>
-<p>应用开发上而不用担心明天。如果我想的话我还是可以回去帮别人打工。(但是不太可能而来，自己</p>
-<p>  当老板的意愿由来已久了！)。</p>
-<p>所以，少说多做，—我们还是来谈谈要想成为一个iOS开发人员都需要做些什么？</p>
-<h3 id="1-如果你还没有Mac和iPhone，那就买个"><a href="#1-如果你还没有Mac和iPhone，那就买个" class="headerlink" title="1. 如果你还没有Mac和iPhone，那就买个"></a>1. 如果你还没有Mac和iPhone，那就买个</h3><img src="/images/2015/07/10steps/ios1.jpeg">
-<p>想要开发iOS，你需要个Mac</p>
-<p>当然也有很多变通的方法(黑苹果或者云端Mac)，但是要正式的告诉你，作为一个iOS开发者，Mac是</p>
-<p>你主要的工作工具，你不必有一个最新最快最贵的，但是你确实需要一个Mac。如果你确实想入手一个</p>
-<p>设备，考虑一下Mac Mini-或许这是性价比最高的一个Mac了。如果你和我一样，应用开发是你的首要</p>
-<p>任务，买个Air吧，它的大屏非常爽。你完全没有必要去买个新的，从eBay买个二手的就OK！</p>
-<h3 id="2-Install-Xcode"><a href="#2-Install-Xcode" class="headerlink" title="2. Install Xcode"></a>2. Install Xcode</h3><img src="/images/2015/07/10steps/ios2.png">
-<p>现在，你有一个闪闪发亮的新Mac(二手Mac你擦干净的也算新的)摆在桌子上了，现在开始安装一些</p>
-<p>用来iOS开发的重要的软件了-XCode。 XCode 是你开发iOS 应用的开发环境(IDE-integrated development</p>
-<p>environment)。你可以从 Mac 应用商店免费下载，或许你现在正在下载。</p>
-<p>在Xcode下，你可以编写代码，调试代码，绘制界面，单元测试以及很多很多其他的事情，你也可以</p>
-<p>使用Xcode上传你的app到应用商店。掌握并熟悉Xcode，这是每个iOS开发者最重要的软件。</p>
-<h3 id="3-学习编程基础-可能是最难的部分"><a href="#3-学习编程基础-可能是最难的部分" class="headerlink" title="3. 学习编程基础(可能是最难的部分)"></a>3. 学习编程基础(可能是最难的部分)</h3><img src="/images/2015/07/10steps/ios3.png">
-<p>现在是最难得部分了，你需要直接编写代码。如果你有其他的编程背景，学些Objective-C(较难)和</p>
-<p>Swift(较容易)不会太难，它们是标准的，面向对象的编程语言。如果你之前的人生中都没有编写过</p>
-<p>一句代码，别担心，这里有两个针对初学者的很不错的资源网站。</p>
-<p>1.<a href="http://rypress.com/tutorials/objective-c/" target="_blank" rel="external">Ry’s Objective-C tutorial</a>–Objective-C 粉丝的老学校，你不必真的去完全掌握</p>
-<p>Objective-C(Swift才是王道),至少要懂得基本语法，能够读写代码。</p>
-<p>2.<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309" target="_blank" rel="external">Swift language guide</a> 这是我们要学的Swift语言的官方文档，Apple出品，必属精品。</p>
-<p>你不必对所有的知识点都有深度的了解，这些会在以后的实际工作经验中接触到，但是你要把自己完全</p>
-<p>沉浸在变量、指针、类、数据类型和递归这些知识的海洋里，它提供给你更进一步学习的环境。</p>
-<h3 id="4-根据教程一步一步写一些不同的app"><a href="#4-根据教程一步一步写一些不同的app" class="headerlink" title="4. 根据教程一步一步写一些不同的app"></a>4. 根据教程一步一步写一些不同的app</h3><img src="/images/2015/07/10steps/ios4.jpeg">
-<p>当你想要做些什么有用的app时，这些网站也许能帮助你。</p>
-<p>1.<a href="http://www.appcoda.com/" target="_blank" rel="external">AppCoda</a>-比较适合初学者，你将会发现很多不同的教程，跟着说明一步一步来，</p>
-<p>确保能够完整的走一遍。</p>
-<p>2.<a href="http://www.raywenderlich.com/" target="_blank" rel="external">Ray Wdnderlick</a>–另外一个有着海量iOS开发教程的网站，一步一步学习是最重要的。</p>
-<p>但是不要只在这些网上教程上来回学习，自己亲自动手做一些app，比如计算器，天气，货币转换，</p>
-<p>音乐app，任何你可以在教程上找到的都可以做。</p>
-<p>跟着这些app教程学习，直到你觉得对Xcode 和 编程语言(Swift) 比较熟悉了。就要开始下面的步骤。</p>
-<p>###5. 编写自己的app</p>
-<img src="/images/2015/07/10steps/ios5.jpeg">
-<p>现在是重点部分了，你需要做一个自己的app将来可以在面试的时候给你未来的雇主演示。</p>
-<p>但是，别紧张，你不必做再做一个Facebook出来，你只是要找一个低级职位，OK？一个你需要从竞争</p>
-<p>对手那里学习，而不是需要你一个需要5年经验的专家。</p>
-<p>所以，冷静下来想一下，你要开发在哪个行业或者领域的app.</p>
-<p>可能你写的是一个使用了网络传输的app，也可能是你使用UIKit设计了一个非常舒服的复杂用户接口。</p>
-<p>或者可能你最擅长的开发是一个音乐或声音播放器。使用这些有趣的知识创建自己的app，主要要一个</p>
-<p>干净、清晰、能够正常工作的代码。</p>
-<p>###6. 同时，尽可能多的学习软件开发技能</p>
-<img src="/images/2015/07/10steps/ios6.jpeg">
-<p>如果你读到这里，你可能不希望去大学再花费几年时间学习计算机科学。好消息是你不必这么做。</p>
-<p>很多计算机科学/编程/软件科学 可能都能在家里在线学习。</p>
-<p>当然，这样肯定是拿不到学位的，但是获得一个iOS开发者的工作不需要这个，参看上面的图片，学习</p>
-<p>这些知识点。我不会给出链接–搜索信息是一个开发者的技巧中最重要的一点。</p>
-<p>开始学习吧，Google 是你的朋友。</p>
-<p>###7. 完成你的app</p>
-<img src="/images/2015/07/10steps/ios7.jpeg">
-<p>在经历了几天，几周，甚至几个月的学习和工作在你的app上，你应该有一个完整的app了，这个app就</p>
-<p>是你的简历，你应该把它当成你最好的项目，这里有一些公司主要看中的几个点：</p>
-<ul>
-<li><p>可以运行的app</p>
-</li>
-<li><p>干净的代码</p>
-</li>
-<li><p>代码组织–类的粒度，变量合适的名字，Xcode项目中合适的文件分组。</p>
-</li>
-<li><p>storyboard的使用（如果你能同时使用storyboard和代码进行用户界面编写会加分）</p>
-</li>
-<li><p>CocoaPds 使用。</p>
-</li>
-<li><p>简单的单元测试。</p>
-</li>
-<li><p>扩展库的使用（比如Github上的一些开源库，实际工作中确实经常用到这些库。）</p>
-</li>
-</ul>
-<p>当然，所有的一切都取决公司和你工作需要的内容，但是这些技能基本就能让你适应基本的初级iOS</p>
-<p>开发人员职位。</p>
-<p>OK，现在你有一个漂亮，闪闪发亮的app了，下一步骤是：</p>
-<p>###8. 把你的app发布到商店</p>
-<img src="/images/2015/07/10steps/ios8.jpeg">
-<p>OK，首先必须要声明一下：这一步是可选的，因为要做这一步，你必须需要一个每年99$的 iOS 开发</p>
-<p>账号，而这笔花费对你的app将是一个大的挑战。</p>
-<p>你有没有app在应用商店上架，是大多数公司给你简历加分的重要标准。</p>
-<p>在应用商店中有app说明你懂得发布应用的流程，Apple 对app的限制是什么？除了app本身还需要什么<br>（说明，关键字，截图，说明视频）等等。</p>
-<p>你不必非得做这个步骤，但是我强烈建议你完成。(我在应用商店的app帮助我找到了第一个工作。)</p>
-<p>###9. 上传你的app到Github</p>
-<img src="/images/2015/07/10steps/ios9.jpeg">
-<p>GitHub 是一个以代码分享为主的社交平台(第二貌似是Bitbucket)</p>
-<p>在这里，你可以上传你的代码，可以查看别人的代码，你也可以给开源项目贡献代码。它是如此广泛</p>
-<p>的被使用，甚至如果你是个人开发者也能从中获益。更好的组织代码和更好的备份代码。</p>
-<p>为什么要上传代码？好吧，是为了给你未来的雇主查看。</p>
-<p>千万不要用Email发送代码，我们又不是在90年代。</p>
-<p>###10. 联系你想工作的公司</p>
-<img src="/images/2015/07/10steps/ios10.jpeg">
-<p>现在你准备开始作为iOS开发者的第一份工作了，重要的是你已经有了获取第一份工作的技能。</p>
-<p>当你做到这一点时，剩下的就看命运了。</p>
-<p>####所以，准备好简历，找一家好公司，去开发一些牛逼的app吧。</p>
-<p>假如你现在有了开发技能，在你开始找工作之前，想作为一个个人开发者，但是不知道想做什么样</p>
-<p>的app，想要寻找一些灵感，来订阅我的<a href="http://iosappsweekly.com/" target="_blank" rel="external">iOS应用和游戏</a>新闻吧。</p>
-<p>主要是我打理，这里有iOS开发者的各种app。</p>
-<p>如果已经在应用商店里有了非常酷的app，你可以在 <a href="https://twitter.com/pawel_bialecki" target="_blank" rel="external">Twitter</a> 上给我发消息，</p>
-<p>或许下次的推荐里就会有你的app出现。</p>
-<hr>
-<h2 id="此文为翻译文章-原文地址"><a href="#此文为翻译文章-原文地址" class="headerlink" title="此文为翻译文章 原文地址"></a>此文为翻译文章 <a href="https://medium.com/ios-os-x-development/10-steps-to-become-a-professional-ios-developer-11b82b6aea4c" target="_blank" rel="external">原文地址</a></h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/27/ios-developer-eleven-sites/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/27/ios-developer-eleven-sites/" itemprop="url">
-                  iOS 开发人员应该去的11个牛逼🐂的网站
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-27T16:37:56+08:00">
-                2015-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/27/ios-developer-eleven-sites/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/27/ios-developer-eleven-sites/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>想要变的强大，我相信必须不停的学习，尽早适应新的技术和工具。除了 <a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">Apple官方文档</a></p>
-<p>外，下面是包含了大量的能够让我们提高的文章和资源的几个网站。</p>
-<p>首先我们来看几个原创博客：</p>
-<p>####<a href="http://www.objc.io/" target="_blank" rel="external">objc.io</a></p>
-<p>这是一个由全世界iOS工程师来进行每月更新的博客，尤其擅长针对某一专题的高质量和高深度的</p>
-<p>文章分析，同时提供<a href="https://itunes.apple.com/hk/app/objc.io-best-practices-advanced/id683718429?mt=8" target="_blank" rel="external">newsstand iPad app</a>订阅更新。由 <a href="https://twitter.com/chriseidhof" target="_blank" rel="external">Chris Eidhof</a>，<a href="https://twitter.com/danielboedewadt" target="_blank" rel="external">Daniel Eggert</a>，</p>
-<p>和 <a href="https://twitter.com/floriankugler" target="_blank" rel="external">Folrian Kugler</a> 创建。</p>
-<p>####<a href="http://subjc.com/" target="_blank" rel="external">Subjective-C</a></p>
-<p>这是一个以对创新图案的解析和重组，以及他们在知名app上的UI而最近十分火的网站，同时，</p>
-<p>他们对实验性项目提供程序文章和代码库。由 <a href="https://twitter.com/sampage" target="_blank" rel="external">Sam Page</a>主编。</p>
-<p>遗憾的是作者决定暂停对网站的更新，但是一些旧的文章还是很好的。😢</p>
-<p>####<a href="http://nshipster.com/" target="_blank" rel="external">NSHipster</a></p>
-<p>对类用示例代码进行深度解析的网站，主要讨论代码样式和对最新类的使用和实现，由发布了</p>
-<p><a href="http://afnetworking.com/" target="_blank" rel="external">AFNetworking</a> 的 <a href="http://mattt.me/" target="_blank" rel="external">Matt Thompson</a> 创建，现在由 <a href="http://twitter.com/@nnnnnnnn" target="_blank" rel="external">Nate Cook</a> 负责管理。</p>
-<p>####<a href="http://petersteinberger.com/" target="_blank" rel="external">Peter Steinberger</a></p>
-<p>是已经被 Dropbox 和 Evernote等大牌公司使用的最流行的<a href="https://pspdfkit.com/" target="_blank" rel="external">商业pdfiOS库</a>作者的个人博客，</p>
-<p>包含大量疯狂的破解内容和调试资源可以学习和在开发中应用。</p>
-<p>####<a href="http://oleb.net/" target="_blank" rel="external">Ole Begemann</a></p>
-<p>博客主要集中在个人开发经验分享，对代码样式和API设计的讨论，偶尔披露一些Apple内部自己</p>
-<p>使用的有趣的私有类。</p>
-<p>####<a href="http://floriankugler.com/" target="_blank" rel="external">Florian Kugler</a></p>
-<p>objc.io 作者的个人网站，你可以发现大量的性能检测和讨论的文章，包括利用多线程在UI界面</p>
-<p>写入Core Data数据。</p>
-<p>####<a href="https://www.mikeash.com/pyblog/" target="_blank" rel="external">NSBlog</a></p>
-<p>以有趣的问答格式编写，包含大量包括Objective-C在内的深度问题，如果你是在重建如NSObject</p>
-<p>类方面有问题的开发者，请问 <a href="https://www.mikeash.com/" target="_blank" rel="external">Mike Ash</a></p>
-<p>####<a href="http://cocoa.tumblr.com/" target="_blank" rel="external">Cocoa</a></p>
-<p>随机但有效的使用了一些Tumblr上的iOS开发者博客和iOS开发组中信息。</p>
-<hr>
-<p>下面是一些好的信息博客网站</p>
-<p>####<a href="http://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a></p>
-<p>2011年创建的周更新订阅网站，已经超过20000订阅者。帮助搜集网络上一些有价值的iOS 文章。</p>
-<p>同时提供 Safari 通知。 由 <a href="http://twitter.com/daveverwer" target="_blank" rel="external">Dave Verwer</a>创建。</p>
-<p>####<a href="http://iosdevelopertips.com/" target="_blank" rel="external">iOS Developer Tips</a></p>
-<p>2008年开盘的第一批 iOS 每日订阅源，内容非常广泛，包括开发提示，UX，泄密，个人经验和故事</p>
-<p>等等，由 <a href="https://twitter.com/JohnMuchow" target="_blank" rel="external">John Muchow</a>打理。</p>
-<p>####<a href="http://ios-goodies.com/" target="_blank" rel="external">iOS Goodies</a></p>
-<p>相当新的 iOS 邮件订阅站点，内容包括文章，控件/工具、商业、UI 和 各种类型媒体文件。</p>
-<p>由 <a href="http://ios-goodies.com/mytwitter" target="_blank" rel="external">Rui Peres</a> 和 <a href="http://ios-goodies.com/tiagotwitter" target="_blank" rel="external">Tiago Almedia</a> 负责每周更新。</p>
-<hr>
-<p>还有两个全网站</p>
-<p>####<a href="https://designcode.io/" target="_blank" rel="external">Desing+Code</a></p>
-<p>我最近经常在这个网站上写教程、设计和原型，包括一步一步的截屏演示，图片资源和项目实例。</p>
-<p>由 <a href="http://twitter.com/@mengto" target="_blank" rel="external">Meng To</a>创建，个人认为他有谜一样的经历。</p>
-<p>####<a href="http://www.appcoda.com/" target="_blank" rel="external">AppCode</a></p>
-<p>由我香港的一位朋友创建，他目前已经辞职全职处理这个网站，包括在线的付费下载文章，主要</p>
-<p>集中在新的API和框架实现上，可以参见 <a href="http://twitter.com/@simonng" target="_blank" rel="external">Simon Ng</a></p>
-<hr>
-<p>添加两个值得订阅的个人原创博客</p>
-<p>####<a href="http://www.merowing.info/" target="_blank" rel="external">Krzysztof Zabłocki</a></p>
-<p>在代码构架、工具使用、Xcode提示方面有用的提示。我们能够从这些高手的文章中学到很多！</p>
-<p>####<a href="http://iosdevtips.co/" target="_blank" rel="external">iOS Development tips</a></p>
-<p>一个相当新的博客，在Xcode 和 APIs 中有效率的简短提示，就算你已经知道了也值得一看，</p>
-<p>由<a href="https://twitter.com/@r0unak" target="_blank" rel="external">Rounak Jain</a>编写。</p>
-<hr>
-<p>一个人的学习时间是有限的，所以我们必须谨慎而且聪明的选择我们的信息源。</p>
-<p>   The better you read, the better you produce.</p>
-<p>   The more you read, the less you produce.</p>
-<hr>
-<h2 id="此文为翻译文章，原文地址"><a href="#此文为翻译文章，原文地址" class="headerlink" title="此文为翻译文章，原文地址"></a>此文为翻译文章，<a href="https://medium.com/ios-apprentice/11-insanely-great-ios-developers-sites-95686a523ea8" target="_blank" rel="external">原文地址</a></h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/26/support-iphone6-and-plus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/26/support-iphone6-and-plus/" itemprop="url">
-                  Swift 2.0 纯学习之旅－6.支持iPhone6 and others
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-26T06:30:15+08:00">
-                2015-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/26/support-iphone6-and-plus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/26/support-iphone6-and-plus/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="支持iPhone6"><a href="#支持iPhone6" class="headerlink" title="支持iPhone6"></a>支持iPhone6</h3><p>iPhone6 系列确实是开发人员的噩梦，比如你看这个。</p>
-<img src="/images/2015/06/newproject/QQ20150626-1.png">
-<p>要想应用能够支持 iPhone6，首先必须删除 LauchScreen，也就是 LaunchSCreen.xib,在项目导航</p>
-<p>栏中选中该文件，Delete 删除， 当询问的时候，选择 Move to Trash。</p>
-<img src="/images/2015/06/newproject/QQ20150626-2.png">
-<img src="/images/2015/06/newproject/QQ20150626-3.png">
-<p>只是删除文件还不行，要让项目知道，我们在启动的时候不再需要启动界面了！</p>
-<img src="/images/2015/06/newproject/QQ20150626-4.png">
-<p>项目导航栏，选中 BullsEye 文件夹，右键，Add Files to “BullsEye”，</p>
-<img src="/images/2015/06/newproject/QQ20150626-6.png">
-<p>从Launch Image文件夹中选择 Default@2x.png 和 Default-568h@2x.png。</p>
-<p>勾选 Copy items if needed.点击 Add ,把文件添加到项目中。</p>
-<img src="/images/2015/06/newproject/QQ20150626-7.png">
-<p>现在在运行测试，iPhone 6 系列是不是已经正常显示了呢！</p>
-<img src="/images/2015/06/newproject/QQ20150626-8.png">
-<h3 id="淡化特效"><a href="#淡化特效" class="headerlink" title="淡化特效"></a>淡化特效</h3><p>选中ViewController.swift, class上面加入引用:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> QuartzCore</div></pre></td></tr></table></figure>
-<p>修改 startOver() 函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@IBAction func startOver()&#123;</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">  let transition = CATransition()</div><div class="line"></div><div class="line">  transition.type = kCATransitionFade</div><div class="line"></div><div class="line">  transition.duration = 1</div><div class="line"></div><div class="line">  transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)</div><div class="line"></div><div class="line">  view.layer.addAnimation(transition,forKey:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>打开 Images.xcassets，选择 AppIcon：</p>
-<p>在 Finder 中选择 Icon 文件夹中的 icon-58.png,鼠标拖动到 29pt中 2x 格子里。将</p>
-<p>icon-87.png 拖到到 29pt 的 3x 格子里。将 Icon-80.png 拖到 40pt 的2x格子里，</p>
-<p>将 Icon-120.png 拖到 40pt 得 3x 格子里。将 Icon-120.png 拖到 60pt 的 2x 格子里，</p>
-<p>将 Icon-180.png 拖到 60pt 的 3x 格子里。</p>
-<img src="/images/2015/06/newproject/QQ20150626-9.png">
-<img src="/images/2015/06/newproject/QQ20150626-10.png">
-<p>打开 Attributes inspector, 选中  iPad iOS 7 and later Sizes.</p>
-<img src="/images/2015/06/newproject/QQ20150626-13.png">
-<p>根据 pt 的倍数添加对应的 png 图片到对应的格子里。填完之后应如下图：</p>
-<img src="/images/2015/06/newproject/QQ20150626-11.png">
-<p>完成之后，运行程序，然后切换到 Home 上，可以看到图标。</p>
-<img src="/images/2015/06/newproject/QQ20150626-12.png">
-<pre><code>Icon-1024.png
-</code></pre><h3 id="显示名称"><a href="#显示名称" class="headerlink" title="显示名称"></a>显示名称</h3><p>应用程序名称为 BullsEye，但是你想在Icon上显示 Bull’s Eye。 该如何做呢？</p>
-<p>导航栏选择项目下的Supporting Files 中的 Info.plist。</p>
-<p>Bundle name 是项目名称， 而 Bundle display name 则是可以填写任何你想要的名字。</p>
-<p>如 Bull’s Eye.</p>
-<img src="/images/2015/06/newproject/QQ20150626-14.png">
-<img src="/images/2015/06/newproject/QQ20150626-15.png">
-<h3 id="真机测试。"><a href="#真机测试。" class="headerlink" title="真机测试。"></a>真机测试。</h3><pre><code>自从有了Xcode7之后，就可以直接在真机上部署程序测试了，不用像以前那样
-注册为交费会员然后再下载证书才能部署了。
-</code></pre><hr>
+            <h6 id="题图-操作系统全集-前-MacOS-后右-Windows10-后左-Linux-Ubuntu"><a href="#题图-操作系统全集-前-MacOS-后右-Windows10-后左-Linux-Ubuntu" class="headerlink" title="题图 操作系统全集 前-MacOS 后右-Windows10 后左-Linux(Ubuntu)"></a>题图 操作系统全集 前-MacOS 后右-Windows10 后左-Linux(Ubuntu)</h6><p>2014年春，买了RMBP 2013 later，在32岁的年龄，还是冲动了一下，做一次自己喜欢的事情。</p>
+<h3 id="首先第一条，mac的笔记本到底贵不贵？"><a href="#首先第一条，mac的笔记本到底贵不贵？" class="headerlink" title="首先第一条，mac的笔记本到底贵不贵？"></a>首先第一条，mac的笔记本到底贵不贵？</h3><p>贵不贵看情况，如果你都是在windows下的开发，而且对mac的开发一点兴趣没有，买个mac就是为了装13的，那mac真贵，贵到你连看都不想看。随便一个本子就MBA也的7000+，就不说联想了，dell和hp的机器也就3000-4000配置就很好了嘛。</p>
+<p>然后再看配置，首先一个ssd的硬盘，512G去jd上搜一下，看看多少钱，再看看微软的surface，512G的ssd配置多少钱? 然后再看mac是不是贵，是不是值。</p>
+<h3 id="第二条，mac上面什么都不能做啊？"><a href="#第二条，mac上面什么都不能做啊？" class="headerlink" title="第二条，mac上面什么都不能做啊？"></a>第二条，mac上面什么都不能做啊？</h3><p>那么多exe的软件在mac下鸟用没有，你让我怎么办？我想装个网银都不能用，还有360的杀毒也不能用，那要是中毒了怎么办？亲，选对的，别选贵的。</p>
+<h3 id="第三条，mac下我能做什么呢？"><a href="#第三条，mac下我能做什么呢？" class="headerlink" title="第三条，mac下我能做什么呢？"></a>第三条，mac下我能做什么呢？</h3><p>对于普通用户来说，真的什么都做不了，就算打开个word还要转换成pages下面才能编辑，而且保存后的文档别人打不开，需要转成word别人才能用，这不是花钱找罪受吗？<br>如果你确实生活在windows的圈里出不来，还是不要出来了。</p>
+<h3 id="第四条，mac的用途"><a href="#第四条，mac的用途" class="headerlink" title="第四条，mac的用途:"></a>第四条，mac的用途:</h3><h4 id="1-连接iPhone，牛叉。"><a href="#1-连接iPhone，牛叉。" class="headerlink" title="1. 连接iPhone，牛叉。"></a>1. 连接iPhone，牛叉。</h4><p>你会觉得以前在windows下载安装iTunes，就像是带套去ML，虽然也是嗯嗯呀呀的费半天劲，但是总是感觉少了一点什么？到底是什么呢？少了一点速度和激情。</p>
+<h4 id="2-超高的分辨率，"><a href="#2-超高的分辨率，" class="headerlink" title="2. 超高的分辨率，"></a>2. 超高的分辨率，</h4><p>这个只是针对我以前的那个旧pc来说的，换了之后，感觉整个世界都清晰了，连上楼都有劲了。</p>
+<h4 id="3-完整的办公及娱乐套件"><a href="#3-完整的办公及娱乐套件" class="headerlink" title="3.完整的办公及娱乐套件"></a>3.完整的办公及娱乐套件</h4><p>iWork 和 iLife 的应用，够你用的了。而且现在买的mac里这些应用都是免费的。对了，不说到想不起，你的windows下的office 是正版的吗？</p>
+<h4 id="4-免费的系统"><a href="#4-免费的系统" class="headerlink" title="4. 免费的系统"></a>4. 免费的系统</h4><p>这个我还真不知道从哪个osx的版本开始的，我开始用的时候就10.9 了。反正一直都是免费，这个对windows来说，简直就是天大的好事，连升级都要收费，吃多了吧。不过windows最近也开始学乖了，推出了一系列免费及优惠政策。</p>
+<h4 id="5-商店-iTunes-Store-及-APP-Store"><a href="#5-商店-iTunes-Store-及-APP-Store" class="headerlink" title="5. 商店 iTunes Store 及 APP Store"></a>5. 商店 iTunes Store 及 APP Store</h4><p>以商店模式进行应用的索引及排名，提供开发机会。<br>这样的模式对开发者来说再好不过，只要你有创意，有技术，还是可以站着把钱挣过来的。(国内的那些歪门邪道暂且不表)</p>
+<h4 id="6-牛X的Photos"><a href="#6-牛X的Photos" class="headerlink" title="6. 牛X的Photos"></a>6. 牛X的Photos</h4><p>为什么单独把它提出来说，在买这个mac之前，我在windows下还真没有看到哪个应用或者程序能够做的如此友好而且精巧，不得不表彰一下。</p>
+<h4 id="第五条，比如其他的基于linux、安全、性能优化、wifi共享……-可惜我不是技术流，对这些都是知，而不解。只能提提而已了。"><a href="#第五条，比如其他的基于linux、安全、性能优化、wifi共享……-可惜我不是技术流，对这些都是知，而不解。只能提提而已了。" class="headerlink" title="第五条，比如其他的基于linux、安全、性能优化、wifi共享…… 可惜我不是技术流，对这些都是知，而不解。只能提提而已了。"></a>第五条，比如其他的基于linux、安全、性能优化、wifi共享…… 可惜我不是技术流，对这些都是知，而不解。只能提提而已了。</h4><p>对任何事情都有个先入为主的概念，比如对初恋，比如对第一部手机，比如对windows，如果你刚开始接触电脑时，就开始使用macOS系统，而不是windows，恐怕现在是另外一种想法了。</p>
+<p>所以换不换，用不用，全在你一念之间。</p>
+<p>–完–</p>
 
           
         
@@ -1125,7 +1409,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/24/support-iphone-4s/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/05/use-vscode-to-build-aspnet5-web-application/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1147,8 +1431,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/24/support-iphone-4s/" itemprop="url">
-                  Swift 2.0 纯学习之旅－5.支持iPhone4S
+                <a class="post-title-link" href="/2015/12/05/use-vscode-to-build-aspnet5-web-application/" itemprop="url">
+                  在 Mac 上使用VSCode开发asp.net5项目
                 </a>
               
             
@@ -1164,8 +1448,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-24T22:21:00+08:00">
-                2015-06-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-05T17:06:30+08:00">
+                2015-12-05
               </time>
             
 
@@ -1187,8 +1471,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/VSCode/" itemprop="url" rel="index">
+                    <span itemprop="name">VSCode</span>
                   </a>
                 </span>
 
@@ -1205,9 +1489,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/24/support-iphone-4s/#comments" itemprop="discussionUrl">
+                <a href="/2015/12/05/use-vscode-to-build-aspnet5-web-application/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/24/support-iphone-4s/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/12/05/use-vscode-to-build-aspnet5-web-application/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1234,43 +1518,32 @@
       
         
           
-            <p>相比于iPhone5* 系列的 4英寸屏，iPhone4S 只有3.5英寸屏幕，宽度都是320points,但是4英寸</p>
-<p>的屏有568points高，3.5英寸屏只有480points高，中间差了88points。</p>
-<h4 id="在iphone4s中运行显示"><a href="#在iphone4s中运行显示" class="headerlink" title="在iphone4s中运行显示"></a>在iphone4s中运行显示</h4><img src="/images/2015/06/newproject/QQ20150624-1.png">
-<h4 id="选择preview能够查看"><a href="#选择preview能够查看" class="headerlink" title="选择preview能够查看"></a>选择preview能够查看</h4><p>1.选择 Assistant editor，然后 在新出来的窗口里选择 Preview——Main.storyboard</p>
-<p>2.在新窗口里出现了 4 英寸的预览窗口，这不是我们要得，选择，Delete 删除。 然后在左下方有个</p>
-<p>加号 + 小按钮，添加一个 3.5 英寸的预览窗口，然后点击 旋转按钮，使其保持 landscape 模式。</p>
-<img src="/images/2015/06/newproject/QQ20150624-3.png">
-<img src="/images/2015/06/newproject/QQ20150624-2.png">
-<h4 id="BackGround-image-View"><a href="#BackGround-image-View" class="headerlink" title="BackGround image View"></a>BackGround image View</h4><p>在你得主要的storyboard窗口，选择viewController中的 background ，然后点击下方的 pin，</p>
-<p>弹出一个 Add new Constraints,</p>
-<img src="/images/2015/06/newproject/QQ20150624-6.png">
-<p>选中上下左右四个方向的 I 红线，并分别设置数值为 0. 取消 Constrain to margins 勾选</p>
-<p>update Frames 中选择 Items of New Constraints, 然后点击 Add 4 Constraints.</p>
-<img src="/images/2015/06/newproject/QQ20150624-7.png">
-<p>然后再看，背景图片是不是已经能完整的显示而不是被截断显示了。</p>
-<p>同样的操作对于 aboutViewController 中的 background。</p>
-<h4 id="Close-Button"><a href="#Close-Button" class="headerlink" title="Close Button"></a>Close Button</h4><p>选中 aboutViewController 中关闭按钮，选择 pin，选择下方的 I 红线，数值为 20. 然后勾选</p>
-<p>width 和 height ，数值分别为: 100,37. update Frames 值为 none。</p>
-<img src="/images/2015/06/newproject/QQ20150625-1.png">，<br><br>这样只是定义了大小和距离下方的位置，要想定位button在各个尺寸下的相对位置，还需定义相对于整个<br><br>屏幕的位置。<br><br>还是选中 button， 然后点击下方的 align，勾选 Horizontally in Container。<br><br>这样就是确定了 button 的在整个屏幕的相对位置。<br><br><img src="/images/2015/06/newproject/QQ20150625-3.png">
-<h4 id="webView"><a href="#webView" class="headerlink" title="webView"></a>webView</h4><p>选中 webView，选择 pin， 选择上下左右四个 I 红线，上 左 右 分别数值为 20， 下数值为 8，</p>
-<p>取消勾选 Constrain to margins，update Frames 选值为 Item of New Constraints.</p>
-<p>点击 Add 4 Constraints</p>
-<img src="/images/2015/06/newproject/QQ20150625-4.png">
-<h4 id="Most-Controls"><a href="#Most-Controls" class="headerlink" title="Most Controls"></a>Most Controls</h4><p>在storyboard中选中除了background之外的其他 label button 和 slider 控件。</p>
-<img src="/images/2015/06/newproject/QQ20150625-4.png">
-<p>然后选择菜单中的 Editor-》Embed In -&gt; view。 这些选中的控件将会被封装到一个单独view中。</p>
-<img src="/images/2015/06/newproject/QQ20150625-5.png">
-<p>然后选择 pin，勾选 width 和 height，点击 Add 2 Constraints。</p>
-<img src="/images/2015/06/newproject/QQ20150625-6.png">
-<p>点击 align， 勾选 Horizontal center in Container 和 Vertical Center in Container。</p>
-<p>Update Frames –》 Items of New Constraints, 点击 add 2 Constraints.</p>
-<img src="/images/2015/06/newproject/QQ20150625-7.png">
-<p>将该view 的 background 颜色设置为 Clear Color。</p>
-<img src="/images/2015/06/newproject/QQ20150625-10.png">
-<p>现在对 3.5 英寸的 4s 支持终于完成了！</p>
-<img src="/images/2015/06/newproject/QQ20150625-11.png">
-<img src="/images/2015/06/newproject/QQ20150625-12.png">
+            <p>1.安装 vscode</p>
+<p>vscode:  <a href="https://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
+<p>DNX-1.0.0-rc1-update1.pkg:<br><a href="https://go.microsoft.com/fwlink/?LinkId=703940" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
+<hr>
+<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby –e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure></p>
+<p>2.安装nvm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</div></pre></td></tr></table></figure></p>
+<p>在 .profile 文件中添加路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=<span class="string">"$PATH:$HOME/.nvm"</span></div></pre></td></tr></table></figure></p>
+<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export NVM_DIR=<span class="string">"$HOME/.nvm"</span></div><div class="line">[ -s <span class="string">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="string">"$NVM_DIR/nvm.sh"</span> <span class="comment"># This loads nvm</span></div></pre></td></tr></table></figure></p>
+<p>3.安装node</p>
+<p>查看有多少版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm ls-remote</div></pre></td></tr></table></figure></p>
+<p>安装对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
+<p>使用对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
+<p>设置全局的版本，不然在另外的command中node命令不起作用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
+<p>4.安装Yeoman</p>
+<p>安装模版生成器，就是用yo命令来生成各个aspnet的项目模版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g yo</div></pre></td></tr></table></figure>
+<p>5.安装generator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g generateor-aspnet</div></pre></td></tr></table></figure></p>
+<p>6.创建项目模版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yo aspnet</div></pre></td></tr></table></figure>
+<p>这里通过上下键来选择创建的类型。</p>
+<p>7.切换到当前项目目录</p>
+<p>项目依赖项</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnu restore</div></pre></td></tr></table></figure>
+<p>8.运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnx web</div></pre></td></tr></table></figure></p>
+<p>9.查看网页</p>
+<p>在浏览器中输入 localhost:5000  出现Hello World! 说明创建成功。</p>
 <hr>
 
           
@@ -1315,7 +1588,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/23/swift-point-how-to-set-slider-picture/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/11/22/the-bing-bong-in-outside/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1337,8 +1610,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/23/swift-point-how-to-set-slider-picture/" itemprop="url">
-                  Swift 2.0 纯学习之旅－4.美化 Slider 组件
+                <a class="post-title-link" href="/2015/11/22/the-bing-bong-in-outside/" itemprop="url">
+                  头脑特工队
                 </a>
               
             
@@ -1354,8 +1627,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-23T07:15:01+08:00">
-                2015-06-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T15:11:12+08:00">
+                2015-11-22
               </time>
             
 
@@ -1377,8 +1650,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/看电影/" itemprop="url" rel="index">
+                    <span itemprop="name">看电影</span>
                   </a>
                 </span>
 
@@ -1395,9 +1668,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/23/swift-point-how-to-set-slider-picture/#comments" itemprop="discussionUrl">
+                <a href="/2015/11/22/the-bing-bong-in-outside/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/23/swift-point-how-to-set-slider-picture/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/11/22/the-bing-bong-in-outside/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1424,19 +1697,28 @@
       
         
           
-            <h3 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a>Slider</h3><p>很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。</p>
-<p>打开 ViewController.swift, 在 viewDidLoad() 中加入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">let thumbImageNormal = UIImage(named:<span class="string">"SliderThumb-Normal"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageNormal,forState:.Normal)</div><div class="line"></div><div class="line"></div><div class="line">let thumbImageHighlighted = UIImage(named:<span class="string">"SliderThumb-Highlighted"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageHighlighted,forState:.Highlighted)</div><div class="line"></div><div class="line">let insets = UIEdgeInsets(top:<span class="number">0</span>,left:<span class="number">14</span>,bottom:<span class="number">0</span>,right:<span class="number">14</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackLeftImage = UIImage(named:<span class="string">"SliderTrackLeft"</span>)&#123;</div><div class="line"></div><div class="line">    let trackLeftResizable = trackLeftImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMinimumTrackImage(trackLeftResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackRightImage = UIImage(named:<span class="string">"SliderTrackRight"</span>) &#123;</div><div class="line"></div><div class="line">    let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMaximumTrackImage(trackRightResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre><code>这里调用图片时，没有加上 @2x.png 还是 .png 这样后缀区分。
-</code></pre><h3 id="About"><a href="#About" class="headerlink" title="About"></a>About</h3><p>删除 textView，添加webView。</p>
-<p>在导航栏中，选择项目文件夹，右键 Add Files to,</p>
-<p>选择 BullsEye.html ,Copy items if needed.</p>
-<p>在 aboutViewController.swift 中，</p>
-<p>添加一个 outlet</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class aboutViewController:UIViewController&#123;</div><div class="line"></div><div class="line">  @IBOutlet weak var webView:UIWebView!</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后建立链接。</p>
-<p>然后在 AboutViewController.swift 的 viewDidLoad() 方法中，添加代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad()&#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  if let htmlFile = NSBundle.mainBundle().pathForResource(&quot;BullsEye&quot;,</div><div class="line"></div><div class="line">                                                          ofType:&quot;html&quot;)&#123;</div><div class="line"></div><div class="line">     let htmlData = NSData(contentsOfFile:htmlFile)</div><div class="line"></div><div class="line">     let baseURL = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath)</div><div class="line"></div><div class="line">     webView.loadData(htmlData,MIMETYPE:&quot;text/html&quot;,</div><div class="line"></div><div class="line">                      textEncodeingName:&quot;UTF-8&quot;,baseURL:baseURL)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <p>标题留在这里很久了，本来想写可是总觉得的不到位，也许是感觉不到位，也是命题不到位。</p>
+<p>我是想写 BingBong 呢?还是想写这部电影的整体构思呢？我也不知道。</p>
+<p>也许写东西本来就不需要命题吧，又不是高中写考试作文，就边想边写吧。写到哪里算哪里！</p>
+<p>看头脑特工队，首先想到的是情绪管理，中国总爱有情绪管理课程，到底是谁在管理情绪，是你自己吗？</p>
+<p>头脑特工队来告诉你！</p>
+<p>有快乐，有悲伤，有恼火，有讨厌….  这一切都是脑子中的某个小人来负责的。</p>
+<p>有了这些小人，才有外面表现出来的各种情绪和动作。</p>
+<p>所以电影名字是 In Outside, In 在里面，outside 在外面，有因就有果。</p>
+<p>小女孩从伤心，失落，到朋友的失去，学校的悲伤，甚至连着家庭的信赖危机，在外面看来都是日常生活中</p>
+<p>琐事，在脑子里其实正在发生着各种翻天覆地的变化。</p>
+<p>小女孩和爸爸顶嘴的时候，脑子里面各坐着一个叫愤怒的小人，在掌握着开关，一旦触发的时候，它们高叫</p>
+<p>着 “fire”，于是一场家庭战争爆发了。</p>
+<p>这样的构思也不是谁都能想出来的，中国的动画，不是在炒800年的剩饭(孙悟空，黑猫警长)就是在炒那些</p>
+<p>很黄很暴力的喜羊羊和熊大熊二，我就不知道，广电总局是怎么批准这些整天拿着锐器向别人头上砍去的</p>
+<p>动画片播放的，熊大熊二更甚的是可以拿着枪到处开枪，随意开枪。</p>
+<p>真得不知道这些整天审查成人电影的成人到底在做什么？</p>
+<p>情节总来的说就是快乐总是想让小女孩一直快乐，所以就千方百计的不让伤心接触控制台，但是往往事与愿违</p>
+<p>小女孩越来越不开心，中间还发生了很多其他的事情，就这样小女孩在开心的道路上越走越远。</p>
+<p>在小女孩要离家出走的时候，快乐终于愿意让悲伤来控制小女孩的情绪了，所以最终所有的一切都是好的，</p>
+<p>家庭团聚了，脑子里面那些小人也更加和睦了。</p>
+<hr>
+<p>到写得时候，脑子里竟然一片空白，是哪个小人在控制开关呢？</p>
 <hr>
 
           
@@ -1481,7 +1763,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/21/how-to-sideload-app-in-xcode7/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/11/22/normal-thing-in-life/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1503,8 +1785,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/21/how-to-sideload-app-in-xcode7/" itemprop="url">
-                  如何使用xcode7部署程序到真机测试
+                <a class="post-title-link" href="/2015/11/22/normal-thing-in-life/" itemprop="url">
+                  鸡毛蒜皮
                 </a>
               
             
@@ -1520,8 +1802,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-21T07:27:37+08:00">
-                2015-06-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T14:07:16+08:00">
+                2015-11-22
               </time>
             
 
@@ -1543,8 +1825,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
                   </a>
                 </span>
 
@@ -1561,9 +1843,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/21/how-to-sideload-app-in-xcode7/#comments" itemprop="discussionUrl">
+                <a href="/2015/11/22/normal-thing-in-life/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/21/how-to-sideload-app-in-xcode7/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/11/22/normal-thing-in-life/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1590,68 +1872,36 @@
       
         
           
-            <p>WWDC 2015之后，大部分的内容都没有引起我的兴趣，唯一一点，Xcode7 可以直接把程序部署到真机</p>
-<p>测试，让我兴奋不已。多少不想交钱就能真机测试党的福利啊！</p>
-<p>下面这篇文章主要内容来自：<a href="http://bouk.co/blog/sideload-iphone/" target="_blank" rel="external">http://bouk.co/blog/sideload-iphone/</a></p>
-<p>加上一些我在实现过程中遇到的问题，记录下来备查。</p>
-<p>Apple 最近刚发布了 <a href="https://developer.apple.com/xcode/" target="_blank" rel="external">Xcdoe7 预览版</a>，新功能中最</p>
-<p>主要的一点就是你需要成为交费版开发者，就能把应用程序部署到设备上。下面我们以<a href="https://bitbucket.org/rileytestut/gba4ios" target="_blank" rel="external">GBA4iOS</a></p>
-<p>为示范来看一下要如何操作。</p>
-<p>1.准备工作。</p>
-<p>首先你得有一台 mac 电脑吧。 然后要安装好 <a href="https://developer.apple.com/xcode/downloads/" target="_blank" rel="external">Xcode7 beta</a>，</p>
-<p>2.打开Xcode7，在设置中登录Apple Account，这里不是交费会员也可以，只要你有Apple Id，在</p>
-<p>开发者中心注册过应该都可以。</p>
-<img src="/images/2015/06/sideload/Accounts.png">
-<p>3.下载 GBA4iOS 的源码，然后按照需求进行配置。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://bitbucket.org/rileytestut/gba4ios.git;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd gba4ios;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install;</div></pre></td></tr></table></figure>
-<p>如果以前没有用过 cocoapods ，最好去官网上看一下。这四步分别是：安装cocopods，下载</p>
-<p>源码，切换路径，安装组件。</p>
-<p>如果一切顺利的话，应该可以在 gba4ios 文件夹中看到 GBA4iOS.xcworkspace，记住是打开</p>
-<p>.xcworkspace 文件，而不是 .xcodeproj 文件，如果你打开的是 project 文件，后面编译</p>
-<p>程序的时候，会一直有个提示找不到第三方库的错误。</p>
-<p>pod install 的时候，需要翻墙才能完成。</p>
-<p>4.插上iPhone，然后选择部署机器。</p>
-<img src="/images/2015/06/sideload/target.png">
-<p>5.然后修改一下默认的 Bundle Identifile，然后点 Fix issue。</p>
-<img src="/images/2015/06/sideload/fixbundle.png">
-<p>6.点击顶部左侧的 play 按钮，如果没有什么错误的话，应该就能部署到你得iPhone上了。</p>
-<p>常见问题：</p>
-<p>Q:是否需要 iOS 9 beta/OSX EI Captian?</p>
-<p>A:不需要，可以在任何版本iOS/OSX上运行。只要你跑的起Xcode7.</p>
-<p>Q:出现下面错误:</p>
-<img src="/images/2015/06/sideload/error.png">
-<p>A:换一个apple Id 试试，这是个<a href="https://twitter.com/kaptin/status/608727199965958144" target="_blank" rel="external">bug</a></p>
-<p>Q:编译时，出现包含 ‘int’ 类型  ‘GCControllerPlayerIndex’ 错误。</p>
-<p>A: 在文件 GBA4iOS/GBAEmulationViewController.mm  第 546 行改为</p>
-<p>  [controller setPlayerIndex:GCControllerPlayerIndex1];</p>
+            <p>娃子回合肥了，上海就我一个人了，每天的上班，学习，吃饭，睡觉，把每个时间点都充实起来。</p>
+<p>以前娃子在身边的时候，总是感觉她闹，她哭，一点也没有时间学习。</p>
+<p>现在她不在身边了，又觉得她会不会不开心，会不会心里有阴影，每次聊天她哭的时候，就会</p>
+<p>感觉欠了她很多。</p>
+<p>现在的目标就是好好学习，赶快回合肥找工作，把家庭和工作都稳定下来。</p>
+<p>老婆回合肥了，老妈回老家了。这里只剩下我一个人，每天坚持早晨自己做饭吃，下班回来自己做饭</p>
+<p>吃。一来是对外面的食物不习惯，二来是年龄大了，肠胃还是要伺候舒服点好。</p>
+<p>以前去超市买菜，就是在那里迫不及待的催老婆，快点，快点，再快点。</p>
+<p>不要把生命浪费在购买东西的思考上。</p>
+<p>现在自己去超市买东西了，渐渐的对价格熟悉了，竟然也会在买菜的时候，对比一下，看一下今天的</p>
+<p>价格是多少，是不是值得买，看今天有没有特价蔬菜，今天哪些菜便宜先买回去。</p>
+<p>今天去家乐福买菜，就买了两样0.98元／斤的蔬菜，大白菜／青萝卜，还买了特价的苹果，在那里</p>
+<p>和超市大妈抢了半天，买了4斤，回来慢慢吃。</p>
+<p>现在我觉得这不是个性问题，这是生活习惯问题。</p>
+<p>当你有了生活习惯后，你会自动的去做某些事情。</p>
+<p>从超市出来的时候，一个大妈跑过来问我，你的大白菜多少钱一斤？</p>
+<p>九毛八</p>
+<p>大妈回头对老伴喊道，我就说九毛八比较便宜吧！</p>
+<p>语气中满是埋怨。</p>
+<p>多可爱的两个老人啊。</p>
+<p>我想等我和老婆老的时候，是不是也是这样呢。</p>
+<p>因为一点点的问题而互相埋怨呢，</p>
+<p>我想这种埋怨不是争吵，而是对双方的极度信赖和谦让。</p>
+<p>年逾古稀的老人肯定不会因为鸡毛蒜皮的事情而去大动干戈。</p>
+<p>有时候生活就是要互相一点争吵才会更融洽。</p>
+<p>以前我总是以为老爸和老妈之间相敬如宾，你侬我侬才算恩爱，现在我明白，</p>
+<p>每个家庭每对夫妻都有自己的生活习惯和交互方式，不是每个人都适合每天都是甜甜蜜蜜的，</p>
+<p>有的时候生活也需要一点调味剂。</p>
 <hr>
-<p>原作者 <a href="https://twitter.com/BvdBijl" target="_blank" rel="external">Twitter</a></p>
-<p>另外我再补充一下，如果你得机器上安装了 octopress， 会提示很多莫名其妙的错误。</p>
-<p>很大一部分原因是 ocotpress 使用的 ruby 1.9.8， 而 cocoapods 可能需要更新版本的ruby。</p>
-<p>下面来顺便说明一下如何安装不同版本的 ruby，如何使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">curl -L get.rvm.io | bash -s stable --autolibs=enabled</div><div class="line"></div><div class="line">rvm get head</div><div class="line"></div><div class="line">rvm reload</div><div class="line"></div><div class="line">rvm -v</div></pre></td></tr></table></figure>
-<p>然后查看 ruby 的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -v</div></pre></td></tr></table></figure>
-<p>如果只有 1.9.3，再安装一个 2.2.1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm install ruby-2.2.1</div></pre></td></tr></table></figure>
-<p>如果提示失败什么的，可能有两个原因：</p>
-<p>1.被墙，翻墙。</p>
-<p>2.提示.git文件夹被占用，可以用下面的命令解决</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf /usr/local/ Cellar  /usr/local/.git &amp;&amp; brew cleanup</div></pre></td></tr></table></figure>
-<p>####.查看已安装版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm list</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">rvm rubies</div><div class="line"></div><div class="line">   ruby-1.9.3-p545 [ x86_64 ]</div><div class="line"></div><div class="line">=* ruby-2.2.1 [ x86_64 ]</div><div class="line"></div><div class="line"># =&gt; - current</div><div class="line"></div><div class="line"># =* - current &amp;&amp; default</div><div class="line"></div><div class="line">#  * - default</div></pre></td></tr></table></figure>
-<h4 id="使用高版本ruby重新安装一下cocoapods"><a href="#使用高版本ruby重新安装一下cocoapods" class="headerlink" title="使用高版本ruby重新安装一下cocoapods."></a>使用高版本ruby重新安装一下cocoapods.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">rvm use 2.2.1</div><div class="line"></div><div class="line">gem uninstall cocoapods</div><div class="line"></div><div class="line">gem install cocoapods</div></pre></td></tr></table></figure>
-<p>这里出错最有可能的原因: 被墙！！！！</p>
-<p>这里不建议是用 ruby.taobao.org 的源，可能会导致文件丢失安装失败。</p>
-<p>建议使用官方源，然后翻墙安装。</p>
-<hr>
-<p>翻墙的话，我一般使用greenvpn，如果觉得我的文章有帮助，可以使用该链接注册：</p>
-<p><a href="http://gjsq.me/637214" target="_blank" rel="external">http://gjsq.me/637214</a></p>
-<hr>
+<p>个人原创，转载请注明出处：<a href="https://www.github.com/googlegis" target="_blank" rel="external">GitHub</a></p>
 
           
         
@@ -1695,7 +1945,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/17/add-pngs-and-support-all-iphones/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/10/30/under-the-skin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
@@ -1717,8 +1967,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/17/add-pngs-and-support-all-iphones/" itemprop="url">
-                  Swift 2.0 纯学习之旅－3.About 界面
+                <a class="post-title-link" href="/2015/10/30/under-the-skin/" itemprop="url">
+                  皮囊之下还有什么？
                 </a>
               
             
@@ -1734,8 +1984,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-17T14:31:26+08:00">
-                2015-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-30T18:34:53+08:00">
+                2015-10-30
               </time>
             
 
@@ -1757,8 +2007,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/看电影/" itemprop="url" rel="index">
+                    <span itemprop="name">看电影</span>
                   </a>
                 </span>
 
@@ -1775,9 +2025,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/17/add-pngs-and-support-all-iphones/#comments" itemprop="discussionUrl">
+                <a href="/2015/10/30/under-the-skin/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/17/add-pngs-and-support-all-iphones/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/10/30/under-the-skin/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1804,500 +2054,63 @@
       
         
           
-            <p>美化一般指界面上的漂亮，优化是功能和性能上的提升。</p>
-<h3 id="添加-About-界面"><a href="#添加-About-界面" class="headerlink" title="添加 About 界面"></a>添加 About 界面</h3><p>1.添加文件</p>
-<p>导航栏选中项目，右键添加文件：</p>
-<p><img src="/images/2015/06/newproject/QQ20150617-3.png" style="widht: 200px;"></p>
-<p>选中iOS 中的 CocaTouch Class，Next</p>
-<img src="/images/2015/06/newproject/QQ20150617-4.png">
-<p>输入文件名，其它默认：</p>
-<img src="/images/2015/06/newproject/QQ20150617-5.png">
-<p>确定 项目文件已经勾选：</p>
-<img src="/images/2015/06/newproject/QQ20150617-6.png">
-<p>添加文件后，目录应该是这样的：</p>
-<img src="/images/2015/06/newproject/QQ20150617-7.png">
-<p>2.添加控件</p>
-<p>添加ViewController， 从objectlibrary中，选择 viewcontroller，拖放到</p>
-<img src="/images/2015/06/newproject/QQ20150623-1.png">
-<p>Main.storyboard 中，新加的 ViewController，再 Attributes inspector 中的</p>
-<p>Simulated Metrics ，设置 Orientation 值为 Landscape。</p>
-<img src="/images/2015/06/newproject/QQ20150617-15.png">
-<p>在新建的 ViewController中添加 button，双击写上 关闭；</p>
-<p>添加TextView，选中 TextView，show the Attributes inspector 中，勾选 Editable ，</p>
-<p>然后输入简单说明。</p>
-<img src="/images/2015/06/newproject/QQ20150623-2.png">
-<p>选中 新建的ViewController，然后点击 Show the Identify inspector。然后在Class中选中</p>
-<p>aboutViewController。</p>
-<img src="/images/2015/06/newproject/QQ20150623-3.png">
-<p>3.建立连接</p>
-<p>选中 ViewControll 中的 关于 按钮，按住 control 键，鼠标拖动到新建的 viewController，</p>
-<img src="/images/2015/06/newproject/QQ20150617-11.png">
-<p>松开鼠标，在弹出框中选择 modal，</p>
-<img src="/images/2015/06/newproject/QQ20150617-10.png">
-<p>可以看到 关于 和 viewControll 之间的连接线 segue，然后在</p>
-<p>show the attributes inspector 中的 Transition 选择值为 Flip board。</p>
-<img src="/images/2015/06/newproject/QQ20150617-12.png">
-<p>运行测试！点击关于按钮，则飞来一个view。</p>
-<p>选中 aboutViewController.swift,添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func close()&#123;</span></div><div class="line"></div><div class="line">      dismissViewControllerAnimated(true, completion: nil)</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<p>选中 新建的ViewControll，选中 关闭按钮，按住control键，鼠标拖动到 ViewControll中。</p>
-<img src="/images/2015/06/newproject/QQ20150617-13.png">
-<p>再弹出框中选择 sendEvent 中的 close 。OK！</p>
-<img src="/images/2015/06/newproject/QQ20150617-14.png">
-<p>运行测试。点击关闭时回到前一个view。</p>
-<p>now everything is OK！</p>
-<h3 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h3><p>1.隐藏状态栏</p>
-<p>选中viewController，然后 show the attributes inspector 中 status bar 选择 None。</p>
-<img src="/images/2015/06/newproject/QQ20150617-15.png">
-<p>选择 Project Setting，General－Deployment Info－Status Bar Style－Hide Status Bar。</p>
-<img src="/images/2015/06/newproject/QQ20150617-16.png">
-<p>2.设置背景图片</p>
-<p>选择导航栏中的 Images.xcassets, 选择 import…</p>
-<img src="/images/2015/06/newproject/QQ20150617-17.png">
-<p>选择background，分别对应 2x，3x 选择对应的 png。</p>
-<p>在viewController 中， 添加 imageView，然后panelOutlet中升至view中的第一位，</p>
-<p>就是将它放在最下层。然后修改label颜色等。同样操作对于aboutViewController。</p>
-<p>修改所有label属性 Autoshrink －－》 Fixed Font Size；Editor－－》Size to Fit Content。</p>
-<p>Hit Me 按钮，在 attributes respector 中，</p>
-<p>设置 type－－》custom，background－－》button－Normal。</p>
-<p>State Config－－》Highlighted，Background－－》button－Highlighted</p>
-<p>勾选 Reverses On Highlight 确保你在按下按钮时，对应的颜色能显示出来。</p>
-<p>选择 start 按钮，type－》Custom，删除文本内容，Image——》StartOverIcon，BackGround－》</p>
-<p>SmallButton，</p>
-<p>选择 Info 按钮，做同样的操作，只不过Image——》InfoButton</p>
-<h3 id="设置-Slider。"><a href="#设置-Slider。" class="headerlink" title="设置 Slider。"></a>设置 Slider。</h3><hr>
+            <p>也许是从看妇联1的时候，就开始喜欢上了斯嘉丽约翰逊，原来外国还有女子演起动作片身手这么好的。</p>
+<p>皮囊之下，是我早就下载下来了，但是一直没有看，正好趁着周末，连到电视上完完整整的看了一遍。</p>
+<p>说它是科幻片，估计很多人不看到最后，打死都不相信。说它是惊悚片，貌似导演也没有使用多少特技</p>
+<p>手法来吓唬人。</p>
+<p>影片开头是各种结构的组装，组装过后，来了一个眼睛的特写。应该预示女主制作成功了。</p>
+<p>然后摩托男背出来一个女尸，斯嘉丽全裸出演，脱女尸的衣服给自己穿上，脱完之后，</p>
+<p>女尸的眼角竟然流出了一滴眼泪。也许是感叹人生，也许仅仅是感叹自己死后还要被折腾一番。</p>
+<p>然后就是正常人的生活拍摄手法，斯嘉丽开着车到处试探和引诱男人上钩,然后将他们带入到黑色泥潭，</p>
+<p>或者黑色的泥潭是个隐喻，你看男人们进去的时候都是心甘情愿，根本没有一点挣扎，也没有一点反抗，</p>
+<p>完完全全是自己心甘情愿的走进泥潭。</p>
+<p>球服男和肌肉男都被泥潭困住，然后被吸干了鲜红的血肉，只剩下了一个个皮囊。</p>
+<p>也许这些皮囊就是制作人造人（最后才会明白可能是人造人）的材料，那些血肉都被输送到一个固定的出口，</p>
+<p>也许是被某些生物吃了，也许是用来培养人造人的肥料了。</p>
+<p>当斯嘉丽碰到肿瘤男的时候，她根本没有意识到这个人可能丑成这个样子，当他坐上来的时候，</p>
+<p>这个男人一直在控制自己，哪怕是自己单身孤独了一辈子也不敢随便就淫欲的想法，</p>
+<p>最后还是在斯嘉丽的引诱下屈服了。当斯嘉丽说要带他走的时候，导演给了这个肿瘤男一个特写，</p>
+<p>他一直用手掐另外一只手的皮，也许是告诫自己不要贪图淫欲。不过最后他还是松开了。</p>
+<p>也许是这个男人的外形的丑陋，也许是这个男人的言行，斯嘉丽让他走了，不过肿瘤男还是没有逃脱摩托男的手心，</p>
+<p>也许斯嘉丽和肿瘤男约好了时间和地点，当斯嘉丽没有等到肿瘤男的时候，她知道，事情穿帮了。</p>
+<p>她毅然决然的独自一人沿着公路走了。</p>
+<p>然后她尝试吃人类的食物，然后吐掉。她尝试坐人类的公交，她尝试听人类音乐，跟着节奏弹手指，</p>
+<p>她尝试爱一个人和被一个人爱，她尝试和男人做爱，但是她没有成功，在那个对他温柔体贴的男人尝试</p>
+<p>了N次没有成功之后，她连忙跑起来，用灯照着自己的阴部。</p>
+<p>也许她只是人造人，身体结构还没有完全和人类一样。</p>
+<p>一直到最后，在森林里遇到伐木工，被伐木工性侵未遂，暴露身份后被伐木工用汽油烧死之后，</p>
+<p>在茫茫雪地上只留下一股黑烟，影片结束。</p>
+<p>但是我的心里却久久不能平静，剧本太牛，导演太牛，演员也太牛了。</p>
+<p>当一个杀人工具，一个只负责引诱人类到黑色泥潭送死的人造人，在发现人类的感情和生活后，</p>
+<p>想认认真真的做一个人的时候，却被正是她所希望成为的人类性侵和杀害。</p>
+<p>人类中有好人，也有坏人，人性中有善良的部分也有丑陋的部分。只是这些，斯嘉丽还没有学会。</p>
+<p>她以前接触的虽说有点淫欲但还不致于害人的人类，尤其是那个为救人在海边累晕，然后被斯嘉丽敲死，</p>
+<p>在他嗷嗷大哭的小孩面前拖走的男人。肯定对斯嘉丽的心灵也有触动。</p>
+<p>斯嘉丽开始引诱别人时，总是问住哪里，做什么，到哪里去，家里都有谁。</p>
+<p>我想她其实不知道这些话代表什么意思，只是按照固定的模式说出来。</p>
+<p>但是这些形形色色的人的生活对她也有很大的影响。原来人类可以有这么多姿多彩的生活。</p>
+<p>她在温柔男的家里欣赏自己的躯体的时候，才第一次真真正正的把自己当做一个真正的人来看。</p>
+<p>她把肿瘤男引诱后在门后面看镜子里的自己的时候，我就觉得有蹊跷。果然肿瘤男被她放了。</p>
+<p>也许从那开始，她决定开始考虑人类的生活方式了，在肿瘤男失约后，她决定离开这个地方，自己往前走。</p>
+<p>她该是多人想成为人类啊。被伐木工撕烂皮之后，一个人把头拿下来的时候，眼睛里闪烁着多么的不舍和哀怨。</p>
+<p>在被伐木工浇上汽油烧起火逃跑的时候，手里抱着的依然是不舍的人类的头颅。也许是不愿意，也许是不</p>
+<p>甘心，也许是想在生命的最后一刻多抚摸一下自己的脸庞。</p>
+<p>可是所有到最后的一切都只不过是一缕黑烟。</p>
+<p>她想成为的人类把她杀了。</p>
+<p>也许她只是一个皮囊的黑炭人，她没有人类的思想和感情，可是她在努力去学，去感受，去思考，</p>
+<p>慢慢的想融入到人类的感情中；伐木工虽然空有着人类的体格和智慧，</p>
+<p>但是真正的皮囊之下却是污秽肮脏的思想和躯体。</p>
+<p>一个只有人类皮囊的黑炭人，却被一个拥有健康体格和人类思想的人类猥亵甚至意图强奸，</p>
+<p>那些披着人皮的人类啊，你们的头颅下面到底是什么啊。</p>
+<p>本以为，斯嘉丽会被摩托男干掉，看来被人类干掉，整个影片升华的空间，提高了一大截啊。</p>
+<p>至于摩托男来自哪里，什么身份，又要去哪里，不管不问！</p>
+<p>至于网上说的，看不懂，没意思，不值电影票钱，谁让你来看了呢。自己的欣赏水平就在那里放着呢。</p>
+<p>估计你们也看不了 《第九区》。</p>
+<p>恐怕是冲着宣传的全裸的斯嘉丽来的吧，也不动脑子想想，经过广电那帮太监审核过的片子，</p>
+<p>里面能有些什么让你看呢。</p>
+<p>给导演点赞，给斯嘉丽约翰逊点赞。给外国电影点个赞！ 👍</p>
 <hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/16/show-the-random-slider-value/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/16/show-the-random-slider-value/" itemprop="url">
-                  Swift 2.0 纯学习之旅－2.主要代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-16T21:50:49+08:00">
-                2015-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/16/show-the-random-slider-value/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/16/show-the-random-slider-value/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>* 生成随机值，并绑定slider值
-
-* 计算得分，并对分值进行优化
-</code></pre><p>1.添加slider控件，并绑定outlet。</p>
-<p>  从object library 中选择 slider 控件，拖放到 Storyboard中，选中 slider 控件，</p>
-  <img src="/images/2015/06/newproject/QQ20150616-3.png">
-<p>  打开右侧show the Attributes inspector，然后在 value 中的 minimum 和 maximum</p>
-<p>  中分别输入 1 和 100。</p>
-  <img src="/images/2015/06/newproject/QQ20150616-9.png">
-<p>  点击 右上方 show the assistant editor，只留下 storyboard 和 代码页， 然后按住</p>
-<p>  control 键，鼠标拖动 slider 到 代码空白处， 一般在class 里面的上部。</p>
-  <img src="/images/2015/06/newproject/QQ20150616-4.png">
-<p>  松开鼠标，弹出输入框，输入对应信息。</p>
-  <img src="/images/2015/06/newproject/QQ20150616-5.png">
-<p>  完成后，点击</p>
-<p>  可以在代码中看到</p>
-  <img src="/images/2015/06/newproject/QQ20150616-6.png">
-<p>  说明已经绑定 outlet 了。这里就是把 slider 作为一个变量传到代码中了，以后代码中调用slider</p>
-<p>  就是在调用 storyboard 上的slider。</p>
-<p>2.绑定 slider_move 的事件</p>
-<p>   打开 viewcontroller.swift 文件，然后 class 内部的下方写入下方代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func sliderMoved(slider:UISlider)&#123;</span></div><div class="line"></div><div class="line"> currentValue = lroundf(slider.value)</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>   打开 Main.storyboard, 点击 show Document outline，安装control，选中 slider，</p>
-<p>   按住鼠标左键，拖动 slider 到 outline 中 viewController，</p>
-   <img src="/images/2015/06/newproject/QQ20150616-8.png">
-<p>   松开鼠标，弹出提示框，选择 sendevent中 sliderMove 函数。</p>
-<p>   然后在 viewController.swift 文件的 sliderMove 函数前面看到圆点，说明绑定成功。</p>
-   <img src="/images/2015/06/newproject/QQ20150616-7.png">
-<p>3.点击测试。</p>
-   <img src="/images/2015/06/newproject/QQ20150616-2.png">
-<p>－－－－－</p>
-<pre><code>这里定义了 currentValue 作为一个公共变量，可多个函数调用，当slider移动时，将slider的值
-
-传给 currentValue，然后点击 button 时，显示 currentValue 值。
-</code></pre><p>－－－－－－</p>
-<p>4.生成随机目标值。</p>
-<p>   添加公共变量 targetValue ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var targetValue:Int = <span class="number">0</span></div></pre></td></tr></table></figure>
-<p>   然后在 viewDidLoad 函数中加入代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div></pre></td></tr></table></figure>
-<p>   最后将 showAlert 改写为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  let message = &quot;slider 值为：\(currentValue)&quot;</div><div class="line"></div><div class="line">               + &quot;\n目标值为：\(targetValue)&quot;</div><div class="line"></div><div class="line">  let alert = UIAlertController(title:&quot;Hello World!&quot;,message:message,preferredStyle:.Alert)</div><div class="line"></div><div class="line">  let action = UIAlertAction(title:&quot;OK&quot;,style:.Default,handler:nil)</div><div class="line"></div><div class="line">  alert.addAction(action)</div><div class="line"></div><div class="line">  presentViewController(alert,animated:true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>5.开始新一轮</p>
-<p>从上面的代码可以看出， targetValue 在程序启动时生成一次后就再也不变化了，这根本不是我们想要的。</p>
-<p>所以我们要添加一个开始按钮来开始新的一轮，当然包括重新生成一个随机数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func startNewRound()&#123;</div><div class="line"></div><div class="line">  targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div><div class="line"></div><div class="line">  currentValue = <span class="number">50</span>;</div><div class="line"></div><div class="line">  slider.value = Float(currentValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后将 viewDidLoad 函数修改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">super.viewDidLoad()</div><div class="line"></div><div class="line">startNewRound()</div></pre></td></tr></table></figure>
-<p>修改 showAlert 函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">  presentViewController(alert,animated:true,completion:nil)</div><div class="line"></div><div class="line">  startNewRound()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>6.添加目标值 label 显示</p>
-<p>  从 objectlibrary 中拖 label 和 button 到 storyboard 的view中，</p>
-<p>  给label绑定 IBOutlet。</p>
-<p>  绑定后应为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var targetLabel:UILabel!</span></div></pre></td></tr></table></figure>
-<p>  然后 添加函数 updateLabels：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func updateLabels()&#123;</div><div class="line"></div><div class="line">  targetLabel.text = String(targetValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  然后在每个调用 startNewRound 的地方添加 调用 updateLabels；</p>
-<p>7.计算每轮得分</p>
-<p> 基本的分数计算公式应该为 100-abs(targetValue - currentValue), 稍微懂点数学这个</p>
-<p> 应该不难理解。</p>
-<p> 所以在 showAlert  函数中添加分数计算方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">  let points = 100 -difference</div><div class="line"></div><div class="line">  let message = &quot;得分：\(points)&quot;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>8.计算总分数和游戏轮数</p>
-<p>添加变量 ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var score:Int = 0;</div><div class="line"></div><div class="line">var round:Int = 0;</div></pre></td></tr></table></figure>
-<p>在左下方添加 总分数label，并绑定到 IBOutlet;在右下方添加 轮数 label 并绑定 IBOutlet。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var scoreLabel:UILabel!</span></div><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var roundLabel:UILabel!</span></div></pre></td></tr></table></figure>
-<p>将 showAlert 修改如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">  let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">  let points = <span class="number">100</span> - difference</div><div class="line"></div><div class="line">  score += points</div><div class="line"></div><div class="line">  let message = <span class="string">"得分：\(points)"</span></div><div class="line"></div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将updateLabels 修改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func updateLabels() &#123;</div><div class="line"></div><div class="line">  targetLabel.text = String(targetValue)</div><div class="line"></div><div class="line">  scoreLabel.text = String(score)</div><div class="line"></div><div class="line">  roundLabel.text = String(round)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在 startNewRound 函数中，将 round 值递增：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func startNewRound()&#123;</div><div class="line"></div><div class="line">  round += <span class="number">1</span></div><div class="line"></div><div class="line">  targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div><div class="line"></div><div class="line">  currentValue = <span class="number">50</span></div><div class="line"></div><div class="line">  slider.value = Float(currentValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>9.优化分数计算及显示</p>
-<p>一般的游戏都有奖励或者加血机制，我们在这里也加入这样的一个功能。</p>
-<p>将 showAlert 函数修改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">var points = <span class="number">100</span> - difference</div><div class="line"></div><div class="line">var title: String</div><div class="line"></div><div class="line"><span class="keyword">if</span> difference == <span class="number">0</span>&#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Prefect!"</span></div><div class="line"></div><div class="line">  points += <span class="number">100</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> difference &lt; <span class="number">5</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"You almost had it!"</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> difference == <span class="number">1</span> &#123;</div><div class="line"></div><div class="line">    points += <span class="number">50</span></div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;  <span class="keyword">else</span> <span class="keyword">if</span> difference &lt; <span class="number">10</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Pretty Good!"</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Not even close..."</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">score += points</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行查看</p>
-<img src="/images/2015/06/newproject/QQ20150617-2.png">
-<p>10.优化新一轮的时间逻辑</p>
-<p>也许你会看到，当你点击了 “Hit Me” button 之后，后面的那个 目标值，slider值都已开始变了，</p>
-<p>弹出框的显示内容与后面的内容不一致，这是因为这里的弹出框与后面的startNewRound和updateLabeles</p>
-<p>函数是异步加载的，不等你运行玩弹出框，就会继续运行下面的函数。 这和我们想的不太一样，应该是</p>
-<p>我点击了弹出框的OK之后，才能进行并显示下一关的内容。 如何解决呢？</p>
-<p>使用 action 中的 handler 参数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">let alert = UIAlertController(...)</div><div class="line"></div><div class="line">let action = UIAlertAction(title:<span class="string">"OK"</span>,style:.Default,</div><div class="line"></div><div class="line">                          handler:&#123; action <span class="keyword">in</span></div><div class="line"></div><div class="line">                            self.startNewRound()</div><div class="line"></div><div class="line">                            self.updateLabels()</div><div class="line"></div><div class="line">                          &#125;)</div><div class="line"></div><div class="line">alert.addAction(action)</div><div class="line"></div><div class="line">presentViewController(alert,animated:true,completion:nil)</div></pre></td></tr></table></figure>
-<p>再运行程序测试一下。</p>
-<p>11.重新开始</p>
-<p>重新开始游戏，需要把已有的数据清0，把窗口中的控件值清除。</p>
-<p>我们首先增加两个函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">fun startNewGame()&#123;</div><div class="line"></div><div class="line">  score = 0</div><div class="line"></div><div class="line">  round = 0</div><div class="line"></div><div class="line">  startNewRound()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func startOver() &#123;</span></div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>拖放一个button 到 storyboard 的 view 上，然后绑定 startOver 函数。</p>
-<p>然后修改 viewDidLoad 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func viewDidLoad() &#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>OK!</p>
-<p>所有功能部分的代码到这里已经编写完成，后面会有一些美化和优化的内容。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/14/look-ios-mvc-from-showalert/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/14/look-ios-mvc-from-showalert/" itemprop="url">
-                  从showalert方法中看iOS中的MVC
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-14T21:49:01+08:00">
-                2015-06-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/14/look-ios-mvc-from-showalert/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/14/look-ios-mvc-from-showalert/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我们知道MVC是个模式，一个开发模式，一个构架模式，一个放之四海而皆为准的模式。</p>
-<p>那什么是MVC？</p>
-<p>以下内容－－－来自<a href="https://zh.wikipedia.org/wiki/MVC" target="_blank" rel="external">维基百科</a></p>
-<pre><code>MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：
-
-模型（Model）、视图（View）和控制器（Controller）。
-
-* (控制器 Controller)- 负责转发请求，对请求进行处理。
-
-* (视图 View) - 界面设计人员进行图形界面设计。
-
-* (模型 Model) -程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计
-(可以实现具体的功能)。
-</code></pre><p>那么iOS中的showAlert函数又是什么样子的呢？</p>
-<p>我们来看一个最简单的例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">        let alert = UIAlertController(title: <span class="string">"Hello,World"</span>, message: <span class="string">"This is my first app!"</span>, preferredStyle: .Alert)</div><div class="line"></div><div class="line">        let action = UIAlertAction(title: <span class="string">"Awesome"</span>, style: .Default, handler: nil)</div><div class="line"></div><div class="line">        alert.addAction(action)</div><div class="line"></div><div class="line">        presentViewController(alert, animated: true, completion: nil)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>那我们根据MVC来一一确认这些都代表什么意思？</p>
-<p>let alert 是一个UIAlertController，很明显，首先它是一个Controller，但是我更感觉它像MV，</p>
-<p>如 title，message很明显是View的内容，preferredStyle 表示是一个什么方式，应该是属于Model，</p>
-<p>功能的设计。</p>
-<p>let Action 是一个 UIAlertAction，其中包含了 View 和 Control 的内容。title，style应属于</p>
-<p>View 内容。handler是属于Controller。</p>
-<p>alert.addAction(action) 将Action添加到Controller中，这是一个混合了View和Model和Controll</p>
-<p>的组合。</p>
-<p>presentViewController表示在当前视图中将对应的controller表示出来，这不折不扣的就是controller</p>
-<p>里面的参数就是前面对应已经添加了action的alert。</p>
-<p>真巧，真妙，真巧妙！</p>
-<hr>
+<p>个人原创，转载请注明出处：<a href="https://www.github.com/googlegis" target="_blank" rel="external">GitHub</a></p>
 
           
         
@@ -2336,7 +2149,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2381,7 +2194,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">156</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2392,7 +2205,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2403,7 +2216,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
