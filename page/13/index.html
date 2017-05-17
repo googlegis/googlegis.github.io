@@ -299,1114 +299,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/03/01/make-disqus-visable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/01/make-disqus-visable/" itemprop="url">
-                  Octopress中Disqus设置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-01T10:49:47+08:00">
-                2014-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/03/01/make-disqus-visable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/03/01/make-disqus-visable/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="–-让-disqus显示出来"><a href="#–-让-disqus显示出来" class="headerlink" title="– 让 disqus显示出来"></a>– 让 disqus显示出来</h4><p>  特意为Disqus写一篇，是因为过程中出现了错误，或者说我没有理解透别人说的意思。</p>
-<p>   网上大多数的教程很简单，说是在Disqus注册个账号，然后把 short_name 写入 _config.yml中，我是菜鸟，写入了还是不能显示出来。</p>
-   <img src="/images/disqus.png">
-<p>   就是上图中画红色圈方框的部分没显示。</p>
-<p>   擦！<br>   连续查了两天资料，终于搞定。</p>
-<ol>
-<li>disqus注册时，Shortname 随意写，Website Name 随意写， Website URL: 写入你的网站地址，如果你使用的github，那就写入你的Page Site： <em>*</em>.github.com</li>
-</ol>
-<ol>
-<li><p>如果还是出不来，请检查这两个文件。 /Source/_layout/page.html 和 /Source/_layout/post.html，  查看这部分：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   &lt;section id=&quot;comment&quot;&gt;  </div><div class="line">    &lt;h1 class=&quot;title&quot;&gt;Comments&lt;/h1&gt;  </div><div class="line">    &lt;div id=&quot;disqus_thread&quot; aria-live=&quot;polite&quot;&gt;&#123;% include post/disqus_thread.html %&#125;  &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
-<p>然后查看 _includes/post/disqus_thread.html 这个里面的内容，如果仅仅是下面这个部分，</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"http://disqus.com/? ref_noscript"</span>&gt;comments powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line">   那就说明，该修改 section 这部分代码了。</div><div class="line"></div><div class="line">   查看 _includes/disqus.html 文件，查看源码，如果如下：</div><div class="line">`<span class="string">``</span>javascript</div><div class="line"> &#123;% comment %&#125; Load script <span class="keyword">if</span> disquss comments are enabled and <span class="string">`page.comments`</span></div><div class="line">  is either empty (index) or set to <span class="literal">true</span> &#123;% endcomment %&#125;</div><div class="line">  &#123;% <span class="keyword">if</span> site.disqus_short_name and page.comments != <span class="literal">false</span> %&#125;</div><div class="line">  &lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      <span class="keyword">var</span> disqus_shortname = <span class="string">'&#123;&#123; site.disqus_short_name &#125;&#125;'</span>;</div><div class="line">      &#123;% <span class="keyword">if</span> page.comments == <span class="literal">true</span> %&#125;</div><div class="line">        &#123;% comment %&#125; <span class="string">`page.comments`</span> can be only be set to <span class="literal">true</span> on pages/posts, so we embed the comments here. &#123;% endcomment %&#125;</div><div class="line">        <span class="comment">// var disqus_developer = 1;</span></div><div class="line">        <span class="keyword">var</span> disqus_identifier = <span class="string">'&#123;&#123; site.url &#125;&#125;&#123;&#123; page.url &#125;&#125;'</span>;</div><div class="line">        <span class="keyword">var</span> disqus_url = <span class="string">'&#123;&#123; site.url &#125;&#125;&#123;&#123; page.url &#125;&#125;'</span>;</div><div class="line">        <span class="keyword">var</span> disqus_script = <span class="string">'embed.js'</span>;</div><div class="line">      &#123;% <span class="keyword">else</span> %&#125;</div><div class="line">        &#123;% comment %&#125; As <span class="string">`page.comments`</span> is empty, we must be on the index page. &#123;% endcomment %&#125;</div><div class="line">        <span class="keyword">var</span> disqus_script = <span class="string">'count.js'</span>;</div><div class="line">      &#123;% endif %&#125;</div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> dsq = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>); dsq.type = <span class="string">'text/javascript'</span>; dsq.async = <span class="literal">true</span>;</div><div class="line">      dsq.src = <span class="string">'http://'</span> + disqus_shortname + <span class="string">'.disqus.com/'</span> + disqus_script;</div><div class="line">      (<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(dsq);</div><div class="line">    &#125;());</div><div class="line">&lt;/script&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
-<p>请修改 section 中的代码为：</p>
-</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   &lt;section id="comment"&gt;</div><div class="line">    &lt;h1 class="title"&gt;Comments&lt;/h1&gt;</div><div class="line">    &lt;div id="disqus_thread" aria-live="polite"&gt;&#123;% include disqus.html %&#125;  &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
-<p> 然后 rake generate ; rake deploy 查看页面了。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/02/27/create-blog-with-github-in-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/02/27/create-blog-with-github-in-mac/" itemprop="url">
-                  在mac下使用github自建博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-27T21:42:50+08:00">
-                2014-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/02/27/create-blog-with-github-in-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/02/27/create-blog-with-github-in-mac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考： <a href="http://octopress.org/docs/setup/rvm/" target="_blank" rel="external">http://octopress.org/docs/setup/rvm/</a></p>
-<p>一、 安装Ruby环境</p>
-<blockquote>
-<h3 id="安装rvm"><a href="#安装rvm" class="headerlink" title="安装rvm"></a>安装rvm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L https://get.rvm.io | bash -s stable —ruby</div></pre></td></tr></table></figure>
-</blockquote>
-<p>   报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">checking for Tcl configuration... configure: error: Can&apos;t find Tcl configuration definitions   Requirements installation failed with status: 1.</div></pre></td></tr></table></figure></p>
-<pre><code>解决方案：
-</code></pre><p>在终端中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select —install</div></pre></td></tr></table></figure></p>
-<p>后，再执行1.</p>
-<blockquote>
-<h3 id="安装-ruby"><a href="#安装-ruby" class="headerlink" title="安装 ruby"></a>安装 ruby</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rvm install 1.9.3</div><div class="line">rvm use 1.9.3</div><div class="line">rvm rubygems latest</div></pre></td></tr></table></figure>
-<h3 id="创建github项目"><a href="#创建github项目" class="headerlink" title="创建github项目"></a>创建github项目</h3></blockquote>
-<p>注意保存此链接： git@github.com:googlegis/googlegis.github.com.git</p>
-<blockquote>
-<h3 id="在本机创建ssh"><a href="#在本机创建ssh" class="headerlink" title="在本机创建ssh"></a>在本机创建ssh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.ssh</div><div class="line">ssh-keygen -t rsa -C 你注册github时的email</div></pre></td></tr></table></figure>
-</blockquote>
-<p>弹出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter file in which to save the key (/Users/twer/.ssh/id_rsa):</div></pre></td></tr></table></figure></p>
-<p>直接按空格</p>
-<p>弹出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty for no passphrase):</div></pre></td></tr></table></figure></p>
-<p>输入你github账号的密码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter same passphrase again:</div></pre></td></tr></table></figure></p>
-<p>再次输入你的密码。</p>
-<p>打开~/.ssh下的id_rsa.pub文件复制里面的全部内容。<br>登陆github，选择Account Settings–&gt;SSH Public Keys 添加ssh，把剪切板的内容复制到key输入框内直接保存。</p>
-<p>测试shh:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@github.com</div></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PTY allocation request failed on channel 0</div><div class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line">Connection to github.com closed.</div></pre></td></tr></table></figure></p>
-<p>代表成功</p>
-<blockquote>
-<h3 id="安装octopress"><a href="#安装octopress" class="headerlink" title="安装octopress"></a>安装octopress</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git clone  git://github.com/imathis/octopress.git octopress</div><div class="line"></div><div class="line">cd octopress    # If you use RVM, You&apos;ll be asked if you trust the .rvmrc file (say yes).</div><div class="line"></div><div class="line">ruby --version  # Should report Ruby 1.9.3</div></pre></td></tr></table></figure>
-</blockquote>
-<p>安装依赖项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem install bundler</div><div class="line">rbenv rehash</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
-<p>安装默认主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake install</div></pre></td></tr></table></figure></p>
-<blockquote>
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3></blockquote>
-<p>利用octopress的一个配置rake任务来自动配置上面创建的仓库：可以让我们方便的部署GitHub page。在终端输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake setup_github_pages</div></pre></td></tr></table></figure></p>
-<p>弹出之后输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:your_username/your_username.github.com.git</div></pre></td></tr></table></figure></p>
-<p>不要用提示的io，我的是<br>git@github.com/googlegis/googlegis.github.com.git</p>
-<p>输入以下命令部署博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rake generate</div><div class="line">rake deploy</div></pre></td></tr></table></figure></p>
-<p>如果无法push到仓库的master分支，尝试在项目目录的.git/config中添加(此部分本人部署时没有用到)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[branch &quot;master&quot;]</div><div class="line"> remote = origin</div><div class="line"> merge = refs/heads/master</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>###写博客<br>通过命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake new_post[&quot;myTitle&quot;]</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>文章生成在目录下的source/_posts目录下。文章是markdown格式的。可以通过 Mou 软件来编辑保存。</p>
-<p>关于markdown的格式可以参考这篇文章:<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></p>
-<p>写完后就可以部署更新文章到github上了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rake generate</div><div class="line">rake deploy</div></pre></td></tr></table></figure></p>
-<p>将你的原始文件保存在github上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -am &quot;Some comment here.&quot;</div><div class="line">git push origin source</div></pre></td></tr></table></figure></p>
-<blockquote>
-<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3></blockquote>
-<p>Install<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd octopress  #octopress directory</div><div class="line">$ git clone git@github.com:shashankmehta/greyshade.git .themes/greyshade</div><div class="line">$ echo &quot;\$greyshade: color;&quot; &gt;&gt; sass/custom/_colors.scss //Substitue &apos;color&apos; with your highlight color</div><div class="line">$ rake &quot;install[greyshade]&quot;</div><div class="line">$ rake generate</div></pre></td></tr></table></figure></p>
-<blockquote>
-<h3 id="修改头像。"><a href="#修改头像。" class="headerlink" title="修改头像。"></a>修改头像。</h3><p>在 gravatar.com 使用邮箱注册 账号，并上传自己的头像图片<br>然后修改两处：</p>
-<ol>
-<li>octopress/_config.yml<br> email: gravatar@maill<br>这里的gravatar@mail 更换为自己的注册gravatar的邮箱</li>
-<li>待查证</li>
-</ol>
-</blockquote>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/02/17/you-know-or-not-know/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/02/17/you-know-or-not-know/" itemprop="url">
-                  知否
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-17T08:09:10+08:00">
-                2014-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/02/17/you-know-or-not-know/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/02/17/you-know-or-not-know/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>014年，知乎搞了吉祥物设计大赛，自己做了一个发过去，被退！ ^_^！贴在这里算是个纪念！</p>
-<p>全文如下：</p>
-<p>矢问 为中文字 “矢” 的变形，以毛笔的手法进行人物化；上面为方巾，代表知识；中间浅色是头，有双手双脚，整个形态为人昂首阔步向前走，代表积极向上；矢为知的一半，一表示是知乎的吉祥物，二表示人永远知道一半，不可能所有都知道，也代表知乎的性质为问答社区; 矢字本意表示为箭矢，表示在知乎为有目的的问，表示知乎社区严谨的社区环境。<br>老婆问我为什么不给它填上五官，我说：知识无界，永远不懂知识到底是个什么样子。<br>关于名称—矢问<br>吉祥物的名称有很多，看到很多其它的名字，很伤心。难道所有的马都必须起个名字叫“萌萌”吗？<br>矢问，有知有问，符合知乎的形态，更符合知乎的清新的风格。<br>另外，喜欢叶问这个名字，所以借用了他的一个字。<br>矢问的性格<br>定义为积极努力，阳光运动。对知识永远保存在饥渴的状态。有知有问。<br>关于外设<br>外设还没有来得及想，文化衫肯定是少不了的。各种凡是能印刷和雕刻的东西都跑不了。<br>可扩展<br>这么简单的造型和颜色，留有了丰富的可扩展空间，包括颜色或动作都可以进行多元素化，春节可以穿棉袄，夏天可以穿T恤，情人节可以kiss，圣诞节可以堆雪人，都可以在头部和身体部位显示出来。<br>关于我<br>普通代码编程人员，已婚。常混于知乎，但能力有限，只F其他人。我不会ps及其它设计软件，当过完年看到知乎招收吉祥物时，这个矢字的人形造型就出现在我的脑海里，今天找个机会问了一下美工，如何画圆滑的曲线，然后开始做这个画。画很简单，但是我相信有人会喜欢。</p>
-<p>–完–</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2013/04/01/abtou-death/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/04/01/abtou-death/" itemprop="url">
-                  愚人节死神不要和我开玩笑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-01T22:33:24+08:00">
-                2013-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爱就趁现在/" itemprop="url" rel="index">
-                    <span itemprop="name">爱就趁现在</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/04/01/abtou-death/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/04/01/abtou-death/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>4.1 愚人节，10年前，张国荣去世，只留下程蝶衣和那首《当爱已成往事》。</p>
-<p>今天死神也想和我开玩笑吗？</p>
-<p>班车司机，醉驾，超车，并线，在高架上大小S被他走个遍， 三车道的线横过来走。</p>
-<p>谁会对自己的生命负责，也许你想公司该有人负责吧？班车公司该有人负责吧？班车司机应该会自己意识到是开班车吧？</p>
-<p>车上还有几十个生命呢？</p>
-<p>可是，一辆30人的班车还是在酒驾司机手里从公司门口开走了。</p>
-<p>路上的急刹，超车，并线，压车，该有的都有了。</p>
-<p>当班车被交警的警车逼到高架边上停下来的时候，突然意识到死神离我如此之近。</p>
-<p>愚人节，死神请不要和我开玩笑。</p>
-<p>  就这样吧，我又一次没有按照预定完成计划，又一次成为了时间的失败者。</p>
-<p>  就是这样的吧，生活没有给我们太多时间了，</p>
-<p>  以前就算了，这次还是好好的干吧。</p>
-<p>  不想像xiaolai说的那样，成为一个永远积极向上的鸡血者。</p>
-<p>  只有成为胜利者，才能摆脱这种恶俗的轮回。</p>
-<p>  提高效率和实施吧。</p>
-<p>  摆脱电脑的控制，实施纸质本子记录每天的工作计划，</p>
-<p>  定制的计划完全实施。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2013/03/11/the-feel-of-miss-home/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/11/the-feel-of-miss-home/" itemprop="url">
-                  乡愁
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-11T22:29:12+08:00">
-                2013-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/03/11/the-feel-of-miss-home/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/03/11/the-feel-of-miss-home/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##小时候,</p>
-<p>##乡愁不知道是一个什么玩意,</p>
-<p>##谁在这头?</p>
-<p>##谁又在那头?</p>
-<p>##长大后,</p>
-<p>##乡愁是绿皮火车上一个硬座,</p>
-<p>##今天在这头,</p>
-<p>##明天到那头.</p>
-<p>##后来啊,</p>
-<p>##乡愁是一种有家回不去的焦虑,</p>
-<p>##我在外头,</p>
-<p>##火车票已到别人手里头.</p>
-<p>##而现在,</p>
-<p>##乡愁是娃子饥饿的哀嚎,</p>
-<p>##奶粉在那头,</p>
-<p>##娃子在这头.</p>
- <img src="/images/misshome.jpg">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2013/03/07/another-spring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/07/another-spring/" itemprop="url">
-                  春夏秋冬又一春
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-07T22:26:24+08:00">
-                2013-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/03/07/another-spring/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/03/07/another-spring/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>小女子二八佳人我绣楼坐，</p>
-<p>朱唇轻点思念我的郎。</p>
-<p>自从那年离家去，</p>
-<p>至今无见归故乡。</p>
-<p>如有郎君身边伴，</p>
-<p>当年哪有武媚娘；</p>
-<p>都说一日夫妻百日恩，</p>
-<p>可知烟筒冒烟也平常。</p>
-<p>郎啊郎，你在哪圪垯逛？</p>
-<p>何日才能回家乡？</p>
-<p>想起我的郎呀泪汪汪，</p>
-<p>你在它乡过得还好吗？</p>
-<p>纵有千般思念情，</p>
-<p>也比你在家受罪强。</p>
-<p>爹让你向南你向北，</p>
-<p>娘让你打狗你撵鸡；</p>
-<p>兄让你向东你向西，</p>
-<p>姊妹都哭你笑嘻嘻；</p>
-<p>你说众人皆醉你独醒，</p>
-<p>我说众人皆凶你是吉。</p>
-<p>别人说你七分罪，</p>
-<p>我独爱你三分囍。</p>
-<p>可是你不该一去不复返，</p>
-<p>劳燕分飞各分离。</p>
-<p>你说要读书立志出头地，</p>
-<p>半夜三更服侍你；</p>
-<p>你说要星星读书好明亮，</p>
-<p>我偷偷摸摸学车胤；</p>
-<p>你说月亮今晚不太圆，</p>
-<p>我买上一屋蜡烛用体己；</p>
-<p>你说要离家前去求名功，</p>
-<p>我打包收拾最积极；</p>
-<p>你说明日踩着晨露走，</p>
-<p>我眼泪滚滚似马匹。</p>
-<p>春夏秋冬又一春，</p>
-<p>年年逢春盼你归。</p>
-<p>不知你到哪里去？</p>
-<p>不知你还记得绣楼的小奴婢？</p>
-<p>不知你功名得到否？</p>
-<p>不知你还记得咱家门朝西？</p>
-<p>不知你银两够用否？</p>
-<p>不知你还记得当年的甜甜蜜蜜？</p>
-<p>不知你是否受得了苦？</p>
-<p>不知你还记得那条大路朝向西？</p>
-<p>不知你是否无盘缠？</p>
-<p>不知你还记得咱家还有小孩提？</p>
-<p>不知你是否无颜回？</p>
-<p>不知道你还记得小奴家对你生死相依？</p>
-<p>不知你形容槁枯否？</p>
-<p>不知你还记得大树下的九月菊？</p>
-<p>奴家念你绣楼依，</p>
-<p>心血成滴杜鹃泣。</p>
-<p>日日思君日日思，</p>
-<p>年年盼君君不回。</p>
-<p>花花世界纵有千般好，</p>
-<p>只是无有家中的小奴婢。</p>
-<p>或言你就是那陈世美，</p>
-<p>或言你就是那断了线的风筝不再归。</p>
-<p>天下总有一条路，</p>
-<p>天下总有一颗心，</p>
-<p>天下总有一个人，</p>
-<p>天下总有一出戏，</p>
-<p>天下总有一郎君，</p>
-<p>天下总有一奴婢，</p>
-<p>天下总有一顿饭，</p>
-<p>天下总有一吃完就散席，</p>
-<p>天下总有一杯酒，</p>
-<p>天下总有一团麻，</p>
-<p>天下总有一瞬间，</p>
-<p>天下总有一条路向西，</p>
-<p>天下总有一个家，</p>
-<p>天下总有一个你，</p>
-<p>天下总有一株草，</p>
-<p>天下总有一枝花，</p>
-<p>天下总有一个阆苑仙葩，</p>
-<p>天下总有一个美玉无瑕，</p>
-<p>天下总有一个水中月，</p>
-<p>天下总有一个镜中花，</p>
-<p>天下总有一个春，</p>
-<p>天下总有一个夏，</p>
-<p>天下总有一个从秋流到冬，</p>
-<p>天下总有一个从春流到夏，</p>
-<p>天下总有一个枉自嗟，</p>
-<p>天下总有一个空牵挂。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2012/07/28/horse-cross-the-river/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2143,11 +1035,1140 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/11/01/how-to-tell-child/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2011/11/01/how-to-tell-child/" itemprop="url">
+                  什么样的孩子算是好孩子
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-11-01T22:51:45+08:00">
+                2011-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/育儿经/" itemprop="url" rel="index">
+                    <span itemprop="name">育儿经</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/11/01/how-to-tell-child/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/11/01/how-to-tell-child/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>估计很多家庭里孩子还没有出生的时候，就已经想到了教育问题。</p>
+<p>到底教育成什么样子了才算是教育好了呢？</p>
+<p>每每和家人聊起了别人家的孩子如何如何好，别人家的孩子如何如何孬，总是豪情万丈：</p>
+<p>我以后的孩子肯定不会是这样，我要让他好学习，懂礼貌，尊老爱幼。。。</p>
+<p>其实这是什么呢？</p>
+<p>不过是一种个人的美好愿望罢了，当家长要求孩子在小小年纪就做到这些，首先想一想自己有没有做到呢？</p>
+<p>说要治的时候豪情万丈，临到眼前却临时换阵，因为这样或那样的原因，自己偏离了初衷。</p>
+<p>天下的父母真的不容易，既要成家立业，赡养父母，管教子女，如果一不小心留个Bug,孩子不孝顺了，真是没处申冤啊。</p>
+<p>我和老婆总是说，孩子不希望漂亮，不希望学习好，只要健康，只要开心就好。</p>
+<p>可是谁能给她的健康和平安做保证呢！只能尽个人努力吧。寄希望于能健康和开心。</p>
+<p>有事没事的时候想，孩子，不要你大富大贵，不要你光宗耀祖，不要你出人头地，喜欢做你的事情，开心就好。</p>
+<p>那怎样教育出来的孩子算是好孩子呢？，每个人都有自己的观点和理由吧！</p>
+<p>有的人认为孩子无拘无束，开心就好；有的人认为严加管束，勤奋努力就好。</p>
+<p>其实我觉得，无论怎样，要让孩子精神上富有才算是最好，如果她精神上能富有，我相信的她的生活能力，</p>
+<p>学习能力，将来的生存状况都不会太差。</p>
+<p>怎样才算是精神富有呢？ 简单说就是自尊，自爱，自律。</p>
+<p>自尊：</p>
+<p>如果说大了，就是一个人有尊严吧，但是这是一个说不清的概念，对孩子来说，她怎么理解尊严呢？</p>
+<p>这也是个问题。</p>
+<p>我的理解很简单，待人接物有礼貌，懂得尊重别人，对父母有感恩的心，行事落落大方，</p>
+<p>不猥琐小气，不占小便宜。</p>
+<p>最起码不能让孩子到别人家里随便到屋里乱窜，只有得到别人的允许才能吃别人的东西，</p>
+<p>只有征得对方的同意才能玩小朋友的玩具。有的小孩到别人家里就自来熟，卧室书房到处跑，玩具实物随便摸，</p>
+<p>不说对方小孩不高兴，别人家长估计也是嘴上不说，心里不悦。</p>
+<p>不占小便宜，这个其实在每个小孩，一个最基本的条件吧，看见别人的东西就走不动，不给买就满地打滚，</p>
+<p>看见商店里的东西，不给买就鬼哭狼嚎，到手为止。</p>
+<p>大了点可能会为了点东西偷偷摸摸，为了得到某些东西撒谎骗人应该是熟门熟路了。</p>
+<p>其实这个问题，每个人理解不同，每个人想法不同，家长对孩子的期望与要求不同，所以教育的方式也不同。</p>
+<p>上面提到的那些我觉得是一个孩子最基本的素质，如果不具备这些，也许她将来的路将会走的很艰难。</p>
+<p>自爱：</p>
+<p>爱护自己，保护自己。远离危险和污秽，远离不良的社会风气及现象。有的时候，小孩会有冲突，我首先问她，</p>
+<p>是怎么回事；再问她， 你有没有告诉老师；三是问她，老师是怎么说的。如果不是头破血流，只是蹭皮擦伤，</p>
+<p>我很少去拉着她去找老师，和老师评论一番，再和对方家长唇枪舌战一番，占了风头出了气才算了事。</p>
+<p>一般我会告诉她下次碰到这种情况应该怎么保护自己，应该怎么做。</p>
+<p>有的时候，孩子有冲突，受伤，是因为她不知道该怎么保护自己。</p>
+<p>你应该交给她解决问题的方法，而不是帮助她来解决问题。</p>
+<p>至于远离不良社会风气，这对幼儿来说，有点早，但是可以潜意识里给她提到一点，比如：不闯红灯，</p>
+<p>看动画片里分清好人和坏人，给她讲好人为什么要打坏人。</p>
+<p>我会给她机会看各种类型的电影和电视。</p>
+<p>科幻电影如变形金刚，我会告诉她变形金刚是什么？汽车会什么会变。谁是好的谁是坏的。</p>
+<p>武侠电影如三少爷的剑，我会让她看优美的动作设计，武术是什么？他为什么要杀她？</p>
+<p>周星驰的美人鱼，会告诉她美人鱼是什么？为什么有人要抓美人鱼？最后是谁抓住了坏人？</p>
+<p>郭富城的孙悟空，我会告诉她西游记的故事情节，孙悟空为什么有的时候会想打他师父。</p>
+<p>国产如智取威虎山，我会告诉她老虎是电脑做出来的，不是真的，拍摄的时候是怎么做到的，顺便宣讲了一下爱国教育。</p>
+<p>日本动画如海贼王，告诉她路飞为什么要出海，他为什么有个帽子，他的那么多好朋友都是谁，他们会互相帮助打败坏人。</p>
+<p>BBC纪录片如地球脉动让她领略视野以外的东西，北美让她看到世界上其它的动物是怎么生存的，</p>
+<p>恐龙星球会告诉她以前的世界是什么样，恐龙之间是怎样弱肉强食的。</p>
+<p>我相信这些都会开阔她的视野，增加她对事物的判断力。</p>
+<p>自律：</p>
+<p>主要培养孩子的时间观念和执行力，这些都需要家长的配合和长期的培养。</p>
+<p>有些孩子上到小学的时候，家长就开始说了，早晨起不来，上学迟到啊，每天都得喊 ta，累的要死还不见效果。</p>
+<p>有的家长说孩子做作业精力不集中，作业的时候东张西望，分心拖沓，非要自己在旁边监督才会有所收敛。</p>
+<p>那么问题来了，</p>
+<p>幼儿园的时候，你是不是每天都按时送她到幼儿园，你是不是觉得幼儿园去早去晚也无所谓，你是不是觉得幼儿园</p>
+<p>可以中午接她回来吃个饭睡个觉，甚至可以觉得，可以为了带她出去玩而请一天两天假都无所谓？</p>
+<p>幼儿园的时候，你是不是每次在她游戏的时候，在她旁边不停的给她喂食，不时的打断她，问她渴不渴，摸她</p>
+<p>是不是出汗了。</p>
+<p>在她画画的时候，你是不是旁边看着还不停的说，这个应该这样画，这里应该用这样的颜色？</p>
+<p>在她看电视的时候，你在旁边走来走去，不停的和她说话，还心存善意的不停告诉她要休息眼睛，不停的询问</p>
+<p>饿不饿，要不要吃水果？</p>
+<p>那么你在做什么？你就是在打断她的注意力。</p>
+<p>冰冻三尺，非一日之寒。</p>
+<p>她在不停的打断中成长起来，在她的幼儿时期，她从来没有完整的做过一件事情，是不被打断的，长此以往，</p>
+<p>你想让他的注意力怎么集中呢？</p>
+<p>也许对家长说，也许是无意的，谁不想自己的孩子好呢？如果自己不知道什么是正确的，那就多读书，</p>
+<p>多问些老师，多交流。及时发现自己的不足。</p>
+<p>目前所能做的，就是好好的过好自己的每一天，过好生活。力所能及的给孩子一个开心的童年。</p>
+<p>放开孩子，让她走。</p>
+<p>放开孩子，让她跑。</p>
+<p>放开孩子，让她做。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/29/boy-and-flowers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2011/09/29/boy-and-flowers/" itemprop="url">
+                  桂花郎求桂花黄
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-09-29T22:04:41+08:00">
+                2011-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/09/29/boy-and-flowers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/09/29/boy-and-flowers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####桂花巷头桂花黄，</p>
+<p>####巷尾又见桂花郎，</p>
+<p>####摘得桂花酿花酒，</p>
+<p>####桂花酒卖桂花巷。</p>
+<p>####换取花香二两钱，</p>
+<p>####买取钗头胭脂香，</p>
+<p>####晚间娘子发髻戴，</p>
+<p>####口吐春兰沁芬芳。</p>
+<p>####稚子忙走入郎怀，</p>
+<p>####乳臭未干幼发黄，</p>
+<p>####囊中笔墨儿郎喜，</p>
+<p>####舞诗弄墨显张狂。</p>
+<p>####诗弱仙圣词勉苏，</p>
+<p>####武鲜安国定家乡，</p>
+<p>####子妻所在为家处，</p>
+<p>####年年复求桂花黄。</p>
+ <img src="/images/flowers.jpeg">
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/09/all-eat-people/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2011/09/09/all-eat-people/" itemprop="url">
+                  你们都吃人
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-09-09T21:42:00+08:00">
+                2011-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/09/09/all-eat-people/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/09/09/all-eat-people/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我害怕，我身上疼，你们都吃人。</p>
+<p>你是谁，你是谁，你是不是要吃我？</p>
+<p>身上疼，我要挠，你为什么不让我挠，你们都吃人！</p>
+<p>我饿了，我要吃东西，你为什么不让我动？你们都吃人。</p>
+<p>天是蓝的吗？墙为什么是白的？</p>
+<p>你是谁？你为什么站在我面前对着我笑？</p>
+<p>我的孩子呢？</p>
+<p>你们说好了来看我，在哪里呢？</p>
+<p>你们都吃人。</p>
+<p>我的屋子是不是进贼了？</p>
+<p>我为什么在这里？</p>
+<p>为什么不让我回家？</p>
+<p>情况紧急！</p>
+<p>一定要给我反映上去。</p>
+<p>叫人来救我！</p>
+<p>快快上报。</p>
+<p>要人来救我。</p>
+<p>有人要吃我。</p>
+<p>我爱的人都在哪里啊？</p>
+<p>这里有人在掐我。</p>
+<p>屋子里都是冰冷的。</p>
+<p>那是什么？为什么有东西钻进我的身体？</p>
+<p>冷的疼啊。</p>
+<p>睁开眼无法看见你们。</p>
+<p>闭上眼想着你们。</p>
+<p>我只能呆在玻璃罩子里。</p>
+<p>冷的疼啊。</p>
+<p>谁能告诉我，车子要把我带到哪里去？</p>
+<p>这里不是我的家啊!</p>
+<p>这里冷冰冰的。</p>
+<p>四周都是墙啊。</p>
+<p>为什么不给我穿上衣服？</p>
+<p>什么东西撒在我的脸上？</p>
+<p>呛的我喘不过气来？</p>
+<p>为什么还不给我穿衣服？</p>
+<p>你们都吃人啊！</p>
+<p>太阳晒的疼，</p>
+<p>那么多人看着我笑，</p>
+<p>为什么还不给我穿衣服？</p>
+<p>我终于明白了，</p>
+<p>你们要吃人。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/07/save-people-life/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2011/09/07/save-people-life/" itemprop="url">
+                  谁救谁的命
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-09-07T21:34:44+08:00">
+                2011-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/09/07/save-people-life/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/09/07/save-people-life/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近一直没有用电视，昨天也没有上网，所以一直不知道动车追尾这件事。直到今天才看到。</p>
+<p>30多人的死亡，200多人的重伤，真的感觉到难过，压抑，有种说不出的痛。浑身的颤抖和愤怒。</p>
+<p>地震天灾我们管不了，但这是赤裸裸的人祸啊。</p>
+<p>几十个人生命就这样轻易的失去了，如果换作自己的亲人能不痛心嘛！能不绝望嘛！</p>
+<p> 这是一个快速发展的时代，数字，网络，信息，充满你我的生活，物价的上涨，通胀的压力，</p>
+<p> 房价的飞飚，物欲的横流，让世界，让人类充满物质的诱惑和沉重的包袱。</p>
+<p> 不错，我们是解决温饱问题了，我们是不在受到旧社会的压迫了。但是我们失去的是什么？</p>
+<p> 人性的本质，善良的本性及人与人之间信任和理解。</p>
+<p> 百姓的命更不值钱了，动不动就是谁出事故了，哪里暴乱了，公交失火了，大桥断裂了，大楼倒塌了，</p>
+<p> 难道刁民越来越多了？灾难越来越难控制了。</p>
+<p> 贪官越来越多，富人越来越富，穷人越来越多，贫富差距逐渐增大，为富不仁，嗜血如命，明里暗里，</p>
+<p> 能走道的都走道了。大有大道，小有小道，没有道的就做金字塔的最底层，成为廉价的劳动力吧。</p>
+<p>就说昨天的这个追尾事件，生命已逝，但是一直没有任何人任何声明在主动说明事情的原因，</p>
+<p>有的只是推卸责任和领导视察的报道，老百姓是去献血了，但是流掉的呢？就这样算了吗？</p>
+<p>生命就这样无视的失去了吗？可怜的我们只是高科技实验和高官升迁加薪的小白鼠和垫脚石。</p>
+<p>我们只是个人，我们的要求很简单，能活着，别让我们吃毒，别让我们去其死就好了。</p>
+<p>这些年的毒品还少嘛？</p>
+<p>从婴儿奶粉到肉，到黄瓜，到龙虾，到食物，到饮料，到衣物，到用具，到出行，</p>
+<p>一切一切都包围在百姓的身边，稍有不慎，就会粉身碎骨，死无葬身之地。</p>
+<p>确实能够让十三亿人吃上饭确实很了不起了，但是也该到了正视问题的时候了，一味的高速度发展，</p>
+<p>早晚都会为自己的错误买单的。 如同高铁的速度，跑在300以上的技术还没有成熟，</p>
+<p>却为政绩好大喜功而一意孤行。</p>
+<p>该停停了，注重基础建设和民生改善才是永恒发展的道路啊。</p>
+<p>记住一点，船能载舟，也能覆舟。总有一天，总有那个时刻，会出现那个人的。</p>
+<p>———说于动车追尾的第二晚。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/08/07/first-of-baby/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2011/08/07/first-of-baby/" itemprop="url">
+                  宝宝第一次动了
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-08-07T22:44:08+08:00">
+                2011-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/育儿经/" itemprop="url" rel="index">
+                    <span itemprop="name">育儿经</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2011/08/07/first-of-baby/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2011/08/07/first-of-baby/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>昨天有预报说，梅超风要来，结果是与上海是擦肩而过，坐等也没等到。不过，却
+
+等来了胎儿的第一次胎动。昨天早晨，醒来时老婆说，宝宝动了，能感受到，慌的
+
+我脚忙手乱的就爬在肚子上听，仅仅是一下，有点向外鼓的感觉，耳根都能感到动静。
+
+然后就掩旗息鼓，难以寻觅。于是，不死心的时不时爬在老婆肚子上听，一直到睡觉，
+
+就像台风一样都没有出现。
+
+今天早晨，早早起来，准备和宝宝进行交流，老婆醒来告诉说又有动静了。哈哈，抓
+
+起手机准备测心跳。把耳朵贴上去，随着肚子里的声音，一震一震的，能够明显的感
+
+觉到是另一个心跳，高兴的忘乎所以，测了两次，才70多，好像不太对，后来上网查
+</code></pre><p>  才知道，要有专门的仪器听的才准。我估计是把心跳 胎动 消化 羊水的声音听在一起了。</p>
+<pre><code>哈哈。不过不要紧，老婆刚去医院查的胎心140多呢。
+
+然后就爬在床上盯着老婆的肚子看，哈哈，竟然被我看到，有个地方像敲鼓一样鼓了一下，
+
+小宝宝还是很有力量的嘛。据老婆说，就像有个气泡在那里頂了一下。哈哈。
+
+原来有个新生命的感觉这么的兴奋 ，奇怪，充满期待。
+
+今天看了一下老婆的B超单，LOT,左横位，就在网上查了一下，没什么问题，宝宝在整个
+
+妊娠期，位置和方位会不停的变来变去，很多到预产期就成为LOA,左枕位 或者 ROA,右枕位，
+
+顺产，是不成问题的了。
+
+---
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2009/10/19/the-story-of-limi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2009/10/19/the-story-of-limi/" itemprop="url">
+                  李米的猜想-爱
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2009-10-19T20:45:48+08:00">
+                2009-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2009/10/19/the-story-of-limi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2009/10/19/the-story-of-limi/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对李米的猜想觊觎许久，老想找个时间好好看看，对周迅的表演也是早就佩服至极，可是还是一直想看，</p>
+<p>老婆也和我提过很多次，说是要下个李米的猜想回来看看，今天突然找到了这个片子，</p>
+<p>于是很完整的看了一遍。不得不佩服导演和演员，他们将一个爱情故事演绎的如此完美，如此凄凉。</p>
+<p>对一个的爱有多深，不知道，只有自己做到了才能说，我爱你。爱你就是要负责任的，</p>
+<p>不是随便说说哄女孩子开心的。</p>
+<p>在一个老乡的婚宴上，虽然在老家已经都已办过，但是在上海还是小聚了一次，老乡都在。</p>
+<p>新娘说着说着哭了起来，责怪老公的无能为力，责怪起夫妻的长期两地，</p>
+<p>她说就算在一起两个人一起在街边摆摊卖红薯也不想这样两地长期分离了。老公也跟着哭了起来，</p>
+<p>大家为他们真实的感情鼓掌，期望能战胜困难而获得永久的幸福和开心。</p>
+<p>饭后，新娘对我们说其实她老公还是不错的，对她还是挺好的。我们大家都会心的笑了。</p>
+<p>要是男人的责任是永远的，男人怎么舍得让你和他一起在街边摆摊卖红薯呢。 我自己深深的感到惭愧，</p>
+<p>爱情是要培养的，是要呵护的，但是事业也是要努力和拼搏的。</p>
+<p>只有事业成功才能得来爱情的美满和幸福，男人会为自己的女人而奋斗终身。</p>
+<p>就像李米的猜想里的男主角，他和李米一样有一个梦想，赚够了钱开一家超市，安安静静的过完一生。</p>
+<p>但是他选择最快速的道路，贩毒。四年的时间，为了不让自己分心，忍着不见李米，</p>
+<p>只是默默的在李米的周围，注视她的一切，她的生活和工作，她的喜怒和哀乐，</p>
+<p>她所有的一切都用用摄像机录了下来。他想赚够了钱回去和李米开一个超市，简单不过的想法。</p>
+<p>可是他不能见李米，因为他的事业的不光彩，他的行动的不便。但是他没有想过李米的心情，</p>
+<p>李米四年来苦苦的追寻着男友的下落，开着出租车，在车上放一本杂志，里面贴满了男友的照片，</p>
+<p>上来一个顾客就开始讲她的故事和她的疑惑，她熟练的记着男友每封信的来的日期以及相隔的时间，</p>
+<p>那一串一串的数据就像是哥德巴赫猜想一样，让李米摸不着头脑，她不知道男友到底是怎么了，</p>
+<p>她想知道，她想明白，她说的，想找到他骂他一句你怎么不去死，谁都知道，这只不过是借口，</p>
+<p>一个爱情的借口，一个苦苦寻觅的借口。</p>
+<p>巧合的机会碰到了男友，但是他已经另有新人，也对李米不闻不问，更是出言伤她，</p>
+<p>李米更是无助的猜测和请求，因为她想给他们的爱一个定义，因为她确认他们的爱是一个真正的爱情，</p>
+<p>而不是随便称二两就拿回家喂狗的东西。</p>
+<p>最终还是男友死在自己的面前，一个极其惨烈的方式。直接从桥上掉了下来，摔死在自己的车上。</p>
+<p>无助，孤独，惶恐，害怕，还有凄凉，都从李米的眼睛里面透露出来。让人心疼了一遍又一遍。</p>
+<p>最终，李米在男友的温馨的VCR中，微笑着结束了影片。使得观众那颗不平静的心慢慢的安稳下来。</p>
+<p>也许真正的爱情确实是能够让人们祝福的。</p>
+<p>希望李米能够很坚强。</p>
+<p>周迅一直都是我很喜欢的演员，用周润发的话说就是那么小又那么会演戏，怎么得了。</p>
+<p>邓超的演出超出我的想象，一直都认为是一个二流演员，不过这部戏里确实演绎的很不错。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2192,7 +2213,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">156</span>
+                <span class="site-state-item-count">143</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2214,7 +2235,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
