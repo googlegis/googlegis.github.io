@@ -299,6 +299,257 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/16/show-the-random-slider-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/16/show-the-random-slider-value/" itemprop="url">
+                  Swift 2.0 纯学习之旅－2.主要代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-16T21:50:49+08:00">
+                2015-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/16/show-the-random-slider-value/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/16/show-the-random-slider-value/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>* 生成随机值，并绑定slider值
+
+* 计算得分，并对分值进行优化
+</code></pre><p>1.添加slider控件，并绑定outlet。</p>
+<p>  从object library 中选择 slider 控件，拖放到 Storyboard中，选中 slider 控件，</p>
+  <img src="/images/2015/06/newproject/QQ20150616-3.png">
+<p>  打开右侧show the Attributes inspector，然后在 value 中的 minimum 和 maximum</p>
+<p>  中分别输入 1 和 100。</p>
+  <img src="/images/2015/06/newproject/QQ20150616-9.png">
+<p>  点击 右上方 show the assistant editor，只留下 storyboard 和 代码页， 然后按住</p>
+<p>  control 键，鼠标拖动 slider 到 代码空白处， 一般在class 里面的上部。</p>
+  <img src="/images/2015/06/newproject/QQ20150616-4.png">
+<p>  松开鼠标，弹出输入框，输入对应信息。</p>
+  <img src="/images/2015/06/newproject/QQ20150616-5.png">
+<p>  完成后，点击</p>
+<p>  可以在代码中看到</p>
+  <img src="/images/2015/06/newproject/QQ20150616-6.png">
+<p>  说明已经绑定 outlet 了。这里就是把 slider 作为一个变量传到代码中了，以后代码中调用slider</p>
+<p>  就是在调用 storyboard 上的slider。</p>
+<p>2.绑定 slider_move 的事件</p>
+<p>   打开 viewcontroller.swift 文件，然后 class 内部的下方写入下方代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func sliderMoved(slider:UISlider)&#123;</span></div><div class="line"></div><div class="line"> currentValue = lroundf(slider.value)</div><div class="line"></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>   打开 Main.storyboard, 点击 show Document outline，安装control，选中 slider，</p>
+<p>   按住鼠标左键，拖动 slider 到 outline 中 viewController，</p>
+   <img src="/images/2015/06/newproject/QQ20150616-8.png">
+<p>   松开鼠标，弹出提示框，选择 sendevent中 sliderMove 函数。</p>
+<p>   然后在 viewController.swift 文件的 sliderMove 函数前面看到圆点，说明绑定成功。</p>
+   <img src="/images/2015/06/newproject/QQ20150616-7.png">
+<p>3.点击测试。</p>
+   <img src="/images/2015/06/newproject/QQ20150616-2.png">
+<p>－－－－－</p>
+<pre><code>这里定义了 currentValue 作为一个公共变量，可多个函数调用，当slider移动时，将slider的值
+
+传给 currentValue，然后点击 button 时，显示 currentValue 值。
+</code></pre><p>－－－－－－</p>
+<p>4.生成随机目标值。</p>
+<p>   添加公共变量 targetValue ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var targetValue:Int = <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>   然后在 viewDidLoad 函数中加入代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div></pre></td></tr></table></figure>
+<p>   最后将 showAlert 改写为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  let message = &quot;slider 值为：\(currentValue)&quot;</div><div class="line"></div><div class="line">               + &quot;\n目标值为：\(targetValue)&quot;</div><div class="line"></div><div class="line">  let alert = UIAlertController(title:&quot;Hello World!&quot;,message:message,preferredStyle:.Alert)</div><div class="line"></div><div class="line">  let action = UIAlertAction(title:&quot;OK&quot;,style:.Default,handler:nil)</div><div class="line"></div><div class="line">  alert.addAction(action)</div><div class="line"></div><div class="line">  presentViewController(alert,animated:true,completion:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5.开始新一轮</p>
+<p>从上面的代码可以看出， targetValue 在程序启动时生成一次后就再也不变化了，这根本不是我们想要的。</p>
+<p>所以我们要添加一个开始按钮来开始新的一轮，当然包括重新生成一个随机数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func startNewRound()&#123;</div><div class="line"></div><div class="line">  targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div><div class="line"></div><div class="line">  currentValue = <span class="number">50</span>;</div><div class="line"></div><div class="line">  slider.value = Float(currentValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后将 viewDidLoad 函数修改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">super.viewDidLoad()</div><div class="line"></div><div class="line">startNewRound()</div></pre></td></tr></table></figure>
+<p>修改 showAlert 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">  presentViewController(alert,animated:true,completion:nil)</div><div class="line"></div><div class="line">  startNewRound()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>6.添加目标值 label 显示</p>
+<p>  从 objectlibrary 中拖 label 和 button 到 storyboard 的view中，</p>
+<p>  给label绑定 IBOutlet。</p>
+<p>  绑定后应为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var targetLabel:UILabel!</span></div></pre></td></tr></table></figure>
+<p>  然后 添加函数 updateLabels：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func updateLabels()&#123;</div><div class="line"></div><div class="line">  targetLabel.text = String(targetValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  然后在每个调用 startNewRound 的地方添加 调用 updateLabels；</p>
+<p>7.计算每轮得分</p>
+<p> 基本的分数计算公式应该为 100-abs(targetValue - currentValue), 稍微懂点数学这个</p>
+<p> 应该不难理解。</p>
+<p> 所以在 showAlert  函数中添加分数计算方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func showAlert()&#123;</div><div class="line"></div><div class="line">  let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">  let points = 100 -difference</div><div class="line"></div><div class="line">  let message = &quot;得分：\(points)&quot;</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>8.计算总分数和游戏轮数</p>
+<p>添加变量 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var score:Int = 0;</div><div class="line"></div><div class="line">var round:Int = 0;</div></pre></td></tr></table></figure>
+<p>在左下方添加 总分数label，并绑定到 IBOutlet;在右下方添加 轮数 label 并绑定 IBOutlet。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var scoreLabel:UILabel!</span></div><div class="line"></div><div class="line"><span class="meta">@IBOutlet weak var roundLabel:UILabel!</span></div></pre></td></tr></table></figure>
+<p>将 showAlert 修改如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">  let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">  let points = <span class="number">100</span> - difference</div><div class="line"></div><div class="line">  score += points</div><div class="line"></div><div class="line">  let message = <span class="string">"得分：\(points)"</span></div><div class="line"></div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将updateLabels 修改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func updateLabels() &#123;</div><div class="line"></div><div class="line">  targetLabel.text = String(targetValue)</div><div class="line"></div><div class="line">  scoreLabel.text = String(score)</div><div class="line"></div><div class="line">  roundLabel.text = String(round)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在 startNewRound 函数中，将 round 值递增：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func startNewRound()&#123;</div><div class="line"></div><div class="line">  round += <span class="number">1</span></div><div class="line"></div><div class="line">  targetValue = <span class="number">1</span> + Int(arc4random_uniform(<span class="number">100</span>))</div><div class="line"></div><div class="line">  currentValue = <span class="number">50</span></div><div class="line"></div><div class="line">  slider.value = Float(currentValue)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>9.优化分数计算及显示</p>
+<p>一般的游戏都有奖励或者加血机制，我们在这里也加入这样的一个功能。</p>
+<p>将 showAlert 函数修改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">let difference = abs(targetValue - currentValue)</div><div class="line"></div><div class="line">var points = <span class="number">100</span> - difference</div><div class="line"></div><div class="line">var title: String</div><div class="line"></div><div class="line"><span class="keyword">if</span> difference == <span class="number">0</span>&#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Prefect!"</span></div><div class="line"></div><div class="line">  points += <span class="number">100</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> difference &lt; <span class="number">5</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"You almost had it!"</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> difference == <span class="number">1</span> &#123;</div><div class="line"></div><div class="line">    points += <span class="number">50</span></div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;  <span class="keyword">else</span> <span class="keyword">if</span> difference &lt; <span class="number">10</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Pretty Good!"</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">  title = <span class="string">"Not even close..."</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">score += points</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行查看</p>
+<img src="/images/2015/06/newproject/QQ20150617-2.png">
+<p>10.优化新一轮的时间逻辑</p>
+<p>也许你会看到，当你点击了 “Hit Me” button 之后，后面的那个 目标值，slider值都已开始变了，</p>
+<p>弹出框的显示内容与后面的内容不一致，这是因为这里的弹出框与后面的startNewRound和updateLabeles</p>
+<p>函数是异步加载的，不等你运行玩弹出框，就会继续运行下面的函数。 这和我们想的不太一样，应该是</p>
+<p>我点击了弹出框的OK之后，才能进行并显示下一关的内容。 如何解决呢？</p>
+<p>使用 action 中的 handler 参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">let alert = UIAlertController(...)</div><div class="line"></div><div class="line">let action = UIAlertAction(title:<span class="string">"OK"</span>,style:.Default,</div><div class="line"></div><div class="line">                          handler:&#123; action <span class="keyword">in</span></div><div class="line"></div><div class="line">                            self.startNewRound()</div><div class="line"></div><div class="line">                            self.updateLabels()</div><div class="line"></div><div class="line">                          &#125;)</div><div class="line"></div><div class="line">alert.addAction(action)</div><div class="line"></div><div class="line">presentViewController(alert,animated:true,completion:nil)</div></pre></td></tr></table></figure>
+<p>再运行程序测试一下。</p>
+<p>11.重新开始</p>
+<p>重新开始游戏，需要把已有的数据清0，把窗口中的控件值清除。</p>
+<p>我们首先增加两个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">fun startNewGame()&#123;</div><div class="line"></div><div class="line">  score = 0</div><div class="line"></div><div class="line">  round = 0</div><div class="line"></div><div class="line">  startNewRound()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func startOver() &#123;</span></div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>拖放一个button 到 storyboard 的 view 上，然后绑定 startOver 函数。</p>
+<p>然后修改 viewDidLoad 函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func viewDidLoad() &#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK!</p>
+<p>所有功能部分的代码到这里已经编写完成，后面会有一些美化和优化的内容。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/15/i-am-afraid-i-can-not-escape/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2107,281 +2358,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/28/google-map-ios-sdk-swift-demo-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/28/google-map-ios-sdk-swift-demo-1/" itemprop="url">
-                  使用Swift和GoogleMapiOSSDK开发地图应用示例(1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-28T10:16:56+08:00">
-                2015-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/28/google-map-ios-sdk-swift-demo-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/28/google-map-ios-sdk-swift-demo-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>iOS应用中的地图类别中，开发者可以有千万种想法和功能在上面实现，这里所要介绍的是几个基本功能：显示当<br>前位置，规划旅游路线(支持自定义中转点), 甚至从另外一个完全不同的方法去探索地图各种创意和功能, 毫无<br>疑问所有这些都会积累经验带来意想不到的结果。</p>
-<p>iOS从开始一直到版本5.1(包括)，iOS所有的地图应用及相关服务都是使用Google地图服务。但是，自从Apple<br>推出了自己一套全新的地图框架Map Kit后，就再也没有Google Map 什么事了。MapKit一直使用到现在的<br>iOS8.3。当Apple决定放弃使用GoogleMapService时，Google决定自己推出一套自己的跨平台的MapsSDK，<br>当然也包括iOS，来和iOS上的MapKit以及其它平台上的mapSDKs进行竞争。直到现在，Google已然是这方面<br>的佼佼者,大量的开发者都在使用GoogleMapSDK。所以，写这篇iOS平台上GoogleMapsSDK的介绍还是有一定<br>价值的。</p>
-<img src="/images/2015/05/googlemap/googlemapios-1024x576.jpg">
-<p>现在iOS版本GoogleMapsSDK的版本号1.9.2,它包含了很多在web版本中的功能，web版本也有很多功能是<br>iOS版本中没有的。需要指出的一点就是在这个版本里，SDK包非常大，所以如果需要把框架源码文件拷贝到你的<br>项目里的话就要先考虑一下了。然后，功能的兴趣点和重要性又使得它成为了开发者的不二之选。</p>
-<p>相对于原作者的<a href="http://www.appcoda.com/author/gabrielth/" target="_blank" rel="external">其它教程</a>,前面介绍的篇幅相对<br>较短，那是因为后面我们有大量的东西需要介绍。在介绍部分长篇大论的讨论各种功能就没有意义了,我们会在后<br>面进行详述。我想说的就是我们要做好遇到一些真正有兴趣的事情。如果你过去没有使用过GoogleMapsSDK进行<br>过开发，你绝对会在学习的过程中非常享受。下面我总结一下使用GoogleMapsSDK开发地图应用的几个知识点：</p>
-<blockquote>
-<p>显示使用者当前的实时位置</p>
-<p>如何显示一个地址所在位置点</p>
-<p>如何显示规划路径</p>
-<p>如何给路径添加一个中转点</p>
-<p>…</p>
-</blockquote>
-<p>好，废话多不说，下面开始我们的学习。</p>
-<p>##Demo预览</p>
-<p>先简单介绍这个Demo, 首先我们不会从新建项目开始，而是从这个<a href="https://www.dropbox.com/s/0le4t9x0amzml6q/GMapsDemo.zip?dl=0" target="_blank" rel="external">初始化项目</a>开始，我们要做的就是在上面加功能。所以首先是要下载项目，然后用Xcode打开备用。</p>
-<p>这个应用其实是一个单视图应用, 包含3个子视图:</p>
-<ol>
-<li>屏幕顶部是一个工具栏, 放置了几个按钮. 在初始化项目中，这几个按钮已经连接到了代码中IBAction方法，所以<br>不需要再去处理它了，只需要在需要的地方直接写代码就可以了。</li>
-<li>占据了屏幕中间大部分空间的UIView,用来显示地图.</li>
-<li>底部有一个标签用来显示路线长度和方向角.</li>
-</ol>
-<p>顶部工具栏中的按钮从左到右分别是:</p>
-<ul>
-<li>地址查询</li>
-<li>路线查询</li>
-<li>旅游模式</li>
-<li>地图类型</li>
-</ul>
-<p>在下面的介绍中我们会详细介绍. 现在要做的就是快速的浏览一下下载的项目。下面来张项目的截图:</p>
-<img src="/images/2015/05/googlemap/t33_1_my_location.png">
-<p>提示: 如果你只是想下载测试最终应用程序，请确保在文件 AppDelegate.swift中APIkey已经修改正确。</p>
-<p>##创建API Key</p>
-<p>使用GoogleMapsSDK的前提是必须要有API key.简单的说，就是我们需要从Google那里获取到一个字符串，<br>以允许在程序中调用GoogleAPI. 这个APIKey在Google Developers Console下获取，人如其名,对于<br>开发人员来说，这是一个很特别的地方. 显然，如果你已经有Google账号，可以直接登录进行操作，如果没有<br>Google账号，你首先需要创建一个账号。</p>
-<p>如果只是想为应用获取一个APIKey, 你可以不必理会Google官方的<a href="https://developers.google.com/maps/documentation/ios/start" target="_blank" rel="external">说明文档</a>.<br>但是，在本教程编写的时候，Google Developers Console可能对上面的链接会有所更新(显然对于官方文档来说就已经更新了。),<br>所以我建议通过以下步骤获取自己的APIKey。</p>
-<p>下面就开始来做. 用Google账号登录Developers Console，然后点击 API Project选项，显示如下图：</p>
-<img src="/images/2015/05/googlemap/t33_3_APIProject.png">
-<p>然后, 点击展开APIs &amp; auth菜单, 选择APIs选项. 然后你会发现Google提供的所有API服务都在这里,<br>但是这里我们只关注Google Maps SDK for iOS. 由于浏览器的原因，很多API都是在列表里，所以你必须下拉<br>点击 more,在一个组里，你只需要选择你需要的就可以了:</p>
-<img src="/images/2015/05/googlemap/t33_5_select_API_group.png">
-<p>如果你选择 Google Maps SDK for iOS API, 就会跳转到另外一个页面，选择Enable选项:</p>
-<img src="/images/2015/05/googlemap/t33_6_maps_api_on.png">
-<p>完成之后点击 APIs &amp; auth下的Credentials 选项。点击 Create new Key 按钮:</p>
-<img src="/images/2015/05/googlemap/t33_7_create_new_key_button.png">
-<p>点击之后，弹出窗口询问API Key的类型，显然选择 iOS Key来获取正确的Key.</p>
-<img src="/images/2015/05/googlemap/t33_8_select_key_type.png">
-<p>在下一个窗口你必须把你项目的 bundle identifier (bundle ID) 填进去.示例项目是<br>com.appcoda.GMapsDemo ,所以拷贝粘贴:</p>
-<img src="/images/2015/05/googlemap/t33_9_set_bundle_id.png">
-<p>上面的步骤是必须得,所以我们的程序才能获取Google Maps API的授权.注意的是如果你想把这个Key用到多个<br>程序上，你首先补习把bundle ID添到这个窗口内容。</p>
-<p>然后点击 Create 按钮，需要的API key创建完成. 你将会看到类似于下图的内容:</p>
-<img src="/images/2015/05/googlemap/t33_10_maps_api_key.png">
-<p>点击 Edit allowed iOS applications，你可以像上面那样编辑 bundle IDs。你也可以重新生产Key,<br>目前来说不需要. 你所需要做的就是拷贝到项目文件中，我们下面就会用到它</p>
-<p>为了后面的使用，还必须把web service中的geoCoding API 和Direction API 设置为Enable。</p>
-<p>##项目配置<br>如果使用第三方SDK而不是iOS自带SDK的就会有个问题, 项目中必须做一些SDK需要的配置才能正常运行所以我<br>们需要在项目中做些配置以使Google Maps SDK正常运行, 不然就无法使用. 注意的是下面的步骤有些可以在<br>Google官方文档中找到，有些找不到，所以要学会搜索，当然了，你所需要的都在这里，你自己不需要搜索任何<br>东西了.</p>
-<p>首先, 你必须下载 Google Maps SDK (这个框架是必须添加到项目里面的). <a href="https://developers.google.com/maps/documentation/ios/" target="_blank" rel="external">下载地址</a>; 点击 Download the SDK<br>按钮, 下载最新版本 (目前1.9.2). 下载解压缩到文件夹.</p>
-<p>用Xcode打开初始项目,然后从Finder中拖动 GoogleMaps.framework到项目导航中.当Xcode弹出提示时，<br>确保 Copy items if needed 选项被勾选, 当然也不能忘了选择Add to targets中的 GMapsDemo:</p>
-<img src="/images/2015/05/googlemap/t33_11_add_gmaps_framework.png">
-<p>然后再回到Finder中，打开GoogleMaps.framework文件，在Resources目录下,选择GoogleMaps.bundle<br>也同样把它拖到Xcode项目导航栏中. 选项同上。</p>
-<p>此时，下面两项应该已经在你的项目中了。 (Google Maps SDK是我自己建的文件夹)</p>
-<img src="/images/2015/05/googlemap/t33_12_sdk_added_files.png">
-<p>Google Maps SDK需要调用一些已经存在项目中的基础库函数.必须先把这些库添加到项目中,导航中选择项目，<br>点击 Build Phases，展开 Link Binary With Libraries节点. 点击 (+) 按钮把下面这些一个个添加:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">AVFoundation.framework</div><div class="line"></div><div class="line">CoreData.framework</div><div class="line"></div><div class="line">CoreLocation.framework</div><div class="line"></div><div class="line">CoreText.framework</div><div class="line"></div><div class="line">GLKit.framework</div><div class="line"></div><div class="line">ImageIO.framework</div><div class="line"></div><div class="line">libc++.dylib</div><div class="line"></div><div class="line">libicucore.dylib</div><div class="line"></div><div class="line">libz.dylib</div><div class="line"></div><div class="line">OpenGLES.framework</div><div class="line"></div><div class="line">QuartzCore.framework</div><div class="line"></div><div class="line">SystemConfiguration.framework</div></pre></td></tr></table></figure>
-<p>最终如下图所示：</p>
-<img src="/images/2015/05/googlemap/t33_13_framework_list.png">
-<p>然后点击 Build Settings, 查找 Other Linker Flags 设置. 找到之后, 给它赋值为 -ObjC,<br>因为我们要在当前的swift项目中建立一个连接到 Object-C编写的Maps SDK。</p>
-<img src="/images/2015/05/googlemap/t33_14_other_linker_flags.png">
-<p>对于连接，我们还不能直接在swift代码中嵌入Objective-C代码。而我们项目中必须要这么做，因为我们要引用<br>Google Maps库中的Object-C的头文件。事实上，我们就是想在Xcode中创建一个 Objective-C(.h)头文件,<br>但是没有直接方法，所以我们只能间接的创建：</p>
-<ol>
-<li><p>使用快捷键 Command + N 给项目添加一个新文件，</p>
-</li>
-<li><p>在文件模版中选择 Objective-C类型,命名为temp，点击创建：</p>
-</li>
-</ol>
-<img src="/images/2015/05/googlemap/t33_15_objective_c_file.png">
-<ol>
-<li>完成后，Xcode会弹出如下提示框，确定要选择 Yes</li>
-</ol>
-<img src="/images/2015/05/googlemap/t33_16_bridging_header.png">
-<ol>
-<li>除了创建了 temp.m 文件, 另外一个命名为：GMapsDemo-Bridging-Header.h 也被创建.<br>在Xcode中打开，添加下面这行代码:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &lt;GoogleMaps/GoogleMaps.h&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>删除 temp.m 文件，因为我们不再需要它了.</li>
-</ol>
-<p>最后,使我们使用上节创建的APIKey了. 打开 AppDelegate.swift 文件,在<br>application(_:didFinishLaunchingWithOptions:) 方法中添加下面代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool &#123;</div><div class="line">    // Override point for customization after application launch.</div><div class="line"></div><div class="line">    GMSServices.provideAPIKey(&quot;YOUR_API_KEY&quot;)</div><div class="line"></div><div class="line">    return true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当然这里的”YOUR_API_KEY”就是上节在GoogleDevelopers Console中创建的APIKey.注意的是现在可以<br>引用GoogleMaps库的类了，因为我们在前面对它创建了连接引入了头文件。</p>
-<p>目前项目的初始化准备工作完成了, 下面将要进行的就是正式的编码. 正如我所说的，当项目引入了外部库时，<br>必须进行一系列配置才能进行，幸运的是这些配置尽管有很多，但是都很简单。</p>
-<p>##显示地图<br>我们设置好了项目配置之后，就准备开始进行实际的编码，添加Google地图到应用中。正如你所看到的，这很简单<br>我们一步一步来。</p>
-<p>打开Main.storyboard文件, 你会注意到在容器中就是一个视图(UIView Controller)场景。</p>
-<img src="/images/2015/05/googlemap/t33_17_view_controller_scene.png">
-<p>这个视图就是用来加载地图的, 但是为了能在使用时方便，我们必须对它进行一些修改. 所以, 1. 选中，打开<br>Identity Inspector,在 class 框中输入 GMSMapView 作为 class名称.GMSMapView是Google Maps<br>库,事实上它是 UIView 子类.</p>
-<p>还有一处必须修改的地方在 ViewController.swift 文件中.在类的上部可以看到 IBOutlet 属性声明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@IBOutlet weak var viewMap: UIView!</div></pre></td></tr></table></figure>
-<p>我们做的就是把 viewMap 属性类从 UIView 改到 GMSMapView:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@IBOutlet weak var viewMap: GMSMapView!</div></pre></td></tr></table></figure>
-<p>现在我们就能使用viewMap这个变量了。</p>
-<p>给应用添加Google地图很简单. 在viewDidLoad 方法中添加如下两行代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    super.viewDidLoad()</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line"></div><div class="line">    let camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(48.857165, longitude: 2.354613, zoom: 8.0)</div><div class="line">    viewMap.camera = camera</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第一行是初始化一个GMSCameraPosition对象. 使用此对象我们在显示地图时，初始化了一个位置. 上面地图<br>中心的经纬度是Paris,你也可以知道其它的经纬度来替换.除了经纬度我们还需要初始化就是地图的缩放级别。</p>
-<p>上面的对象是赋给了camera 属性. With that,实际上地图被渲染为了 viewMap view.</p>
-<p>现在我们可以测试地图了. 所以无论是在真实设备商还是在模拟器中，等待到地图出现为止。(在中国不可能出现！)</p>
-<img src="/images/2015/05/googlemap/t33_18_map_first_run.png">
-<p>在我们进行下一部分之前进行一点扩展, 我们来创建一个动作表来选择地图类型.地图SDK提供了三种类型:</p>
-<ul>
-<li>Normal</li>
-<li>Terrain</li>
-<li>Hybrid</li>
-</ul>
-<p>Normal是默认类型，就是上图中显示的那种，另外两种类型根据你的选择来响应，而且这两种类型也都相当不错！</p>
-<p>地图视图其中有一个属性叫mapType. 是Google Maps SDK中的三个常量用来显示每个类型，想要哪种类型就<br>设置成对应的属性就可以了，这三种属性为:</p>
-<ul>
-<li>kGMSTypeNormal</li>
-<li>kGMSTypeTerrain</li>
-<li>kGMSTypeHybrid</li>
-</ul>
-<p>现在，找到 changeMapType(_:) IBAction 方法,我们需要在此处给地图视图添加对应动作表并对应相应的<br>属性值，下面的代码段就是所需内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@IBAction func changeMapType(sender: AnyObject) &#123;</div><div class="line">    let actionSheet = UIAlertController(title: &quot;Map Types&quot;, message: &quot;Select map type:&quot;, preferredStyle: UIAlertControllerStyle.ActionSheet)</div><div class="line"></div><div class="line">    let normalMapTypeAction = UIAlertAction(title: &quot;Normal&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeNormal</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let terrainMapTypeAction = UIAlertAction(title: &quot;Terrain&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeTerrain</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let hybridMapTypeAction = UIAlertAction(title: &quot;Hybrid&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeHybrid</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let cancelAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    actionSheet.addAction(normalMapTypeAction)</div><div class="line">    actionSheet.addAction(terrainMapTypeAction)</div><div class="line">    actionSheet.addAction(hybridMapTypeAction)</div><div class="line">    actionSheet.addAction(cancelAction)</div><div class="line"></div><div class="line">    presentViewController(actionSheet, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面的代码其实不太难. 地图视图中的每个动作我们都给它付了一个属性值。</p>
-<p>再次运行程序，点击顶部工具栏右侧按钮，会弹出选择类型的提示.</p>
-<img src="/images/2015/05/googlemap/t33_20_hybrid_type.png">
-<hr>
-<p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2431,7 +2407,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">144</span>
+                <span class="site-state-item-count">145</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2453,7 +2429,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
