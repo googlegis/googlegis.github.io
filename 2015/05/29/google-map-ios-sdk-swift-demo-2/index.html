@@ -110,21 +110,21 @@
 
 
 
-<meta name="description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进行">
+<meta name="description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进">
 <meta name="keywords" content="Google Map">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Swift和GoogleMapiOSSDK开发地图应用示例(2)">
 <meta property="og:url" content="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/index.html">
 <meta property="og:site_name" content="Log IT">
-<meta property="og:description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进行">
+<meta property="og:description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_21_plist_file.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_22_edit_scheme.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_23_default_location.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_24_search_address.png">
-<meta property="og:updated_time" content="2017-05-04T13:03:49.000Z">
+<meta property="og:updated_time" content="2017-05-25T10:44:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Swift和GoogleMapiOSSDK开发地图应用示例(2)">
-<meta name="twitter:description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进行">
+<meta name="twitter:description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进">
 <meta name="twitter:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_21_plist_file.png">
 
 
@@ -416,7 +416,8 @@
       
 
       
-        <h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
+        <a id="more"></a>
+<h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
 <p>地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。<br>从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，<br>,value值将会在第一次运行时，弹出来进行询问说明. 2. 在代码中请求权限，如果以前还没有触发过，当<br>你运行时，弹出请求框。下面我们会看到。</p>
 <p>当我们调用核心位置服务时, 应用会一直更新位置(甚至当应用在后台时也会), 而另外一种只是在使用的<br>的时候才会调用;我们所要使用的就是这种方法。既然我们想要app请求位置权限，就要在.plist文件中<br>给予一个正确的key, 以备我们在代码中能够调用来请求权限. 这种情况我们不需要一直跟踪位置更新.<br>也就是说当app在后台时或者没有位置更新时不需要请求服务, 因为那样也会浪费很多电量。我们只在程序运行时<br>才请求用户的位置权限。</p>
 <p>打开项目导航栏中的 Info.plist 文件. Then, 在 Editor 页选择 Add Item项. key填写<br>NSLocationWhenInUseUsageDescription 字符, 在value值中填写一些简单说明，比如:<br>“Allowing access to your location, you can spot your position on the map.” (去掉括号).</p>
@@ -639,7 +640,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">148</span>
+                <span class="site-state-item-count">147</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

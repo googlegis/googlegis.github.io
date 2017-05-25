@@ -408,7 +408,8 @@
       
         
           
-            <h2 id="给路线添加-Waypoints"><a href="#给路线添加-Waypoints" class="headerlink" title="给路线添加 Waypoints"></a>给路线添加 Waypoints</h2><p>Waypoints 在路线的起点和终点之间添加的位置点,实际上就是路线的一部分。目前位置，我们能够创建一个起<br>点到终点的路线，但是中间没有waypoints，下面我们要学习的是添加这个功能。这样我们的应用就越来越有趣<br>了。这次我们不按照上面的那样弹出一个输入框输入路线的waypoints,我们只需要在地图上点击一下，线路就会<br>从新计算。一个新的标识也会被放置到点击的地图位置上。</p>
+            <a id="more"></a>
+<h2 id="给路线添加-Waypoints"><a href="#给路线添加-Waypoints" class="headerlink" title="给路线添加 Waypoints"></a>给路线添加 Waypoints</h2><p>Waypoints 在路线的起点和终点之间添加的位置点,实际上就是路线的一部分。目前位置，我们能够创建一个起<br>点到终点的路线，但是中间没有waypoints，下面我们要学习的是添加这个功能。这样我们的应用就越来越有趣<br>了。这次我们不按照上面的那样弹出一个输入框输入路线的waypoints,我们只需要在地图上点击一下，线路就会<br>从新计算。一个新的标识也会被放置到点击的地图位置上。</p>
 <p>根据这个思路，第一步要做的就是在定义并初始化两个数组:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var markersArray: Array&lt;GMSMarker&gt; = []</div><div class="line"></div><div class="line">var waypointsArray: Array&lt;String&gt; = []</div></pre></td></tr></table></figure>
 <p>第一个存储所有的waypoints的标识， 第二个存储所有waypoints转化为的字符串对象。</p>
@@ -612,7 +613,8 @@
       
         
           
-            <h2 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h2><p>在地图上添加样式很简单, 这个工作总共只需要两段代码.根据你的需要和设置，样式有很多属性可以进行配置。<br>Google Maps SDK中样式是一个GMSMarker类. 初始化的时候，给它赋予一个CLLocationCoordinate2D<br>类型经纬度，前面的代码中我们已经创建了这个对象:</p>
+            <a id="more"></a>
+<h2 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h2><p>在地图上添加样式很简单, 这个工作总共只需要两段代码.根据你的需要和设置，样式有很多属性可以进行配置。<br>Google Maps SDK中样式是一个GMSMarker类. 初始化的时候，给它赋予一个CLLocationCoordinate2D<br>类型经纬度，前面的代码中我们已经创建了这个对象:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)</div></pre></td></tr></table></figure>
 <p>一旦这个样式对象初始化之后，地图SDK就知道该把它放置到什么位置了。下面就是要告诉地图对象添加一个这样<br>这样的样式。</p>
 <p>我们来看一下代码的具体内容, 首先要声明一个maker属性并强引用，在ViewController类中添加如下代码:</p>
@@ -839,7 +841,8 @@
       
         
           
-            <h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
+            <a id="more"></a>
+<h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
 <p>地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。<br>从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，<br>,value值将会在第一次运行时，弹出来进行询问说明. 2. 在代码中请求权限，如果以前还没有触发过，当<br>你运行时，弹出请求框。下面我们会看到。</p>
 <p>当我们调用核心位置服务时, 应用会一直更新位置(甚至当应用在后台时也会), 而另外一种只是在使用的<br>的时候才会调用;我们所要使用的就是这种方法。既然我们想要app请求位置权限，就要在.plist文件中<br>给予一个正确的key, 以备我们在代码中能够调用来请求权限. 这种情况我们不需要一直跟踪位置更新.<br>也就是说当app在后台时或者没有位置更新时不需要请求服务, 因为那样也会浪费很多电量。我们只在程序运行时<br>才请求用户的位置权限。</p>
 <p>打开项目导航栏中的 Info.plist 文件. Then, 在 Editor 页选择 Add Item项. key填写<br>NSLocationWhenInUseUsageDescription 字符, 在value值中填写一些简单说明，比如:<br>“Allowing access to your location, you can spot your position on the map.” (去掉括号).</p>
@@ -1061,7 +1064,8 @@
       
         
           
-            <p>iOS应用中的地图类别中，开发者可以有千万种想法和功能在上面实现，这里所要介绍的是几个基本功能：显示当<br>前位置，规划旅游路线(支持自定义中转点), 甚至从另外一个完全不同的方法去探索地图各种创意和功能, 毫无<br>疑问所有这些都会积累经验带来意想不到的结果。</p>
+            <a id="more"></a>
+<p>iOS应用中的地图类别中，开发者可以有千万种想法和功能在上面实现，这里所要介绍的是几个基本功能：显示当<br>前位置，规划旅游路线(支持自定义中转点), 甚至从另外一个完全不同的方法去探索地图各种创意和功能, 毫无<br>疑问所有这些都会积累经验带来意想不到的结果。</p>
 <p>iOS从开始一直到版本5.1(包括)，iOS所有的地图应用及相关服务都是使用Google地图服务。但是，自从Apple<br>推出了自己一套全新的地图框架Map Kit后，就再也没有Google Map 什么事了。MapKit一直使用到现在的<br>iOS8.3。当Apple决定放弃使用GoogleMapService时，Google决定自己推出一套自己的跨平台的MapsSDK，<br>当然也包括iOS，来和iOS上的MapKit以及其它平台上的mapSDKs进行竞争。直到现在，Google已然是这方面<br>的佼佼者,大量的开发者都在使用GoogleMapSDK。所以，写这篇iOS平台上GoogleMapsSDK的介绍还是有一定<br>价值的。</p>
 <img src="/images/2015/05/googlemap/googlemapios-1024x576.jpg">
 <p>现在iOS版本GoogleMapsSDK的版本号1.9.2,它包含了很多在web版本中的功能，web版本也有很多功能是<br>iOS版本中没有的。需要指出的一点就是在这个版本里，SDK包非常大，所以如果需要把框架源码文件拷贝到你的<br>项目里的话就要先考虑一下了。然后，功能的兴趣点和重要性又使得它成为了开发者的不二之选。</p>
@@ -1336,7 +1340,8 @@
       
         
           
-            <img src="/images/2015/05/typescript.png">
+            <a id="more"></a>
+<img src="/images/2015/05/typescript.png">
 <p>当前对于JavaScript开发者来说，是一个空前的好机遇！从一个网站的前端到后台Javascript已经是无处不<br>在，甚至于很多桌面版本的文本编辑器都是由Javascript驱动的。事实上，你现在可以用web技术来实现一个<br>桌面应用程序的全部功能。在你的JavaScript技术越来越熟练的情况下，最重要的一点就是保证你的代码在你<br>的掌控之中，免得变成一堆错综复杂的玩意。</p>
 <p>##TypeScript</p>
 <p><a href="http://typescriptlang.org/" target="_blank" rel="external">TypeScript</a> 遵守 ECMAScript 6(ES6) 中的可选类型规范。</p>
@@ -1509,7 +1514,8 @@
       
         
           
-            <p>可以说 JavaScript 无处不在，从19世纪中叶它的出生地Netscape 浏览器到现在进入到各种现在流行的web<br>浏览器，各种手机开发，并在Node.js的帮助下已经发展成为了羽翼丰满的web开发的服务器端语言。</p>
+            <a id="more"></a>
+<p>可以说 JavaScript 无处不在，从19世纪中叶它的出生地Netscape 浏览器到现在进入到各种现在流行的web<br>浏览器，各种手机开发，并在Node.js的帮助下已经发展成为了羽翼丰满的web开发的服务器端语言。</p>
 <img src="/images/2015/05/nodejs.png">
 <p>Node.js 是一种非阻塞式引擎，也就它在聊天服务、分析、合作工具、交互游戏等一些实时web程序中成为了<br>首选模式。</p>
 <p>为了使用nodejs来开发应用程序，你需要安装NPM(Node Package MaManager)工具，它主要用来下载和安装<br>一些能够比较优秀的第三方开源的JavaScript库。</p>
@@ -1723,7 +1729,8 @@
       
         
           
-            <p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
+            <a id="more"></a>
+<p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
 <p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a></p>
 <p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a>,</p>
 <p>点击安装，下载最新的安装包。</p>
@@ -1899,7 +1906,8 @@
       
         
           
-            <p>共产党员接屈情报被害</p>
+            <a id="more"></a>
+<p>共产党员接屈情报被害</p>
 <p>酒瓶解救人Z质</p>
 <p>1.食堂吃饭，，，，，便宜处理。买饭浇汤</p>
 <p>练武， 什么都不想，手握稻草一刀砍下，产生威力。</p>
@@ -2060,7 +2068,8 @@
       
         
           
-            <p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
+            <a id="more"></a>
+<p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
 <img src="/images/2015/05/nodejs.png">
 <p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
 <p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
@@ -2241,7 +2250,8 @@
       
         
           
-            <p>   做GitHub Page 倒是很久了，兴起时来写两句，想不起来也就不来了。</p>
+            <a id="more"></a>
+<p>   做GitHub Page 倒是很久了，兴起时来写两句，想不起来也就不来了。</p>
 <p>   有的时候，一点也想不起来或者自己很懒了，就真的一点也不想来了。</p>
 <p>   孩子和老婆回老家了。</p>
 <p>   短暂的清静和沉静，让我能够安安静静地坐下来写些什么东西。</p>
@@ -2349,7 +2359,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">148</span>
+                <span class="site-state-item-count">147</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
