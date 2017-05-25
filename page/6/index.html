@@ -408,7 +408,8 @@
       
         
           
-            <p> 娃娃在合肥上幼儿园，我会每个月都过去看她。</p>
+            <a id="more"></a>
+<p> 娃娃在合肥上幼儿园，我会每个月都过去看她。</p>
 <p> 有天她上幼儿园回来的路上和妈妈说，</p>
 <p> “我还得去上海一趟！”</p>
 <p> “你去干什么？”</p>
@@ -800,7 +801,8 @@
       
         
           
-            <p>  第二章终于写完了，原本打算 3 天写完，结果实际上花费了 7 天时间。</p>
+            <a id="more"></a>
+<p>  第二章终于写完了，原本打算 3 天写完，结果实际上花费了 7 天时间。</p>
 <p>  一般我的步骤是按照英文教程先编一遍应用，出来一个可以跑的应用。然后再</p>
 <p>  按照教程，再来一遍代码，在代码的过程中截图、写作，发现重心全放到文章的梳理和</p>
 <p>  协调上去了，根本对编程内容和技巧没有一点提高。</p>
@@ -968,7 +970,8 @@
       
         
           
-            <p>好看的颜色和机型的适配是一个应用必不可少的内容。</p>
+            <a id="more"></a>
+<p>好看的颜色和机型的适配是一个应用必不可少的内容。</p>
 <h3 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h3><p>打开 storyboard, 选择 File inspector 中，的 Global Tint，然后 color picker 中</p>
 <p>选择： Red:4  Green:169  Blue:235 。</p>
 <p>然后在 ChecklistViewController.swift 中，添加函数：</p>
@@ -1180,7 +1183,8 @@
       
         
           
-            <h3 id="显示事项个数"><a href="#显示事项个数" class="headerlink" title="显示事项个数"></a>显示事项个数</h3><p>首先在 Checklist.swift 中添加函数：</p>
+            <a id="more"></a>
+<h3 id="显示事项个数"><a href="#显示事项个数" class="headerlink" title="显示事项个数"></a>显示事项个数</h3><p>首先在 Checklist.swift 中添加函数：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">func countUnCheckedItems() -&gt; Int &#123;</div><div class="line"></div><div class="line">  var count = 0</div><div class="line"></div><div class="line">  for item in items &#123;</div><div class="line"></div><div class="line">    if !item.checked &#123;</div><div class="line"></div><div class="line">      count += 1</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return count</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在 AllListsViewController.swift 中 修改函数：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">override func tableView(tableView:UITableView,</div><div class="line"></div><div class="line">          cellForRowAtIndexPath indexPath:NSIndexPath) -&gt; UITableViewCell &#123;</div><div class="line"></div><div class="line">  let cellIdentifier = "Cell"</div><div class="line"></div><div class="line">  var cell:UITableViewCell !=</div><div class="line"></div><div class="line">                    tableView.dequeueReusableCellWithIdentifier(cellIdentifier)</div><div class="line"></div><div class="line">                    as? UITableViewCell</div><div class="line"></div><div class="line">  if cell == nil &#123;</div><div class="line"></div><div class="line">      cell = UITableViewCell(style:.Subtitle,reuseIdentifier:cellIdentifier)</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  let checklist = dataModel.lists[indexPath.row]</div><div class="line"></div><div class="line">  cell.textLabel!.text = checklist.name</div><div class="line"></div><div class="line">  cell.accessoryType = .DetailDisclosuerButton</div><div class="line"></div><div class="line">  let count = checklist.countUnCheckedItems()</div><div class="line"></div><div class="line">  if checklist.items.count == 0 &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "(No Items)"</div><div class="line"></div><div class="line">  &#125; else if count == 0 &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "All Done!"</div><div class="line"></div><div class="line">  &#125; else &#123;</div><div class="line"></div><div class="line">    cell.detailTextLabel!.text = "\(count) Remaining"</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return cell</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">override func viewWillAppear(animated: Bool)&#123;</div><div class="line"></div><div class="line">  super.viewWillAppear(animated)</div><div class="line"></div><div class="line">  tableView.reloadData()</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1385,7 +1389,8 @@
       
         
           
-            <p>当然，我们编程不能仅仅是代码语言的垒砌，需要动脑子去思考，去进步，对代码的重用，数据的重构</p>
+            <a id="more"></a>
+<p>当然，我们编程不能仅仅是代码语言的垒砌，需要动脑子去思考，去进步，对代码的重用，数据的重构</p>
 <p>等等都是在大量编码和思考的基础上积累起来的。如果说一个中级程序员和一个高级程序员的差别，</p>
 <p>估计也就是在项目的组织和构架上了。语言语法就那些，逻辑也不过if else,对代码的设计，模块的</p>
 <p>设计，对数据结构的设计，对整体构架的设计。都是不可低估的。 我以前对构架师，或者是那些只做</p>
@@ -1611,7 +1616,8 @@ if viewController === self {
       
         
           
-            <p>前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。</p>
+            <a id="more"></a>
+<p>前面都是针对一个类别下的多个记录，现在开始记录如何做多类别的情况。</p>
 <p>多类别情况下，至少要再有两个界面，一个用来显示所有的list，一个用来添加和修改list的名称</p>
 <p>Project Navigator 中，选择项目，右键 New File –&gt; Source –&gt; Cocoa Touch Class,</p>
 <p>Name: AllListsViewController, subclass: UITableViewController , language:Swift.</p>
@@ -1855,7 +1861,8 @@ if viewController === self {
       
         
           
-            <p>当然，一个真正的程序不仅仅前面讲到的一些内容。如果你的程序关闭之后再重启呢？</p>
+            <a id="more"></a>
+<p>当然，一个真正的程序不仅仅前面讲到的一些内容。如果你的程序关闭之后再重启呢？</p>
 <p>前面写入的内容就会全部消失了，用户还得要重新再写一遍，可以预见，哪个用户都不愿意用这样</p>
 <p>的软件。所以我们要学会保存数据和加载数据。</p>
 <h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><p>在 ChecklistViewController.swift 中添加函数：</p>
@@ -2030,7 +2037,8 @@ if viewController === self {
       
         
           
-            <p>还记得上一节中有个说法对于编程人员来说，逻辑流程无外乎添加、修改、删除的说法乎？</p>
+            <a id="more"></a>
+<p>还记得上一节中有个说法对于编程人员来说，逻辑流程无外乎添加、修改、删除的说法乎？</p>
 <p>上面已经完成了添加和删除(删除很简单，一个函数就搞定了！)，那么我们就着重讲一下修改！</p>
 <h3 id="修改界面"><a href="#修改界面" class="headerlink" title="修改界面"></a>修改界面</h3><p>选择 View2 中选择 Table view cell ,在 Attributes inspector 中，设置 Accessory</p>
 <p>为 Detail Disclosure。并且放一个 Label 在它的左边，设置为以下属性：</p>
@@ -2229,7 +2237,8 @@ if viewController === self {
       
         
           
-            <p>既然有了Checklist，就要想方设法的完善它的逻辑才能算的上一个完整的应用，对于我们程序来说</p>
+            <a id="more"></a>
+<p>既然有了Checklist，就要想方设法的完善它的逻辑才能算的上一个完整的应用，对于我们程序来说</p>
 <p>逻辑上的流程不外乎三种，添加、修改、删除。</p>
 <p>下面我要讨论往这三种逻辑流程。</p>
 <h3 id="导航控件"><a href="#导航控件" class="headerlink" title="导航控件"></a>导航控件</h3><p>打开 Main.storyboard , 选择 Checklist View Controller ，然后选择菜单中 Editor -&gt;</p>

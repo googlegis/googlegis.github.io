@@ -110,17 +110,17 @@
 
 
 
-<meta name="description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)sl">
+<meta name="description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)s">
 <meta name="keywords" content="iOS Apprentice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift 2.0 纯学习之旅－4.美化 Slider 组件">
 <meta property="og:url" content="http://googlegis.github.io/2015/06/23/swift-point-how-to-set-slider-picture/index.html">
 <meta property="og:site_name" content="Log IT">
-<meta property="og:description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)sl">
-<meta property="og:updated_time" content="2017-05-04T13:04:46.000Z">
+<meta property="og:description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)s">
+<meta property="og:updated_time" content="2017-05-25T11:02:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift 2.0 纯学习之旅－4.美化 Slider 组件">
-<meta name="twitter:description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)sl">
+<meta name="twitter:description" content="Slider很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。 打开 ViewController.swift, 在 viewDidLoad() 中加入 1234567891011121314151617181920212223242526let thumbImageNormal = UIImage(named:&quot;SliderThumb-Normal&quot;)s">
 
 
 
@@ -411,7 +411,8 @@
       
 
       
-        <h3 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a>Slider</h3><p>很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。</p>
+        <a id="more"></a>
+<h3 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a>Slider</h3><p>很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。</p>
 <p>打开 ViewController.swift, 在 viewDidLoad() 中加入</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">let thumbImageNormal = UIImage(named:<span class="string">"SliderThumb-Normal"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageNormal,forState:.Normal)</div><div class="line"></div><div class="line"></div><div class="line">let thumbImageHighlighted = UIImage(named:<span class="string">"SliderThumb-Highlighted"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageHighlighted,forState:.Highlighted)</div><div class="line"></div><div class="line">let insets = UIEdgeInsets(top:<span class="number">0</span>,left:<span class="number">14</span>,bottom:<span class="number">0</span>,right:<span class="number">14</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackLeftImage = UIImage(named:<span class="string">"SliderTrackLeft"</span>)&#123;</div><div class="line"></div><div class="line">    let trackLeftResizable = trackLeftImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMinimumTrackImage(trackLeftResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackRightImage = UIImage(named:<span class="string">"SliderTrackRight"</span>) &#123;</div><div class="line"></div><div class="line">    let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMaximumTrackImage(trackRightResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <pre><code>这里调用图片时，没有加上 @2x.png 还是 .png 这样后缀区分。
