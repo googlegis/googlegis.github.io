@@ -299,6 +299,369 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/02/27/create-blog-with-github-in-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/02/27/create-blog-with-github-in-mac/" itemprop="url">
+                  在mac下使用github自建博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-27T21:42:50+08:00">
+                2014-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/02/27/create-blog-with-github-in-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/02/27/create-blog-with-github-in-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考： <a href="http://octopress.org/docs/setup/rvm/" target="_blank" rel="external">http://octopress.org/docs/setup/rvm/</a></p>
+<p>一、 安装Ruby环境</p>
+<blockquote>
+<h3 id="安装rvm"><a href="#安装rvm" class="headerlink" title="安装rvm"></a>安装rvm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L https://get.rvm.io | bash -s stable —ruby</div></pre></td></tr></table></figure>
+</blockquote>
+<p>   报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">checking for Tcl configuration... configure: error: Can&apos;t find Tcl configuration definitions   Requirements installation failed with status: 1.</div></pre></td></tr></table></figure></p>
+<pre><code>解决方案：
+</code></pre><p>在终端中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select —install</div></pre></td></tr></table></figure></p>
+<p>后，再执行1.</p>
+<blockquote>
+<h3 id="安装-ruby"><a href="#安装-ruby" class="headerlink" title="安装 ruby"></a>安装 ruby</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rvm install 1.9.3</div><div class="line">rvm use 1.9.3</div><div class="line">rvm rubygems latest</div></pre></td></tr></table></figure>
+<h3 id="创建github项目"><a href="#创建github项目" class="headerlink" title="创建github项目"></a>创建github项目</h3></blockquote>
+<p>注意保存此链接： git@github.com:googlegis/googlegis.github.com.git</p>
+<blockquote>
+<h3 id="在本机创建ssh"><a href="#在本机创建ssh" class="headerlink" title="在本机创建ssh"></a>在本机创建ssh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/.ssh</div><div class="line">ssh-keygen -t rsa -C 你注册github时的email</div></pre></td></tr></table></figure>
+</blockquote>
+<p>弹出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter file in which to save the key (/Users/twer/.ssh/id_rsa):</div></pre></td></tr></table></figure></p>
+<p>直接按空格</p>
+<p>弹出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty for no passphrase):</div></pre></td></tr></table></figure></p>
+<p>输入你github账号的密码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Enter same passphrase again:</div></pre></td></tr></table></figure></p>
+<p>再次输入你的密码。</p>
+<p>打开~/.ssh下的id_rsa.pub文件复制里面的全部内容。<br>登陆github，选择Account Settings–&gt;SSH Public Keys 添加ssh，把剪切板的内容复制到key输入框内直接保存。</p>
+<p>测试shh:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@github.com</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PTY allocation request failed on channel 0</div><div class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</div><div class="line">Connection to github.com closed.</div></pre></td></tr></table></figure></p>
+<p>代表成功</p>
+<blockquote>
+<h3 id="安装octopress"><a href="#安装octopress" class="headerlink" title="安装octopress"></a>安装octopress</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git clone  git://github.com/imathis/octopress.git octopress</div><div class="line"></div><div class="line">cd octopress    # If you use RVM, You&apos;ll be asked if you trust the .rvmrc file (say yes).</div><div class="line"></div><div class="line">ruby --version  # Should report Ruby 1.9.3</div></pre></td></tr></table></figure>
+</blockquote>
+<p>安装依赖项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem install bundler</div><div class="line">rbenv rehash</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
+<p>安装默认主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake install</div></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3></blockquote>
+<p>利用octopress的一个配置rake任务来自动配置上面创建的仓库：可以让我们方便的部署GitHub page。在终端输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake setup_github_pages</div></pre></td></tr></table></figure></p>
+<p>弹出之后输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git@github.com:your_username/your_username.github.com.git</div></pre></td></tr></table></figure></p>
+<p>不要用提示的io，我的是<br>git@github.com/googlegis/googlegis.github.com.git</p>
+<p>输入以下命令部署博客<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rake generate</div><div class="line">rake deploy</div></pre></td></tr></table></figure></p>
+<p>如果无法push到仓库的master分支，尝试在项目目录的.git/config中添加(此部分本人部署时没有用到)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[branch &quot;master&quot;]</div><div class="line"> remote = origin</div><div class="line"> merge = refs/heads/master</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>###写博客<br>通过命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake new_post[&quot;myTitle&quot;]</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>文章生成在目录下的source/_posts目录下。文章是markdown格式的。可以通过 Mou 软件来编辑保存。</p>
+<p>关于markdown的格式可以参考这篇文章:<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></p>
+<p>写完后就可以部署更新文章到github上了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rake generate</div><div class="line">rake deploy</div></pre></td></tr></table></figure></p>
+<p>将你的原始文件保存在github上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -am &quot;Some comment here.&quot;</div><div class="line">git push origin source</div></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3></blockquote>
+<p>Install<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd octopress  #octopress directory</div><div class="line">$ git clone git@github.com:shashankmehta/greyshade.git .themes/greyshade</div><div class="line">$ echo &quot;\$greyshade: color;&quot; &gt;&gt; sass/custom/_colors.scss //Substitue &apos;color&apos; with your highlight color</div><div class="line">$ rake &quot;install[greyshade]&quot;</div><div class="line">$ rake generate</div></pre></td></tr></table></figure></p>
+<blockquote>
+<h3 id="修改头像。"><a href="#修改头像。" class="headerlink" title="修改头像。"></a>修改头像。</h3><p>在 gravatar.com 使用邮箱注册 账号，并上传自己的头像图片<br>然后修改两处：</p>
+<ol>
+<li>octopress/_config.yml<br> email: gravatar@maill<br>这里的gravatar@mail 更换为自己的注册gravatar的邮箱</li>
+<li>待查证</li>
+</ol>
+</blockquote>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/02/17/you-know-or-not-know/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/02/17/you-know-or-not-know/" itemprop="url">
+                  知否
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-17T08:09:10+08:00">
+                2014-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文章/" itemprop="url" rel="index">
+                    <span itemprop="name">文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/02/17/you-know-or-not-know/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/02/17/you-know-or-not-know/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>014年，知乎搞了吉祥物设计大赛，自己做了一个发过去，被退！ ^_^！贴在这里算是个纪念！</p>
+<p>全文如下：</p>
+<p>矢问 为中文字 “矢” 的变形，以毛笔的手法进行人物化；上面为方巾，代表知识；中间浅色是头，有双手双脚，整个形态为人昂首阔步向前走，代表积极向上；矢为知的一半，一表示是知乎的吉祥物，二表示人永远知道一半，不可能所有都知道，也代表知乎的性质为问答社区; 矢字本意表示为箭矢，表示在知乎为有目的的问，表示知乎社区严谨的社区环境。<br>老婆问我为什么不给它填上五官，我说：知识无界，永远不懂知识到底是个什么样子。<br>关于名称—矢问<br>吉祥物的名称有很多，看到很多其它的名字，很伤心。难道所有的马都必须起个名字叫“萌萌”吗？<br>矢问，有知有问，符合知乎的形态，更符合知乎的清新的风格。<br>另外，喜欢叶问这个名字，所以借用了他的一个字。<br>矢问的性格<br>定义为积极努力，阳光运动。对知识永远保存在饥渴的状态。有知有问。<br>关于外设<br>外设还没有来得及想，文化衫肯定是少不了的。各种凡是能印刷和雕刻的东西都跑不了。<br>可扩展<br>这么简单的造型和颜色，留有了丰富的可扩展空间，包括颜色或动作都可以进行多元素化，春节可以穿棉袄，夏天可以穿T恤，情人节可以kiss，圣诞节可以堆雪人，都可以在头部和身体部位显示出来。<br>关于我<br>普通代码编程人员，已婚。常混于知乎，但能力有限，只F其他人。我不会ps及其它设计软件，当过完年看到知乎招收吉祥物时，这个矢字的人形造型就出现在我的脑海里，今天找个机会问了一下美工，如何画圆滑的曲线，然后开始做这个画。画很简单，但是我相信有人会喜欢。</p>
+<p>–完–</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2013/04/01/abtou-death/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1819,373 +2182,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/29/boy-and-flowers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2011/09/29/boy-and-flowers/" itemprop="url">
-                  桂花郎求桂花黄
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-09-29T22:04:41+08:00">
-                2011-09-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2011/09/29/boy-and-flowers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2011/09/29/boy-and-flowers/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>####桂花巷头桂花黄，</p>
-<p>####巷尾又见桂花郎，</p>
-<p>####摘得桂花酿花酒，</p>
-<p>####桂花酒卖桂花巷。</p>
-<p>####换取花香二两钱，</p>
-<p>####买取钗头胭脂香，</p>
-<p>####晚间娘子发髻戴，</p>
-<p>####口吐春兰沁芬芳。</p>
-<p>####稚子忙走入郎怀，</p>
-<p>####乳臭未干幼发黄，</p>
-<p>####囊中笔墨儿郎喜，</p>
-<p>####舞诗弄墨显张狂。</p>
-<p>####诗弱仙圣词勉苏，</p>
-<p>####武鲜安国定家乡，</p>
-<p>####子妻所在为家处，</p>
-<p>####年年复求桂花黄。</p>
- <img src="/images/flowers.jpeg">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/09/all-eat-people/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2011/09/09/all-eat-people/" itemprop="url">
-                  你们都吃人
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2011-09-09T21:42:00+08:00">
-                2011-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2011/09/09/all-eat-people/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2011/09/09/all-eat-people/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题图  《墙头记》</p>
-<p>我害怕，我身上疼，你们都吃人。</p>
-<p>你是谁，你是谁，你是不是要吃我？</p>
-<p>身上疼，我要挠，你为什么不让我挠，你们都吃人！</p>
-<p>我饿了，我要吃东西，你为什么不让我动？你们都吃人。</p>
-<p>天是蓝的吗？墙为什么是白的？</p>
-<p>你是谁？你为什么站在我面前对着我笑？</p>
-<p>我的孩子呢？</p>
-<p>你们说好了来看我，在哪里呢？</p>
-<p>你们都吃人。</p>
-<p>我的屋子是不是进贼了？</p>
-<p>我为什么在这里？</p>
-<p>为什么不让我回家？</p>
-<p>情况紧急！</p>
-<p>一定要给我反映上去。</p>
-<p>叫人来救我！</p>
-<p>快快上报。</p>
-<p>要人来救我。</p>
-<p>有人要吃我。</p>
-<p>我爱的人都在哪里啊？</p>
-<p>这里有人在掐我。</p>
-<p>屋子里都是冰冷的。</p>
-<p>那是什么？为什么有东西钻进我的身体？</p>
-<p>冷的疼啊。</p>
-<p>睁开眼无法看见你们。</p>
-<p>闭上眼想着你们。</p>
-<p>我只能呆在玻璃罩子里。</p>
-<p>冷的疼啊。</p>
-<p>谁能告诉我，车子要把我带到哪里去？</p>
-<p>这里不是我的家啊!</p>
-<p>这里冷冰冰的。</p>
-<p>四周都是墙啊。</p>
-<p>为什么不给我穿上衣服？</p>
-<p>什么东西撒在我的脸上？</p>
-<p>呛的我喘不过气来？</p>
-<p>为什么还不给我穿衣服？</p>
-<p>你们都吃人啊！</p>
-<p>太阳晒的疼，</p>
-<p>那么多人看着我笑，</p>
-<p>为什么还不给我穿衣服？</p>
-<p>我终于明白了，</p>
-<p>你们要吃人。</p>
-<hr>
-<p>一位 90 多岁的老人去世了。老夫妻俩30年代从安徽农村闯荡上海，白手起家，勤俭操持，儿女子孙一大家十几口人都过上了富裕的生活。男的年纪大了后，因为重病先走了，留下女的，被儿子安排在郊区的一个养老院里，开汽车得一个多小时，做地铁得转三趟，将近三个小时。子女三人为了父母的房子，为了赡养费争的不可开交就差打架了。最后落了有病无人治，住院无人看的地步。感觉老俩口挣一辈子不值。</p>
-<p>其实说来说去不就是那点钱吗？</p>
-<p>以前对大城市还有点倾慕的心态，慢慢的都被磨平了，其实在哪里都一样，在哪里都有孬种，都有吃人的人。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2235,7 +2231,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">146</span>
+                <span class="site-state-item-count">148</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

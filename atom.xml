@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2017-05-22T16:06:22.000Z</updated>
+  <updated>2017-05-25T01:15:09.000Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -16,17 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>am i too hardly strict with susie</title>
+    <link href="http://googlegis.github.io/2017/05/25/am-i-too-hardly-strict-with-susie/"/>
+    <id>http://googlegis.github.io/2017/05/25/am-i-too-hardly-strict-with-susie/</id>
+    <published>2017-05-25T00:14:57.000Z</published>
+    <updated>2017-05-25T01:15:09.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;do you like the cake?&lt;/p&gt;
+&lt;p&gt;i like to eat the cat ,i like to drink the juice&lt;/p&gt;
+&lt;p&gt;i can pick up the monster , i can put down the monst
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>做好父母份内的事</title>
+    <link href="http://googlegis.github.io/2017/05/24/do-the-part-of-parent/"/>
+    <id>http://googlegis.github.io/2017/05/24/do-the-part-of-parent/</id>
+    <published>2017-05-24T11:02:50.000Z</published>
+    <updated>2017-05-25T02:16:22.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;周一的时候，去接娃子放学，听到有的家长问老师有没有作业，老师说没有。回到家也就放心大胆的让孩子玩耍起来。&lt;/p&gt;
+&lt;p&gt;晚上 8.30，准时要求她去刷牙洗脸，然后上床讲故事、睡觉，等这一套动作打完之后，已经 9:30 了，老婆问我娃子的今天的作业做了没？我问到什么作业？老师
+    
+    </summary>
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>生命中不能承受之重</title>
     <link href="http://googlegis.github.io/2017/05/21/the-most-heaviliy-role-in-child-heart/"/>
     <id>http://googlegis.github.io/2017/05/21/the-most-heaviliy-role-in-child-heart/</id>
     <published>2017-05-21T13:04:01.000Z</published>
-    <updated>2017-05-22T16:06:22.000Z</updated>
+    <updated>2017-05-22T16:10:32.000Z</updated>
     
     <summary type="html">
     
-      &lt;img src=&quot;/images/2017/05/20170523/maxresdefault.jpg&quot;&gt;
+      &lt;img src=&quot;/images/2017/05/20170523/maxresdefault.jpg&quot;&gt; 
 &lt;p&gt;周末的时候，带着孩子去看了《当怪物来敲门》，这是一部描写孩童心理负担和自我救赎的电影。&lt;/p&gt;
-&lt;p&gt;一个小男孩承受父母离异，母亲即将病逝，父亲另立新家而无法照顾自
+&lt;p&gt;一个小男孩承受父母离异，母亲即将病逝，父亲另立新家而无法照顾
     
     </summary>
     
@@ -444,50 +483,6 @@
     
     
       <category term="西游" scheme="http://googlegis.github.io/tags/%E8%A5%BF%E6%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Inconsistent line ending style in svn</title>
-    <link href="http://googlegis.github.io/2017/02/17/inconsistent-line-ending-style-in-svn/"/>
-    <id>http://googlegis.github.io/2017/02/17/inconsistent-line-ending-style-in-svn/</id>
-    <published>2017-02-17T03:25:15.000Z</published>
-    <updated>2017-05-04T12:34:43.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;/images/2017/02/svnstyle.png&quot;&gt;
-&lt;p&gt;有的时候，SVN 会出来一些莫名其妙的错误，比如这个：&lt;/p&gt;
-&lt;p&gt;Inconsistent line ending style&lt;/p&gt;
-&lt;p&gt;有这个问题的出现说明文件的行尾符号不支持。或者
-    
-    </summary>
-    
-      <category term="Mac" scheme="http://googlegis.github.io/categories/Mac/"/>
-    
-    
-      <category term="svn" scheme="http://googlegis.github.io/tags/svn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让孩子自己承担责任</title>
-    <link href="http://googlegis.github.io/2017/01/17/let-the-child-for-self-wrong/"/>
-    <id>http://googlegis.github.io/2017/01/17/let-the-child-for-self-wrong/</id>
-    <published>2017-01-17T11:07:46.000Z</published>
-    <updated>2017-05-17T16:33:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;周三的时候会带娃子上英语班，是在晚上，由于时间紧，放学回来吃了饭马上就要走，有的时候回来晚了就要到晚上九点半才能到家。&lt;/p&gt;
-&lt;p&gt;去年冬天的某天老师正好还布置了作业，让画灯笼。一是下雨天气，状态不好，二来回来晚了，精神不济。画了两个，就不想画了，我也不知道老师让画几个，
-    
-    </summary>
-    
-      <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
-    
-    
-      <category term="责任" scheme="http://googlegis.github.io/tags/%E8%B4%A3%E4%BB%BB/"/>
     
   </entry>
   

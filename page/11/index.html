@@ -299,6 +299,348 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/24/a-swift-tour/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/07/24/a-swift-tour/" itemprop="url">
+                  swift 通览
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-24T23:23:09+08:00">
+                2014-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/07/24/a-swift-tour/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/07/24/a-swift-tour/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>5月份本来准备学习iOS的开发，objc的书买了两本，但是6.2号的wwdc上，Apple公布了其新的开发语言－－Swift，虽然对objc及整个ios开发的流程还不熟悉，决定还是从Swift开始学习。Swift的最好教程当然还是官网的教程。把学习的知识点纪录下来，供查阅。</p>
+</blockquote>
+<p>｜ 本文通览只是把swift的知识点提到，没有针对性的详细讲解。Apple 针对每个知识点都有文章(鄙视那个演员)解释。</p>
+<p><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-XID_1" target="_blank" rel="external">本文参考链接：</a></p>
+<h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//var 表示变量， let表示常量，无需指定变量类型，swift可更加值自动判断</div><div class="line"></div><div class="line">println(<span class="string">"Hello,world"</span>)</div><div class="line"></div><div class="line">var myVariable = <span class="number">42</span></div><div class="line"></div><div class="line">myVariable = <span class="number">50</span></div><div class="line"></div><div class="line">let myConstant = <span class="number">42</span></div><div class="line"></div><div class="line">let implicitInteger = <span class="number">70</span></div><div class="line"></div><div class="line">let implicitDouble = <span class="number">70.0</span></div><div class="line"></div><div class="line">//显式定义变量类型</div><div class="line">let explicitDouble:Double = <span class="number">70</span></div><div class="line"></div><div class="line">let explicitFloat:Float32 = <span class="number">4</span></div></pre></td></tr></table></figure>
+<h3 id="2-字符串及转意符"><a href="#2-字符串及转意符" class="headerlink" title="2. 字符串及转意符"></a>2. 字符串及转意符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 拼接字符串，</div><div class="line">let label = <span class="string">"The width is "</span></div><div class="line"></div><div class="line">let width = <span class="number">4</span></div><div class="line"></div><div class="line">//<span class="number">1.</span>直接强制转换，</div><div class="line">let widthLabel = label + String(width)</div><div class="line"></div><div class="line">let widthLabel2 = label + <span class="string">"\(width)"</span></div><div class="line"></div><div class="line">//<span class="number">2.</span> 利用  \() 进行转义</div><div class="line">let apples = <span class="number">3</span></div><div class="line"></div><div class="line">let oranges = <span class="number">5</span></div><div class="line"></div><div class="line">let appleSummary  = <span class="string">"I Have \(apples) apples"</span></div><div class="line"></div><div class="line">let orangesSummary = <span class="string">"I Have \(apples + oranges) pieces of fruit"</span></div></pre></td></tr></table></figure>
+<h3 id="3-数组和字典"><a href="#3-数组和字典" class="headerlink" title="3. 数组和字典"></a>3. 数组和字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 直接赋值数组</div><div class="line">var shoppingList = [<span class="string">"catfish"</span>,<span class="string">"water"</span>,<span class="string">"tulips"</span>,<span class="string">"blue paint"</span>]</div><div class="line"></div><div class="line">// 修改数组值</div><div class="line">shoppingList[<span class="number">1</span>] = <span class="string">"bottle of water"</span></div><div class="line"></div><div class="line">shoppingList[<span class="number">1</span>]</div><div class="line"></div><div class="line">//直接赋值字典</div><div class="line">var occupations = [</div><div class="line">    <span class="string">"Malcolm"</span>:<span class="string">"Captain"</span>,<span class="string">"Kaylee"</span>:<span class="string">"Mechanic"</span>]</div><div class="line"></div><div class="line">//直接添加字典值</div><div class="line">occupations[<span class="string">"Jayne"</span>] = <span class="string">"Public Relations"</span></div><div class="line"></div><div class="line">//初始化一个字符空数组</div><div class="line">let emptyArray = [String]()</div><div class="line">//初始化一个空字典</div><div class="line">let emptyDictionary = Dictionary&lt;String,Float&gt;()</div><div class="line">//数组赋值为空</div><div class="line">shoppingList = []</div></pre></td></tr></table></figure>
+<h3 id="4-控制流"><a href="#4-控制流" class="headerlink" title="4. 控制流"></a>4. 控制流</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// for..in  类似于C＃中的 foreach string in ［string］</div><div class="line"></div><div class="line">let individualScores = [75,43,103,87,12]</div><div class="line"></div><div class="line">var teamScore = 0</div><div class="line"></div><div class="line">for score in individualScores &#123;</div><div class="line"></div><div class="line">    if score &gt; 50 &#123;</div><div class="line"></div><div class="line">        teamScore += 3</div><div class="line">    &#125; else &#123;</div><div class="line">        teamScore += 1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">teamScore</div><div class="line"></div><div class="line">// if..else</div><div class="line">var optionalString: String? = "Hello"</div><div class="line"></div><div class="line">optionalString == nil</div><div class="line"></div><div class="line">var optionalName : String? = "John Appleseed"</div><div class="line">var greeting = "Hello!"</div><div class="line"></div><div class="line">if let name = optionalName &#123;</div><div class="line">    greeting = "Hello, \(name)"</div><div class="line">&#125;</div><div class="line"></div><div class="line">greeting</div><div class="line"></div><div class="line">// switch case－－不需要break。执行完case后自动跳出。</div><div class="line"></div><div class="line">let vegetable = "red pepper"</div><div class="line">var vegetableComment = ""</div><div class="line"></div><div class="line">switch vegetable &#123;</div><div class="line">case "celery":</div><div class="line">    vegetableComment = "Add some raisins and make ants on a log."</div><div class="line"></div><div class="line">case "cucumber","watercress":</div><div class="line">    vegetableComment = "That would make a good tea sandwich."</div><div class="line"></div><div class="line">case let x where x.hasSuffix("pepper"):</div><div class="line">    vegetableComment = "Is it a spicy \(x)?"</div><div class="line"></div><div class="line">default:</div><div class="line">    vegetableComment = "Everything tastes good in soup."</div><div class="line">&#125;</div><div class="line"></div><div class="line">vegetableComment</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//for..in 在dictionary中的使用</div><div class="line"></div><div class="line">let interestingNumbers = [</div><div class="line">    "Prime": [2,3,5,7,11,13],</div><div class="line">    "Fibonacci": [1,1,2,3,5,8],</div><div class="line">    "Square": [1,4,9,16,25],</div><div class="line">]</div><div class="line"></div><div class="line">var largest = 0</div><div class="line"></div><div class="line">for (kind,numbers) in interestingNumbers &#123;</div><div class="line">    for number in numbers &#123;</div><div class="line">        if number &gt; largest &#123;</div><div class="line">            largest = number</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">largest</div><div class="line"></div><div class="line"></div><div class="line">//while 循环</div><div class="line"></div><div class="line">var n = 2</div><div class="line">while n &lt; 100 &#123;</div><div class="line">    n = n * 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">n</div><div class="line"></div><div class="line">//do...while 循环</div><div class="line"></div><div class="line">var m = 2</div><div class="line">do &#123;</div><div class="line">    m = m * 2</div><div class="line">&#125; while m &lt; 100</div><div class="line"></div><div class="line">m</div><div class="line"></div><div class="line">// ..&lt; 表示 大于等于0小于4</div><div class="line">var firstForLoop = 0</div><div class="line">for i in 0..&lt;4 &#123;</div><div class="line">    firstForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">firstForLoop</div><div class="line"></div><div class="line">var secondForLoop = 0</div><div class="line">for var i = 0; i &lt; 4 ;++i &#123;</div><div class="line">    secondForLoop += 1</div><div class="line">&#125;</div><div class="line"></div><div class="line">secondForLoop</div><div class="line"></div><div class="line">// ... 表示 大于等于0 小于等于 4</div><div class="line"></div><div class="line">var thirdForLoop = 0</div><div class="line">for i in 0...4 &#123;</div><div class="line">    thirdForLoop += i</div><div class="line">&#125;</div><div class="line"></div><div class="line">thirdForLoop</div></pre></td></tr></table></figure>
+<h3 id="5-函数和闭包"><a href="#5-函数和闭包" class="headerlink" title="5. 函数和闭包"></a>5. 函数和闭包</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//返回单值</div><div class="line">func greet(name:String,day:String) -&gt; String &#123;</div><div class="line">    return "Hello \(name) , today is \(day)."</div><div class="line">&#125;</div><div class="line"></div><div class="line">greet("Bob","Tuesday")</div><div class="line"></div><div class="line">//返回多值</div><div class="line">func getGasPrices() -&gt; (Double,Double,Double) &#123;</div><div class="line">    return (3.59,3.69,3.79)</div><div class="line">&#125;</div><div class="line"></div><div class="line">getGasPrices()</div><div class="line"></div><div class="line"></div><div class="line">//不定参数</div><div class="line">func sumOf(numbers: Int...) -&gt; Int &#123;</div><div class="line">        var sum = 0</div><div class="line">    for number in numbers &#123;</div><div class="line">        sum += number</div><div class="line">    &#125;</div><div class="line">    return sum</div><div class="line">&#125;</div><div class="line"></div><div class="line">sumOf()</div><div class="line">sumOf(42,59,12)</div><div class="line"></div><div class="line">//函数嵌套</div><div class="line">func returnFifteen() -&gt; Int &#123;</div><div class="line">    var y = 10</div><div class="line">    func add() &#123;</div><div class="line">        y += 5</div><div class="line">    &#125;</div><div class="line">    add()</div><div class="line">    return y</div><div class="line">&#125;</div><div class="line"></div><div class="line">returnFifteen()</div><div class="line"></div><div class="line">//函数作为返回值</div><div class="line">func makeIncrementer() -&gt; (Int -&gt; Int)&#123;</div><div class="line">    func addOne(number:Int) -&gt; Int &#123;</div><div class="line">        return 1 + number</div><div class="line">    &#125;</div><div class="line">    return addOne</div><div class="line">&#125;</div><div class="line"></div><div class="line">var increment = makeIncrementer()</div><div class="line"></div><div class="line">increment(7)</div><div class="line"></div><div class="line">//函数作参数</div><div class="line">func hasAnyMatches(list:[Int],condition:Int -&gt; Bool) -&gt; Bool &#123;</div><div class="line">    for item in list &#123;</div><div class="line">        if condition(item) &#123;</div><div class="line">            return true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">func lessThanTen(number:Int) -&gt; Bool &#123;</div><div class="line">    return number &lt; 10</div><div class="line">&#125;</div><div class="line"></div><div class="line">var numbers = [20,19,7,12]</div><div class="line"></div><div class="line">hasAnyMatches(numbers, lessThanTen)</div><div class="line"></div><div class="line">numbers</div><div class="line"></div><div class="line">// map 函数</div><div class="line">numbers.map(&#123;</div><div class="line">    (number:Int)-&gt; Int in</div><div class="line">    let result = 3 * number</div><div class="line">    return result</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">let mappedNumbers = numbers.map(&#123;number in 3 * number&#125;)</div><div class="line"></div><div class="line">mappedNumbers</div><div class="line"></div><div class="line">let sortedNumbers = sorted(numbers) &#123;$0 &gt; $1&#125;</div><div class="line">sortedNumbers</div></pre></td></tr></table></figure>
+<h3 id="6-对象和类"><a href="#6-对象和类" class="headerlink" title="6. 对象和类"></a>6. 对象和类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Shape &#123;</div><div class="line">    var numberOfSides = 0</div><div class="line">    func simpleDescription () -&gt; String &#123;</div><div class="line">        return "A shape with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var shape = Shape()</div><div class="line">shape.numberOfSides = 7</div><div class="line">var shapeDescrition = shape.simpleDescription()</div><div class="line"></div><div class="line">class NamedShape &#123;</div><div class="line">    var numberOfSides: Int = 0</div><div class="line">    var name :String</div><div class="line">    init(name:String)&#123;</div><div class="line">        self.name = name</div><div class="line">    &#125;</div><div class="line">    func simpleDescription() -&gt; String&#123;</div><div class="line">        return "A shape \(name) with \(numberOfSides) sides."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//let nameshape = NamedShape(numberOfSides:5,name:"Jay")</div><div class="line"></div><div class="line">class Square:NamedShape &#123;</div><div class="line">    var sideLength: Double</div><div class="line">    init(sideLength: Double,name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 4</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	func area() -&gt; Double &#123;</div><div class="line">        return sideLength * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "A square with sides of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let test = Square(sideLength:5.2,name:"my test square")</div><div class="line"></div><div class="line">test.area()</div><div class="line">test.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">//属性的getter和setter</div><div class="line">class EquilateralTriangle: NamedShape &#123;</div><div class="line">    var sideLength: Double = 0.0</div><div class="line"></div><div class="line">    init(sideLength: Double, name: String)&#123;</div><div class="line">        self.sideLength = sideLength</div><div class="line">        super.init(name: name)</div><div class="line">        numberOfSides = 3</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var perimeter: Double &#123;</div><div class="line">    get &#123;</div><div class="line">        return 3.0 * sideLength</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    set &#123;</div><div class="line">        sideLength = newValue / 3.0</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    override func simpleDescription() -&gt; String &#123;</div><div class="line">        return "An equilateral triangle with side of length \(sideLength)."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangle  = EquilateralTriangle(sideLength:3.1,name:"a triangle")</div><div class="line">triangle.perimeter</div><div class="line">triangle.perimeter = 9.9</div><div class="line">triangle.sideLength</div><div class="line"></div><div class="line">//willSet</div><div class="line"></div><div class="line">class TriangleAndSquare &#123;</div><div class="line"></div><div class="line">    var triangle: EquilateralTriangle&#123;</div><div class="line">    willSet &#123;</div><div class="line">        square.sideLength  = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var square: Square &#123;</div><div class="line">    willSet &#123;</div><div class="line">        triangle.sideLength = newValue.sideLength</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    init(size:Double,name:String)&#123;</div><div class="line">        square = Square(sideLength: size,name: name)</div><div class="line"></div><div class="line">        triangle = EquilateralTriangle(sideLength: size, name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var triangleAndSquare = TriangleAndSquare(size:10,name:"another test shape")</div><div class="line"></div><div class="line">triangleAndSquare.square.sideLength</div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line">triangleAndSquare.square = Square(sideLength:50,name:"Larger Square")</div><div class="line"></div><div class="line">triangleAndSquare.triangle.sideLength</div><div class="line"></div><div class="line"></div><div class="line">class Counter &#123;</div><div class="line">    var count: Int = 0</div><div class="line">    func incrementBy(amount: Int,numberOfTimes times:Int)&#123;</div><div class="line">        count += amount * times</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var counter = Counter()</div><div class="line">counter.incrementBy(2,numberOfTimes:7)</div><div class="line">let optionalSquare: Square? = Square(sideLength: 2.5,name: "optional square")</div><div class="line">let sideLength = optionalSquare?.sideLength</div></pre></td></tr></table></figure>
+<h3 id="7-枚举和结构体"><a href="#7-枚举和结构体" class="headerlink" title="7. 枚举和结构体"></a>7. 枚举和结构体</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">enum Rank: Int &#123;</div><div class="line">    case Ace = 1</div><div class="line">    case TWO,Three,Four,Five,Six,Seven,Eight,Nine,Ten</div><div class="line">    case Jack,Queen,King</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Ace:</div><div class="line">            return "ace"</div><div class="line">        case .Jack:</div><div class="line">            return "jack"</div><div class="line">        case .Queen:</div><div class="line">            return "queen"</div><div class="line">        case .King:</div><div class="line">            return "king"</div><div class="line">        default:</div><div class="line">            return String(self.toRaw())</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let ace = Rank.Ace</div><div class="line"></div><div class="line">let aceRawValue = ace.toRaw()</div><div class="line"></div><div class="line">let acesimpleDescription = ace.simpleDescription()</div><div class="line"></div><div class="line">if let convertedRank = Rank.fromRaw(3) &#123;</div><div class="line">    let threeDesciption = convertedRank.simpleDescription()</div><div class="line">&#125;</div><div class="line"></div><div class="line">enum Suit &#123;</div><div class="line"></div><div class="line">    case Spades,Hearts,Diamonds,Clubs</div><div class="line"></div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .Spades:</div><div class="line">            return "spades"</div><div class="line">        case .Hearts:</div><div class="line">            return "hearts"</div><div class="line">        case .Diamonds:</div><div class="line">            return "diamonds"</div><div class="line">        case .Clubs:</div><div class="line">            return "clubs"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let hearts = Suit.Hearts</div><div class="line"></div><div class="line">let heartsDescription = hearts.simpleDescription()</div><div class="line"></div><div class="line">//结构体</div><div class="line"></div><div class="line">struct Card &#123;</div><div class="line">    var rank: Rank</div><div class="line">    var suit: Suit</div><div class="line">    func simpleDescription() -&gt; String &#123;</div><div class="line">        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let threeOfSpades = Card(rank:.Three,suit:.Spades)</div><div class="line"></div><div class="line">let threeOfSpadesDescription = threeOfSpades.simpleDescription()</div><div class="line"></div><div class="line"></div><div class="line">enum ServerResponse &#123;</div><div class="line">    case Result(String,String)</div><div class="line">    case Error(String)</div><div class="line">&#125;</div><div class="line"></div><div class="line">let success = ServerResponse.Result("6:00 am","8:09 pm")</div><div class="line">let failure = ServerResponse.Error("Out of cheese")</div><div class="line"></div><div class="line">switch success &#123;</div><div class="line">case let .Result(sunrise,sunset):</div><div class="line">    let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."</div><div class="line">case let .Error(error):</div><div class="line">    let serverResponse = "Failure... \(error)."</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="8-协议和扩展—-协议是否类似于C-中的接口-或者基类"><a href="#8-协议和扩展—-协议是否类似于C-中的接口-或者基类" class="headerlink" title="8. 协议和扩展—-协议是否类似于C#中的接口 或者基类"></a>8. 协议和扩展—-协议是否类似于C#中的接口 或者基类</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">protocol ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String &#123;get&#125;</div><div class="line">    mutating func adjust()</div><div class="line">&#125;</div><div class="line"></div><div class="line">class SimpleClass: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A very simple class."</div><div class="line">    var anotherProperty: Int = 69105</div><div class="line"></div><div class="line">    func adjust() &#123;</div><div class="line">        simpleDescription += " Now 100% adjusted."</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = SimpleClass()</div><div class="line">a.adjust()</div><div class="line">let aDescription = a.simpleDescription</div><div class="line"></div><div class="line"></div><div class="line">struct SimpleStructure: ExampleProtocol &#123;</div><div class="line">    var simpleDescription: String = "A simple structure</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        simpleDescription += " (adjusted)"</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var b = SimpleStructure()</div><div class="line">b.adjust()</div><div class="line">let bDescription = b.simpleDescription</div><div class="line"></div><div class="line">//对整数类型Int的扩展</div><div class="line">extension Int:ExampleProtocol &#123;</div><div class="line">    var simpleDescription:String &#123;</div><div class="line">    return "The number \(self)"</div><div class="line">    &#125;</div><div class="line">    mutating func adjust() &#123;</div><div class="line">        self += 42</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">7.simpleDescription</div><div class="line"></div><div class="line">let protocolValue:ExampleProtocol = a</div><div class="line">protocolValue.simpleDescription</div></pre></td></tr></table></figure>
+<h3 id="9-泛型"><a href="#9-泛型" class="headerlink" title="9. 泛型"></a>9. 泛型</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">func repeat&lt;ItemType&gt;(item:ItemType,times:Int)-&gt;[ItemType] &#123;</div><div class="line">    var result = [ItemType]()</div><div class="line">    for i in 0..&lt;times &#123;</div><div class="line">        result += item</div><div class="line">    &#125;</div><div class="line">    return result</div><div class="line">&#125;</div><div class="line"></div><div class="line">repeat("know",4)</div><div class="line"></div><div class="line">enum OptionalValue&lt;T&gt; &#123;</div><div class="line">    case None</div><div class="line">    case Some(T)</div><div class="line">&#125;</div><div class="line"></div><div class="line">var possibleInteger: OptionalValue&lt;Int&gt; = .None</div><div class="line">possibleInteger = .Some(100)</div><div class="line"></div><div class="line">func anyCommonElements &lt;T,U where T: Sequence, U:Sequence,T.GeneratorType.Element:Equatable,T.GeneratorType.Element == U.GeneratorType.Element&gt;(lhs:T,rhs:U)-&gt;Bool&#123;</div><div class="line">    for lhsItem in lhs &#123;</div><div class="line">        for rhsItem in rhs &#123;</div><div class="line">            if lhsItem == rhsItem &#123;</div><div class="line">                return true</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false</div><div class="line">&#125;</div><div class="line"></div><div class="line">anyCommonElements([1,2,3],[3])</div></pre></td></tr></table></figure>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" itemprop="url">
+                  解决搜狗输入法引起yosemite卡死在登录界面
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-10T11:30:05+08:00">
+                2014-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对着10.10流口水差不多一个多月了，从发布会那天起就开始想要装个系统。</p>
+<p>这么长时间过去了，在今天凌晨荷兰对阵阿根廷的那场无聊的比赛中，我从网上</p>
+<p>找来资源开始安装。</p>
+<p>从10.9.4冒险直接升级安装，反正球赛无聊，无聊到我想如果装叉了就想重新安装</p>
+<p>系统的冲动。</p>
+<p>还好，下载了一个 DP1安装后，一路Next，重启升级，在AppStore中系统升级，</p>
+<p>再安装重启，再到AppStore中升级，可以直接升级DP3. 貌似ok。 点击几个别人说</p>
+<p>的有bug的软件，好像还都启动的不错哦。而且重启了几次都可以进入。</p>
+<p>6.30球赛踢完睡觉，一场郁闷的比赛。</p>
+<p>11.起床，再去进系统，发现卡死在那个登陆框那里了。</p>
+<p>鼠标可以移动，形状是风火轮一直转，密码输入框无法获得焦点，更不用说按回车</p>
+<p>了。心里黯然，这下叉了。重启了几次，都是卡在这里，心里有了重新安装的冲</p>
+<p>动。</p>
+<p>上厕所期间，用手机搜索了一下 yosemite 10.10 被卡在登陆框的文章，还真有而且</p>
+<p>很多。说法不一，有的说是直接升级造成的，有的说法是搜狗输入法造成的。</p>
+<p>联想到windows登录的时候，都可以在登录界面切换输入法，莫不是这个也是这种</p>
+<p>原因，在登陆窗口想加载输入法信息，结果搜狗给卡成狗屎了。</p>
+<p>本着最小破坏原则，决定先试一下修复输入法的方案，实在不行，就再重新安装。</p>
+<p>在网上搜了一下，找到这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">找到解决办法了，试了，可以用，转自威锋</div><div class="line"></div><div class="line">查明是第三方输入法引起的问题，我用的是搜狗输入法，所以把搜狗卸载就好了。（注意是卸载，不是单纯的从输入源里移除）</div><div class="line">操作的思路是，首先要进入计算机，才能进行操作。</div><div class="line"></div><div class="line">办法是开机进入单机模式，删除苹果一个文件，让系统认为该计算机还没有被配置，开机后直接进入配置计算机和用户的界面，新建立一个用户，就可以进入桌面删除万恶的输入法了。</div><div class="line"></div><div class="line">首先开机的时候按 Command+s;</div><div class="line"></div><div class="line">进入命令提示符画面后  </div><div class="line"></div><div class="line">1， 输入 sbin/mount -uaw 回车</div><div class="line">这里注意看回车后的提示，只要不是not found之类的就可以了</div><div class="line"></div><div class="line">2，输入 rm /var/db/.AppleSetupDone 回车</div><div class="line">这里注意rm后面有空格。这里回车后可能无提示，如果有，只要不是not found一类的就可以了，如果老提示not found 仔细检查有没有弄错，rm前面加／试试看等等。</div><div class="line"></div><div class="line">字母符号别打错</div><div class="line"></div><div class="line">3，输入 reboot 回车重启</div><div class="line"></div><div class="line">重启后配置建立完用户就进入系统了</div><div class="line"></div><div class="line">下载一个搜狗输入法的DMG，打开后选择卸载搜狗输入法。</div><div class="line"></div><div class="line">重启，删除刚才为了进入系统新配置的账户，天下大吉。</div></pre></td></tr></table></figure>
+<p>终于可以进来了，谢天谢地。</p>
+<p>程序员这种折腾的精神，就是那种不作就不会的精神。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/09/germany-in-the-world-cup-2014/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1823,458 +2165,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/01/take-care-the-little-daughter-my-self-two/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/01/take-care-the-little-daughter-my-self-two/" itemprop="url">
-                  独自带娃去旅游-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-01T23:56:08+08:00">
-                2014-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/06/01/take-care-the-little-daughter-my-self-two/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/06/01/take-care-the-little-daughter-my-self-two/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="6-01"><a href="#6-01" class="headerlink" title="6.01"></a>6.01</h1><p>今天是儿童节，在酒店睡到自然醒，其实也不算。</p>
-<p>因为自从有了娃子之后，我总是6.左右就自然醒。</p>
-<p>起来先烧上水，然后发现免费的水昨天晚上喝完了。</p>
-<p>没有计算好，只有从小冰柜了拿了已个天价矿泉水，15元RMB。</p>
-<p>忍了，娃子还在睡，不能自己出去买，同学们昨天晚上吃完饭又去唱k，估计凌晨2.才睡吧。</p>
-<p>收拾背包里的东西，然后把自己的衣服洗了，又想起来刮胡刀没有带。</p>
-<p>娃子7.的时候，自己爬起来：爸爸，俏俏要喝奶。</p>
-<p>赶紧整水弄奶，抱着娃子在窗户那里看着大车喝。</p>
-<p>窗户外面跑着越来越多的双层巴士，说明外面的人开始活动了。</p>
-<p>喝过奶之后，娃子竟然又睡着了。睡吧。</p>
-<p>趁娃子睡着，打开电视看一会，怕娃子睡得太多，晚上又不睡。看会电视也没有事。</p>
-<p>外面下着雨，还不知道等会同学们要去哪里。</p>
-<p>8.娃子醒了，烧好热水，给娃子带了一个雨衣，拿着酒店提供的雨伞，带娃子出去觅食。</p>
-<p>出酒店往学校方向，不到红绿灯，有个 郭记肉夹馍 ，进去要了个肉夹馍，要了一碗红豆粥，</p>
-<p>又看有粽子，想着明天端午节呢，回到家不知道几点，先要两个粽子尝尝，全程娃子都很配合。</p>
-<p>自己吃饭，自己吃粽子，吃肉夹馍。中间碰到皇兄携夫人一起来就餐。</p>
-<p>吃好出去，娃子就不是那样了，要爸爸抱着，东西也不让别人帮拿。然后就一路抱到学校门口。</p>
-<p>学校门口几个同学正在玩，然后他们要去吃饭，我就不去了，我和娃子刚吃过，就抱着娃子去</p>
-<p>学校里面。还是那个小门，顺着熟悉的路往前走，可以看到前面的南湖，到以前的篮球场那里，</p>
-<p>现在改成了体育馆，顺着斜坡上去，就来到以前住的2栋。把娃子放在门前的雪松下，照了几张照片，</p>
-<img src="/images/2014/house2.jpg">
-<p>然后娃子就往前走，我喊她，她反而不理我，刚下过雨，她踩着积水就走过去，鞋子什么的都湿了。</p>
-<p>我过去一把抓住她，她就委屈的哭了： 爸爸，俏俏要走。</p>
-<p>“那你的鞋子湿了没”</p>
-<p>她不管，“爸爸，俏俏要走！”</p>
-<p>在宿舍前面，一个女生喊道：别哭！</p>
-<p>我突然意识到，我错了，我本来可以用其他的东西把她哄过来的，为什么针对她进行教育呢。</p>
-<p>然后抱着她：爸爸抱你去看鱼鱼好不好，那边水里有很多鱼。</p>
-<p>哄了半天不哭了。</p>
-<p>在南湖边上绕了一圈，在操场绕了一圈，她又想踩水，没让，又委屈了一小会。</p>
-<p>在主席台躲雨，同学们打电话过来说去认领的树那里照相，就过去。</p>
-<p>同学们已经在那里了，有个女生还送给娃子一个氢气球，大熊的那种，小娃娃特喜欢，可是她不愿</p>
-<p>叫人，也不愿意别人摸她，就在那里喊着：爸爸，我们回去吧，爸爸，我们回去吧。</p>
-<p>终于在一个男生摸了她一下之后，彻底的发作了，哭得稀里哗啦的。</p>
-<p>没有办法，不能和同学去玩了，抱娃子回酒店睡觉。</p>
-<p>11.40左右了，娃子该睡觉了。</p>
-<p>一路上，娃子就是不下来，一直都是让抱着，把她放下来，她就耍赖。</p>
-<p>今天是6.1，儿童节，她的节日，她最大，就抱着吧。不就是胳膊累了点吗。</p>
-<p>走到一个良品铺子，买了一点她喜欢吃的东西。这下抱着她，我就更累了。</p>
-<p>刚才过来的时候，没有感觉那么远啊。胳膊累的又酸又疼，几次把她放下来想歇会，她就把腿蜷起来，</p>
-<p>脚尖歪着，不让放到地下。没有办法，只有硬撑着往前走。</p>
-<p>还好，我之前一个星期，每天都跑5公里，锻炼了足够的脚力和耐力，就是胳膊累的很，臂弯那里酸</p>
-<p>疼的厉害。</p>
-<p>谢天谢地，终于到酒店，喝水，休息。然后，然后娃子就来精神了，带着娃子玩，玩了差不多两个小时，</p>
-<p>娃子终于睡着了，我也可以休息睡觉了。同学们到5点左右才回来。</p>
-<p>6.左右，娃子醒了，整点水喝，休整一下，出去觅食。</p>
-<p>来到早晨的那个肉夹馍店，要了一碗牛肉面和一碗鸡蛋面，我知道娃子肯定饿了，又找了个小碗，给她</p>
-<p>一双筷子，挑一小部分放到她小碗里，娃子吃的津津有味。吃了还吃，吃了还吃，足足吃了有5小碗。</p>
-<p>这下吃饱了，还惊奇的发现，娃子竟然会用筷子了，以前都是孙悟空吃面条，两只筷子手心里攥，这次</p>
-<p>竟然知道用拇指和食指夹住，然后用无名指和小指去挑动筷子往嘴里扒。于是夸她会用筷子了，她吃的</p>
-<p>更欢了，还骄傲的对我说：爸爸，你可知道为啥吧，俏俏长大了。</p>
-<img src="/images/2014/food.jpg">
-<p>吃完饭，回酒店，同学们休息的差不多了，他们相约去步行街，去吃烤肉，我抱娃子去7层找他们玩，</p>
-<p>小娃子见了他们又是一个一不理二不叫，一个阿姨用萨琪玛和饼干才换来她的直视，仅仅是直视。就是不</p>
-<p>和人家说话。</p>
-<p>过了一会他们该走了，我不能去了，娃子估计9.30左右又该闹着睡觉了，我到那里也不能玩，抱着还那</p>
-<p>么重。</p>
-<p>回到房间继续和娃子玩，上午有个狗熊的球球，下午有饼干，还有自己的芭比娃娃。</p>
-<p>同学怕我吃不上饭，还给我送来一份白粥，真的是万分感谢。</p>
-<p>9.30时，娃子再一次安静的睡着了。</p>
-<p>这一天，真的是最累的一天，胳膊肘子快要累断了。</p>
-<p>躺下歇歇。喝点水，看会电视，看看昨天的衣服和今天的衣服干了没，翻翻晾晾。希望明天走的时候不湿</p>
-<p>就好了。</p>
-<p>把娃子的玩具和衣服收拾好，然后看了一会电视睡着了，同学发消息来邀我去玩，要给我带烤肉回来吃，</p>
-<p>好意心领了，太晚太困了。睡觉了先，明天要早起赶地铁去火车站。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/01/take-care-the-little-daughter-my-self-one/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/06/01/take-care-the-little-daughter-my-self-one/" itemprop="url">
-                  独自带娃去旅游-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-01T00:06:08+08:00">
-                2014-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/06/01/take-care-the-little-daughter-my-self-one/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/06/01/take-care-the-little-daughter-my-self-one/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这事还得从头说起，那一天，有同学给沉寂的校友群里扔了个炸弹：毕业十年，要不要回母校聚一下。</p>
-<p>母校，武汉中南民族大学，我们进去的时候，它还叫中南民族学院，我在上学期间简直是最沉闷的一个，</p>
-<p>不交友，不学习，不上课，不社团，就是一个人在宿舍那个集体里还能说上几句话的人。记得毕业的时</p>
-<p>候，有人问我：你是不是对我有意见，你从来都没有和我说过一句话! 我尴尬的笑笑，又没有说话，走开</p>
-<p>了。不好意思，我和1/3的同学都没有说过一句话。</p>
-<p>十年了，从毕业时的寸步难行，到中间的重创受伤，到现在温暖的小窝，乖巧的小娃子，我满足了。</p>
-<p>说来就来，宿舍老大打电话过来询问能够参加，第二天回复，可以参加。还有个决定是带着娃子去。</p>
-<p>女儿27个月了，脾气暴躁，爱闹人，不过很精明，比我小时候聪明多了，总是黏着我，爸爸爸爸的跟在</p>
-<p>屁股后面。独自带娃出去，我也是想证明给老婆看，我一个人也能把娃子带好。</p>
-<p>提前一周，开始给娃子上教育课，再过一周，到星期六，爸爸带你去坐大火车，特别大，你要听话好不</p>
-<p>好。</p>
-<p>娃子总是特别希翼的眼神望着我，狠狠的：嗯！</p>
-<h1 id="5-31"><a href="#5-31" class="headerlink" title="5.31"></a>5.31</h1><p>早晨老婆和丈母娘早早的5.30分就出去坐车游玩了，就剩下我和娃了，我起来给娃穿好喝奶，检查</p>
-<p>收拾东西，为了路上方便，把所有衣物都装在一个包里，另外再抱个娃，这样就容易一些了。</p>
-<p>7.30分开始离家出走，门口打的，虽然知道娃子可能会晕车，但是想到地铁里冷冷的空气，和漫长的转</p>
-<p>车等车时间还是决定了打车去，这一决定，直接导致了娃子后面一整天的呕吐不止。</p>
-<p>一路上，娃子是晕头转向，我搂着她，让她睡觉，娃子则是迷迷糊糊的一路睡。</p>
-<p>大概8.30分得时候到达虹桥火车站，我动了动准备下车，娃子睁开眼问：爸爸，好了没有啊。</p>
-<p>我说到了，师傅找了钱，拿包下车，两步刚走，娃子哇的一声全吐出来了。</p>
-<p>衣服上全部都是，没有办法，把娃子放下来，从包里拿出干净衣服换上，把脏衣服用塑料袋装好放包里，</p>
-<p>进站换票，换票点简直是人山人海，小娃子受不了那个味道，一直在问：爸爸，好了没有啊？</p>
-<p>听着都心疼。</p>
-<p>终于把票换出来，带娃上去找东西吃，</p>
-<p>肯德基只有汉堡套餐，而且品种很少，去了旁边的永和，要了一份套餐：皮蛋瘦肉粥和蛋饼油条。</p>
-<p>小娃子特别喜欢喝粥，忘记带小碗和勺子，就用盛蛋饼的盘子给娃子冷粥，然后顺着盘子娃子喝的又香</p>
-<p>又甜。</p>
-<p>第一次带娃出去，心里紧张，娃子喝的衣服上都是米粥，娃娃说：我要和妈妈说话，妈妈，我喝粥弄到</p>
-<p>衣服上了，你快点回来吧，俏俏想你了！</p>
-<p>泪水差点夺眶而出。</p>
-<p>开弓没有回头箭，只有自己加油了。</p>
-<p>吃完饭，我候车室等车，娃子各种调皮，一会要站凳子，一会要跑到那边，一会要喝凉水，左哄右挡，</p>
-<p>终于到车上了，还是没有经验，自己选了一个靠窗户的三人座最里面的座位，为后来的照顾小娃子添加了</p>
-<p>很大的的阻力。</p>
-<p>娃子先上来很兴奋，爬高上低，左顾右盼，慢慢的就开始疲软了，慢慢显示出晕车的症状来。</p>
-<p>没有精神，想闹人，软绵绵的趴在我怀里一动不动，还不想睡觉，左哄右哄，终于睡着了，也许是因为火</p>
-<p>车晃动如摇篮的原因，娃子睡得很香，一直睡到一半路才醒。</p>
-<p>然后才是艰难的时刻。</p>
-<p>醒了之后，带娃子去尿尿，然后洗脸回来，想起来妈妈给带了一个士力架，拿出来给娃子吃，娃子自然</p>
-<p>是不讲意思，大口吃。一个人吃了将近一半，然后又闹着喝了一点凉的矿泉水，看着娃子大吃二喝，心</p>
-<p>想，应该没有问题吧，吃就吃吧。</p>
-<p>半小时之后，娃子开始有反应了，又全身疲软下来，躺在我怀里一动不动，闹人似的吭唧。</p>
-<p>过了十分钟，突然( ⊙o⊙ )哇的一下全吐出来了。吐的是稀里哗啦，眼泪汪汪。没有办法，只好搂了又</p>
-<p>搂，哄了又哄，带娃子去洗手洗脸，还好娃子身上吐的不多，我的裤子上倒是不少，我也不换了，赶紧</p>
-<p>哄娃。</p>
-<p>娃子从此开始吐的历程，一直状态不好，在怀里吭吭唧唧的闹人，不躺不做，就让抱着，还得站起来出</p>
-<p>去抱着，没有办法，抱着她在列车接头处走啊走，晃啊晃，想把娃娃晃睡着，可能是晕得太厉害了，娃</p>
-<p>子一直都没有睡着，抱着抱着，娃子又哇的一下全吐了，这次吐的鼻子里都冒水了，只能抱着娃赶快哄，</p>
-<p>怕她自己害怕。</p>
-<p>娃子精神稍微好点了，要喝水，又把带的热水给她喝，喝了好多水，我想水总没有事吧。</p>
-<p>半小时之后，事实推翻了我的想法，娃子连清水都吐出来了。娃子在怀里喊：爸爸，咱们下去吧。</p>
-<p>没有办法，宝贝，爸爸下次在家和你玩，也不带你出来了。</p>
-<p>好歹下车了，收拾东西，抱着软趴在肩膀的娃娃下车，又给她换了一套衣服。</p>
-<p>走，出去坐地铁去。</p>
-<p>地铁倒是好找，买票，坐车，车上真冷。嗖嗖的风，用双臂护着娃娃的胳膊，怕娃娃再一受凉，发烧了就</p>
-<p>麻烦了。</p>
-<p>出地铁10分钟，到酒店，check-in 安排好，给娃子整点热水，洗洗脸，然后放水洗衣服。</p>
-<p>同学们说晚7.在饭店集合吃饭，已经6.20了，而且还不知道饭店在哪里。整到6.40，同学打电话过来</p>
-<p>问在哪里，稍微收拾了一下，准备出发，发现剃须刀没有带，前天又没有刮胡子。唉， 凑合吧。</p>
-<p>路上碰到同学回来拿东西，于是一起去饭店。 老师，同学都已经到了，嘻嘻哈哈的说不停，十年没有</p>
-<p>见了，加上上学的四年，总共有14年了，我住的酒店在14楼，上海租得房子也在14楼。真巧。</p>
-<p>段老师还是那样温文尔雅，特漂亮;司老师还是那样说话声音响亮，声线往上飘；后面来的韦老师也是</p>
-<p>老样子，一点都没有怎么变样，再看同学们，男的成熟稳重了，女的纤瘦漂亮了，大家都在自己的路</p>
-<p>上稳步前行，还是带着10年前的迷人的微笑，一点都没有变，真好。</p>
-<p>两桌同学，20几个人，见了面还是那样亲切自然。还是那样亲热招呼。真好。</p>
-<p>大家坐下，领导讲话，老师献词，回忆了一下过去，表达了一下现在，畅想了一下未来。</p>
-<p>然后就开始酒过三巡，不分大小了，走过来串过去，大家开始互相把酒言欢了。彼此高声畅谈，</p>
-<p>真的是酒不醉人人自醉，抽刀断水水更流。</p>
-<p>小娃子在老师献词的时候就开始闹着要吃东西。我又不好直接起来拿东西吃，就和她谈条件：乖一点，</p>
-<p>等会爸爸给你拿黄瓜。</p>
-<p>没有想到这家伙得寸进尺，大声喊：要吃黄瓜。</p>
-<p>只好抱出去整治一番，再进去。三个老师，都要献词，小娃子又闹，没有办法，抱出去再整。再进去。</p>
-<p>开吃，小娃子爱上了鸡汤，喝了一碗又一碗，喝了一杯又一杯，不停的在喝，可能是因为吐的原因，</p>
-<p>要补水，就放开了喝吧。很多同学要和她玩，小娃子不理人家，让叫叔叔阿姨也不叫，就是喝汤。</p>
-<p>我想端着酒杯和同学叙叙旧，她一会爸爸，一会爸爸的喊我。我又怕她一个人在那里害怕会哭，就不敢</p>
-<p>走远，附近的人就举举杯，说上两句，大家都还好，来回走动着，互相喝酒说话。</p>
-<p>9.30的时候，娃子喝好汤了，然后就开始闹人了，爸爸：俏俏要睡觉。</p>
-<p>没有办法，抱她去厕所尿尿，然后洗洗手和脸，上屋里找个同学让代说一下，抱娃子回酒店了。</p>
-<p>路上娃子也没有睡，到酒店来精神了。可能是因为在火车上一直睡，现在不困了，就陪着她一直玩，</p>
-<p>要给她洗澡也不让，就另外再换了一个t恤，准备睡觉穿。</p>
-<p>看电视，穿着袜子在地毯上跑，要喝水，要看画书，要玩芭比娃娃，终于玩到11.30 睡着了。</p>
-<p>这一天真累。洗澡睡觉。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2324,7 +2214,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">146</span>
+                <span class="site-state-item-count">148</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
