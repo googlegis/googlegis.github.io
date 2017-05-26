@@ -299,6 +299,571 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/12/the-ios-apprentice-one-bull-eyes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/12/the-ios-apprentice-one-bull-eyes/" itemprop="url">
+                  Swift 2.0 纯学习之旅 -- 1.弹出提示框 和 Landscape 模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-12T22:02:25+08:00">
+                2015-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/12/the-ios-apprentice-one-bull-eyes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/12/the-ios-apprentice-one-bull-eyes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<pre><code>我在 2014-10-16日的文章中已经写过这篇，但是恍惚之间，大半年的时间过去了。而今迈步从头跃。啥都不说了，眼泪哗哗的！
+</code></pre><ol>
+<li>新建项目</li>
+</ol>
+<p>打开Xcode，</p>
+<img src="/images/2015/06/newproject/QQ20150615-1@2x.png">
+<p>新建，Single View Application</p>
+<img src="/images/2015/06/newproject/QQ20150615-2@2x.png">
+<p>填写内容：</p>
+<img src="/images/2015/06/newproject/QQ20150615-3@2x.png">
+<p>Save Folder:</p>
+<img src="/images/2015/06/newproject/QQ20150615-4@2x.png">
+<pre><code>如果你只看到了ViewControll.h 和 ViewControll.m 文件，说明你创建项目时，语言选择的
+</code></pre><p>Objective－C，而不是Swift。</p>
+<p>点击运行测试程序。</p>
+<ol>
+<li>放置按钮</li>
+</ol>
+<p>从右侧 object library 中找到 button 按钮，然后拖动到 Main.storyboard中，</p>
+<img src="/images/2015/06/newproject/QQ20150615-6@2x.png">
+<ol>
+<li>添加代码</li>
+</ol>
+<p>在左侧导航栏中选择ViewController.swift 文件，在最下面加入下面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func showAlert() &#123;</div><div class="line"></div><div class="line">let alert = UIAlertController(title: &quot;Hello, World&quot;,</div><div class="line"></div><div class="line">message: &quot;This is my first app!&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">let action = UIAlertAction(title: &quot;Awesome&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">alert.addAction(action)</div><div class="line"></div><div class="line">presentViewController(alert, animated: true, completion: nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>将函数与按钮联系</li>
+</ol>
+<p>我最习惯的方式，安装control键，鼠标左键拖动按钮控件到 View Controll 中，在sendEvent中</p>
+<p>选择showAlert完成绑定。</p>
+<img src="/images/2015/06/newproject/QQ20150615-7@2x.png">
+<img src="/images/2015/06/newproject/QQ20150615-8@2x.png">
+<p>在代码中能看到</p>
+<p>showAlert函数前的圆点，表明已经绑定动作了。</p>
+<img src="/images/2015/06/newproject/QQ20150615-10@2x.png">
+<p>另外如果在Main.storyboard 中选定button，然后右侧选择 Show the Connections</p>
+<p>inspector，能够看到已经绑定的各种链接。也可以在此查看绑定是否成功或完成。</p>
+<img src="/images/2015/06/newproject/QQ20150615-9@2x.png">
+<p>运行显示弹出框</p>
+<img src="/images/2015/06/newproject/QQ20150615-11@2x.png">
+<ol>
+<li>Disable SizeClass</li>
+</ol>
+<p>从iOS8开始，Xcode提供了一个 size classes 或者叫做 universal storyboards的</p>
+<p>功能，能够让你一次设计，处处运行，也就是你在这里一次性设计完成，就不论它是iPad还是iPhone</p>
+<p>还是iPod，不论它是 3.5-4-4.7-5.5-8.9 英寸了。但是这里我们先不讨论，我们要把该功能关闭。</p>
+<p>左侧导航栏选中 Main.storyboard, 右侧点击 File inspector，取消勾选的 Use Size Classes。</p>
+<p>当Xcode提示你是否确认时，点击 Disable Size Classes 继续，你会看到你的画布大小变为了实际的</p>
+<p>的iPhone大小。</p>
+<img src="/images/2015/06/newproject/QQ20150615-12@2x.png">
+<img src="/images/2015/06/newproject/QQ20150615-13@2x.png">
+<p>然后运行程序测试。</p>
+<img src="/images/2015/06/newproject/QQ20150615-14@2x.png">
+<p>－－－－</p>
+<pre><code>如果使用了Size Classes，因为是要面对所有尺寸的设备，所以需要对button的相对位置重新
+定义，而不是简单放置在中间就可以了，在Size Classes 模式下， 你手动放在中间，运行的
+时候并不在中间；而取消掉了Size Classes模式，你放在哪里就出现在哪里，因为只需要对一种
+类型设备负责。
+</code></pre><p>－－－</p>
+<p>6.landscape 模式</p>
+<p>在Main.storyboard 中选中 View Controller，</p>
+<img src="/images/2015/06/newproject/QQ20150616-1@2x.png">
+<p>或者在 Outline pane中，选中View Controller，</p>
+<img src="/images/2015/06/newproject/QQ20150616-2@2x.png">
+<p>然后在 show Attributes Inspector 中的 simulated Metrics节点中，将 Orientation 中的</p>
+<p>Inferred 改变为 landscape。</p>
+<img src="/images/2015/06/newproject/QQ20150616-3@2x.png">
+<p>然后运行试试，没有变？没有变就对了。还要改个地方。左侧导航栏选中项目，选择 General，然后在</p>
+<p>Deployment info 中的 Device Orientation 中，取消勾选 Portrait。 只留 Landscape Left</p>
+<p>和Landscape Right。</p>
+<img src="/images/2015/06/newproject/QQ20150616-1.png">
+<p>再运行测试，OK。</p>
+<img src="/images/2015/06/newproject/QQ20150616-2.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/11/the-wwdc-of-2015/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/11/the-wwdc-of-2015/" itemprop="url">
+                  WWDC 15
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-11T22:36:15+08:00">
+                2015-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/11/the-wwdc-of-2015/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/11/the-wwdc-of-2015/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>就是去年这个时候，我确信我要开始学习iOS开发的。到现在什么都没有学会，只能说自己没用努力。</p>
+<p>今年正好有个机会，趁着东风，再来一次！</p>
+<p>WWDC已经过去了，今年基本来说四大主题，OS X11，iOS 9，watch OS 2，Xcode7 and Swift2</p>
+<p>我相信，从去年的Yosemite开始，Apple想在OS上进行突破，但是步步受阻，光一个无线网络掉线让很多</p>
+<p>粉丝伤透了心。我觉得 11 只不过是在10上面继续进行功能优化和稳定性的改进。去年推出的一系列内容已</p>
+<p>足够Apple5年之内不需要推出重大的功能。</p>
+<p>iOS9，不过是在8上面加了个1，大功能也不会有，除非是替换已有的功能，如Apple Music。HomeKit，</p>
+<p>HandOff，Community，这些只是去年提到的概念性东西还都只是停留在概念上，并没有什么实际性的产品</p>
+<p>出现，iOS9是8的衍生，估计在10的时候，会修改版本好， iOSX，maybe！</p>
+<p>watch OS，目前不看好它，因为屏幕和续航的关系，导致目前一直没有能够切中用户痛点的应用出现，是那些</p>
+<p>在watch上使用比iPhone上使用方便太多的应用。目前大多的应用都是iPhone应用的补充。没有实际价值。</p>
+<p>Xcode7 and Swift2 应该是 Apple 的一个重点，刀快了，砍柴才快。Xcode7 支持非开发人员也能部署</p>
+<p>真机测试了，这是一个极大的进步，Swift也面向开源了，更是一个极大的进步。连Apple这样自立为王的公司</p>
+<p>都开始张开怀抱，接纳更多的人员加入到它的队伍了。</p>
+<p>厨子该说了，连windows的.net  都想开了，我还有什么想不开的。</p>
+<p>废话不多少，今天开始就是学习的日子。只要做，不要说。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/10/the-difference-between-let-and-var-in-swift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/10/the-difference-between-let-and-var-in-swift/" itemprop="url">
+                  Swift中let和var的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-10T00:03:23+08:00">
+                2015-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/10/the-difference-between-let-and-var-in-swift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/10/the-difference-between-let-and-var-in-swift/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>首先介绍一下Swift中的 var 和 let</p>
+<ul>
+<li>var 是 variable的缩写形式，是变量的意思 ，是可改变的，并不是数据类型<br>例如：<br>注意每个语句后面不用加分号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i:double=10.0 //将i指为double类型的，变量名后面加个冒号  </div><div class="line">var i = 10  // 如果不指定类型的话，系统会自动根据你的赋值来判断类型  </div><div class="line"></div><div class="line">i = 15 //正确的写法</div></pre></td></tr></table></figure>
+<ul>
+<li>let 是常量的意思，不可改变的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let name:String = &quot;Jhon&quot; //将name定义为字符串类型，如果程序下面改变就会报错的。  </div><div class="line"></div><div class="line">name = &quot;hello&quot;//错误的写法</div></pre></td></tr></table></figure>
+<ul>
+<li>拼接字符串操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name+=String(i)  //则会输出 Jhon10.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>+=可以做字符串拼接操作<br>所有的UInicode编码的字符都可以被当做变量名或常量名声明和使用</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/31/google-map-ios-sdk-swift-demo-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1788,528 +2353,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/17/the-strangeer-of-dreamer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/17/the-strangeer-of-dreamer/" itemprop="url">
-                  梦溪笔谈
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-17T07:57:03+08:00">
-                2015-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/17/the-strangeer-of-dreamer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/17/the-strangeer-of-dreamer/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>共产党员接屈情报被害</p>
-<p>酒瓶解救人Z质</p>
-<p>1.食堂吃饭，，，，，便宜处理。买饭浇汤</p>
-<p>练武， 什么都不想，手握稻草一刀砍下，产生威力。</p>
-<p>3。买饭排队，插队者被搞死。全城搜索。老师追不上。一个人在墙上想起年迈的父亲。</p>
-<p>手拉地铁或公交的拉手，双手向上，腿架在一条腿上面，头侧垂，受难的基督。</p>
-<p>高尔夫球场，阳光明媚，外形富豪，打球装，从手中端起球杆，然后趴下打气，其实是球童。</p>
-<p>环境:猫和动物的世界<br>类似星球大战的动物地下市场，但是是学校，严格而正规。</p>
-<p>猪杀人，从肛门处用刀划开。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/13/How-to-install-nodejs-on-windows/" itemprop="url">
-                  在Windows下安装Node.js
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-13T21:40:54+08:00">
-                2015-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/13/How-to-install-nodejs-on-windows/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/13/How-to-install-nodejs-on-windows/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。</p>
-<img src="/images/2015/05/nodejs.png">
-<p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
-<p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
-<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
-<h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
-<li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
-<li>按照默认的选项和步骤，一路next下去。</li>
-<li>重启。</li>
-</ol>
-<img src="/images/2015/05/installer.png">
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
-<h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
-<h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
-<h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
-<p>命令行运行到当前的文件目录，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
-<p>运行后返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
-<p>说明Node.js 已经安装成功！</p>
-<img src="/images/2015/05/output.png">
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/11/github-page-addd-custom-domain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/11/github-page-addd-custom-domain/" itemprop="url">
-                  GitHub Page 绑定域名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-11T22:51:05+08:00">
-                2015-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/11/github-page-addd-custom-domain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/11/github-page-addd-custom-domain/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>   做GitHub Page 倒是很久了，兴起时来写两句，想不起来也就不来了。</p>
-<p>   有的时候，一点也想不起来或者自己很懒了，就真的一点也不想来了。</p>
-<p>   孩子和老婆回老家了。</p>
-<p>   短暂的清静和沉静，让我能够安安静静地坐下来写些什么东西。</p>
-<p>   我曾经说过，我的一生的愿望就是能够安安安静的写东西，写自己喜欢的东西。不为生活所迫，</p>
-<p>   不为它人所动。</p>
-<p>   想不到幸福来的太突然了！</p>
-<p>   今天就先来一篇 Github Page 绑定域名的技术性文章，开个技术头。</p>
-<p>   以我自己的账号为例，概括来说需要以下几个步骤：</p>
-<p>   1.创建自己的github page 主页，就是说你不用域名也能访问。比如：googlegis.github.io</p>
-<ol>
-<li><p>在你的source 目录下添加 CNAME文件，内容为：<br> lookfour.me</p>
-<ol>
-<li><p>在GoDaddy的管理页：</p>
-</li>
-<li><p>添加“A(Host)” 记录， ‘host’＝@， ‘Points to’＝192.30.252.153</p>
-</li>
-<li><p>添加“CNAME(Alias)”记录，‘host’＝www，‘Points to’＝googlegis.github.io</p>
-</li>
-<li><p>只要你的填写都正确，剩下的就是等待了。</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>---
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2359,7 +2402,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">147</span>
+                <span class="site-state-item-count">150</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
