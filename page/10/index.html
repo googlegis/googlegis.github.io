@@ -299,6 +299,1071 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/29/google-map-ios-sdk-swift-demo-2/" itemprop="url">
+                  使用Swift和GoogleMapiOSSDK开发地图应用示例(2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-29T12:16:56+08:00">
+                2015-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/29/google-map-ios-sdk-swift-demo-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/29/google-map-ios-sdk-swift-demo-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
+<p>地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。<br>从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，<br>,value值将会在第一次运行时，弹出来进行询问说明. 2. 在代码中请求权限，如果以前还没有触发过，当<br>你运行时，弹出请求框。下面我们会看到。</p>
+<p>当我们调用核心位置服务时, 应用会一直更新位置(甚至当应用在后台时也会), 而另外一种只是在使用的<br>的时候才会调用;我们所要使用的就是这种方法。既然我们想要app请求位置权限，就要在.plist文件中<br>给予一个正确的key, 以备我们在代码中能够调用来请求权限. 这种情况我们不需要一直跟踪位置更新.<br>也就是说当app在后台时或者没有位置更新时不需要请求服务, 因为那样也会浪费很多电量。我们只在程序运行时<br>才请求用户的位置权限。</p>
+<p>打开项目导航栏中的 Info.plist 文件. Then, 在 Editor 页选择 Add Item项. key填写<br>NSLocationWhenInUseUsageDescription 字符, 在value值中填写一些简单说明，比如:<br>“Allowing access to your location, you can spot your position on the map.” (去掉括号).</p>
+<img src="/images/2015/05/googlemap/t33_21_plist_file.png">
+<p>打开 ViewController.swift 文件, 声明两个我们下面会用到的属性值。在类文件顶部，IBOutlet属性下面:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var locationManager = CLLocationManager()</div><div class="line"></div><div class="line">var didFindMyLocation = false</div></pre></td></tr></table></figure>
+<p>locationManager属性用来请求用户权限并保持跟踪用户位置, 根据是否授权来判断是否显示用户的当前位置.<br>didFindMyLocation在下面就会用到,所以我们知道是否在地图上显示当前位置,避免不必要的更新。</p>
+<p>但是，在上面代码中已经看到 locationManager已经声明，但是还不够，还需在ViewController类中<br>viewDidLoad方法中声明委托,并请求用户权限. 如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    locationManager.delegate = self</div><div class="line">    locationManager.requestWhenInUseAuthorization()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要注意的是，我们在这里请求的权限必须和我们在 .plist 文件中填写的权限一致。当我们调用location<br>manager对象的requestWhenInUseAuthorization() 方法时,如果用户是第一次运行程序就会弹出对话框<br>询问是否授权跟踪当前的位置, 或者返回以前用户已经选择的选项. 无论哪种情况，我们都要检查<br>CLLocationManager委托协议返回的授权状态, 在这之前我们必须在类的头行中把协议加上:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class ViewController: UIViewController, CLLocationManagerDelegate &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后修改委托方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) &#123;</div><div class="line">    if status == CLAuthorizationStatus.AuthorizedWhenInUse &#123;</div><div class="line">        viewMap.myLocationEnabled = true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里注意到，只有一种方法是我们感兴趣的就是授权状态值等于我们上面请求的Key. 只有在这一种情况下，我们<br>才能把 myLocationEnabled 设置为 true, 然后MapsSDK才会努力的查找用户当前的位置. 然后我们的工<br>作就是根据当前用户的位置来更新地图的位置。</p>
+<p>用户的当前位置被定位为mapView对象的一个属性，命名为 myLocation. 好消息就是这个属性被定义为 KVO<br>键值对 (key-value observing compliant), 就是我们只需要注意value值得变化, 就能判断用户的位置<br>是否发生了变化. 如果想了解更多关于 KVO 只是，可以参考<a href="http://www.appcoda.com/understanding-key-value-observing-coding/" target="_blank" rel="external">这篇教程</a>.</p>
+<p>根据上面的内容，下面我们要做的就是让我们来监视viewMap对象中的myLocation属性的变化. 在<br>viewDidLoad方法中, 添加下面的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    viewMap.addObserver(self, forKeyPath: &quot;myLocation&quot;, options: NSKeyValueObservingOptions.New, context: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们想要的就是当用户位置更新时，GoogleMapsSDK会根据用户位置定位到地图中心，并显示一个蓝色图标,<br>其实蓝色图标不需要编码也会自动显示，我们需要关心的只是当用户位置有变化时，把用户的位置显示在地图上:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer&lt;Void&gt;) &#123;</div><div class="line">    if !didFindMyLocation &#123;</div><div class="line">        let myLocation: CLLocation = change[NSKeyValueChangeNewKey] as CLLocation</div><div class="line">        viewMap.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 10.0)</div><div class="line">        viewMap.settings.myLocationButton = true</div><div class="line"></div><div class="line">        didFindMyLocation = true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>前面说过，didFindMyLocation 标示会帮助app避免不必要的位置更新。当地图从change字典表中获取到新<br>位置时，该字典表会传递一个参数，使用NSKeyValueChangeNewKey关键字，我们能获取到一个新的值. 根据<br>这个位置,我们设置一个新的GMSCameraPosition对象并将它设置为mapView的camera属性.并把位置放置在<br>地图中心。 另外一个有趣的功能是返回到当前位置，放置一个myLocationButton，在地图右下方放置有个按钮<br>当我们移动地图后点击该按钮会返回到当前位置，这个按钮由Google Maps SDK提供，同时另外还有一个指南<br>按钮也同样适用，但我们这里不需要。</p>
+<p>现在可以来测试程序. 如果你是在模拟器中运行程序, 你必须提供一个假的位置给程序因为模拟器无法模拟真实<br>位置. 需要修改scheme 中 Options页，选择一个默认位置:</p>
+<img src="/images/2015/05/googlemap/t33_22_edit_scheme.png">
+<img src="/images/2015/05/googlemap/t33_23_default_location.png">
+<h2 id="自定义位置"><a href="#自定义位置" class="headerlink" title="自定义位置"></a>自定义位置</h2><p>比显示用户当前位置更深一步, 另外一个在地图应用中非常常见的功能就是自定义位置.这类API通常都是<br>提供一系列地址(比如街道、城市、县城、区域的名称),但是没有位置信息(经度和纬度)值,就像没有人能<br>够记得。但是你是否知道一个地图服务即使没有经纬度也能准确定位到地址。</p>
+<p>问题的答案就是geocoding(地理编码), 在显示到地图之前就把地址信息转换为了经纬度信息。其实地图<br>服务并不关心我们提供的地址信息，只是把它转为地理位置. 实际上重要的是我们如何把地址信息传给<br>Google Maps SDK, 让它转换为地理位置, 然后呈现在地图上。</p>
+<p>幸运的是Google提供了Google Geocoding API,一种 web service传入真实的地址信息，返回<br>经纬度信息。如果你真的对Google maps感兴趣, 那你最好去阅读一下 <a href="https://developers.google.com/maps/documentation/geocoding/" target="_blank" rel="external">geocoding API</a> 文档. 事实上，我建议你现在就去阅读一下文档，并对服务的详细信息快速浏览一遍。会帮助你理解我们下面<br>要做的内容。</p>
+<p>geocoding API 返回的内容一般为JSON或XML格式。下面这个例子中是JSON格式，在Swift或者<br>Objective-C中，只需一行代码就能转换为所需的数据格式(字典或数组),这个数据是从Google文档<br>中直接取出来的返回的JSON格式数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   &quot;results&quot; : [</div><div class="line">      &#123;</div><div class="line">         &quot;address_components&quot; : [</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;1600&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;1600&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;street_number&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;Amphitheatre Pkwy&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;Amphitheatre Pkwy&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;route&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;Mountain View&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;Mountain View&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;locality&quot;, &quot;political&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;Santa Clara&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;Santa Clara&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;administrative_area_level_2&quot;, &quot;political&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;California&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;CA&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;administrative_area_level_1&quot;, &quot;political&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;United States&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;US&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;country&quot;, &quot;political&quot; ]</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">               &quot;long_name&quot; : &quot;94043&quot;,</div><div class="line">               &quot;short_name&quot; : &quot;94043&quot;,</div><div class="line">               &quot;types&quot; : [ &quot;postal_code&quot; ]</div><div class="line">            &#125;</div><div class="line">         ],</div><div class="line">         &quot;formatted_address&quot; : &quot;1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA&quot;,</div><div class="line">         &quot;geometry&quot; : &#123;</div><div class="line">            &quot;location&quot; : &#123;</div><div class="line">               &quot;lat&quot; : 37.42291810,</div><div class="line">               &quot;lng&quot; : -122.08542120</div><div class="line">            &#125;,</div><div class="line">            &quot;location_type&quot; : &quot;ROOFTOP&quot;,</div><div class="line">            &quot;viewport&quot; : &#123;</div><div class="line">               &quot;northeast&quot; : &#123;</div><div class="line">                  &quot;lat&quot; : 37.42426708029149,</div><div class="line">                  &quot;lng&quot; : -122.0840722197085</div><div class="line">               &#125;,</div><div class="line">               &quot;southwest&quot; : &#123;</div><div class="line">                  &quot;lat&quot; : 37.42156911970850,</div><div class="line">                  &quot;lng&quot; : -122.0867701802915</div><div class="line">               &#125;</div><div class="line">            &#125;</div><div class="line">         &#125;,</div><div class="line">         &quot;types&quot; : [ &quot;street_address&quot; ]</div><div class="line">      &#125;</div><div class="line">   ],</div><div class="line">   &quot;status&quot; : &quot;OK&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整的看下来,返回的内容通过两种方法来寻找地址:一种是作为字典表组成的数组地址对象，另一种是作为被格式<br>化的完整地址的字符串作为一个地址对象。另外上面的示例包括两个点：geometry字典包含了longitude和<br>latitude值,另外status明显的标示除了请求geocoding web service的结果。</p>
+<p>总得来看，app中需要使用到上面内容中的三个部分: 格式化后的地址, 几何体详细信息, 返回状态. 强烈建议<br>查看一下Google文档中关于status代码的内容，在这里详述真的有点超出了我们的范围了。在我们继续进行下<br>面内容之前，请确保你对JSON数据内容已经完全熟悉，如果自己还不是那么确定，请参考这两处文章<a href="http://json.org/" target="_blank" rel="external">1</a><a href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/" target="_blank" rel="external">2</a>。<br>需要注意的点就是以某个键开始的 “key” 是dictionary,以中括号 ([)开始的是array。</p>
+<p>现在回到代码中, 我们为GeoCodingAPI的请求和返回创建一个新的类，主要有两个原因:</p>
+<ol>
+<li>代码重用.</li>
+<li>后面我们还要用到其它的Google web service (API), 我们需要把所有这类服务放在一起方便管理。</li>
+</ol>
+<p>所以，创建一个新类，命名为 MapTasks，确定它继承了 NSObject。</p>
+<p>然后在 MapTasks.swift 文件中添加属性，供下面使用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let baseURLGeocode = &quot;https://maps.googleapis.com/maps/api/geocode/json?&quot;</div><div class="line"></div><div class="line">var lookupAddressResults: Dictionary&lt;NSObject, AnyObject&gt;!</div><div class="line"></div><div class="line">var fetchedFormattedAddress: String!</div><div class="line"></div><div class="line">var fetchedAddressLongitude: Double!</div><div class="line"></div><div class="line">var fetchedAddressLatitude: Double!</div></pre></td></tr></table></figure>
+<p>baseURLGeocode是我们请求geocoding的网址.当然，我们会在URL后面加上地址参数, 当然作为一个动态值，<br>我们会在程序代码中给它赋值. lookupAddressResults字典会存储返回结果集中的第一个地址.需要注意的是<br>，结果地理编码有可能返回不只一个地址, 这里只简单的处理获取第一个地址.后面是三个根据命名来进行存储的<br>三个值。</p>
+<p>首先添加一个初始化函数, ViewController类中才能对这个累创建一个对象. 没有必要写一个自定义init方法<br>，使用默认的即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">override init() &#123;</div><div class="line">    super.init()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后，添加一个下面的方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func geocodeAddress(address: String!, withCompletionHandler completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一个参数 address 使我们想要在地图标示出来的地址. 第二个参数是一个完成句柄，一旦接收到数据就被<br>调用进行数据处理。只有这个函数调用完成句柄处理好数据之后，应用才会在地图中显示结果。简单的说就是两个<br>参数: 第一个就是从返回内容中的status字符 第二个就是地址解析是否成功(是否返回了正确的数据)。</p>
+<p>下面我们会一步一步来实现这个函数. 开始, 我们必须正确的拼凑正确的URL字符串, 并转换为正确的格式, 并<br>用它去创建一个NSURL对象。首先要注意的就是要保证给予的地址要正确。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if let lookupAddress = address &#123;</div><div class="line">    var geocodeURLString = baseURLGeocode + &quot;address=&quot; + lookupAddress</div><div class="line">    geocodeURLString = geocodeURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</div><div class="line"></div><div class="line">    let geocodeURL = NSURL(string: geocodeURLString)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>下面将要请求 geocoding API 并用 NSData 对象来存储返回的结果集. 这里有一个比较重要的知识点就是<br>异步加载(asynchasynchronously), 就是说当你去获取数据的时候，app还能依然能够操作有反应。然后就<br>是将请求获取的数据从 JSON 格式转换到 dictionary 对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">    let geocodingResultsData = NSData(contentsOfURL: geocodeURL!)</div><div class="line"></div><div class="line">    var error: NSError?</div><div class="line">    let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(geocodingResultsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>最后一行代码就是将JSON数据转换为Swift数据对象.</p>
+<p>上面也能看到，我们使用 NSError 对象去捕获转换过程中出现的任何可能的错误。所以，我们首先需要注意的<br>是转换完成之后的值到底是不是nil,如果是空值，我们调用完成句柄并把标示符设置为falsely。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (error != nil) &#123;</div><div class="line">    println(error)</div><div class="line">    completionHandler(status: &quot;&quot;, success: false)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果一切顺利，我们首先获取返回数据 status 值. 如果包含 “OK” 我们就获取数据集的第一个结果并把它<br>存储到 lookupAddressResults 字典表中，然后我们再来获取其他我们所需要的值(格式化后的地址,经纬度)<br>如果status包含的是”OK”之外的其他值，调用完整句柄穿点 status 值，但标示符仍设置为false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">else &#123;</div><div class="line">    // Get the response status.</div><div class="line">    let status = dictionary[&quot;status&quot;] as String</div><div class="line"></div><div class="line">    if status == &quot;OK&quot; &#123;</div><div class="line">        let allResults = dictionary[&quot;results&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</div><div class="line">        self.lookupAddressResults = allResults[0]</div><div class="line"></div><div class="line">        // Keep the most important values.</div><div class="line">        self.fetchedFormattedAddress = self.lookupAddressResults[&quot;formatted_address&quot;] as String</div><div class="line">        let geometry = self.lookupAddressResults[&quot;geometry&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">        self.fetchedAddressLongitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lng&quot;] as NSNumber).doubleValue</div><div class="line">        self.fetchedAddressLatitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lat&quot;] as NSNumber).doubleValue</div><div class="line"></div><div class="line">        completionHandler(status: status, success: true)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        completionHandler(status: status, success: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面的这部分是整个函数的心脏部分. 需要注意在从JSON数据中取值时所使用这些Key值名称，这些能够在我前<br>面提到的Google Geocoding API 文档中找到。</p>
+<p>另外还需处理当地址为nil时的情况:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">else &#123;</div><div class="line">    completionHandler(status: &quot;No valid address.&quot;, success: false)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这次给status参数传递的是一个自定义信息。</p>
+<p>下面是这个方法完整的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">func geocodeAddress(address: String!, withCompletionHandler completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let lookupAddress = address &#123;</div><div class="line">        var geocodeURLString = baseURLGeocode + &quot;address=&quot; + lookupAddress</div><div class="line">        geocodeURLString = geocodeURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</div><div class="line"></div><div class="line">        let geocodeURL = NSURL(string: geocodeURLString)</div><div class="line"></div><div class="line">        dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">            let geocodingResultsData = NSData(contentsOfURL: geocodeURL!)</div><div class="line"></div><div class="line">            var error: NSError?</div><div class="line">            let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(geocodingResultsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line"></div><div class="line">            if (error != nil) &#123;</div><div class="line">                println(error)</div><div class="line">                completionHandler(status: &quot;&quot;, success: false)</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                // Get the response status.</div><div class="line">                let status = dictionary[&quot;status&quot;] as String</div><div class="line"></div><div class="line">                if status == &quot;OK&quot; &#123;</div><div class="line">                    let allResults = dictionary[&quot;results&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</div><div class="line">                    self.lookupAddressResults = allResults[0]</div><div class="line"></div><div class="line">                    // Keep the most important values.</div><div class="line">                    self.fetchedFormattedAddress = self.lookupAddressResults[&quot;formatted_address&quot;] as String</div><div class="line">                    let geometry = self.lookupAddressResults[&quot;geometry&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">                    self.fetchedAddressLongitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lng&quot;] as NSNumber).doubleValue</div><div class="line">                    self.fetchedAddressLatitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lat&quot;] as NSNumber).doubleValue</div><div class="line"></div><div class="line">                    completionHandler(status: status, success: true)</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    completionHandler(status: status, success: false)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        completionHandler(status: &quot;No valid address.&quot;, success: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面我们就可以在 ViewController.swift 中调用上面的函数了。首先定义并初始化一个 MapTasks 类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var mapTasks = MapTasks()</div></pre></td></tr></table></figure>
+<p>然后找到 findAddress(_:) IBAction 函数. 每当工具栏左边的按钮被点击的时候就会调用该函数。这里<br>我们会弹出一个输入框让用户来输入地址。提供两个按钮，一个用来初始化地址查询，另外一个关闭当前对话框。<br>当点击第一个按钮时，我们就调用前面所创建的函数并获取完成句柄的结果集。来看代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@IBAction func findAddress(sender: AnyObject) &#123;</div><div class="line">    let addressAlert = UIAlertController(title: &quot;Address Finder&quot;, message: &quot;Type the address you want to find:&quot;, preferredStyle: UIAlertControllerStyle.Alert)</div><div class="line"></div><div class="line">    addressAlert.addTextFieldWithConfigurationHandler &#123; (textField) -&gt; Void in</div><div class="line">        textField.placeholder = &quot;Address?&quot;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let findAction = UIAlertAction(title: &quot;Find Address&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        let address = (addressAlert.textFields![0] as UITextField).text as String</div><div class="line"></div><div class="line">        self.mapTasks.geocodeAddress(address, withCompletionHandler: &#123; (status, success) -&gt; Void in</div><div class="line"></div><div class="line">        &#125;)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    addressAlert.addAction(findAction)</div><div class="line">    addressAlert.addAction(closeAction)</div><div class="line"></div><div class="line">    presentViewController(addressAlert, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在括号的代码中，我们已经获取到了数据集。如果 success 标示符为 false 我们就在命令行中显示 status.<br>如果 status 等于 “ZERO_RESULTS” 值, 我们会弹出另外一个提示框告诉用户没有找到对应地址信息。如果<br>一切顺利，我们就把地图的中心设置到当前位置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@IBAction func findAddress(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line">        self.mapTasks.geocodeAddress(address, withCompletionHandler: &#123; (status, success) -&gt; Void in</div><div class="line">            if !success &#123;</div><div class="line">                println(status)</div><div class="line"></div><div class="line">                if status == &quot;ZERO_RESULTS&quot; &#123;</div><div class="line">                    self.showAlertWithMessage(&quot;The location could not be found.&quot;)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)</div><div class="line">                self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 14.0)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>showAlertWithMessage(_:) 是用来显示自定义信息的提示框方法. 它是一个完全可以复用的代码块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">func showAlertWithMessage(message: String) &#123;</div><div class="line">    let alertController = UIAlertController(title: &quot;GMapsDemo&quot;, message: message, preferredStyle: UIAlertControllerStyle.Alert)</div><div class="line"></div><div class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    alertController.addAction(closeAction)</div><div class="line"></div><div class="line">    presentViewController(alertController, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有工作完成后，我们来测试应用。如果你输入了一个正确的地址，地图自动会以该位置为中心进行定位。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/2015/05/googlemap/t33_24_search_address.png"></h2><p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/28/google-map-ios-sdk-swift-demo-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/28/google-map-ios-sdk-swift-demo-1/" itemprop="url">
+                  使用Swift和GoogleMapiOSSDK开发地图应用示例(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-28T10:16:56+08:00">
+                2015-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/28/google-map-ios-sdk-swift-demo-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/28/google-map-ios-sdk-swift-demo-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>iOS应用中的地图类别中，开发者可以有千万种想法和功能在上面实现，这里所要介绍的是几个基本功能：显示当<br>前位置，规划旅游路线(支持自定义中转点), 甚至从另外一个完全不同的方法去探索地图各种创意和功能, 毫无<br>疑问所有这些都会积累经验带来意想不到的结果。</p>
+<p>iOS从开始一直到版本5.1(包括)，iOS所有的地图应用及相关服务都是使用Google地图服务。但是，自从Apple<br>推出了自己一套全新的地图框架Map Kit后，就再也没有Google Map 什么事了。MapKit一直使用到现在的<br>iOS8.3。当Apple决定放弃使用GoogleMapService时，Google决定自己推出一套自己的跨平台的MapsSDK，<br>当然也包括iOS，来和iOS上的MapKit以及其它平台上的mapSDKs进行竞争。直到现在，Google已然是这方面<br>的佼佼者,大量的开发者都在使用GoogleMapSDK。所以，写这篇iOS平台上GoogleMapsSDK的介绍还是有一定<br>价值的。</p>
+<img src="/images/2015/05/googlemap/googlemapios-1024x576.jpg">
+<p>现在iOS版本GoogleMapsSDK的版本号1.9.2,它包含了很多在web版本中的功能，web版本也有很多功能是<br>iOS版本中没有的。需要指出的一点就是在这个版本里，SDK包非常大，所以如果需要把框架源码文件拷贝到你的<br>项目里的话就要先考虑一下了。然后，功能的兴趣点和重要性又使得它成为了开发者的不二之选。</p>
+<p>相对于原作者的<a href="http://www.appcoda.com/author/gabrielth/" target="_blank" rel="external">其它教程</a>,前面介绍的篇幅相对<br>较短，那是因为后面我们有大量的东西需要介绍。在介绍部分长篇大论的讨论各种功能就没有意义了,我们会在后<br>面进行详述。我想说的就是我们要做好遇到一些真正有兴趣的事情。如果你过去没有使用过GoogleMapsSDK进行<br>过开发，你绝对会在学习的过程中非常享受。下面我总结一下使用GoogleMapsSDK开发地图应用的几个知识点：</p>
+<blockquote>
+<p>显示使用者当前的实时位置</p>
+<p>如何显示一个地址所在位置点</p>
+<p>如何显示规划路径</p>
+<p>如何给路径添加一个中转点</p>
+<p>…</p>
+</blockquote>
+<p>好，废话多不说，下面开始我们的学习。</p>
+<p>##Demo预览</p>
+<p>先简单介绍这个Demo, 首先我们不会从新建项目开始，而是从这个<a href="https://www.dropbox.com/s/0le4t9x0amzml6q/GMapsDemo.zip?dl=0" target="_blank" rel="external">初始化项目</a>开始，我们要做的就是在上面加功能。所以首先是要下载项目，然后用Xcode打开备用。</p>
+<p>这个应用其实是一个单视图应用, 包含3个子视图:</p>
+<ol>
+<li>屏幕顶部是一个工具栏, 放置了几个按钮. 在初始化项目中，这几个按钮已经连接到了代码中IBAction方法，所以<br>不需要再去处理它了，只需要在需要的地方直接写代码就可以了。</li>
+<li>占据了屏幕中间大部分空间的UIView,用来显示地图.</li>
+<li>底部有一个标签用来显示路线长度和方向角.</li>
+</ol>
+<p>顶部工具栏中的按钮从左到右分别是:</p>
+<ul>
+<li>地址查询</li>
+<li>路线查询</li>
+<li>旅游模式</li>
+<li>地图类型</li>
+</ul>
+<p>在下面的介绍中我们会详细介绍. 现在要做的就是快速的浏览一下下载的项目。下面来张项目的截图:</p>
+<img src="/images/2015/05/googlemap/t33_1_my_location.png">
+<p>提示: 如果你只是想下载测试最终应用程序，请确保在文件 AppDelegate.swift中APIkey已经修改正确。</p>
+<p>##创建API Key</p>
+<p>使用GoogleMapsSDK的前提是必须要有API key.简单的说，就是我们需要从Google那里获取到一个字符串，<br>以允许在程序中调用GoogleAPI. 这个APIKey在Google Developers Console下获取，人如其名,对于<br>开发人员来说，这是一个很特别的地方. 显然，如果你已经有Google账号，可以直接登录进行操作，如果没有<br>Google账号，你首先需要创建一个账号。</p>
+<p>如果只是想为应用获取一个APIKey, 你可以不必理会Google官方的<a href="https://developers.google.com/maps/documentation/ios/start" target="_blank" rel="external">说明文档</a>.<br>但是，在本教程编写的时候，Google Developers Console可能对上面的链接会有所更新(显然对于官方文档来说就已经更新了。),<br>所以我建议通过以下步骤获取自己的APIKey。</p>
+<p>下面就开始来做. 用Google账号登录Developers Console，然后点击 API Project选项，显示如下图：</p>
+<img src="/images/2015/05/googlemap/t33_3_APIProject.png">
+<p>然后, 点击展开APIs &amp; auth菜单, 选择APIs选项. 然后你会发现Google提供的所有API服务都在这里,<br>但是这里我们只关注Google Maps SDK for iOS. 由于浏览器的原因，很多API都是在列表里，所以你必须下拉<br>点击 more,在一个组里，你只需要选择你需要的就可以了:</p>
+<img src="/images/2015/05/googlemap/t33_5_select_API_group.png">
+<p>如果你选择 Google Maps SDK for iOS API, 就会跳转到另外一个页面，选择Enable选项:</p>
+<img src="/images/2015/05/googlemap/t33_6_maps_api_on.png">
+<p>完成之后点击 APIs &amp; auth下的Credentials 选项。点击 Create new Key 按钮:</p>
+<img src="/images/2015/05/googlemap/t33_7_create_new_key_button.png">
+<p>点击之后，弹出窗口询问API Key的类型，显然选择 iOS Key来获取正确的Key.</p>
+<img src="/images/2015/05/googlemap/t33_8_select_key_type.png">
+<p>在下一个窗口你必须把你项目的 bundle identifier (bundle ID) 填进去.示例项目是<br>com.appcoda.GMapsDemo ,所以拷贝粘贴:</p>
+<img src="/images/2015/05/googlemap/t33_9_set_bundle_id.png">
+<p>上面的步骤是必须得,所以我们的程序才能获取Google Maps API的授权.注意的是如果你想把这个Key用到多个<br>程序上，你首先补习把bundle ID添到这个窗口内容。</p>
+<p>然后点击 Create 按钮，需要的API key创建完成. 你将会看到类似于下图的内容:</p>
+<img src="/images/2015/05/googlemap/t33_10_maps_api_key.png">
+<p>点击 Edit allowed iOS applications，你可以像上面那样编辑 bundle IDs。你也可以重新生产Key,<br>目前来说不需要. 你所需要做的就是拷贝到项目文件中，我们下面就会用到它</p>
+<p>为了后面的使用，还必须把web service中的geoCoding API 和Direction API 设置为Enable。</p>
+<p>##项目配置<br>如果使用第三方SDK而不是iOS自带SDK的就会有个问题, 项目中必须做一些SDK需要的配置才能正常运行所以我<br>们需要在项目中做些配置以使Google Maps SDK正常运行, 不然就无法使用. 注意的是下面的步骤有些可以在<br>Google官方文档中找到，有些找不到，所以要学会搜索，当然了，你所需要的都在这里，你自己不需要搜索任何<br>东西了.</p>
+<p>首先, 你必须下载 Google Maps SDK (这个框架是必须添加到项目里面的). <a href="https://developers.google.com/maps/documentation/ios/" target="_blank" rel="external">下载地址</a>; 点击 Download the SDK<br>按钮, 下载最新版本 (目前1.9.2). 下载解压缩到文件夹.</p>
+<p>用Xcode打开初始项目,然后从Finder中拖动 GoogleMaps.framework到项目导航中.当Xcode弹出提示时，<br>确保 Copy items if needed 选项被勾选, 当然也不能忘了选择Add to targets中的 GMapsDemo:</p>
+<img src="/images/2015/05/googlemap/t33_11_add_gmaps_framework.png">
+<p>然后再回到Finder中，打开GoogleMaps.framework文件，在Resources目录下,选择GoogleMaps.bundle<br>也同样把它拖到Xcode项目导航栏中. 选项同上。</p>
+<p>此时，下面两项应该已经在你的项目中了。 (Google Maps SDK是我自己建的文件夹)</p>
+<img src="/images/2015/05/googlemap/t33_12_sdk_added_files.png">
+<p>Google Maps SDK需要调用一些已经存在项目中的基础库函数.必须先把这些库添加到项目中,导航中选择项目，<br>点击 Build Phases，展开 Link Binary With Libraries节点. 点击 (+) 按钮把下面这些一个个添加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">AVFoundation.framework</div><div class="line"></div><div class="line">CoreData.framework</div><div class="line"></div><div class="line">CoreLocation.framework</div><div class="line"></div><div class="line">CoreText.framework</div><div class="line"></div><div class="line">GLKit.framework</div><div class="line"></div><div class="line">ImageIO.framework</div><div class="line"></div><div class="line">libc++.dylib</div><div class="line"></div><div class="line">libicucore.dylib</div><div class="line"></div><div class="line">libz.dylib</div><div class="line"></div><div class="line">OpenGLES.framework</div><div class="line"></div><div class="line">QuartzCore.framework</div><div class="line"></div><div class="line">SystemConfiguration.framework</div></pre></td></tr></table></figure>
+<p>最终如下图所示：</p>
+<img src="/images/2015/05/googlemap/t33_13_framework_list.png">
+<p>然后点击 Build Settings, 查找 Other Linker Flags 设置. 找到之后, 给它赋值为 -ObjC,<br>因为我们要在当前的swift项目中建立一个连接到 Object-C编写的Maps SDK。</p>
+<img src="/images/2015/05/googlemap/t33_14_other_linker_flags.png">
+<p>对于连接，我们还不能直接在swift代码中嵌入Objective-C代码。而我们项目中必须要这么做，因为我们要引用<br>Google Maps库中的Object-C的头文件。事实上，我们就是想在Xcode中创建一个 Objective-C(.h)头文件,<br>但是没有直接方法，所以我们只能间接的创建：</p>
+<ol>
+<li><p>使用快捷键 Command + N 给项目添加一个新文件，</p>
+</li>
+<li><p>在文件模版中选择 Objective-C类型,命名为temp，点击创建：</p>
+</li>
+</ol>
+<img src="/images/2015/05/googlemap/t33_15_objective_c_file.png">
+<ol>
+<li>完成后，Xcode会弹出如下提示框，确定要选择 Yes</li>
+</ol>
+<img src="/images/2015/05/googlemap/t33_16_bridging_header.png">
+<ol>
+<li>除了创建了 temp.m 文件, 另外一个命名为：GMapsDemo-Bridging-Header.h 也被创建.<br>在Xcode中打开，添加下面这行代码:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &lt;GoogleMaps/GoogleMaps.h&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>删除 temp.m 文件，因为我们不再需要它了.</li>
+</ol>
+<p>最后,使我们使用上节创建的APIKey了. 打开 AppDelegate.swift 文件,在<br>application(_:didFinishLaunchingWithOptions:) 方法中添加下面代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool &#123;</div><div class="line">    // Override point for customization after application launch.</div><div class="line"></div><div class="line">    GMSServices.provideAPIKey(&quot;YOUR_API_KEY&quot;)</div><div class="line"></div><div class="line">    return true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然这里的”YOUR_API_KEY”就是上节在GoogleDevelopers Console中创建的APIKey.注意的是现在可以<br>引用GoogleMaps库的类了，因为我们在前面对它创建了连接引入了头文件。</p>
+<p>目前项目的初始化准备工作完成了, 下面将要进行的就是正式的编码. 正如我所说的，当项目引入了外部库时，<br>必须进行一系列配置才能进行，幸运的是这些配置尽管有很多，但是都很简单。</p>
+<p>##显示地图<br>我们设置好了项目配置之后，就准备开始进行实际的编码，添加Google地图到应用中。正如你所看到的，这很简单<br>我们一步一步来。</p>
+<p>打开Main.storyboard文件, 你会注意到在容器中就是一个视图(UIView Controller)场景。</p>
+<img src="/images/2015/05/googlemap/t33_17_view_controller_scene.png">
+<p>这个视图就是用来加载地图的, 但是为了能在使用时方便，我们必须对它进行一些修改. 所以, 1. 选中，打开<br>Identity Inspector,在 class 框中输入 GMSMapView 作为 class名称.GMSMapView是Google Maps<br>库,事实上它是 UIView 子类.</p>
+<p>还有一处必须修改的地方在 ViewController.swift 文件中.在类的上部可以看到 IBOutlet 属性声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@IBOutlet weak var viewMap: UIView!</div></pre></td></tr></table></figure>
+<p>我们做的就是把 viewMap 属性类从 UIView 改到 GMSMapView:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@IBOutlet weak var viewMap: GMSMapView!</div></pre></td></tr></table></figure>
+<p>现在我们就能使用viewMap这个变量了。</p>
+<p>给应用添加Google地图很简单. 在viewDidLoad 方法中添加如下两行代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    super.viewDidLoad()</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line"></div><div class="line">    let camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(48.857165, longitude: 2.354613, zoom: 8.0)</div><div class="line">    viewMap.camera = camera</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一行是初始化一个GMSCameraPosition对象. 使用此对象我们在显示地图时，初始化了一个位置. 上面地图<br>中心的经纬度是Paris,你也可以知道其它的经纬度来替换.除了经纬度我们还需要初始化就是地图的缩放级别。</p>
+<p>上面的对象是赋给了camera 属性. With that,实际上地图被渲染为了 viewMap view.</p>
+<p>现在我们可以测试地图了. 所以无论是在真实设备商还是在模拟器中，等待到地图出现为止。(在中国不可能出现！)</p>
+<img src="/images/2015/05/googlemap/t33_18_map_first_run.png">
+<p>在我们进行下一部分之前进行一点扩展, 我们来创建一个动作表来选择地图类型.地图SDK提供了三种类型:</p>
+<ul>
+<li>Normal</li>
+<li>Terrain</li>
+<li>Hybrid</li>
+</ul>
+<p>Normal是默认类型，就是上图中显示的那种，另外两种类型根据你的选择来响应，而且这两种类型也都相当不错！</p>
+<p>地图视图其中有一个属性叫mapType. 是Google Maps SDK中的三个常量用来显示每个类型，想要哪种类型就<br>设置成对应的属性就可以了，这三种属性为:</p>
+<ul>
+<li>kGMSTypeNormal</li>
+<li>kGMSTypeTerrain</li>
+<li>kGMSTypeHybrid</li>
+</ul>
+<p>现在，找到 changeMapType(_:) IBAction 方法,我们需要在此处给地图视图添加对应动作表并对应相应的<br>属性值，下面的代码段就是所需内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@IBAction func changeMapType(sender: AnyObject) &#123;</div><div class="line">    let actionSheet = UIAlertController(title: &quot;Map Types&quot;, message: &quot;Select map type:&quot;, preferredStyle: UIAlertControllerStyle.ActionSheet)</div><div class="line"></div><div class="line">    let normalMapTypeAction = UIAlertAction(title: &quot;Normal&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeNormal</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let terrainMapTypeAction = UIAlertAction(title: &quot;Terrain&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeTerrain</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let hybridMapTypeAction = UIAlertAction(title: &quot;Hybrid&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.viewMap.mapType = kGMSTypeHybrid</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let cancelAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    actionSheet.addAction(normalMapTypeAction)</div><div class="line">    actionSheet.addAction(terrainMapTypeAction)</div><div class="line">    actionSheet.addAction(hybridMapTypeAction)</div><div class="line">    actionSheet.addAction(cancelAction)</div><div class="line"></div><div class="line">    presentViewController(actionSheet, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码其实不太难. 地图视图中的每个动作我们都给它付了一个属性值。</p>
+<p>再次运行程序，点击顶部工具栏右侧按钮，会弹出选择类型的提示.</p>
+<img src="/images/2015/05/googlemap/t33_20_hybrid_type.png">
+<hr>
+<p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/22/why-typescript-is-hot-now-and-forward/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/22/why-typescript-is-hot-now-and-forward/" itemprop="url">
+                  为什么TypeScript现在和将来都会更加流行！
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-22T20:29:35+08:00">
+                2015-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/22/why-typescript-is-hot-now-and-forward/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/22/why-typescript-is-hot-now-and-forward/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<img src="/images/2015/05/typescript.png">
+<p>当前对于JavaScript开发者来说，是一个空前的好机遇！从一个网站的前端到后台Javascript已经是无处不<br>在，甚至于很多桌面版本的文本编辑器都是由Javascript驱动的。事实上，你现在可以用web技术来实现一个<br>桌面应用程序的全部功能。在你的JavaScript技术越来越熟练的情况下，最重要的一点就是保证你的代码在你<br>的掌控之中，免得变成一堆错综复杂的玩意。</p>
+<p>##TypeScript</p>
+<p><a href="http://typescriptlang.org/" target="_blank" rel="external">TypeScript</a> 遵守 ECMAScript 6(ES6) 中的可选类型规范。</p>
+<p>###ECMASCRIPT6</p>
+<p><a href="http://en.wikipedia.org/wiki/ECMAScript" target="_blank" rel="external">ECMASCript</a> 是JavaScript语言的标准规范，<br>有时被称为ECMAScript Harmony或者ES.再者，当前的JavaScript的规范是ECMAScript5。 仅有几个<br>浏览器支持ES6规范，但是支持的浏览器肯定会越来越多。既然ES6是默认兼容ES5的语法，那么你就可以不需要<br>改动任何代码就能在ES6下面运行。然而最重要的一点就是，学习TypeScript语法就是在学习ES6语法，所以<br>你是在学习将来的JavaScript语法，而不是在学习一门完全新的语法，比如<a href="http://coffeescript.org/" target="_blank" rel="external">CoffeeScript</a></p>
+<p>###可选类型<br>TypeScript 自己的可选类型。 类型语言如Java,C#,Object-C 需要你在初始化变量时指定类型。<br>Java中Srtring name =”Andrew”,C#中 string name =”Andrew”; 而在 Object-C中，<br>NSString name = “Andrew”.</p>
+<p>而在TypeScript中，可以定义为：var name:string = “Andrew”. 而作为可选的，也可以声明为<br>var name = “Andrew”. 在严格类型语言中，你必须时刻定义变量类型，在TypeScript中，则不需要。</p>
+<p>在代码中定义变量类型有助于文本编辑器和IDE在不需要编译代码的情况下就能快速给出智能提示。</p>
+<img src="/images/2015/05/ts.gif">
+<p>同样，它也可以帮你自动完成代码。有些文本编辑器是根据你的项目文件，它不可能知道你所有变量的类型，但是<br>当你调用函数时，传递了一个类似名称的变量，其实是另外一个对应的类型。但是在TypeScript中，在调用函数<br>时，代码编辑器能够更加智能提示合适的变量。这个效率非常高，相当于是代码在写代码。</p>
+<p>而且还减少了在方法调用或者方法调用返回值的时候，前后频繁查看文档查找各个变量注释的麻烦。</p>
+<h3 id="TypeScript无处不在"><a href="#TypeScript无处不在" class="headerlink" title="TypeScript无处不在"></a>TypeScript无处不在</h3><p>凭借简洁的ES6语法，智能代码完成和可选类型提示，TypeScript极大提高了效率，并且已经被应用在许多大型<br>的项目和框架上如：<a href="https://angular.io/" target="_blank" rel="external">AngularJS</a> 2.0 和 <a href="http://ionicframework.com/" target="_blank" rel="external">Ionic Framework</a> 2.0.</p>
+<p>在你的JavaScript项目还没有开始之前，你可以记得给TypeScript留有一席之地。TypeScript可以在各种<br>环境下从浏览器到Node.js都可以帮你提高效率。当你编写代码时，可以获得自动完成和提示。</p>
+<h3 id="Typeing-正在成为你身边的一个编程语言"><a href="#Typeing-正在成为你身边的一个编程语言" class="headerlink" title="Typeing 正在成为你身边的一个编程语言"></a>Typeing 正在成为你身边的一个编程语言</h3><p>有些程序员喜欢动态类型，但是你不需要在你写代码的时候声明一个变量，主要的一个原因是代码不长。<br>然而，这似乎是一个趋势，很多编程语言汇聚了很多功能，从generics，固定变量，异步编程，可选类型甚至<br>智能编译。甚至Ruby之父-Yukihiro Matsumoto说：静态类型将要到达版本3.0.</p>
+<p>在代码中书写类型不只帮助提高编写效率，还能在程序运行时帮助解释和编译代码。</p>
+<h3 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h3><p>打开 <a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript官网</a>,查看一下主页介绍，当然也可以在交互式<a href="http://www.typescriptlang.org/Playground" target="_blank" rel="external">Playground</a>中测试TypeScript。<br>也可以下载跨平台的智能代码提示文本编辑器-<a href="https://code.visualstudio.com/" target="_blank" rel="external">Visual Studio Code</a>.你也可以查看我们的 <a href="https://trello.com/b/r5R1JZNO/treehouse-javascript-content-roadmap" target="_blank" rel="external">JavaScript<br>路线图</a> 中的TypeScript。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>正因为TypeScript的清晰的ES6语法和可选类型，而不是一个完全不同的语法，它不但提高了工作效率还可能<br>成为JavaScript的未来和趋势。TypeScript的流行来自于一些流行框架的使用比如AngularJS.<br>可选类型也可能是你最喜欢的动态类型语言的未来和趋势。谁知道，TypeScript会不会成为JavaScript的一个<br>新的版本呢。现在不只是一个学习JavaScript的机会，也是一个了解TypeScript的好机会。</p>
+<hr>
+<p>此文为翻译文章，原文地址:<a href="http://blog.teamtreehouse.com/typescript-hot-now-looking-forward" target="_blank" rel="external">http://blog.teamtreehouse.com/typescript-hot-now-looking-forward</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/21/how-to-install-nodejs-on-linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/21/how-to-install-nodejs-on-linux/" itemprop="url">
+                  在Linux下安装nodejs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-21T21:05:37+08:00">
+                2015-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/21/how-to-install-nodejs-on-linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/21/how-to-install-nodejs-on-linux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>可以说 JavaScript 无处不在，从19世纪中叶它的出生地Netscape 浏览器到现在进入到各种现在流行的web<br>浏览器，各种手机开发，并在Node.js的帮助下已经发展成为了羽翼丰满的web开发的服务器端语言。</p>
+<img src="/images/2015/05/nodejs.png">
+<p>Node.js 是一种非阻塞式引擎，也就它在聊天服务、分析、合作工具、交互游戏等一些实时web程序中成为了<br>首选模式。</p>
+<p>为了使用nodejs来开发应用程序，你需要安装NPM(Node Package MaManager)工具，它主要用来下载和安装<br>一些能够比较优秀的第三方开源的JavaScript库。</p>
+<h2 id="必要条件"><a href="#必要条件" class="headerlink" title="必要条件"></a>必要条件</h2><p>###* 熟悉Linux命令行工具<br>用来安装和测试Node、NPM，也可以用来调用Node.js 和NPM。</p>
+<p>###* 依赖项</p>
+<p>####1.Ruby 和 GCC。 你需要安装Ruby1.8.6或更高版本，GCC4.2或更高版本。<br>  对于Ubuntu和Debian的linux版本，运行以下命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</div></pre></td></tr></table></figure>
+<p>询问时，选择Y继续安装。</p>
+<p>  对于Fedora的linux版本，运行以下命令行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum groupinstall &apos;Development Tools&apos; &amp;&amp; sudo yum install curl git m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</div></pre></td></tr></table></figure>
+<p>  询问时，选择Y继续安装。</p>
+<h4 id="2-Homebrew"><a href="#2-Homebrew" class="headerlink" title="2.Homebrew."></a>2.Homebrew.</h4><p>  Homebrew 是mac上的包管理工具，在linux下被移植为Linuxbrew，<br>  对于很多开源库来说，更加方便安装。比如Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<p>  想要了解更多请到<a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>官网和<a href="http://brew.sh/linuxbrew" target="_blank" rel="external">Linuxbrew</a>官网。<br>  想要在linux下安装Homebrew，在命令行工具下输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)&quot;</div></pre></td></tr></table></figure>
+<p>  然后更加说明完成安装即可。</p>
+<p>  linuxbrew 安装完成后，需要添加下面三行到.bashrc 或者<br>  .zshrc 文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;$HOME/.linuxbrew/bin:$PATH&quot;</div><div class="line">export MANPATH=&quot;$HOME/.linuxbrew/share/man:$MANPATH&quot;</div><div class="line">export INFOPATH=&quot;$HOME/.linuxbrew/share/info:$INFOPATH&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>为什么要用 HOMEBREW/LINUXBREW?<br>或许你会问，为什么一定非得要用第三方库的管理工具呢？以下是几个<br>优点:</p>
+</li>
+<li><p>能够直接安装软件到主目录而不需要sudo权限</p>
+</li>
+<li>安装软件而不是压缩包到本地</li>
+<li>当本地软件有版本更新时，可以直接安装更新。</li>
+<li>使用管理工具能够同时管理Mac和linux机器。</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用Linuxbrew安装Node.js 和NPM十分直接和方便，下载-解压-编译<br>-安装 动作一气呵成。如果你已经安装Linuxbrew，Node.js和<br>NPM的安装只需要几分钟即可完成。</p>
+<ul>
+<li>1.打开命令行输入：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<ul>
+<li>2.坐好，等</li>
+</ul>
+<p>Linxubrew 会自动下载编译安装，然后就完成了。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>用几个简单的命令来测试一下你的Node和NPM是否已经安装成功。<br>node -v 测试Node版本<br>nom -v  测试NPM版本</p>
+<img src="/images/2015/05/node-install-check.png">
+<h3 id="更新Node-和-NPM"><a href="#更新Node-和-NPM" class="headerlink" title="更新Node 和 NPM"></a>更新Node 和 NPM</h3><p>Node和NPM的版本发布十分频繁，你可以使用Linuxbrew来进行<br>软件更新。</p>
+<ul>
+<li><ol>
+<li>保持 Linuxbrew是node包得最新版本，然后在命令行中输入：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew update</div></pre></td></tr></table></figure>
+<ul>
+<li><ol>
+<li>更新Node</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew upgrade node</div></pre></td></tr></table></figure>
+<h3 id="卸载Node和NPM"><a href="#卸载Node和NPM" class="headerlink" title="卸载Node和NPM"></a>卸载Node和NPM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew uninstall node</div></pre></td></tr></table></figure>
+<h3 id="其它平台"><a href="#其它平台" class="headerlink" title="其它平台"></a>其它平台</h3><p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></p>
+<p>##总结：</p>
+<p>Node.js 和NPM安装完毕，现在 使用node.js来开发一些漂亮的网站了。<br>或者使用一些比较好的库i完善和优化前端到后端的工作流和逻辑。</p>
+<hr>
+<p><a href="http://blog.teamtreehouse.com/install-node-js-npm-linux" target="_blank" rel="external">原文地址:http://blog.teamtreehouse.com/install-node-js-npm-linux</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/18/how-to-install-nodejs-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/18/how-to-install-nodejs-on-mac/" itemprop="url">
+                  在Mac上安装Nodejs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-18T20:44:24+08:00">
+                2015-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/18/how-to-install-nodejs-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/18/how-to-install-nodejs-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
+<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a></p>
+<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a>,</p>
+<p>点击安装，下载最新的安装包。</p>
+<img src="/images/2015/05/osxnodejs.png">
+<p>打开下载的.dmg 文件，按照提示安装的话，node和npm都会自动安装。npm 就是 Node Package Manager,其实就是nodejs的各种库的安装管理工具。</p>
+<img src="/images/2015/05/osxnodejsinstall.png">
+<p>安装完成后确保 /usr/local/bin 在你的path路径下，打开命令行工具输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eecho $PATH</div></pre></td></tr></table></figure></p>
+<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a href="http://coolestguidesontheplanet.com/add-shell-path-osx/" target="_blank" rel="external">添加</a>。</p>
+<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">node</div><div class="line">&gt; console.log(&apos;hello node&apos;);</div><div class="line">hello node</div><div class="line">undefined</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>退出nodejs的编辑模式，按两次‘control+c’即可。</p>
+<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure></p>
+<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm search</div></pre></td></tr></table></figure>
+<p>将会返回一个完整的可用的库包列表，使用install来进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install easyimage</div></pre></td></tr></table></figure>
+<p>查看已安装库包，使用ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm ls</div></pre></td></tr></table></figure></p>
+<p>升级库包使用 update<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm update</div></pre></td></tr></table></figure></p>
+<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a href="http://nodejs.org/" target="_blank" rel="external">nodejs.org</a>。</p>
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
+<hr>
+<p><a href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/" target="_blank" rel="external">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/17/the-strangeer-of-dreamer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1182,854 +2247,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/02/12/where-can-i-say-it-for-you/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/02/12/where-can-i-say-it-for-you/" itemprop="url">
-                  不亏是啥？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-12T17:38:31+08:00">
-                2015-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/02/12/where-can-i-say-it-for-you/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/02/12/where-can-i-say-it-for-you/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>老家方言里有个“不亏” ，大概意思就是活该，应得的意思。一般大人训小孩都用这个，一边打一边问：亏不亏？</p>
-<p>昨天给娃子生动的上了一节关于亏不理论实践课。</p>
-<p>和娃子在床上玩，玩着玩着她竟然吃自己的手指头，因为她以前有个吃手的毛病给她治掉了。所以，我打了她的手一下，她又</p>
-<p>吃，我又打，她再吃，我打，她吃。</p>
-<p>然后我说，那我打脸了，她没有回答还继续吃，我向她脸上拍了一下，她继续吃，我又打了下很的，这下终于有反应了，( ⊙o⊙ )哇</p>
-<p>的一下哭了。</p>
-<p>我问：咋回事，</p>
-<p>娃指着脸答：这里疼</p>
-<p>我怒答：不亏。</p>
-<p>娃边哭边问：不亏是个啥呀？</p>
-<p>慢慢把娃哄下来，给她讲不亏是个啥。</p>
-<p>就是你在犯错误，比如吃手，爸爸说了不让你吃，你不听，还吃，爸爸再打你，就属于不亏。</p>
-<p>她貌似懂了。</p>
-<p>晚上吃饭的时候，她给妈妈讲：爸爸不让吃手还吃，就是不亏。</p>
-<p>最近，如果有什么犯错的举动的时候，我一说她，她就该说了，还有不亏。</p>
-<p>对，就是这个意思。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/10/16/tiags-first-quickly-build-the-model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/16/tiags-first-quickly-build-the-model/" itemprop="url">
-                  The iOS Apprentice:Getting Started.1:快速建立应用模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-16T23:19:39+08:00">
-                2014-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/16/tiags-first-quickly-build-the-model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/10/16/tiags-first-quickly-build-the-model/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>最近跟随 @MacTalk 购买了两本英文版的iOS教材。完全英文版的，以前都没有想到过在自己可以完整的看完一部英文教材。</p>
-<p>深有几点感触：</p>
-<ol>
-<li><p>有些事情不是你不会，你不能，而是你不想，如果去做了，80%都会成功。不要给自己找不会的借口。</p>
-</li>
-<li><p>外国人的知识真值钱，一部书300-400RMB，团购下来也是150-200RMB，国人的不行了，好不容易写本电子版的书，能卖30RMB已经算比较高的了。</p>
-</li>
-<li><p>任何事情都要自己愿意静下心来学，不然效率会很低。</p>
-</li>
-<li><p>感觉自己以前的学习效率就是shit，学习效率是要思考的，是要自己能再现的，不是从脑子里过一遍就好了，也不是你跟着书本敲遍代码就掌握的。</p>
-</li>
-<li><p>虚度了几十年的人生，突然感觉时间不够了。还要再加油。</p>
-</li>
-</ol>
-<p>为了自己能掌握的更牢固点，决定自己还是把教程复述一遍。自己掌握了，这个钱就花得值了。</p>
-<p>初步计划：</p>
-<p>The iOS Apprentice：Getting Started 1：快速建立应用模型</p>
-<p>The iOS Apprentice：Getting Started 2：添加控件</p>
-<p>The iOS Apprentice：Getting Started 3：计算分数</p>
-<p>The iOS Apprentice：Getting Started 4：完成应用</p>
-<p>The iOS Apprentice：Getting Started 5：应用适配</p>
-<p>首先来张完成后的截图</p>
-<img src="/images/2014/iosapp/20141016-0@2x.png">
-<p>俗话说的好：磨刀不误砍柴工，计划，然后实施，最后成功。建议大家都按照书上的建议，列一个ToDOList的表，至少大方向上不会偏离，而且还可以把握开发进度。</p>
-<p>Bulls Eye 的列表基本树下：</p>
-<ul>
-<li><p>在窗体上放一个按钮，名称为：Hit Me</p>
-</li>
-<li><p>当用户点击 “Hit Me” 按钮时，弹出用户当前的分数，这里需要牵涉到分数的计算。</p>
-</li>
-<li><p>在窗体上放两个标签，一个是“Score”，一个是“Round”，每局完成都会根据分数和局数进行变化。</p>
-</li>
-<li><p>在窗体上放一个滑块，值域在1..100之间。</p>
-</li>
-<li><p>当用户点击“Hit Me”按钮时，计算滑块值。</p>
-</li>
-<li><p>上方放置一个目标值标签，每局随机生成一个数值作为目标值。</p>
-</li>
-<li><p>比较目标值和滑块值，然后计算分数，点击按钮后弹出提示，告诉用户分数。</p>
-</li>
-<li><p>放置重玩按钮，点击后清空分数和局数，从新计算。</p>
-</li>
-</ul>
-<p>当前面的一切完成后，开始今天的第一部分，快速建立应用模型。</p>
-<p>我们来开始做第一步： 新建一个程序BullsEye</p>
-<img src="/images/2014/iosapp/20141016-1@2x.png">
-<img src="/images/2014/iosapp/20141016-2@2x.png">
-<img src="/images/2014/iosapp/20141016-3@2x.png">
-<img src="/images/2014/iosapp/20141016-4@2x.png">
-<img src="/images/2014/iosapp/20141016-5@2x.png">
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/10/04/simple-table-view-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/10/04/simple-table-view-error/" itemprop="url">
-                  表格视图控制器容易犯的一个小错误
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-04T17:19:24+08:00">
-                2014-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/04/simple-table-view-error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/10/04/simple-table-view-error/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>“Failed to instantiate the default view controller for UIMainStoryboardFile ‘Main’ - perhaps the designated entry point is not set?</p>
-<p>如果你是在做表格视图，然后你刚刚删除了Main.storyboard 上的viewControl，然后添加了  Table View Controller 之后显示这个错误，很显然，大家都犯了个错误，就是<br>没有 勾选 Is initial View Control这个选项。 勾上，就OK了。</p>
-<img src="/images/2014/2014100401.png">
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/31/ios-mvc-vs－girls/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/31/ios-mvc-vs－girls/" itemprop="url">
-                  iOS中MVC的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-31T11:18:00+08:00">
-                2014-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/31/ios-mvc-vs－girls/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/31/ios-mvc-vs－girls/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>A女善吹拉弹唱，B女善诗词歌赋，C女善环肥燕瘦，D女善唇红齿白。分别取名为春香，夏香，秋香，冬香。想要听曲，直接找春香唱曲；想诵读诗词，直接找夏香谈遣词造句；想要体形优美，直接找秋香金莲可握；想要面容娇美，直接找冬香闭月羞花。</p>
-<p>这就是iOS开发中control－IBoutlet－Event 中的关系，ABCD指不同control不同属性和用途；春香、夏香、秋香、冬香指IBOutlet对应的名称；唱曲、诵读、金莲、闭羞就是Event事件了。好一个MVC。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/31/ios-Thread-1-signal－sigabrt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/08/31/ios-Thread-1-signal－sigabrt/" itemprop="url">
-                  iOS开发中的 Thread 1:signal SIGABRT
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-31T07:18:00+08:00">
-                2014-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/08/31/ios-Thread-1-signal－sigabrt/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/08/31/ios-Thread-1-signal－sigabrt/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Thread 1:signal SIGABRT<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/08/31/ios-Thread-1-signal－sigabrt/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2074,7 +2296,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">150</span>
+                <span class="site-state-item-count">155</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2096,7 +2318,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
