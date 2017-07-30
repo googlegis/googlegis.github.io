@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2017-07-29T08:01:34.127Z</updated>
+  <updated>2017-07-30T01:42:04.133Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个旧号的回归</title>
+    <link href="http://googlegis.github.io/2017/07/30/the-return-of-king/"/>
+    <id>http://googlegis.github.io/2017/07/30/the-return-of-king/</id>
+    <published>2017-07-30T00:36:28.000Z</published>
+    <updated>2017-07-30T01:42:04.133Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今年二月份，因为一些其它原因，我把公众号转移到了另外一个账号上，平时写些家长里短，育儿故事。&lt;/p&gt;
+&lt;p&gt;有的时候还会写些影评，书籍和故事。一来满足一下伪文艺青年的创作激情，二来，记录一下孩子的成长点滴，&lt;/p&gt;
+&lt;p&gt;等老了之后，也算是个念想。&lt;/p&gt;
+&lt;p&gt;上周，一个
+    
+    </summary>
+    
+      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
+      <category term="国破山河在" scheme="http://googlegis.github.io/tags/%E5%9B%BD%E7%A0%B4%E5%B1%B1%E6%B2%B3%E5%9C%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>我为什么翻墙</title>
@@ -323,26 +348,6 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>the blue kite</title>
-    <link href="http://googlegis.github.io/2017/05/05/the-blue-kite/"/>
-    <id>http://googlegis.github.io/2017/05/05/the-blue-kite/</id>
-    <published>2017-05-05T14:58:00.000Z</published>
-    <updated>2017-05-25T09:01:05.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;…&lt;br&gt;
-    
-    </summary>
-    
-      <category term="看电影" scheme="http://googlegis.github.io/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
-    
-    
-      <category term="看电影" scheme="http://googlegis.github.io/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
     
   </entry>
   
