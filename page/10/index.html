@@ -299,6 +299,234 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/30/google-map-ios-sdk-swift-demo-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/30/google-map-ios-sdk-swift-demo-3/" itemprop="url">
+                  使用Swift和GoogleMapiOSSDK开发地图应用示例(3)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-30T17:16:56+08:00">
+                2015-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/30/google-map-ios-sdk-swift-demo-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/05/30/google-map-ios-sdk-swift-demo-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h2 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h2><p>在地图上添加样式很简单, 这个工作总共只需要两段代码.根据你的需要和设置，样式有很多属性可以进行配置。<br>Google Maps SDK中样式是一个GMSMarker类. 初始化的时候，给它赋予一个CLLocationCoordinate2D<br>类型经纬度，前面的代码中我们已经创建了这个对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)</div></pre></td></tr></table></figure>
+<p>一旦这个样式对象初始化之后，地图SDK就知道该把它放置到什么位置了。下面就是要告诉地图对象添加一个这样<br>这样的样式。</p>
+<p>我们来看一下代码的具体内容, 首先要声明一个maker属性并强引用，在ViewController类中添加如下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var locationMarker: GMSMarker!</div></pre></td></tr></table></figure>
+<p>现在我们定义一个下面的方法，每当有一个自定义地址在地图上指出来的时候，我们就调用该函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func setupLocationMarker(coordinate: CLLocationCoordinate2D) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请求到的坐标对象作为一个参数传递给该函数. 所以我们初始化该样式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">func setuplocationMarker(coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    locationMarker = GMSMarker(position: coordinate)</div><div class="line">    locationMarker.map = viewMap</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后回到 findAddress(_:) IBAction 函数，在地图匹配到自定义位置之后，我们需要加些代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@IBAction func findAddress(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line">        self.mapTasks.geocodeAddress(address, withCompletionHandler: &#123; (status, success) -&gt; Void in</div><div class="line">            ...</div><div class="line">            else &#123;</div><div class="line">                let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)</div><div class="line">                self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 14.0)</div><div class="line"></div><div class="line">                self.setupLocationMarker(coordinate)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再次运行应用，输入一个自定义地址，现在应该有个样式标记在新的位置上。</p>
+<p>正如开始提到的. 比如你可以自定义样式颜色, 自定义点击时弹出的文本, 甚至调节它的透明度.下面举几个例子<br>来说明一下她的属性配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">func setuplocationMarker(coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    locationMarker.title = mapTasks.fetchedFormattedAddress</div><div class="line">    locationMarker.appearAnimation = kGMSMarkerAnimationPop</div><div class="line">    locationMarker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())</div><div class="line">    locationMarker.opacity = 0.75</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>title属性值是从mapTasks对象中获取的格式化的地址，当样式点击后就会显示。appearAnimation表示显<br>示时是否动画效果, 值是由 maps SDK 提供的。样式的颜色也可以直接赋值修改;我们只需要修改GMSMarker<br>类中的某些属性就可以了，不必要获取icon的属性，并提供想要的颜色给这个图片。其实我们对它一点都不需要<br>关心。最后我们修改了样式的透明度。上面的这些代码主要是显示了一个蓝色样式，并在显示的时候呈现动画效果.</p>
+<p>当旋转地图或者通过手势修改了camera位置时，样式依然存在. 然后这就是提示这个动作依照SDK来进行平移,<br>然后这个样式也就会根据你的手势来急性移动。</p>
+<p>另外，还可以添加一些其他的文本内容，当你点击该样式时显示文本。这些文本内容必须在代码中赋给样式。</p>
+<p>下面是代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">func setuplocationMarker(coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    locationMarker.flat = true</div><div class="line">    locationMarker.snippet = &quot;The best place on earth.&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当修改了属性后可以立即运行应用来看一下效果。</p>
+<p>在继续进行下面的内容之前，要说明一下东西。正如我前面提到的，每当有一个新的地址进行匹配时，上面的函数<br>都会创建一个新的样式。但是如果已经有样式的时候，它就不会再添加样式了，除非我们把已有的样式删除掉。<br>所以，我们必须在这个函数开始的地方判断样式是否已经存在，存在就删除掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func setuplocationMarker(coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    if locationMarker != nil &#123;</div><div class="line">        locationMarker.map = nil</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的属性不只存在GoogleMapsSDK中，我建议你去看下<a href="https://developers.google.com/maps/documentation/ios/marker" target="_blank" rel="external">官方文档</a>，你会学到很多有用的内容。</p>
+<img src="/images/2015/05/googlemap/t33_25_marker.png">
+<h2 id="规划路线"><a href="#规划路线" class="headerlink" title="规划路线"></a>规划路线</h2><p>除了 Geocode API, Google 还提供了其他的 webServices 能够合并到Maps SDK中。其中一个就是<br>Directions API, 这个API能够帮我们在地图上规划出一条路线。一条路线其实就是连接两个地点的一条线,<br>除了起始点和终点之外，还包含中间点，叫做 waypoints.</p>
+<p>我们调用 Directions API 的方式和调用 Geocode API的方式类似。也就是说必须提供给web服务一些必需<br>的参数值, 然后处理返回的数据，和上次一样，可能是 JSON 或 XML 格式数据。同样，我会建议你去读一下<br><a href="https://developers.google.com/maps/documentation/directions" target="_blank" rel="external">Directions API</a>文档,<br>尤其是返回的数据示例部分, 你能看到一个很好 JSON 格式的数据示例。</p>
+<p>在我们来实现功能之前，有几个关于路线的基本的概念要搞清楚。 数据是从API返回来的数据。这里我会高亮几个<br>名称, 你也可以从官方文档中获取更详细的信息。首先， Directions API 从A点到B点进行查找时，返回的<br>路线可能不只一条，(这里我们只取第一条路线，其他忽略). 每条路线由很多legs组成, leg就是从Direction<br>API 返回的数据路线的一部分. 一条路线没有任何 waypoints (在起点和终点之间)，表示只有一个leg，<br>如果你给一条路线添加了waypoints，legs也就相应的增加.</p>
+<p>而每一个 leg 又是由 steps 组成, step 是 direction 单位, 意味着路线的方向都要按着step来.<br>一个 step 还包含了一些其他的有用数据。比如行进的路程，行进的时间,起始点位置，方便我们需要时能在地图<br>上显示出来。我上面提到的这些你要脑中有个概念，然后我们就开始下面的内容。</p>
+<p>除了 legs 和 steps, 一个路线的描述也同样包含了其他有用的信息。在Google文档中提供的示例中，有一个<br>标示为 “overview_polyline” 的内容，它包含了我们画整个路线时所有的点信息(polyline是由多个line<br>组成的路线). 在这个Demo中，我们就要用到这些信息,但是我必须提醒你的是：这里overview并不精确，它只<br>是实际路线的近似描述;如果一个短距离里面只包含几个 legs,问题不大，但是也有在画线路时发现overview<br>会有错误的拐弯和道路的情况。事实上，legs 和 steps 越多，精确度越低。问题的解决方案就是每个在每个<br>leg的每个step上都进行迭代进行请求polyline points。然后根据这些polyline的points进行画点。<br>但是这里我们不会使用这个方法，因为我们做的demo的目的就是要简单易懂，不能复杂化。我来告诉你如何使用<br>overview polyline，然后你在根据学到的内容自己在代码中进行修改和优化。</p>
+<p>下面我们打开 MapTasks.swift 文件。首先定义几个属性变量:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let baseURLDirections = &quot;https://maps.googleapis.com/maps/api/directions/json?&quot;</div><div class="line"></div><div class="line">var selectedRoute: Dictionary&lt;NSObject, AnyObject&gt;!</div><div class="line"></div><div class="line">var overviewPolyline: Dictionary&lt;NSObject, AnyObject&gt;!</div><div class="line"></div><div class="line">var originCoordinate: CLLocationCoordinate2D!</div><div class="line"></div><div class="line">var destinationCoordinate: CLLocationCoordinate2D!</div><div class="line"></div><div class="line">var originAddress: String!</div><div class="line"></div><div class="line">var destinationAddress: String!</div></pre></td></tr></table></figure>
+<p>我们来看一下上面的几个属性都是什么意思:</p>
+<blockquote>
+<p>selectedRoute 用来存储 Directions API 返回的数据中第一个线路.dictionary类型, 嵌套其他的<br>  dictionary 或者 array 类型。<br>overviewPolyline 用来存储 overview polyline 字典, 里面包含了一个用来画路线时的points的<br>  字典。<br>originCoordinate 和 destinationCoordinate 是两个 CLLocationCoordinate2D 对象，主要<br>  用来表示起点和终点的经纬度信息。<br>originAddress 和 destinationAddress 用来存储API返回数据中起点和终点地址。</p>
+</blockquote>
+<p>有了上面这些声明之后，我们定义下面这个函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: AnyObject!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除了起点和终点地址，上面的函数还包括了 数组类型的 waypoints 和用来画图时需要用到的 travel mode.<br>travel mode 定义三种模式 driving, walking,bicycling。最后，我们调用完成句柄来在地图上完成<br>数据。</p>
+<p>这时，我们就用不到 waypoints 和 travel mode两个参数了,需要使用起点和终点 address。前面已经<br>说过，过程和 Geocode API 相似, 至少在前面部分相似。所以，我们在开始的时候，使用两个address合并<br>出URL字符串，并把它赋给NSRUL对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: AnyObject!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line">            directionsURLString = directionsURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</div><div class="line">            let directionsURL = NSURL(string: directionsURLString)</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            completionHandler(status: &quot;Destination is nil.&quot;, success: false)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        completionHandler(status: &quot;Origin is nil&quot;, success: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要注意的是, 我们使用完成句柄来处理比如地址为空引起的错误或结果为0, 同样也会传递一个自定义参数。</p>
+<p>下一步就是使用上面的 URL 来请求 Direction API。我们已经知道，返回的数据时 JSON 格式,同样整个<br>过程也是异步进行的。在下面这段代码里, 我们把获取的JSON数据转换为dictionary，同时，还要注意捕获<br>异常错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">    let directionsData = NSData(contentsOfURL: directionsURL!)</div><div class="line"></div><div class="line">    var error: NSError?</div><div class="line">    let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(directionsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line"></div><div class="line">    if (error != nil) &#123;</div><div class="line">        println(error)</div><div class="line">        completionHandler(status: &quot;&quot;, success: false)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>上面的代码并没有新鲜或者困难的地方，最重要的部分是我们下面将要加入到else部分的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">let status = dictionary[&quot;status&quot;] as String</div><div class="line"></div><div class="line">if status == &quot;OK&quot; &#123;</div><div class="line">    self.selectedRoute = (dictionary[&quot;routes&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;)[0]</div><div class="line">    self.overviewPolyline = self.selectedRoute[&quot;overview_polyline&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line"></div><div class="line">    let legs = self.selectedRoute[&quot;legs&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</div><div class="line"></div><div class="line">    let startLocationDictionary = legs[0][&quot;start_location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">    self.originCoordinate = CLLocationCoordinate2DMake(startLocationDictionary[&quot;lat&quot;] as Double, startLocationDictionary[&quot;lng&quot;] as Double)</div><div class="line"></div><div class="line">    let endLocationDictionary = legs[legs.count - 1][&quot;end_location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">    self.destinationCoordinate = CLLocationCoordinate2DMake(endLocationDictionary[&quot;lat&quot;] as Double, endLocationDictionary[&quot;lng&quot;] as Double)</div><div class="line"></div><div class="line">    self.originAddress = legs[0][&quot;start_address&quot;] as String</div><div class="line">    self.destinationAddress = legs[legs.count - 1][&quot;end_address&quot;] as String</div><div class="line"></div><div class="line">    self.calculateTotalDistanceAndDuration()</div><div class="line"></div><div class="line">    completionHandler(status: status, success: true)</div><div class="line">&#125;</div><div class="line">else &#123;</div><div class="line">    completionHandler(status: status, success: false)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们来看一下代码. 首先获取返回状态，很明显只有状态值为 “OK” 时才处理数据。截取返回数据的第一条线路<br>传给 selectedRoute 字典. 使用 selectedRoute,我们可以直接获取到 polyline overview,<br>我们需要获取能在地图画线的点. 然后在 legs 数组中，是整个线路的所有legs, 因为我们需要它们来获取<br>每个leg起点和终点的位置信息。注意到我们依然可以通过名称就能从返回的数据信息获取起点和终点的坐标信息.<br>大家注意到我们取起点坐标时，使用的是第一个leg,而取终点坐标时，使用的是最后一个leg。</p>
+<p>下面的完成句柄中，我们第一次使用了一个自定义函数：calculateTotalDistanceAndDuration().<br>我们下面会定义它，这里就假设它是一个帮助我们计算距离和时间的函数。</p>
+<p>我们来看一段完整的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: AnyObject!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line"></div><div class="line">            directionsURLString = directionsURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</div><div class="line"></div><div class="line">            let directionsURL = NSURL(string: directionsURLString)</div><div class="line"></div><div class="line">            dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">                let directionsData = NSData(contentsOfURL: directionsURL!)</div><div class="line"></div><div class="line">                var error: NSError?</div><div class="line">                let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(directionsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line"></div><div class="line">                if (error != nil) &#123;</div><div class="line">                    println(error)</div><div class="line">                    completionHandler(status: &quot;&quot;, success: false)</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    let status = dictionary[&quot;status&quot;] as String</div><div class="line"></div><div class="line">                    if status == &quot;OK&quot; &#123;</div><div class="line">                        self.selectedRoute = (dictionary[&quot;routes&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;)[0]</div><div class="line">                        self.overviewPolyline = self.selectedRoute[&quot;overview_polyline&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line"></div><div class="line">                        let legs = self.selectedRoute[&quot;legs&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</div><div class="line"></div><div class="line">                        let startLocationDictionary = legs[0][&quot;start_location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">                        self.originCoordinate = CLLocationCoordinate2DMake(startLocationDictionary[&quot;lat&quot;] as Double, startLocationDictionary[&quot;lng&quot;] as Double)</div><div class="line"></div><div class="line">                        let endLocationDictionary = legs[legs.count - 1][&quot;end_location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</div><div class="line">                        self.destinationCoordinate = CLLocationCoordinate2DMake(endLocationDictionary[&quot;lat&quot;] as Double, endLocationDictionary[&quot;lng&quot;] as Double)</div><div class="line"></div><div class="line">                        self.originAddress = legs[0][&quot;start_address&quot;] as String</div><div class="line">                        self.destinationAddress = legs[legs.count - 1][&quot;end_address&quot;] as String</div><div class="line"></div><div class="line">                        self.calculateTotalDistanceAndDuration()</div><div class="line"></div><div class="line">                        completionHandler(status: status, success: true)</div><div class="line">                    &#125;</div><div class="line">                    else &#123;</div><div class="line">                        completionHandler(status: status, success: false)</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            completionHandler(status: &quot;Destination is nil.&quot;, success: false)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        completionHandler(status: &quot;Origin is nil&quot;, success: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在，在我们要实现计算距离和时间的函数前，我们需要在类的顶部声明几个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var totalDistanceInMeters: UInt = 0</div><div class="line"></div><div class="line">var totalDistance: String!</div><div class="line"></div><div class="line">var totalDurationInSeconds: UInt = 0</div><div class="line"></div><div class="line">var totalDuration: String!</div></pre></td></tr></table></figure>
+<p>然后我们开始写新函数. 遗憾是的我们没有直接的方法可以计算距离和时间，所以我们要遍历所有的legs并进行<br>累加. 距离单位是米，时间单位是秒，在我们实现的时候，计算的是和，并且把距离单位转换为千米，时间单位<br>转换为天/小时/分/秒:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">func calculateTotalDistanceAndDuration() &#123;</div><div class="line">    let legs = self.selectedRoute[&quot;legs&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</div><div class="line"></div><div class="line">    totalDistanceInMeters = 0</div><div class="line">    totalDurationInSeconds = 0</div><div class="line"></div><div class="line">    for leg in legs &#123;</div><div class="line">        totalDistanceInMeters += (leg[&quot;distance&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;value&quot;] as UInt</div><div class="line">        totalDurationInSeconds += (leg[&quot;duration&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;value&quot;] as UInt</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)</div><div class="line">    totalDistance = &quot;Total Distance: \(distanceInKilometers) Km&quot;</div><div class="line"></div><div class="line"></div><div class="line">    let mins = totalDurationInSeconds / 60</div><div class="line">    let hours = mins / 60</div><div class="line">    let days = hours / 24</div><div class="line">    let remainingHours = hours % 24</div><div class="line">    let remainingMins = mins % 60</div><div class="line">    let remainingSecs = totalDurationInSeconds % 60</div><div class="line"></div><div class="line">    totalDuration = &quot;Duration: \(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后打开 ViewController 类，输入下面几个变量:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var originMarker: GMSMarker!</div><div class="line"></div><div class="line">var destinationMarker: GMSMarker!</div><div class="line"></div><div class="line">var routePolyline: GMSPolyline!</div></pre></td></tr></table></figure>
+<p>前两个用来表示起点和终点的样式, routePolyline用来表示路线。</p>
+<p>在 createRoute(_:) IBAction 函数中，弹出窗口并提供两个输入框，第一个输入起点位置, 第二个输入<br>终点位置。点击确定后 通过调用 Directions API 计算出一条路线,在结果的基数上，我们再来设计路线并<br>添加样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">@IBAction func createRoute(sender: AnyObject) &#123;</div><div class="line">    let addressAlert = UIAlertController(title: &quot;Create Route&quot;, message: &quot;Connect locations with a route:&quot;, preferredStyle: UIAlertControllerStyle.Alert)</div><div class="line"></div><div class="line">    addressAlert.addTextFieldWithConfigurationHandler &#123; (textField) -&gt; Void in</div><div class="line">        textField.placeholder = &quot;Origin?&quot;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    addressAlert.addTextFieldWithConfigurationHandler &#123; (textField) -&gt; Void in</div><div class="line">        textField.placeholder = &quot;Destination?&quot;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    let createRouteAction = UIAlertAction(title: &quot;Create Route&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        let origin = (addressAlert.textFields![0] as UITextField).text as String</div><div class="line">        let destination = (addressAlert.textFields![1] as UITextField).text as String</div><div class="line"></div><div class="line">        self.mapTasks.getDirections(origin, destination: destination, waypoints: nil, travelMode: nil, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line">            if success &#123;</div><div class="line">                self.configureMapAndMarkersForRoute()</div><div class="line">                self.drawRoute()</div><div class="line">                self.displayRouteInfo()</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                println(status)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    addressAlert.addAction(createRouteAction)</div><div class="line">    addressAlert.addAction(closeAction)</div><div class="line"></div><div class="line">    presentViewController(addressAlert, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你也许注意到，如果请求成功，我们调用了三个自定义函数，通过它们的名字就能很简单猜出它们各自的功能。<br>下面我们就来一一实现：</p>
+<p>在函数 configureMapAndMarkersForRoute() 中，我们实现了三个清晰的任务:</p>
+<ol>
+<li>把地图中心定位到路线起点。</li>
+<li>在起点位置添加标识</li>
+<li>在终点位置添加标识</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func configureMapAndMarkersForRoute() &#123;</div><div class="line">viewMap.camera = GMSCameraPosition.cameraWithTarget(mapTasks.originCoordinate, zoom: 9.0)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">originMarker = GMSMarker(position: self.mapTasks.originCoordinate)</div><div class="line">originMarker.map = self.viewMap</div><div class="line">originMarker.icon = GMSMarker.markerImageWithColor(UIColor.greenColor())</div><div class="line">originMarker.title = self.mapTasks.originAddress</div><div class="line"></div><div class="line">destinationMarker = GMSMarker(position: self.mapTasks.destinationCoordinate)</div><div class="line">destinationMarker.map = self.viewMap</div><div class="line">destinationMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())</div><div class="line">destinationMarker.title = self.mapTasks.destinationAddress</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们对标识定义了不同的颜色，除此之外就没有新内容了。</p>
+<p>在 drawRoute() 函数中，我们在地图上画路线。我们使用 GMSPath 和 GMSPolyline 类就很容易在创建<br>路线, 所需要的 points 正是我们在 MapTasks 类中求得的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func drawRoute() &#123;</div><div class="line">    let route = mapTasks.overviewPolyline[&quot;points&quot;] as String</div><div class="line"></div><div class="line">    let path: GMSPath = GMSPath(fromEncodedPath: route)</div><div class="line">    routePolyline = GMSPolyline(path: path)</div><div class="line">    routePolyline.map = viewMap</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码最后, 必须设置 routePolyline 的 map属性为当前地图。</p>
+<p>函数 displayRouteInfo() 函数很简单。就是在底部标签栏上显示出路线的距离和时间:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func displayRouteInfo() &#123;</div><div class="line">    lblInfo.text = mapTasks.totalDistance + &quot;\n&quot; + mapTasks.totalDuration</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到这，我们所有的工作都做完了! 我们学习了很多新的知识点, 但是一旦你理解了它们的意思，就很容易使用了，<br>再次运行程序，输入起点和终点位置，创建路线。再强调一遍，在某些情况下，polyline view是不准确的，<br>所以，如果效果不太好，考虑一下实现我前面提到的方法：迭代所有legs下的steps，获取这些steps的points，<br>再把它们一一画在地图上。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/2015/05/googlemap/t33_2_route.png"></h2><p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2052,201 +2280,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/04/05/there-is-no-one/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/05/there-is-no-one/" itemprop="url">
-                  这里没有人
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T18:47:39+08:00">
-                2015-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/04/05/there-is-no-one/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/04/05/there-is-no-one/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>没有人欠我任何东西，只有我欠他们的。他们还依然愿意听我的吼呵，完</p>
-<p>全是因为我是他们的亲人。所以，我对他们越是吼呵，越是欠他们的更</p>
-<p>多，作为亲人我吼了他们，因为亲人，他们忍受着我的吼喝。</p>
-<p>父母不欠我任何东西，辛苦把我养大到30岁，而自己前后加一起也不过是</p>
-<p>养了十个月，有什么资格对父母颐指气使，对他们吼来喝去。如果是我哥</p>
-<p>的话做事情肯定会冷静许多。</p>
-<p>娃子刚三岁，正是调皮淘气的时候，更不能对她横竖指责，压灭了天性，</p>
-<p>摧毁了信心。娃子受我责骂还依然不离不弃，因为是对我的依赖和信任，</p>
-<p>更不能作为我变本加厉的资本。</p>
-<p>妻子从08年认识以来，对我也是信任有加，结婚、买房、生娃，也是顶着</p>
-<p>巨大的压力和对我无比的信任和我一起跌跌撞撞走到今天。身无黄金万</p>
-<p>两，头无遮风片瓦，只凭当初一句话陪我走到今天，我怎么能够严加指</p>
-<p>责，又怎忍心呼来喝去。其实她的压力和负担也不比我小，人不能只考虑</p>
-<p>一面，换位思考一下或许会心地更宽。</p>
-<p>有次看三舅文章，他把三妗子当作自己生命的一部分，我就在想，到底是</p>
-<p>一种什么境界才能把对方当作生命保护，要经历多少风雨才能比翼双飞，</p>
-<p>同结连理。</p>
-<p>清明节，夜，雷雨交加，爸妈已睡，鼾声阵阵；娃子横睡在枕头上，半个</p>
-<p>头枕在我这边；老婆和岳母在那屋也已入睡。只有屋外隆隆雷声翻滚，闪</p>
-<p>电时时划过长空，急雨啪啪的点在玻璃上。其它再无声响。</p>
-<p>小鱼与小蝌蚪估计也已入睡，小乌龟吃了三个小蝌蚪，今天应该会美美睡</p>
-<p>一顿。春天真的来了，万物更新，自己也要把自己的思想更新到新的层</p>
-<p>次，不然根本无法应对新的人新的事，无法完成自己身负的责任。只凭自</p>
-<p>己的冲动和义气做事，只会伤人伤己，事情也会一塌糊涂，工作也会一塌</p>
-<p>糊涂。</p>
-<p>古人的每日必三醒吾身，真的是至理名言，自己要一点一滴的慢慢做起</p>
-<p>来，不能让父母受责委屈，不能让妻子举步维艰，不能让娃子每日看我脸</p>
-<p>色惴惴不安。</p>
-<p>哎！就从今天开始。</p>
-<p>======================</p>
-<ol>
-<li>为什么和老婆吵架？<br>工作没有找到，自己能力不够。 怨不得别人。<br>小娃生病，动不动就哭，怨不得别人。<br>娃子没有照顾好，怨不得别人。<br>别人终究是别人。不是自己人，<br>自己累死像条狗，也没有人来同情你。<br>只有自己有钱，才能有人来同情你。<br>为什么关了电视？<br>为什么看什么都不顺眼，有本事就自己去做，别总是指望别人来做。</li>
-</ol>
-<ol>
-<li><p>房子的事情，为什么那么烦心。<br>合肥买房子的时候，自己总是一概不问，不问的下场就是自己后悔。<br>为什么不问，生气，为什么生气？<br>结果落得两地都落实不下来。<br>有的时候，自己生气就什么都不问，不问的后果就是结果不如意，不如意到最后就是生气。</p>
-</li>
-<li><p>俺妈不能生气，不能生气，对眼睛不好。</p>
-</li>
-<li><p>学习的事情，不能怨别人，只能怨自己。自己不学，什么都别想会，别想得到。<br>总是为自己的学习找借口， 总是不能坚持下来，不能坚持下来，还能做什么？还有什么能够成功。</p>
-</li>
-</ol>
-<p>–••–•–•–•–•–•–•–•–••–•–•–•–•–•–•–•–••–•–•</p>
-<h2 id="4-努力什么的原来只说说并不起作用，需要自己去做。"><a href="#4-努力什么的原来只说说并不起作用，需要自己去做。" class="headerlink" title="4. 努力什么的原来只说说并不起作用，需要自己去做。"></a>4. 努力什么的原来只说说并不起作用，需要自己去做。</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2296,7 +2329,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">155</span>
+                <span class="site-state-item-count">156</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
