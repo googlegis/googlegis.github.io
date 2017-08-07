@@ -299,6 +299,561 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/06/the-files-struct-and-the-common-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/06/the-files-struct-and-the-common-config/" itemprop="url">
+                  基本配置和 MVC 文件的结构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T19:45:54+08:00">
+                2016-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/06/the-files-struct-and-the-common-config/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/06/the-files-struct-and-the-common-config/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>这一章主要介绍一些文件结构和基本配置</p>
+<ol>
+<li>MVC 文件结构。</li>
+</ol>
+<p>因为我们建立的是 MVC 项目，所以，Models-Views-Controllers 的文件夹是</p>
+<p>最明显可见的。 当然这些文件夹都包含了对应的文件和相关内容。</p>
+<img src="/images/2016/0706/QQ20160706-1@2x.png">
+<p>比如：HomeController.cs 文件里就是在 Index 的 Action 中返回 View。</p>
+<img src="/images/2016/0706/QQ20160706-2@2x.png">
+<p>这里是项目中引用的软件包</p>
+<img src="/images/2016/0706/QQ20160706-3@2x.png">
+<p>这里是引用的 .Net 的类库<br><img src="/images/2016/0706/QQ20160706-4@2x.png"></p>
+<p>_Layout.cshtml 文件模版，添加新的 view 时，可以选择以此为模版。</p>
+<p>可以看到这里调用了全局的变量 ViewBag.Title 和 RenderBody 进行渲染body</p>
+<img src="/images/2016/0706/QQ20160706-5@2x.png">
+<p>这里是主页的 body 中的 html 内容。</p>
+<img src="/images/2016/0706/QQ20160706-6@2x.png">
+<p>路由注册</p>
+<img src="/images/2016/0706/QQ20160706-7@2x.png">
+<p>程序启动时的函数，用来注册信息，后面还会有很多信息会写在这里。</p>
+<img src="/images/2016/0706/QQ20160706-8@2x.png">
+<p>项目的引用库配置文件</p>
+<img src="/images/2016/0706/QQ20160706-9@2x.png">
+<p>每次加载一个新的 View 时 都会先运行一次 _ViewState.cshtml ,是为了防止已</p>
+<p>加载的内容影响模版的内容，所以重新加载。</p>
+<img src="/images/2016/0706/QQ20160706-10@2x.png">
+<p>项目的配置信息，对应的 SDK 版本，可以看到支持 Mono 和 .Net 。</p>
+<img src="/images/2016/0706/QQ20160706-11@2x.png">
+<p>项目版本号，所在路径，名称信息：</p>
+<img src="/images/2016/0706/QQ20160706-12@2x.png">
+<p>输出信息：</p>
+<img src="/images/2016/0706/QQ20160706-13@2x.png">
+<p>web 服务信息，Xamarin 使用的 XSP Web Server 作为 web 服务器，就是</p>
+<p>windows 下面的 IIS。</p>
+<img src="/images/2016/0706/QQ20160706-14@2x.png">
+<p>Xamarin 的配置信息。Dark 比较酷！</p>
+<img src="/images/2016/0706/QQ20160706-15@2x.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/05/install-the-xamarin-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/05/install-the-xamarin-on-mac/" itemprop="url">
+                  在 Mac 上安装 Xamarin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-05T14:01:38+08:00">
+                2016-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xamarin/" itemprop="url" rel="index">
+                    <span itemprop="name">Xamarin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/05/install-the-xamarin-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/05/install-the-xamarin-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>最近因为工作的原因，要把已有的 .Net Web 项目进行跨平台开发研究，项目部署</p>
+<p>在 CentOS 上，正好有机会研究一下 Xamarin 的开发，所以决定把这一系列</p>
+<p>的研究过程都记录下来，备忘和分享！</p>
+<p>.Net 的跨平台开发，现在无非是两种方式， 一种是 Mono SDK, 一种是</p>
+<p>Asp.Net Core. 但是 Asp.Net Core 还是太新，只能作为对比，还不敢拿</p>
+<p>来直接作为开发使用。所以，默认使用 Mono。</p>
+<p>Mono 是一个跨平台的 .Net 解决方案，最后被微软收购并进行维护和支持。</p>
+<p>应该说还是有一定的群众基础的。</p>
+<p>在 Linux 系统下推荐的是 MonoDeveloper</p>
+<p><a href="http://www.monodevelop.com" target="_blank" rel="external">http://www.monodevelop.com</a></p>
+<p>在 Windows 和 Mac 系统下推荐的是 Xamarin Studio。</p>
+<p><a href="http://www.monodevelop.com/download/" target="_blank" rel="external">http://www.monodevelop.com/download/</a></p>
+<p>从 Mono-Develop 的官方页面下载的版本是 5.6</p>
+<p>但是从 Xamarin 的官方页面下载的是 6.0</p>
+<p><a href="https://store.xamarin.com/account/my/subscription/downloads" target="_blank" rel="external">https://store.xamarin.com/account/my/subscription/downloads</a></p>
+<p>如果只是开发 Web 页面，只下载 Xamarin Studio 的安装包即可。</p>
+<img src="/images/2016/0705/QQ20160705-0.png">
+<p>然后直接双击安装， 如果没有安装 Mono SDK，会提示要先安装 SDK。当然也可以</p>
+<p>从网站先下载安装 Mono SDK，安装再安装 Xamarin Studio。</p>
+<p><a href="http://www.mono-project.com/download/" target="_blank" rel="external">http://www.mono-project.com/download/</a></p>
+<p>打开 Xamarin Studio，新建 Asp.Net Mvc 项目进行测试。</p>
+<img src="/images/2016/0705/QQ20160705-1@2x.png">
+<img src="/images/2016/0705/QQ20160705-2@2x.png">
+<img src="/images/2016/0705/QQ20160705-3@2x.png">
+<img src="/images/2016/0705/QQ20160705-4@2x.png">
+<img src="/images/2016/0705/QQ20160705-5@2x.png">
+<img src="/images/2016/0705/QQ20160705-6@2x.png">
+<img src="/images/2016/0705/QQ20160705-7@2x.png">
+<img src="/images/2016/0705/QQ20160705-8@2x.png">
+<p>至此，说明 Xamarin Studio 安装成功！</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/14/how-to-upgrade-git-on-mac/" itemprop="url">
+                  如何升级Mac上的git
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-14T21:24:09+08:00">
+                2016-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/14/how-to-upgrade-git-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/14/how-to-upgrade-git-on-mac/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。</p>
+<p>我不知道我的电脑上是什么时候安装的，但是可以直接用。</p>
+<p>在 命令行中输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">1.8</span><span class="number">.5</span></div></pre></td></tr></table></figure>
+<p>下面开始升级：</p>
+<p>首先，从官网下载升级包，</p>
+<p>git-2.8.1-intel-universal-mavericks.dmg</p>
+<p>加载后，打开 readme，里面有个卸载的命令，先运行一下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/git/uninstall.sh</div></pre></td></tr></table></figure>
+<p>双击安装包</p>
+<p> git-2.8.1-intel-universal-mavericks.pkg</p>
+<p>一路Next。</p>
+<p>默认安装 Git 到 /usr/local/git (需要输入mac密码赋予权限)</p>
+<p>然后完成安装。</p>
+<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">2.8</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+<p>这样就完成了 git 的生机。</p>
+<p>如果命令行中仍然显示旧的版本号，不要着急，只是程序的路径没有添加到环境变量中。</p>
+<p>打开命令行工具：</p>
+<p>jays-MacBook-Pro:~ jay$ vim ~/.bash_profile</p>
+<p>把下面这行添加到 .bash_profile 文件的后面，</p>
+<p>export PATH=/usr/local/git/bin:$PATH</p>
+<p>保存文件，退出编辑！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</div><div class="line">Executing Terminal bash profile...</div><div class="line"></div><div class="line">jays-MacBook-Pro:~ jay$</div></pre></td></tr></table></figure>
+<p>再验证版本，就会看到最新的升级版本号。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/10/miss-of-home/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1476,545 +2031,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/10/30/under-the-skin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/30/under-the-skin/" itemprop="url">
-                  皮囊之下还有什么？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-30T18:34:53+08:00">
-                2015-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/看电影/" itemprop="url" rel="index">
-                    <span itemprop="name">看电影</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/30/under-the-skin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/30/under-the-skin/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>也许是从看妇联1的时候，就开始喜欢上了斯嘉丽约翰逊，原来外国还有女子演起动作片身手这么好的。</p>
-<p>皮囊之下，是我早就下载下来了，但是一直没有看，正好趁着周末，连到电视上完完整整的看了一遍。</p>
-<p>说它是科幻片，估计很多人不看到最后，打死都不相信。说它是惊悚片，貌似导演也没有使用多少特技手法来吓唬人。</p>
-<p>影片开头是各种结构的组装，组装过后，来了一个眼睛的特写。应该预示女主制作成功了。</p>
-<p>然后摩托男背出来一个女尸，斯嘉丽全裸出演，脱女尸的衣服给自己穿上，脱完之后，女尸的眼角竟然流出了一滴眼泪。也许是感叹人生，也许仅仅是感叹自己死后还要被折腾一番。</p>
-<p>然后就是正常人的生活拍摄手法，斯嘉丽开着车到处试探和引诱男人上钩,然后将他们带入到黑色泥潭，也许黑色的泥潭是个隐喻，你看男人们进去的时候都是心甘情愿，根本没有一点挣扎，也没有一点反抗，完完全全是自己心甘情愿的走进泥潭。</p>
-<p>球服男和肌肉男都被泥潭困住，然后被吸干了鲜红的血肉，只剩下了一个个皮囊。也许这些皮囊就是制作人造人（最后才明白可能是人造人）的材料，那些血肉都被输送到一个固定的出口，也许是被某些生物吃了，也许是用来培养人造人的肥料了。</p>
-<p>当斯嘉丽碰到肿瘤男的时候，她开始可能根本没有意识到这个人会丑成这个样子，当他坐上来的时候，这个男人一直在控制自己，他明明知道自己是如此的外形丑陋，怎么可能会有人喜欢自己，但最终还是在斯嘉丽的引诱下屈服了。当斯嘉丽说要带他走的时候，导演给了这个肿瘤男一个特写，他一直用手掐另外一只手的皮，也许是告诫自己不要贪图淫欲。不过最后他还是松开了。</p>
-<p>也许是这个男人的外形的丑陋，也许是这个男人的言行，斯嘉丽让他走了，不过肿瘤男还是没有逃脱摩托男的手心，也许斯嘉丽和肿瘤男约好了时间和地点，当斯嘉丽没有等到肿瘤男的时候，她知道，事情穿帮了。</p>
-<p>她毅然决然的独自一人沿着公路走了。</p>
-<p>然后她尝试吃人类的食物，然后吐掉。她尝试坐人类的公交，她尝试听人类音乐，跟着节奏弹手指，她尝试爱一个人和被一个人爱，她尝试和男人做爱，但是她没有成功，在和那个温柔体贴的男人尝试了N次没有成功之后，她连忙爬起来，用灯照着自己的阴部。也许她只是人造人，身体结构还没有完全和人类一样。</p>
-<p>一直到最后，在森林里遇到伐木工，被伐木工性侵未遂，暴露身份后被伐木工用汽油烧死之后，在茫茫雪地上只留下一股黑烟，影片结束。</p>
-<p>但是我的心里却久久不能平静，剧本太牛，导演太牛，演员也太牛了。</p>
-<p>当一个杀人工具，一个只负责引诱人类到黑色泥潭送死的人造人，在发现人类的感情和生活后，想认认真真的做一个人的时候，却被正是她所希望成为的人类性侵和杀害。</p>
-<p>人类中有好人，也有坏人，人性中有善良的部分也有丑陋的部分。只是这些，斯嘉丽还没有来得及学会。</p>
-<p>她以前接触的虽说有点淫欲但还不致于害人的人类，尤其是那个为救人在海边累晕，然后被斯嘉丽敲死，在他嗷嗷大哭的小孩面前拖走的男人。肯定对斯嘉丽的心灵也有触动。</p>
-<p>斯嘉丽开始引诱别人时，总是问住哪里，做什么，到哪里去，家里都有谁。</p>
-<p>我想她其实不知道这些话代表什么意思，只是按照固定的模式说出来。</p>
-<p>但是这些形形色色的人的生活对她也有很大的影响。原来人类可以有这么多姿多彩的生活。</p>
-<p>她在温柔男的家里欣赏自己的躯体的时候，才第一次真真正正的把自己当做一个真正的人来看。</p>
-<p>她把肿瘤男引诱后在门后面看镜子里的自己的时候，我就觉得有蹊跷。果然肿瘤男被她放了。</p>
-<p>也许从那开始，她决定开始考虑人类的生活方式了，在肿瘤男失约后，她决定离开这个地方，自己往前走。</p>
-<p>她该是多人想成为人类啊。被伐木工撕烂皮之后，一个人拿着头颅的时候，眼睛里闪烁着多么的不舍和哀怨。</p>
-<p>在被伐木工浇上汽油全身着火逃跑的时候，手里抱着的依然是不舍的人类的头颅。也许是不愿意，也许是不甘心，也许是想在生命的最后一刻多抚摸一下自己的脸庞。可是所有到最后的一切都只不过是一缕黑烟。</p>
-<p>她想成为的人类把她杀了。</p>
-<p>也许她只是一个有着人类皮囊的黑炭人，她没有人类的思想和感情，可是她在努力去学，去感受，去思考，慢慢的想融入到人类的感情中；伐木工虽然空有着人类的体格和智慧，但是真正的皮囊之下却是污秽肮脏的思想和躯体。</p>
-<p>一个只有人类皮囊的黑炭人，却被一个拥有健康体格和人类思想的人类猥亵甚至意图强奸，谁能知道那些披着人皮的人类躯体里面到底是什么呢？</p>
-<p>本以为，斯嘉丽会被摩托男干掉，但是最终被人类干掉，觉得整个影片升华到了另外一个高度！摩托男来自哪里，什么身份，又要去哪里，根本不重要！</p>
-<p>至于网上说的，看不懂，没意思，恐怕只是冲着网传的全裸的斯嘉丽来的吧，也许你也可能看不懂《第九区》。其实想看裸体的话何不去看岛国的动作片和棒子国的情色片，比这撩人多了。</p>
-<p>我认为这毕竟只是一部文艺片。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/09/26/the-7th-years-of-marry/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/26/the-7th-years-of-marry/" itemprop="url">
-                  七年之痒
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-26T18:44:40+08:00">
-                2015-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章/" itemprop="url" rel="index">
-                    <span itemprop="name">文章</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/09/26/the-7th-years-of-marry/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/26/the-7th-years-of-marry/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>只见我方这名后腰队员，一个人带着两个球，成功突入对方的防线，进入了小禁区。</p>
-<p>这时对方上来两名后卫进行拦截，这名队员左闪右躲，凭借着精壮的体力和娴熟的技巧，</p>
-<p>一脚角度极刁的香蕉球，成功的避开了守门员的视线，终于把球给射进了。全场的球迷都欢呼起来，</p>
-<p>出轨嫖娼队又得一分，陈思成单膝跪地，拉弓射箭，直上云霄。</p>
-<p>文章、陈赫、王全安…这些队友跑过去搂住他紧紧的，紧紧的拥抱在一起，</p>
-<p>空中传来他们欢呼的声音！</p>
-<p>是的，网传陈思成出轨了，又一个男人没有勒紧自己的裤腰带。</p>
-<p>其实不只是娱乐圈的男人没有勒紧自己的裤腰带，好像无论哪个朝代总有些男人会出轨，</p>
-<p>像古代的那些文人骚客，到今天的明星演员，每个时代总有一些人过不了这个关！</p>
-<p>有的时候我就想，你都这么有钱了，这么出名了，老婆都那么漂亮了？</p>
-<p>为什么还要搞嫖娼劈腿的事呢？</p>
-<p>后来我想明白了，妻不如妾，妾不如偷。正是他们有名有权了，给办事提供了方便，正式因为有钱了，才不会</p>
-<p>无后顾之忧。</p>
-<p>★ 明·凌濛初《二刻拍案惊奇》卷二十八</p>
-<p>这个程朝奉拥着巨万家私，所谓饱暖生淫欲，心里只喜欢的是女色。</p>
-<p>★明·凌濛初《二刻拍案惊奇》卷二十一</p>
-<p>自古道：“饱暖思淫欲”，王禄手头饶裕，又见财物易得，便思量淫荡起来。</p>
-<p>饱暖思淫欲，说的就是他们这些货，吃饱了，穿暖了，嘴里要个牙签舒舒服服躺在那里的时候，</p>
-<p>脑子旧改滴流滴流的乱转想歪主意了，你要是平头百姓，出去搬一天的砖，挣的钱都不够一家人吃饭的，</p>
-<p>回到家就累得躺在床上起不来，恐怕也没有时间和精力考虑这些下半身的事情了吧。</p>
-<p>只有当脑子分泌的荷尔蒙过量的时候，才会拿下半身来思考。 可是在你下半身思考之前，你脖子上的那个是葫芦吗？</p>
-<p>曾经我考过这个问题：如果人类仅仅是靠情感来控制自己，不需要家庭道德</p>
-<p>和法律约束，那人与人将会组成怎样的社会关系？</p>
-<p>每个人都会有初恋，初爱。然后发现不合适，或者找到更好的，直接走开与另</p>
-<p>外一个人结合，然后发现更好的。我挑选更好的，你也挑选更好的，每个人都</p>
-<p>在挑选更好的。自己选择别人，然后被别人选择；自己抛弃别人，然后被别人</p>
-<p>抛弃。年轻的人一茬又一茬，年老的人在慢慢退出这个舞台，</p>
-<p>甚至于，各个年龄段的都在进行选择和抛弃？</p>
-<p>然后力量强大的男人可以多占用几个好看的女人；力量强大的女人可以多养几</p>
-<p>个健硕的男人。</p>
-<p>然后人们就生活在生存、斗争、和交配权的争夺上，最后，人们都不需要什么</p>
-<p>精神享受和道德约束了，也不需要多余的衣食住行了，我们就尽情的非洲草原</p>
-<p>上撒欢了。</p>
-<p>这时耳边响起了赵忠祥雌性的声音：又到了一年一度交配的季节，人群在草原</p>
-<p>上尽情的奔跑着，在为这次的狂欢做着准备。</p>
-<p>我艹，明显的不忍直视。</p>
-<p>猴子费了千万年的时间，进化成了可以使用工具，具有情感和精神交互的</p>
-<p>人类，TMD的人只用几十或者几年年就可以退化为只用下半身思考畜生。</p>
-<p>七年之痒，就是洪水猛兽。但夫妻要过的槛，躲，总不是解决问题的方法。</p>
-<p>如果一个人想用下半身思考人生，躲都躲不过；如果不想，你把它丢到一堆裸体里面也能</p>
-<p>全身而退。关键是看，你的七年之痒是上半身痒还是下半身痒。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/09/13/baby-say/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/13/baby-say/" itemprop="url">
-                  娃子说
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-13T10:14:21+08:00">
-                2015-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/09/13/baby-say/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/13/baby-say/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p> 娃娃在合肥上幼儿园，我会每个月都过去看她。</p>
-<p> 有天她上幼儿园回来的路上和妈妈说，</p>
-<p> “我还得去上海一趟！”</p>
-<p> “你去干什么？”</p>
-<p> “我去看爷爷奶奶，我好长时间没有看到他们了！”</p>
-<hr>
-<p> 想看小娃娃对性别的判断，就问她：幼儿园睡觉的时候，在你左边的是小美女还是小帅哥？“小美女”</p>
-<p>在你右边的是小美女还是小帅哥？“小帅哥”</p>
-<p>那你是小美女还是小帅哥？她嘿嘿一笑，“你能不知道我是小美女还是小帅哥吗？小美女！”</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2064,7 +2080,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">156</span>
+                <span class="site-state-item-count">159</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2086,7 +2102,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

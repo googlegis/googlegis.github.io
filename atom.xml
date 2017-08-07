@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2017-08-03T13:20:09.054Z</updated>
+  <updated>2017-08-07T16:18:33.729Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>权力的游戏</title>
+    <link href="http://googlegis.github.io/2017/08/08/the-game-of-thrones/"/>
+    <id>http://googlegis.github.io/2017/08/08/the-game-of-thrones/</id>
+    <published>2017-08-07T16:14:05.000Z</published>
+    <updated>2017-08-07T16:18:33.729Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;政治&lt;br&gt;人性&lt;br&gt;权力&lt;br&gt;国家&lt;br&gt;历史&lt;/p&gt;
+&lt;p&gt;对收视率的倾斜，虽然短暂的获取流量，早晚会造成对人群的损失。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="文章" scheme="http://googlegis.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="权力的游戏" scheme="http://googlegis.github.io/tags/%E6%9D%83%E5%8A%9B%E7%9A%84%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>只是一部电影，别急着站队</title>
+    <link href="http://googlegis.github.io/2017/08/07/just-a-movie/"/>
+    <id>http://googlegis.github.io/2017/08/07/just-a-movie/</id>
+    <published>2017-08-07T14:12:06.000Z</published>
+    <updated>2017-08-07T14:13:04.638Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
+      <category term="战狼" scheme="http://googlegis.github.io/tags/%E6%88%98%E7%8B%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>&lt;一&gt; 世间再无白鹿原</title>
+    <link href="http://googlegis.github.io/2017/08/06/the-press-of-white-deer-one-white-deer-forever/"/>
+    <id>http://googlegis.github.io/2017/08/06/the-press-of-white-deer-one-white-deer-forever/</id>
+    <published>2017-08-06T08:40:57.000Z</published>
+    <updated>2017-08-07T17:49:25.403Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近刚看完《白鹿原》的电视剧，从它的拍摄到上映，到看完还是有很多感触的。&lt;/p&gt;
+&lt;p&gt;我从2004年大学毕业后，在西安待了差不多四五年的时间，喜欢陕西特色的油泼面、喜欢冬天晚上加班回去&lt;/p&gt;
+&lt;p&gt;路上的一碗羊肉泡馍，喜欢空旷荒凉的原野，喜欢看坡下顺势而为的窑洞，喜欢陕
+    
+    </summary>
+    
+      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="白鹿影志" scheme="http://googlegis.github.io/tags/%E7%99%BD%E9%B9%BF%E5%BD%B1%E5%BF%97/"/>
+    
+      <category term="白鹿原" scheme="http://googlegis.github.io/tags/%E7%99%BD%E9%B9%BF%E5%8E%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>如何和孩子讨论&quot;死亡&quot;</title>
@@ -33,9 +101,9 @@
       <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
     
-      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
-    
       <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
+      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
   </entry>
   
@@ -394,79 +462,6 @@
       <category term="IT" scheme="http://googlegis.github.io/tags/IT/"/>
     
       <category term="Hexo" scheme="http://googlegis.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>等待</title>
-    <link href="http://googlegis.github.io/2017/03/21/wait-for-ever/"/>
-    <id>http://googlegis.github.io/2017/03/21/wait-for-ever/</id>
-    <published>2017-03-21T15:51:37.000Z</published>
-    <updated>2017-05-25T11:13:47.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;等待…&lt;br&gt;
-    
-    </summary>
-    
-      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="文章" scheme="http://googlegis.github.io/tags/%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>西游4-八戒</title>
-    <link href="http://googlegis.github.io/2017/03/19/eight-things-can-not-get/"/>
-    <id>http://googlegis.github.io/2017/03/19/eight-things-can-not-get/</id>
-    <published>2017-03-19T00:48:51.000Z</published>
-    <updated>2017-05-25T11:09:48.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;肥头大耳猪托生&lt;/p&gt;
-&lt;p&gt;天河元帅下凡尘&lt;/p&gt;
-&lt;p&gt;九齿钉耙浑不怕&lt;/p&gt;
-&lt;p&gt;在此应等有缘人&lt;/p&gt;
-&lt;p&gt;广寒仙子月宫住&lt;/p&gt;
-&lt;p&gt;酒醉不期动凡心&lt;/p&gt;
-&lt;p&gt;触犯戒条天威怒&lt;/p&gt;
-&lt;p&gt;云栈洞里暂留身&lt;/p&gt;
-&lt;p
-    
-    </summary>
-    
-      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="西游" scheme="http://googlegis.github.io/tags/%E8%A5%BF%E6%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>西游3-吾净</title>
-    <link href="http://googlegis.github.io/2017/03/18/who-is-clean/"/>
-    <id>http://googlegis.github.io/2017/03/18/who-is-clean/</id>
-    <published>2017-03-18T00:42:50.000Z</published>
-    <updated>2017-05-25T09:08:31.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;天上卷帘将&lt;br&gt;失手碎灯盏&lt;br&gt;贬入流沙河&lt;br&gt;万剑刺心穿&lt;/p&gt;
-&lt;p&gt;寸草不能存&lt;br&gt;鹅毛入水渊&lt;br&gt;食肉饮血妖&lt;br&gt;本是位仙班&lt;/p&gt;
-&lt;p&gt;十世取经僧&lt;br&gt;只为此生缘&lt;br&gt;一朝归空门&lt;br&gt;拜佛向西天&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="西游" scheme="http://googlegis.github.io/tags/%E8%A5%BF%E6%B8%B8/"/>
     
   </entry>
   

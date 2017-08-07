@@ -299,6 +299,559 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/26/support-iphone6-and-plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/26/support-iphone6-and-plus/" itemprop="url">
+                  Swift 2.0 纯学习之旅－6.支持iPhone6 and others
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-26T06:30:15+08:00">
+                2015-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/26/support-iphone6-and-plus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/26/support-iphone6-and-plus/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h3 id="支持iPhone6"><a href="#支持iPhone6" class="headerlink" title="支持iPhone6"></a>支持iPhone6</h3><p>iPhone6 系列确实是开发人员的噩梦，比如你看这个。</p>
+<img src="/images/2015/06/newproject/QQ20150626-1.png">
+<p>要想应用能够支持 iPhone6，首先必须删除 LauchScreen，也就是 LaunchSCreen.xib,在项目导航</p>
+<p>栏中选中该文件，Delete 删除， 当询问的时候，选择 Move to Trash。</p>
+<img src="/images/2015/06/newproject/QQ20150626-2.png">
+<img src="/images/2015/06/newproject/QQ20150626-3.png">
+<p>只是删除文件还不行，要让项目知道，我们在启动的时候不再需要启动界面了！</p>
+<img src="/images/2015/06/newproject/QQ20150626-4.png">
+<p>项目导航栏，选中 BullsEye 文件夹，右键，Add Files to “BullsEye”，</p>
+<img src="/images/2015/06/newproject/QQ20150626-6.png">
+<p>从Launch Image文件夹中选择 Default@2x.png 和 Default-568h@2x.png。</p>
+<p>勾选 Copy items if needed.点击 Add ,把文件添加到项目中。</p>
+<img src="/images/2015/06/newproject/QQ20150626-7.png">
+<p>现在在运行测试，iPhone 6 系列是不是已经正常显示了呢！</p>
+<img src="/images/2015/06/newproject/QQ20150626-8.png">
+<h3 id="淡化特效"><a href="#淡化特效" class="headerlink" title="淡化特效"></a>淡化特效</h3><p>选中ViewController.swift, class上面加入引用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> QuartzCore</div></pre></td></tr></table></figure>
+<p>修改 startOver() 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@IBAction func startOver()&#123;</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">  let transition = CATransition()</div><div class="line"></div><div class="line">  transition.type = kCATransitionFade</div><div class="line"></div><div class="line">  transition.duration = 1</div><div class="line"></div><div class="line">  transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)</div><div class="line"></div><div class="line">  view.layer.addAnimation(transition,forKey:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>打开 Images.xcassets，选择 AppIcon：</p>
+<p>在 Finder 中选择 Icon 文件夹中的 icon-58.png,鼠标拖动到 29pt中 2x 格子里。将</p>
+<p>icon-87.png 拖到到 29pt 的 3x 格子里。将 Icon-80.png 拖到 40pt 的2x格子里，</p>
+<p>将 Icon-120.png 拖到 40pt 得 3x 格子里。将 Icon-120.png 拖到 60pt 的 2x 格子里，</p>
+<p>将 Icon-180.png 拖到 60pt 的 3x 格子里。</p>
+<img src="/images/2015/06/newproject/QQ20150626-9.png">
+<img src="/images/2015/06/newproject/QQ20150626-10.png">
+<p>打开 Attributes inspector, 选中  iPad iOS 7 and later Sizes.</p>
+<img src="/images/2015/06/newproject/QQ20150626-13.png">
+<p>根据 pt 的倍数添加对应的 png 图片到对应的格子里。填完之后应如下图：</p>
+<img src="/images/2015/06/newproject/QQ20150626-11.png">
+<p>完成之后，运行程序，然后切换到 Home 上，可以看到图标。</p>
+<img src="/images/2015/06/newproject/QQ20150626-12.png">
+<pre><code>Icon-1024.png
+</code></pre><h3 id="显示名称"><a href="#显示名称" class="headerlink" title="显示名称"></a>显示名称</h3><p>应用程序名称为 BullsEye，但是你想在Icon上显示 Bull’s Eye。 该如何做呢？</p>
+<p>导航栏选择项目下的Supporting Files 中的 Info.plist。</p>
+<p>Bundle name 是项目名称， 而 Bundle display name 则是可以填写任何你想要的名字。</p>
+<p>如 Bull’s Eye.</p>
+<img src="/images/2015/06/newproject/QQ20150626-14.png">
+<img src="/images/2015/06/newproject/QQ20150626-15.png">
+<h3 id="真机测试。"><a href="#真机测试。" class="headerlink" title="真机测试。"></a>真机测试。</h3><pre><code>自从有了Xcode7之后，就可以直接在真机上部署程序测试了，不用像以前那样
+注册为交费会员然后再下载证书才能部署了。
+</code></pre><hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/24/support-iphone-4s/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/24/support-iphone-4s/" itemprop="url">
+                  Swift 2.0 纯学习之旅－5.支持iPhone4S
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-24T22:21:00+08:00">
+                2015-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/24/support-iphone-4s/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/24/support-iphone-4s/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>相比于iPhone5* 系列的 4英寸屏，iPhone4S 只有3.5英寸屏幕，宽度都是320points,但是4英寸</p>
+<p>的屏有568points高，3.5英寸屏只有480points高，中间差了88points。</p>
+<h4 id="在iphone4s中运行显示"><a href="#在iphone4s中运行显示" class="headerlink" title="在iphone4s中运行显示"></a>在iphone4s中运行显示</h4><img src="/images/2015/06/newproject/QQ20150624-1.png">
+<h4 id="选择preview能够查看"><a href="#选择preview能够查看" class="headerlink" title="选择preview能够查看"></a>选择preview能够查看</h4><p>1.选择 Assistant editor，然后 在新出来的窗口里选择 Preview——Main.storyboard</p>
+<p>2.在新窗口里出现了 4 英寸的预览窗口，这不是我们要得，选择，Delete 删除。 然后在左下方有个</p>
+<p>加号 + 小按钮，添加一个 3.5 英寸的预览窗口，然后点击 旋转按钮，使其保持 landscape 模式。</p>
+<img src="/images/2015/06/newproject/QQ20150624-3.png">
+<img src="/images/2015/06/newproject/QQ20150624-2.png">
+<h4 id="BackGround-image-View"><a href="#BackGround-image-View" class="headerlink" title="BackGround image View"></a>BackGround image View</h4><p>在你得主要的storyboard窗口，选择viewController中的 background ，然后点击下方的 pin，</p>
+<p>弹出一个 Add new Constraints,</p>
+<img src="/images/2015/06/newproject/QQ20150624-6.png">
+<p>选中上下左右四个方向的 I 红线，并分别设置数值为 0. 取消 Constrain to margins 勾选</p>
+<p>update Frames 中选择 Items of New Constraints, 然后点击 Add 4 Constraints.</p>
+<img src="/images/2015/06/newproject/QQ20150624-7.png">
+<p>然后再看，背景图片是不是已经能完整的显示而不是被截断显示了。</p>
+<p>同样的操作对于 aboutViewController 中的 background。</p>
+<h4 id="Close-Button"><a href="#Close-Button" class="headerlink" title="Close Button"></a>Close Button</h4><p>选中 aboutViewController 中关闭按钮，选择 pin，选择下方的 I 红线，数值为 20. 然后勾选</p>
+<p>width 和 height ，数值分别为: 100,37. update Frames 值为 none。</p>
+<img src="/images/2015/06/newproject/QQ20150625-1.png">，<br><br>这样只是定义了大小和距离下方的位置，要想定位button在各个尺寸下的相对位置，还需定义相对于整个<br><br>屏幕的位置。<br><br>还是选中 button， 然后点击下方的 align，勾选 Horizontally in Container。<br><br>这样就是确定了 button 的在整个屏幕的相对位置。<br><br><img src="/images/2015/06/newproject/QQ20150625-3.png">
+<h4 id="webView"><a href="#webView" class="headerlink" title="webView"></a>webView</h4><p>选中 webView，选择 pin， 选择上下左右四个 I 红线，上 左 右 分别数值为 20， 下数值为 8，</p>
+<p>取消勾选 Constrain to margins，update Frames 选值为 Item of New Constraints.</p>
+<p>点击 Add 4 Constraints</p>
+<img src="/images/2015/06/newproject/QQ20150625-4.png">
+<h4 id="Most-Controls"><a href="#Most-Controls" class="headerlink" title="Most Controls"></a>Most Controls</h4><p>在storyboard中选中除了background之外的其他 label button 和 slider 控件。</p>
+<img src="/images/2015/06/newproject/QQ20150625-4.png">
+<p>然后选择菜单中的 Editor-》Embed In -&gt; view。 这些选中的控件将会被封装到一个单独view中。</p>
+<img src="/images/2015/06/newproject/QQ20150625-5.png">
+<p>然后选择 pin，勾选 width 和 height，点击 Add 2 Constraints。</p>
+<img src="/images/2015/06/newproject/QQ20150625-6.png">
+<p>点击 align， 勾选 Horizontal center in Container 和 Vertical Center in Container。</p>
+<p>Update Frames –》 Items of New Constraints, 点击 add 2 Constraints.</p>
+<img src="/images/2015/06/newproject/QQ20150625-7.png">
+<p>将该view 的 background 颜色设置为 Clear Color。</p>
+<img src="/images/2015/06/newproject/QQ20150625-10.png">
+<p>现在对 3.5 英寸的 4s 支持终于完成了！</p>
+<img src="/images/2015/06/newproject/QQ20150625-11.png">
+<img src="/images/2015/06/newproject/QQ20150625-12.png">
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/23/swift-point-how-to-set-slider-picture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="googlegis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Log IT">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/23/swift-point-how-to-set-slider-picture/" itemprop="url">
+                  Swift 2.0 纯学习之旅－4.美化 Slider 组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-23T07:15:01+08:00">
+                2015-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/06/23/swift-point-how-to-set-slider-picture/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/06/23/swift-point-how-to-set-slider-picture/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h3 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a>Slider</h3><p>很不幸的是，对于slider组件，我们实在没有办法去直接设置它的样式，只能通过代码来修改。</p>
+<p>打开 ViewController.swift, 在 viewDidLoad() 中加入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">let thumbImageNormal = UIImage(named:<span class="string">"SliderThumb-Normal"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageNormal,forState:.Normal)</div><div class="line"></div><div class="line"></div><div class="line">let thumbImageHighlighted = UIImage(named:<span class="string">"SliderThumb-Highlighted"</span>)</div><div class="line"></div><div class="line">slider.setThumbImage(thumbImageHighlighted,forState:.Highlighted)</div><div class="line"></div><div class="line">let insets = UIEdgeInsets(top:<span class="number">0</span>,left:<span class="number">14</span>,bottom:<span class="number">0</span>,right:<span class="number">14</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackLeftImage = UIImage(named:<span class="string">"SliderTrackLeft"</span>)&#123;</div><div class="line"></div><div class="line">    let trackLeftResizable = trackLeftImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMinimumTrackImage(trackLeftResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> let trackRightImage = UIImage(named:<span class="string">"SliderTrackRight"</span>) &#123;</div><div class="line"></div><div class="line">    let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)</div><div class="line"></div><div class="line">    slider.setMaximumTrackImage(trackRightResizable,forState:.Normal)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>这里调用图片时，没有加上 @2x.png 还是 .png 这样后缀区分。
+</code></pre><h3 id="About"><a href="#About" class="headerlink" title="About"></a>About</h3><p>删除 textView，添加webView。</p>
+<p>在导航栏中，选择项目文件夹，右键 Add Files to,</p>
+<p>选择 BullsEye.html ,Copy items if needed.</p>
+<p>在 aboutViewController.swift 中，</p>
+<p>添加一个 outlet</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class aboutViewController:UIViewController&#123;</div><div class="line"></div><div class="line">  @IBOutlet weak var webView:UIWebView!</div><div class="line"></div><div class="line">  ...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后建立链接。</p>
+<p>然后在 AboutViewController.swift 的 viewDidLoad() 方法中，添加代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad()&#123;</div><div class="line"></div><div class="line">  super.viewDidLoad()</div><div class="line"></div><div class="line">  if let htmlFile = NSBundle.mainBundle().pathForResource(&quot;BullsEye&quot;,</div><div class="line"></div><div class="line">                                                          ofType:&quot;html&quot;)&#123;</div><div class="line"></div><div class="line">     let htmlData = NSData(contentsOfFile:htmlFile)</div><div class="line"></div><div class="line">     let baseURL = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath)</div><div class="line"></div><div class="line">     webView.loadData(htmlData,MIMETYPE:&quot;text/html&quot;,</div><div class="line"></div><div class="line">                      textEncodeingName:&quot;UTF-8&quot;,baseURL:baseURL)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/21/how-to-sideload-app-in-xcode7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1804,549 +2357,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/11/the-wwdc-of-2015/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/11/the-wwdc-of-2015/" itemprop="url">
-                  WWDC 15
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-11T22:36:15+08:00">
-                2015-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/11/the-wwdc-of-2015/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/11/the-wwdc-of-2015/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>就是去年这个时候，我确信我要开始学习iOS开发的。到现在什么都没有学会，只能说自己没用努力。</p>
-<p>今年正好有个机会，趁着东风，再来一次！</p>
-<p>WWDC已经过去了，今年基本来说四大主题，OS X11，iOS 9，watch OS 2，Xcode7 and Swift2</p>
-<p>我相信，从去年的Yosemite开始，Apple想在OS上进行突破，但是步步受阻，光一个无线网络掉线让很多</p>
-<p>粉丝伤透了心。我觉得 11 只不过是在10上面继续进行功能优化和稳定性的改进。去年推出的一系列内容已</p>
-<p>足够Apple5年之内不需要推出重大的功能。</p>
-<p>iOS9，不过是在8上面加了个1，大功能也不会有，除非是替换已有的功能，如Apple Music。HomeKit，</p>
-<p>HandOff，Community，这些只是去年提到的概念性东西还都只是停留在概念上，并没有什么实际性的产品</p>
-<p>出现，iOS9是8的衍生，估计在10的时候，会修改版本好， iOSX，maybe！</p>
-<p>watch OS，目前不看好它，因为屏幕和续航的关系，导致目前一直没有能够切中用户痛点的应用出现，是那些</p>
-<p>在watch上使用比iPhone上使用方便太多的应用。目前大多的应用都是iPhone应用的补充。没有实际价值。</p>
-<p>Xcode7 and Swift2 应该是 Apple 的一个重点，刀快了，砍柴才快。Xcode7 支持非开发人员也能部署</p>
-<p>真机测试了，这是一个极大的进步，Swift也面向开源了，更是一个极大的进步。连Apple这样自立为王的公司</p>
-<p>都开始张开怀抱，接纳更多的人员加入到它的队伍了。</p>
-<p>厨子该说了，连windows的.net  都想开了，我还有什么想不开的。</p>
-<p>废话不多少，今天开始就是学习的日子。只要做，不要说。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/10/the-difference-between-let-and-var-in-swift/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/10/the-difference-between-let-and-var-in-swift/" itemprop="url">
-                  Swift中let和var的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-10T00:03:23+08:00">
-                2015-06-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/06/10/the-difference-between-let-and-var-in-swift/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/06/10/the-difference-between-let-and-var-in-swift/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>首先介绍一下Swift中的 var 和 let</p>
-<ul>
-<li>var 是 variable的缩写形式，是变量的意思 ，是可改变的，并不是数据类型<br>例如：<br>注意每个语句后面不用加分号</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i:double=10.0 //将i指为double类型的，变量名后面加个冒号  </div><div class="line">var i = 10  // 如果不指定类型的话，系统会自动根据你的赋值来判断类型  </div><div class="line"></div><div class="line">i = 15 //正确的写法</div></pre></td></tr></table></figure>
-<ul>
-<li>let 是常量的意思，不可改变的</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let name:String = &quot;Jhon&quot; //将name定义为字符串类型，如果程序下面改变就会报错的。  </div><div class="line"></div><div class="line">name = &quot;hello&quot;//错误的写法</div></pre></td></tr></table></figure>
-<ul>
-<li>拼接字符串操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name+=String(i)  //则会输出 Jhon10.0</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>+=可以做字符串拼接操作<br>所有的UInicode编码的字符都可以被当做变量名或常量名声明和使用</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/31/google-map-ios-sdk-swift-demo-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="googlegis">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Log IT">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/05/31/google-map-ios-sdk-swift-demo-4/" itemprop="url">
-                  使用Swift和GoogleMapiOSSDK开发地图应用示例(4)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-31T23:16:56+08:00">
-                2015-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/05/31/google-map-ios-sdk-swift-demo-4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/31/google-map-ios-sdk-swift-demo-4/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h2 id="给路线添加-Waypoints"><a href="#给路线添加-Waypoints" class="headerlink" title="给路线添加 Waypoints"></a>给路线添加 Waypoints</h2><p>Waypoints 在路线的起点和终点之间添加的位置点,实际上就是路线的一部分。目前位置，我们能够创建一个起<br>点到终点的路线，但是中间没有waypoints，下面我们要学习的是添加这个功能。这样我们的应用就越来越有趣<br>了。这次我们不按照上面的那样弹出一个输入框输入路线的waypoints,我们只需要在地图上点击一下，线路就会<br>从新计算。一个新的标识也会被放置到点击的地图位置上。</p>
-<p>根据这个思路，第一步要做的就是在定义并初始化两个数组:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var markersArray: Array&lt;GMSMarker&gt; = []</div><div class="line"></div><div class="line">var waypointsArray: Array&lt;String&gt; = []</div></pre></td></tr></table></figure>
-<p>第一个存储所有的waypoints的标识， 第二个存储所有waypoints转化为的字符串对象。</p>
-<p>为了捕获到点击地图时的位置，我们必须声明一个 GMSMapViewDelegate 协议的委托方法。在实现之前必须<br>先添加协议。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>同样，我们还需要 ViewController 类作为 mapView的委托。在 viewDidLoad 添加这行代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">override func viewDidLoad() &#123;</div><div class="line">    ...</div><div class="line">    viewMap.delegate = self</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们先看委托方法，再来详细讲述:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        let positionString = String(format: &quot;%f&quot;, coordinate.latitude) + &quot;,&quot; + String(format: &quot;%f&quot;, coordinate.longitude)</div><div class="line">        waypointsArray.append(positionString)</div><div class="line"></div><div class="line">        recreateRoute()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>首先一个重要的细节就是，要有一个路线能够让我们来添加waypoints。这个检测很简单，我们只需要确保<br>路线的 polyline不空就行。然后我们就使用坐标参数根据地图上的点击位置来把经纬度拼凑成一个字符串，确<br>保字符串里没有空格，否则对Direction API的请求将会失败。描述位置的字符串准备好之后,添加到<br>waypointsArray 中，然后我们再调用一个新的自定义函数 recreateRoute() 。</p>
-<p>在我们重新画出包含新waypoints的路线之前,必须要已有的清除掉。所以，在实现 recreateRoute() 函数<br>前, 我们先定义一个 clearRoute()的函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func clearRoute() &#123;</div><div class="line">    originMarker.map = nil</div><div class="line">    destinationMarker.map = nil</div><div class="line">    routePolyline.map = nil</div><div class="line"></div><div class="line">    originMarker = nil</div><div class="line">    destinationMarker = nil</div><div class="line">    routePolyline = nil</div><div class="line"></div><div class="line">    if markersArray.count &gt; 0 &#123;</div><div class="line">        for marker in markersArray &#123;</div><div class="line">            marker.map = nil</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        markersArray.removeAll(keepCapacity: false)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>所有地图上的路线信息都被移除或置空.注意一点是，我们甚至把 markersArray 中的 markers 的 map<br>属性也赋值为 nil (我们还没有写添加markers的代码, 但仍然可以这么做)。</p>
-<p>现在开始实现函数 recreateRoute():</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">func recreateRoute() &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        clearRoute()</div><div class="line"></div><div class="line">        mapTasks.getDirections(mapTasks.originAddress, destination: mapTasks.destinationAddress, waypoints: waypointsArray, travelMode: nil, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line"></div><div class="line">            if success &#123;</div><div class="line">                self.configureMapAndMarkersForRoute()</div><div class="line">                self.drawRoute()</div><div class="line">                self.displayRouteInfo()</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                println(status)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>首先判断是否有路线，有的话清除掉。然后请求Direction API，这次我们把waypointsArray也作为参数<br>传递进来。如果一切就绪，我们就和前面一样，调用同样的函数，然后画路线。</p>
-<p>最主要的内容已经完成，但是还有一些工作要做。第一个就是查看configureMapAndMarkersForRoute()<br>函数，确保它对添加waypoints标识兼容，我们来看一下需要添加的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">func configureMapAndMarkersForRoute() &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    if waypointsArray.count &gt; 0 &#123;</div><div class="line">        for waypoint in waypointsArray &#123;</div><div class="line">            let lat: Double = (waypoint.componentsSeparatedByString(&quot;,&quot;)[0] as NSString).doubleValue</div><div class="line">            let lng: Double = (waypoint.componentsSeparatedByString(&quot;,&quot;)[1] as NSString).doubleValue</div><div class="line"></div><div class="line">            let marker = GMSMarker(position: CLLocationCoordinate2DMake(lat, lng))</div><div class="line">            marker.map = viewMap</div><div class="line">            marker.icon = GMSMarker.markerImageWithColor(UIColor.purpleColor())</div><div class="line"></div><div class="line">            markersArray.append(marker)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意到我们循环取每个waypoint的值，然后把它转换为经度和纬度的double值，以便我们在初始化新标识时能<br>够用到。一旦每个标识匹配好一个waypoint, 我们把它们添加到 markersArray 数组.</p>
-<p>第二个工作就是更新 MapTasks.swift 文件中的 getDirections(…) 函数。在函数开始的地方, 需要更新<br>directionsURLString 字符串的拼接方式, 要把 waypoints 中的内容添加到请求的字符串中。需要注意<br>的是，除了传递了waypoints参数，我们还传递了一个 optimize 参数来标示当前路线是否使用waypoints。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: AnyObject!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line"></div><div class="line">            if let routeWaypoints = waypoints &#123;</div><div class="line">                directionsURLString += &quot;&amp;waypoints=optimize:true&quot;</div><div class="line"></div><div class="line">                for waypoint in routeWaypoints &#123;</div><div class="line">                    directionsURLString += &quot;|&quot; + waypoint</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>再次运行程序，当创建了一个路线后，点击路线附近的任意一点，会看到点击的那个点也包含到路线当中了。</p>
-<img src="/images/2015/05/googlemap/t33_26_waypoint.png">
-<h2 id="Travel-Modes"><a href="#Travel-Modes" class="headerlink" title="Travel Modes"></a>Travel Modes</h2><p>当创建线路时, the driving mode 是 Directions API 默认的模式. 同时 Google Maps SDK还支持<br>以下模式：</p>
-<blockquote>
-<p>Driving mode<br>Walking mode<br>Bicycling mode</p>
-</blockquote>
-<p>改变 travel mode 是非常有趣的事情，同时也是一个比较重要的功能。所以我们开始来做这部分功能。<br>首先我们要创建一个枚举包含所有支持的 travel mode. 在 ViewController.swift 文件中，在顶部<br>class开始的上面，添加下面内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">enum TravelModes: Int &#123;</div><div class="line">    case driving</div><div class="line">    case walking</div><div class="line">    case bicycling</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在class里，我们声明一个变量来标示默认的 travel mode:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var travelMode = TravelModes.driving</div></pre></td></tr></table></figure>
-<p>我们在 changeTravelMode(_:) IBAction 函数中切换 travel mode。我们给用户创建一个新的动作表<br>来提供所有可能的选项，根据使用者的选择来设定 travel mode参数。我们来看代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@IBAction func changeTravelMode(sender: AnyObject) &#123;</div><div class="line">    let actionSheet = UIAlertController(title: &quot;Travel Mode&quot;, message: &quot;Select travel mode:&quot;, preferredStyle: UIAlertControllerStyle.ActionSheet)</div><div class="line"></div><div class="line">    let drivingModeAction = UIAlertAction(title: &quot;Driving&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.driving</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let walkingModeAction = UIAlertAction(title: &quot;Walking&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.walking</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let bicyclingModeAction = UIAlertAction(title: &quot;Bicycling&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        self.travelMode = TravelModes.bicycling</div><div class="line">        self.recreateRoute()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    actionSheet.addAction(drivingModeAction)</div><div class="line">    actionSheet.addAction(walkingModeAction)</div><div class="line">    actionSheet.addAction(bicyclingModeAction)</div><div class="line">    actionSheet.addAction(closeAction)</div><div class="line"></div><div class="line">    presentViewController(actionSheet, animated: true, completion: nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们可以看到，每个动作设定了一个travelmode，然后调用我们前面已经实现的 recreateRoute() 函数。<br>当然，在取消这么简单的动作里我们不需要做任何其他额外的处理。</p>
-<p>目前为止，前面的代码不会起任何作用，因为还没有更新 recreateRoute() 函数. 在这个函数里面调用<br>MapTasks 类 getDirections(…) 的时候，我们仅仅是设了空值，没有给tavelMode传递任何变量，<br>我们修改一下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func recreateRoute() &#123;</div><div class="line">    if let polyline = routePolyline &#123;</div><div class="line">        ...</div><div class="line"></div><div class="line">        mapTasks.getDirections(mapTasks.originAddress, destination: mapTasks.destinationAddress, waypoints: waypointsArray, travelMode: travelMode, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line"></div><div class="line">            ...</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>唯一的变化就是 travelMode 参数. 所以，我们还需要更新 MapTasks.swift 文件中的 getDirections<br>函数，判断travelmode，并添加到请求的参数中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">func getDirections(origin: String!, destination: String!, waypoints: Array&lt;String&gt;!, travelMode: TravelModes!, completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</div><div class="line">    if let originLocation = origin &#123;</div><div class="line">        if let destinationLocation = destination &#123;</div><div class="line">            var directionsURLString = baseURLDirections + &quot;origin=&quot; + originLocation + &quot;&amp;destination=&quot; + destinationLocation</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">            if let travel = travelMode &#123;</div><div class="line">                var travelModeString = &quot;&quot;</div><div class="line"></div><div class="line">                switch travelMode.rawValue &#123;</div><div class="line">                case TravelModes.walking.rawValue:</div><div class="line">                    travelModeString = &quot;walking&quot;</div><div class="line"></div><div class="line">                case TravelModes.bicycling.rawValue:</div><div class="line">                    travelModeString = &quot;bicycling&quot;</div><div class="line"></div><div class="line">                default:</div><div class="line">                    travelModeString = &quot;driving&quot;</div><div class="line">                &#125;</div><div class="line"></div><div class="line"></div><div class="line">                directionsURLString += &quot;&amp;mode=&quot; + travelModeString</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ...</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意 if let travel = travelMode{ … } 这句, 我们把 travelMode 参数类型从 AnyObject!<br>转换为了 TravelModes! (前面我们定义的枚举类型)。</p>
-<p>现在我们可以好好的测试一下程序了。改变 travel mode, 注意一下路线信息也会跟着改变，尤其是路线的行<br>进时间。</p>
-<h2 id="最终的完成"><a href="#最终的完成" class="headerlink" title="最终的完成"></a>最终的完成</h2><p>现在我们的程序几乎完成了，我说几乎是因为我们还有一些代码细节部分需要修改一下，让它变得更好。</p>
-<p>第一个就是如果一个路线已经存在的话，我们在创建新路线的时候，要清除掉已有路线。所以在<br>createRoute(_:) 函数中,createRouteAction 代码块中, 我们需要判断是否已经存在路线，如果存在，<br>则清除路线:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@IBAction func createRoute(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    let createRouteAction = UIAlertAction(title: &quot;Create Route&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        if let polyline = self.routePolyline &#123;</div><div class="line">            self.clearRoute()</div><div class="line">            self.waypointsArray.removeAll(keepCapacity: false)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意到我们除了清除路线，waypointsArray对象中的所有内容也被清除。要确保在我们创建新的路线之前，<br>保证所有的waypoints已经被清除。</p>
-<p>第二个要处理的还是在这个 IBAction 函数中，因为前面我们对travel mode 仅仅是传递了一个空值:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@IBAction func createRoute(sender: AnyObject) &#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    let createRouteAction = UIAlertAction(title: &quot;Create Route&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</div><div class="line">        ...</div><div class="line"></div><div class="line">        self.mapTasks.getDirections(origin, destination: destination, waypoints: nil, travelMode: self.travelMode, completionHandler: &#123; (status, success) -&gt; Void in</div><div class="line">            ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>完成上面两个任务后，我们就真的把程序完成了!</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>这篇教程最想做到的是，当一个开发人员能够使用GoogleMapsSD做一个地图应用,前面所有章节中讲到的内容都<br>可能在你开发的过程中用到。毫无疑问，Google Maps SDK中有大量的细节和内容在这篇教程中没有提到，当然<br>也不可能仅仅通过一篇教程就覆盖所有内容。然后，你知道一些SDK中的基本知识和重点，就能够在<br><a href="https://developers.google.com/maps/documentation/ios/" target="_blank" rel="external">Google文档</a>,找到你所需要的其他信息。<br>地图开发是一个相当有趣的专题, 不管遇到什么困难，最后总会被解决。如论如何，如果你正在使用或者准备使用<br>Google Maps SDK, 我希望这篇教程中提到的内容能够帮助你。作为一个引导，只要你深入进去，没有什么能<br>够阻挡你获取API全部优越性能的脚步。</p>
-<p>你可以在github上下载<a href="https://github.com/googlegis/GoogleMapSDKSwiftDemo" target="_blank" rel="external">完整的项目代码</a>。欢迎评论并分享你的想法。</p>
-<h2 id="Icons-copyright-icons8"><a href="#Icons-copyright-icons8" class="headerlink" title="Icons copyright: icons8"></a>Icons copyright: icons8</h2><p>此文为翻译文章，原文地址:<a href="http://www.appcoda.com/google-maps-api-tutorial/" target="_blank" rel="external">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2396,7 +2406,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">156</span>
+                <span class="site-state-item-count">159</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2418,7 +2428,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
