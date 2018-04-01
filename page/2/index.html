@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -33,54 +40,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -89,34 +49,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hello, World!" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="Log IT" type="application/atom+xml" />
-
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.1" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
 
 
 
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Log IT">
-<meta property="og:url" content="http://googlegis.github.io/page/2/index.html">
-<meta property="og:site_name" content="Log IT">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Log IT">
 
 
 
@@ -124,14 +75,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -143,30 +94,49 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://googlegis.github.io/page/2/"/>
-
-
-
-
-
-  <title>Log IT</title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
   
 
 
 
 
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Log IT">
+<meta property="og:url" content="http://googlegis.github.io/page/2/index.html">
+<meta property="og:site_name" content="Log IT">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Log IT">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Log IT" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://googlegis.github.io/page/2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Log IT</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52348223-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-52348223-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-52348223-1');
 </script>
 
 
@@ -174,28 +144,55 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
+</head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-right 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Log IT</span>
         <span class="logo-line-after"><i></i></span>
@@ -207,7 +204,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="accessibility.nav_toggle">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -222,54 +219,49 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />home</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-bars"></i> <br />
-            
-            分类
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />about</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />tags</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />categories</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />archives</a>
+</li>
+
       
 
       
@@ -277,16 +269,50 @@
   
 
   
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
 </nav>
+
+
+  
 
 
 
  </div>
     </header>
 
+    
+
+
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -299,13 +325,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/06/09/a-wrong-way-to-tell-child/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -318,16 +350,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/06/09/a-wrong-way-to-tell-child/" itemprop="url">
-                  不要把吓唬当做万金油
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/06/09/a-wrong-way-to-tell-child/" itemprop="url">不要把吓唬当做万金油</a></h1>
         
 
         <div class="post-meta">
@@ -337,13 +361,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T11:18:06+08:00">
-                2017-06-09
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-06-09T11:18:06+08:00">2017-06-09</time>
             
 
+            
             
 
             
@@ -358,14 +381,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -401,6 +420,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -456,17 +478,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -480,6 +502,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -492,13 +518,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/06/03/sth-about-the-child-day/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -511,16 +543,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/06/03/sth-about-the-child-day/" itemprop="url">
-                  儿童节演出记事
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/06/03/sth-about-the-child-day/" itemprop="url">儿童节演出记事</a></h1>
         
 
         <div class="post-meta">
@@ -530,13 +554,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-03T19:44:54+08:00">
-                2017-06-03
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-06-03T19:44:54+08:00">2017-06-03</time>
             
 
+            
             
 
             
@@ -551,14 +574,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -594,6 +613,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -619,17 +641,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -643,6 +665,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -655,13 +681,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/26/something-about-skit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -674,16 +706,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/26/something-about-skit/" itemprop="url">
-                  裙子风波
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/26/something-about-skit/" itemprop="url">裙子风波</a></h1>
         
 
         <div class="post-meta">
@@ -693,13 +717,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T09:48:57+08:00">
-                2017-05-26
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-26T09:48:57+08:00">2017-05-26</time>
             
 
+            
             
 
             
@@ -714,14 +737,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -757,6 +776,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -804,17 +826,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -828,6 +850,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -840,13 +866,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/25/am-i-too-hardly-strict-with-susie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -859,16 +891,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/25/am-i-too-hardly-strict-with-susie/" itemprop="url">
-                  我和娃子学英语
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/25/am-i-too-hardly-strict-with-susie/" itemprop="url">我和娃子学英语</a></h1>
         
 
         <div class="post-meta">
@@ -878,13 +902,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T08:14:57+08:00">
-                2017-05-25
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-25T08:14:57+08:00">2017-05-25</time>
             
 
+            
             
 
             
@@ -899,14 +922,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -942,6 +961,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -952,8 +974,8 @@
           <p>去年过完春天，老婆就到处张罗着给娃子上英语班的事，</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/25/am-i-too-hardly-strict-with-susie/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/25/am-i-too-hardly-strict-with-susie/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -961,17 +983,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -985,6 +1007,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -997,13 +1023,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/24/do-the-part-of-parent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1016,16 +1048,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/24/do-the-part-of-parent/" itemprop="url">
-                  做好家长的那部分
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/24/do-the-part-of-parent/" itemprop="url">做好家长的那部分</a></h1>
         
 
         <div class="post-meta">
@@ -1035,13 +1059,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T19:02:50+08:00">
-                2017-05-24
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-24T19:02:50+08:00">2017-05-24</time>
             
 
+            
             
 
             
@@ -1056,14 +1079,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -1099,6 +1118,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1133,17 +1155,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1157,6 +1179,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1169,13 +1195,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/21/the-most-heaviliy-role-in-child-heart/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1188,16 +1220,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/21/the-most-heaviliy-role-in-child-heart/" itemprop="url">
-                  生命不能承受之重
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/21/the-most-heaviliy-role-in-child-heart/" itemprop="url">生命不能承受之重</a></h1>
         
 
         <div class="post-meta">
@@ -1207,13 +1231,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T21:04:01+08:00">
-                2017-05-21
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-21T21:04:01+08:00">2017-05-21</time>
             
 
+            
             
 
             
@@ -1228,14 +1251,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -1271,6 +1290,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1281,8 +1303,8 @@
           <p>一个孩子到底能承受多大压力！</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/21/the-most-heaviliy-role-in-child-heart/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/21/the-most-heaviliy-role-in-child-heart/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1290,17 +1312,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1314,6 +1336,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1326,13 +1352,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/21/the-heart-in-flood/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1345,16 +1377,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/21/the-heart-in-flood/" itemprop="url">
-                  诺亚方舟漂流记
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/21/the-heart-in-flood/" itemprop="url">诺亚方舟漂流记</a></h1>
         
 
         <div class="post-meta">
@@ -1364,13 +1388,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T13:36:19+08:00">
-                2017-05-21
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-21T13:36:19+08:00">2017-05-21</time>
             
 
+            
             
 
             
@@ -1385,14 +1408,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -1428,6 +1447,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1438,8 +1460,8 @@
           <p>父母也要学会成长<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/21/the-heart-in-flood/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/21/the-heart-in-flood/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1447,17 +1469,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1471,6 +1493,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1483,13 +1509,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/15/it-is-the-dangal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1502,16 +1534,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/15/it-is-the-dangal/" itemprop="url">
-                  总有一天，爸爸不能站在旁边为你加油
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/15/it-is-the-dangal/" itemprop="url">总有一天，爸爸不能站在旁边为你加油</a></h1>
         
 
         <div class="post-meta">
@@ -1521,13 +1545,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T14:28:03+08:00">
-                2017-05-15
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-15T14:28:03+08:00">2017-05-15</time>
             
 
+            
             
 
             
@@ -1542,14 +1565,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -1585,6 +1604,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1595,8 +1617,8 @@
           <img src="/images/2017/05/20170515/p2457746352.jpg">
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/15/it-is-the-dangal/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/15/it-is-the-dangal/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1604,17 +1626,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1628,6 +1650,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1640,13 +1666,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/06/the-little-pets-in-my-home/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1659,16 +1691,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/06/the-little-pets-in-my-home/" itemprop="url">
-                  娃子的宠物们
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/06/the-little-pets-in-my-home/" itemprop="url">娃子的宠物们</a></h1>
         
 
         <div class="post-meta">
@@ -1678,13 +1702,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T23:09:37+08:00">
-                2017-05-06
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-06T23:09:37+08:00">2017-05-06</time>
             
 
+            
             
 
             
@@ -1699,14 +1722,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/育儿经/" itemprop="url" rel="index">
-                    <span itemprop="name">育儿经</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/育儿经/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a></span>
 
                 
                 
@@ -1742,6 +1761,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1752,8 +1774,8 @@
           <p>宠物年年有，今年特别多！</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/06/the-little-pets-in-my-home/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/06/the-little-pets-in-my-home/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1761,17 +1783,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1785,6 +1807,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1797,13 +1823,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2017/05/01/hello-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="googlegis">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1816,16 +1848,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/05/01/hello-hexo/" itemprop="url">
-                  Hello hexo！
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/05/01/hello-hexo/" itemprop="url">Hello hexo！</a></h1>
         
 
         <div class="post-meta">
@@ -1835,13 +1859,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">post.posted</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-01T10:10:10+08:00">
-                2017-05-01
-              </time>
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-05-01T10:10:10+08:00">2017-05-01</time>
             
 
+            
             
 
             
@@ -1856,14 +1879,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">post.in</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span>
 
                 
                 
@@ -1899,6 +1918,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1909,8 +1931,8 @@
           <p>Hello , hexo!<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/01/hello-hexo/#more" rel="contents">
-              阅读全文 &raquo;
+            <a class="btn" href="/2017/05/01/hello-hexo/#post.more" rel="contents">
+              post.read_more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1918,17 +1940,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1942,6 +1964,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1950,15 +1976,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1974,108 +1997,273 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/image/avatar.png"
-               alt="googlegis" />
-          <p class="site-author-name" itemprop="name">googlegis</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">googlegis</p>
               <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">159</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">15</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">77</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
           </div>
-        
 
-        <div class="links-of-author motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">159</span>
+                    <span class="site-state-item-name">state.posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">state.categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-name">state.tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
           
             
-              <span class="links-of-author-item">
-                <a href="https://github.com/googlegis" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://instagram.com/googlegis" target="_blank" title="instagram">
-                  
-                    <i class="fa fa-fw fa-instagram"></i>
-                  
-                  instagram
-                </a>
-              </span>
-            
           
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
 
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
       
 
     </div>
@@ -2088,27 +2276,31 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-anchor"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">googlegis</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+  <div class="powered-by">footer.powered</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">footer.theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
 
 
         
@@ -2116,20 +2308,38 @@
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="site-uv" title="footer.total_visitors">
       <i class="fa fa-user"></i>
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
+    <span class="site-pv" title="footer.total_views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
 </div>
+
+
+
+
+
+
+
 
 
         
       </div>
     </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
     
 
@@ -2151,103 +2361,68 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
 
 
 
   
   
 
-
-
   
-  
-
-
 
   
 
 
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
 
 
 
   
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
+    <script id="dsq-count-scr" src="https://googlegis.disqus.com/count.js" async></script>
+  
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://googlegis.disqus.com/count.js" async></script>
-    
-
-    
-
-  
 
 
 
@@ -2264,21 +2439,28 @@
 
 
 
+
+
+
+
+
+
+
   
 
 
 
 
 
-
-
+  
 
   
 
+  
 
+  
 
-
-
+  
   
 
   
