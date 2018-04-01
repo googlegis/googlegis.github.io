@@ -114,6 +114,7 @@
 <meta property="og:title" content="Log IT">
 <meta property="og:url" content="http://googlegis.github.io/page/11/index.html">
 <meta property="og:site_name" content="Log IT">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log IT">
 
@@ -413,10 +414,10 @@
 <img src="/images/2015/05/nodejs.png">
 <p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
 <p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
-<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
+<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="noopener">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
 <h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
+<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a>.</li>
 <li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
 <li>按照默认的选项和步骤，一路next下去。</li>
 <li>重启。</li>
@@ -424,19 +425,19 @@
 <img src="/images/2015/05/installer.png">
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
 <h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
 <h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;Node is installed!&apos;);</span><br></pre></td></tr></table></figure>
 <p>命令行运行到当前的文件目录，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node hello.js</span><br></pre></td></tr></table></figure>
 <p>运行后返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node is installed!</span><br></pre></td></tr></table></figure>
 <p>说明Node.js 已经安装成功！</p>
 <img src="/images/2015/05/output.png">
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="noopener">如何在Linux下安装Node.js</a></p>
+<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="noopener">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="noopener">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
 <hr>
 
           
@@ -601,9 +602,9 @@
 <p>   今天就先来一篇 Github Page 绑定域名的技术性文章，开个技术头。</p>
 <p>   以我自己的账号为例，概括来说需要以下几个步骤：</p>
 <p>   1.创建自己的github page 主页，就是说你不用域名也能访问。比如：googlegis.github.io</p>
-<ol>
+<ol start="2">
 <li><p>在你的source 目录下添加 CNAME文件，内容为：<br> lookfour.me</p>
-<ol>
+<ol start="3">
 <li><p>在GoDaddy的管理页：</p>
 </li>
 <li><p>添加“A(Host)” 记录， ‘host’＝@， ‘Points to’＝192.30.252.153</p>
@@ -977,7 +978,7 @@
 <ol>
 <li>为什么和老婆吵架？<br>工作没有找到，自己能力不够。 怨不得别人。<br>小娃生病，动不动就哭，怨不得别人。<br>娃子没有照顾好，怨不得别人。<br>别人终究是别人。不是自己人，<br>自己累死像条狗，也没有人来同情你。<br>只有自己有钱，才能有人来同情你。<br>为什么关了电视？<br>为什么看什么都不顺眼，有本事就自己去做，别总是指望别人来做。</li>
 </ol>
-<ol>
+<ol start="2">
 <li><p>房子的事情，为什么那么烦心。<br>合肥买房子的时候，自己总是一概不问，不问的下场就是自己后悔。<br>为什么不问，生气，为什么生气？<br>结果落得两地都落实不下来。<br>有的时候，自己生气就什么都不问，不问的后果就是结果不如意，不如意到最后就是生气。</p>
 </li>
 <li><p>俺妈不能生气，不能生气，对眼睛不好。</p>
@@ -986,7 +987,11 @@
 </li>
 </ol>
 <p>–••–•–•–•–•–•–•–•–••–•–•–•–•–•–•–•–••–•–•</p>
-<h2 id="4-努力什么的原来只说说并不起作用，需要自己去做。"><a href="#4-努力什么的原来只说说并不起作用，需要自己去做。" class="headerlink" title="4. 努力什么的原来只说说并不起作用，需要自己去做。"></a>4. 努力什么的原来只说说并不起作用，需要自己去做。</h2>
+<ol start="4">
+<li>努力什么的原来只说说并不起作用，需要自己去做。</li>
+</ol>
+<hr>
+
           
         
       
@@ -2165,7 +2170,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

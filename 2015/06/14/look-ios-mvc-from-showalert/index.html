@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/14/look-ios-mvc-from-showalert/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="我们知道MVC是个模式，一个开发模式，一个构架模式，一个放之四海而皆为准的模式。 那什么是MVC？ 以下内容－－－来自维基百科 MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：  模型（Model）、视图（View）和控制器（Controller）。  * (控制器 Controller)- 负责转发请求，对请求进行处理。  *">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-25T10:53:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从showalert方法中看iOS中的MVC">
@@ -414,7 +415,7 @@
         <a id="more"></a>
 <p>我们知道MVC是个模式，一个开发模式，一个构架模式，一个放之四海而皆为准的模式。</p>
 <p>那什么是MVC？</p>
-<p>以下内容－－－来自<a href="https://zh.wikipedia.org/wiki/MVC" target="_blank" rel="external">维基百科</a></p>
+<p>以下内容－－－来自<a href="https://zh.wikipedia.org/wiki/MVC" target="_blank" rel="noopener">维基百科</a></p>
 <pre><code>MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：
 
 模型（Model）、视图（View）和控制器（Controller）。
@@ -427,7 +428,7 @@
 (可以实现具体的功能)。
 </code></pre><p>那么iOS中的showAlert函数又是什么样子的呢？</p>
 <p>我们来看一个最简单的例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@IBAction func showAlert()&#123;</span></div><div class="line"></div><div class="line">        let alert = UIAlertController(title: <span class="string">"Hello,World"</span>, message: <span class="string">"This is my first app!"</span>, preferredStyle: .Alert)</div><div class="line"></div><div class="line">        let action = UIAlertAction(title: <span class="string">"Awesome"</span>, style: .Default, handler: nil)</div><div class="line"></div><div class="line">        alert.addAction(action)</div><div class="line"></div><div class="line">        presentViewController(alert, animated: true, completion: nil)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func showAlert()&#123;</span></span><br><span class="line"></span><br><span class="line">        let alert = UIAlertController(title: <span class="string">"Hello,World"</span>, message: <span class="string">"This is my first app!"</span>, preferredStyle: .Alert)</span><br><span class="line"></span><br><span class="line">        let action = UIAlertAction(title: <span class="string">"Awesome"</span>, style: .Default, handler: nil)</span><br><span class="line"></span><br><span class="line">        alert.addAction(action)</span><br><span class="line"></span><br><span class="line">        presentViewController(alert, animated: true, completion: nil)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>那我们根据MVC来一一确认这些都代表什么意思？</p>
 <p>let alert 是一个UIAlertController，很明显，首先它是一个Controller，但是我更感觉它像MV，</p>
 <p>如 title，message很明显是View的内容，preferredStyle 表示是一个什么方式，应该是属于Model，</p>
@@ -680,7 +681,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

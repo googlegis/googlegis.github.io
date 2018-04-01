@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/12/the-ios-apprentice-one-bull-eyes/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="我在 2014-10-16日的文章中已经写过这篇，但是恍惚之间，大半年的时间过去了。而今迈步从头跃。啥都不说了，眼泪哗哗的！  新建项目  打开Xcode，  新建，Single View Application  填写内容：  Save Folder:  如果你只看到了ViewControll.h 和 ViewControll.m 文件，说明你创建项目时，语言选择的 Objective－C，而">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150615-1@2x.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150615-2@2x.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150615-3@2x.png">
@@ -446,17 +447,17 @@
 <pre><code>如果你只看到了ViewControll.h 和 ViewControll.m 文件，说明你创建项目时，语言选择的
 </code></pre><p>Objective－C，而不是Swift。</p>
 <p>点击运行测试程序。</p>
-<ol>
+<ol start="2">
 <li>放置按钮</li>
 </ol>
 <p>从右侧 object library 中找到 button 按钮，然后拖动到 Main.storyboard中，</p>
 <img src="/images/2015/06/newproject/QQ20150615-6@2x.png">
-<ol>
+<ol start="3">
 <li>添加代码</li>
 </ol>
 <p>在左侧导航栏中选择ViewController.swift 文件，在最下面加入下面的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@IBAction func showAlert() &#123;</div><div class="line"></div><div class="line">let alert = UIAlertController(title: &quot;Hello, World&quot;,</div><div class="line"></div><div class="line">message: &quot;This is my first app!&quot;, preferredStyle: .Alert)</div><div class="line"></div><div class="line">let action = UIAlertAction(title: &quot;Awesome&quot;, style: .Default, handler: nil)</div><div class="line"></div><div class="line">alert.addAction(action)</div><div class="line"></div><div class="line">presentViewController(alert, animated: true, completion: nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@IBAction func showAlert() &#123;</span><br><span class="line"></span><br><span class="line">let alert = UIAlertController(title: &quot;Hello, World&quot;,</span><br><span class="line"></span><br><span class="line">message: &quot;This is my first app!&quot;, preferredStyle: .Alert)</span><br><span class="line"></span><br><span class="line">let action = UIAlertAction(title: &quot;Awesome&quot;, style: .Default, handler: nil)</span><br><span class="line"></span><br><span class="line">alert.addAction(action)</span><br><span class="line"></span><br><span class="line">presentViewController(alert, animated: true, completion: nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
 <li>将函数与按钮联系</li>
 </ol>
 <p>我最习惯的方式，安装control键，鼠标左键拖动按钮控件到 View Controll 中，在sendEvent中</p>
@@ -471,7 +472,7 @@
 <img src="/images/2015/06/newproject/QQ20150615-9@2x.png">
 <p>运行显示弹出框</p>
 <img src="/images/2015/06/newproject/QQ20150615-11@2x.png">
-<ol>
+<ol start="5">
 <li>Disable SizeClass</li>
 </ol>
 <p>从iOS8开始，Xcode提供了一个 size classes 或者叫做 universal storyboards的</p>
@@ -745,7 +746,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

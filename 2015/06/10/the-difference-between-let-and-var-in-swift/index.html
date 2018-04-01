@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/10/the-difference-between-let-and-var-in-swift/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="首先介绍一下Swift中的 var 和 let  var 是 variable的缩写形式，是变量的意思 ，是可改变的，并不是数据类型例如：注意每个语句后面不用加分号  1234var i:double=10.0 //将i指为double类型的，变量名后面加个冒号  var i = 10  // 如果不指定类型的话，系统会自动根据你的赋值来判断类型  i = 15 //正确的写法  let 是常量">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-25T10:44:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift中let和var的区别">
@@ -416,13 +417,13 @@
 <ul>
 <li>var 是 variable的缩写形式，是变量的意思 ，是可改变的，并不是数据类型<br>例如：<br>注意每个语句后面不用加分号</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var i:double=10.0 //将i指为double类型的，变量名后面加个冒号  </div><div class="line">var i = 10  // 如果不指定类型的话，系统会自动根据你的赋值来判断类型  </div><div class="line"></div><div class="line">i = 15 //正确的写法</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i:double=10.0 //将i指为double类型的，变量名后面加个冒号  </span><br><span class="line">var i = 10  // 如果不指定类型的话，系统会自动根据你的赋值来判断类型  </span><br><span class="line"></span><br><span class="line">i = 15 //正确的写法</span><br></pre></td></tr></table></figure>
 <ul>
 <li>let 是常量的意思，不可改变的</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let name:String = &quot;Jhon&quot; //将name定义为字符串类型，如果程序下面改变就会报错的。  </div><div class="line"></div><div class="line">name = &quot;hello&quot;//错误的写法</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let name:String = &quot;Jhon&quot; //将name定义为字符串类型，如果程序下面改变就会报错的。  </span><br><span class="line"></span><br><span class="line">name = &quot;hello&quot;//错误的写法</span><br></pre></td></tr></table></figure>
 <ul>
-<li>拼接字符串操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name+=String(i)  //则会输出 Jhon10.0</div></pre></td></tr></table></figure>
+<li>拼接字符串操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name+=String(i)  //则会输出 Jhon10.0</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>+=可以做字符串拼接操作<br>所有的UInicode编码的字符都可以被当做变量名或常量名声明和使用</p>
@@ -667,7 +668,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

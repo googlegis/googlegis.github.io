@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="最好的教程就是官方文档。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-25T10:42:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Mac下编译Android源码">
@@ -421,11 +422,11 @@
 <p>  下载源码需要安装Repo工具，该工具是为了更好的使用Git源代码管理软件（类似于CVS等版本控制系统），执行以下命令创建~/bin目录：</p>
 <p>  $ cd ~<br>  $ mkdir bin<br>  $ echo $PATH</p>
 <p>  下载Repo：</p>
-<p>  $ curl <a href="http://git-repo.googlecode.com/files/repo-1.13" target="_blank" rel="external">http://git-repo.googlecode.com/files/repo-1.13</a> &gt; ~/bin/repo<br>  $ chmod a+x ~/bin/repo</p>
+<p>  $ curl <a href="http://git-repo.googlecode.com/files/repo-1.13" target="_blank" rel="noopener">http://git-repo.googlecode.com/files/repo-1.13</a> &gt; ~/bin/repo<br>  $ chmod a+x ~/bin/repo</p>
 <p>  之后在/Volumes/android目录下创建android目录以存放android源码：</p>
 <p>  $ cd /Volumes/android<br>  $ mkdir android<br>  $ cd android</p>
 <p>接着初始化Repo客户端：</p>
-<p>  $ r~bin/repo init -u <a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">https://android.googlesource.com/platform/manifest</a> -b master</p>
+<p>  $ r~bin/repo init -u <a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="noopener">https://android.googlesource.com/platform/manifest</a> -b master</p>
 <p>成功后显示：</p>
 <p>  repo initialized in /Volumes/android/android</p>
 <p>这时在/Volumes/android/android目录下就会有.repo的目录用来同步manifest文件，该文件是用来同步源码的，下载源码使用命令：</p>
@@ -436,7 +437,7 @@
 <p>cd external/qemu<br>git pull git://android.git.kernel.org/platform/external/qemu refs/changes/46/11846/3</p>
 <p>cd system/core<br>git pull git://android.git.kernel.org/platform/system/core refs/changes/97/12597/1</p>
 <p>3.下载并安装XCode和MacPorts</p>
-<p>  首先下载安装最新的XCode，下载地址：<a href="http://developer.apple.com" target="_blank" rel="external">http://developer.apple.com</a><br>  然后下载MacPorts，下载地址： <a href="http://www.macports.org/" target="_blank" rel="external">http://www.macports.org/</a><br>  修改~/.profile文件，添加：</p>
+<p>  首先下载安装最新的XCode，下载地址：<a href="http://developer.apple.com" target="_blank" rel="noopener">http://developer.apple.com</a><br>  然后下载MacPorts，下载地址： <a href="http://www.macports.org/" target="_blank" rel="noopener">http://www.macports.org/</a><br>  修改~/.profile文件，添加：</p>
 <h1 id="set-the-number-of-open-files-to-be-1024"><a href="#set-the-number-of-open-files-to-be-1024" class="headerlink" title="set the number of open files to be 1024"></a>set the number of open files to be 1024</h1><p>  ulimit -S -n 1024</p>
 <p>4.编译源码</p>
 <p>  首先修改~/.profile文件，内容类似：</p>
@@ -452,8 +453,8 @@
 <ol>
 <li>打最后补丁时出错，错误如下：<br> “Pull is not possible because you have unmerged files.<br>Please, fix them up in the work tree, and then use ‘git add/rm ‘<br>as appropriate to mark resolution, or use ‘git commit -a’.”<br> 改用命令：<br>“git clone git://android.git.kernel.org/platform/system/core  refs/changes/97/12597/1″</li>
 </ol>
-<p>出错原因：<br>./external/elfutils/config-compat-darwin.h:42: error: static declaration of ‘strnlen’ follows non-static declaration<br>/usr/include/string.h:143: error: previous declaration of ‘strnlen’ was here<br>make: <em>*</em> [out/host/darwin-x86/obj/STATIC_LIBRARIES/libelf_intermediates/lib/xmalloc.o] Error 1</p>
-<p>解决方案：参考别人些的文章<br><a href="http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/" target="_blank" rel="external">http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/</a></p>
+<p>出错原因：<br>./external/elfutils/config-compat-darwin.h:42: error: static declaration of ‘strnlen’ follows non-static declaration<br>/usr/include/string.h:143: error: previous declaration of ‘strnlen’ was here<br>make: *** [out/host/darwin-x86/obj/STATIC_LIBRARIES/libelf_intermediates/lib/xmalloc.o] Error 1</p>
+<p>解决方案：参考别人些的文章<br><a href="http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/" target="_blank" rel="noopener">http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/</a></p>
 <p>modify ./external/elfutils/config-compat-darwin.h.</p>
 <p>replace:</p>
 <p>static inline size_t strnlen (const char *<strong>string, size_t </strong>maxlen)</p>
@@ -746,7 +747,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

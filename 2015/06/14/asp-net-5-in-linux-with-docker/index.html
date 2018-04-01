@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/14/asp-net-5-in-linux-with-docker/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="简介我们知道ASP.Net 5 提供了跨平台开发。我们能够在Android、Liunx和Mac系统上开发和部署ASP.Net 5 程序。微软介绍了第一款官方Docker镜像用来在Linux虚拟机上部署程序。所以这篇文章我们来介绍一下如何 使用Docker来创建和部署ASP.Net5程序。 现在第一个问题，什么事Docker？ 所以我们来谈一下。 DockerDocker是微软于2014年10月1">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/Docker.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/Dockerfiles.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/containerinfo.png">
@@ -430,16 +431,16 @@
 <p>类型的操作系统上运行，但是有一点就是要安装特殊版本的系统Docker。如果Docker不合适，将不能在系统中</p>
 <p>运行命令，下面我们来一步一步来实现。</p>
 <h3 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h3><p>我们知道，目前为止Docker只能运行在Linux上，所以我们需要一个安装了Linux系统的机器或者是服务器上</p>
-<p>的Linux虚拟机能够运行运行Docker。安装Docker需要一些步骤，你可以在这个<a href="https://docs.docker.com/installation/ubuntulinux/" target="_blank" rel="external">Docker安装文档</a></p>
-<p>中查看安装步骤，或者使用专门的<a href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-docker-ubuntu-quickstart/" target="_blank" rel="external">Docker for Azure</a>。假设你已经在Linux系统中安装了Dock。下面继续下面的步骤。</p>
+<p>的Linux虚拟机能够运行运行Docker。安装Docker需要一些步骤，你可以在这个<a href="https://docs.docker.com/installation/ubuntulinux/" target="_blank" rel="noopener">Docker安装文档</a></p>
+<p>中查看安装步骤，或者使用专门的<a href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-docker-ubuntu-quickstart/" target="_blank" rel="noopener">Docker for Azure</a>。假设你已经在Linux系统中安装了Dock。下面继续下面的步骤。</p>
 <h3 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h3><p>想要在云或者Azure中部署程序就需要容器(Container)，所以我们首先创建一个容器镜像，我们的程序将部署</p>
-<p>在这个容器中。Docker容器镜像在容器中上面的位置，所以基本的镜像将会在容器镜像<a href="https://registry.hub.docker.com/u/microsoft/aspnet/" target="_blank" rel="external">microsoft／aspnet</a>。</p>
+<p>在这个容器中。Docker容器镜像在容器中上面的位置，所以基本的镜像将会在容器镜像<a href="https://registry.hub.docker.com/u/microsoft/aspnet/" target="_blank" rel="noopener">microsoft／aspnet</a>。</p>
 <p>这个镜像层会存储各种文件夹用来部署程序。有一个注意的是，当我们部署程序的时候，它既不包含任何ASP.Net</p>
 <p>的编译文件也不包含Linux的部署文件，只包含我们程序中的文件，这样能够让我们的部署文件更小一些，更容易</p>
 <p>部署到服务器上。为了创建Docker镜像，我们使用一个名为“Dockerfile”的文件。在这个文件里，说明了我们</p>
 <p>编译镜像需要条件。也就是说这就是我们需要用Docker编译镜像的先决文件。</p>
 <ul>
-<li><p>git clone git@github.com:aspnet/Home.git aspnet-Home</p>
+<li><p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:aspnet/Home.git aspnet-Home</p>
 </li>
 <li><p>cd aspnet/samples/HelloWeb</p>
 </li>
@@ -490,34 +491,34 @@
 </ul>
 <p>下面我们就要编译Docker镜像，为了编译Docker镜像，我们需要运行下面给出的命令，这些命令必须在当前</p>
 <p>目录下运行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### docker build -t myapp</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker build -t myapp</span><br></pre></td></tr></table></figure>
 <p>如果你在目录下运行该命令，它会根据Dockerfile编译一个镜像， 就是 myapp。所以无论你什么时候使用</p>
 <p>这个处理命令来改变你的程序，都会编译一个新的镜像。 如果我们想在linux虚拟机上的Docker镜像中看到我</p>
 <p>们的程序，就需要运行下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### $docker images</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker images</span><br></pre></td></tr></table></figure>
 <img src="/images/2015/06/asplinux/Dockerfiles.png">
 <p>现在我们就能看到我们的程序镜像和ASP.NET镜像已经存在目录下了，下面就可以部署我们的程序了。</p>
 <h3 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h3><p>下面一步是运行容器，在Linux虚拟机上，在Docker中运行以下命令来启动容器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### docker run -t -d -p 80:5004 myapp</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker run -t -d -p 80:5004 myapp</span><br></pre></td></tr></table></figure>
 <p>-t 是表示附加一个假的给容器的开关</p>
 <p>-d 是表示如果有其它进程运行在前台的时候，容器转到后台运行。</p>
 <p>-p 是表示映射 80端口到虚拟机 5004 端口的开关。</p>
 <p>这里是表示从80端口与容器5004端口创建链接。</p>
 <p>最终 myapp 镜像容器就要被启动了，下面我们的容器应该是启动状态，如果我们看运行容器的信息，会看到</p>
 <p>下面命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### $docker ps</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker ps</span><br></pre></td></tr></table></figure>
 <p>信息应该如图所示：</p>
 <img src="/images/2015/06/asplinux/containerinfo.png">
 <p>现在，我们的容器应该是运行状态，现在我们来完成其它任务。我们仅仅是完成了Azure VM的端口映射。所以</p>
 <p>我们要去Azure官网，映射公共端口80到我们自己linux虚拟机上的80端口。因为我们要在我们本地运行程序。</p>
-<p>现在，我们在浏览器中的地址栏中输入：”<a href="http://your-cloud-service-name.cloudapp.net:80/" target="_blank" rel="external">http://your-cloud-service-name.cloudapp.net:80/</a>“,</p>
+<p>现在，我们在浏览器中的地址栏中输入：”<a href="http://your-cloud-service-name.cloudapp.net:80/&quot;" target="_blank" rel="noopener">http://your-cloud-service-name.cloudapp.net:80/&quot;</a>,</p>
 <img src="/images/2015/06/asplinux/output.png">
 <p>这就是说明，我们在linux虚拟机上的Docker中运行程序成功了。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里就是在linux虚拟机上安装Docker文件的所有知识点，我希望这篇文章能够那些想要在linux环境下用</p>
 <p>Docker部署程序的读者一些帮助，Docker是ASP.NET 5 的一部分，所以将来微软会对Docker做一些改进。</p>
 <p>Docker能够节省时间，并且最重要的是它能帮助你在任何系统下都能快速的部署你的程序。</p>
 <hr>
-<p>此文为翻译文章，原文地址：<a href="http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/" target="_blank" rel="external">http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/</a></p>
+<p>此文为翻译文章，原文地址：<a href="http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/" target="_blank" rel="noopener">http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/</a></p>
 <hr>
 
       
@@ -784,7 +785,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

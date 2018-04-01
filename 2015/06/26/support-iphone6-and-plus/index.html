@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/26/support-iphone6-and-plus/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="支持iPhone6iPhone6 系列确实是开发人员的噩梦，比如你看这个。  要想应用能够支持 iPhone6，首先必须删除 LauchScreen，也就是 LaunchSCreen.xib,在项目导航 栏中选中该文件，Delete 删除， 当询问的时候，选择 Move to Trash。   只是删除文件还不行，要让项目知道，我们在启动的时候不再需要启动界面了！  项目导航栏，选中 Bulls">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150626-1.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150626-2.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/newproject/QQ20150626-3.png">
@@ -437,15 +438,15 @@
 <img src="/images/2015/06/newproject/QQ20150626-4.png">
 <p>项目导航栏，选中 BullsEye 文件夹，右键，Add Files to “BullsEye”，</p>
 <img src="/images/2015/06/newproject/QQ20150626-6.png">
-<p>从Launch Image文件夹中选择 Default@2x.png 和 Default-568h@2x.png。</p>
+<p>从Launch Image文件夹中选择 <a href="mailto:Default@2x.png" target="_blank" rel="noopener">Default@2x.png</a> 和 <a href="mailto:Default-568h@2x.png" target="_blank" rel="noopener">Default-568h@2x.png</a>。</p>
 <p>勾选 Copy items if needed.点击 Add ,把文件添加到项目中。</p>
 <img src="/images/2015/06/newproject/QQ20150626-7.png">
 <p>现在在运行测试，iPhone 6 系列是不是已经正常显示了呢！</p>
 <img src="/images/2015/06/newproject/QQ20150626-8.png">
 <h3 id="淡化特效"><a href="#淡化特效" class="headerlink" title="淡化特效"></a>淡化特效</h3><p>选中ViewController.swift, class上面加入引用:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> QuartzCore</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QuartzCore</span><br></pre></td></tr></table></figure>
 <p>修改 startOver() 函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@IBAction func startOver()&#123;</div><div class="line"></div><div class="line">  startNewGame()</div><div class="line"></div><div class="line">  updateLabels()</div><div class="line"></div><div class="line">  let transition = CATransition()</div><div class="line"></div><div class="line">  transition.type = kCATransitionFade</div><div class="line"></div><div class="line">  transition.duration = 1</div><div class="line"></div><div class="line">  transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)</div><div class="line"></div><div class="line">  view.layer.addAnimation(transition,forKey:nil)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@IBAction func startOver()&#123;</span><br><span class="line"></span><br><span class="line">  startNewGame()</span><br><span class="line"></span><br><span class="line">  updateLabels()</span><br><span class="line"></span><br><span class="line">  let transition = CATransition()</span><br><span class="line"></span><br><span class="line">  transition.type = kCATransitionFade</span><br><span class="line"></span><br><span class="line">  transition.duration = 1</span><br><span class="line"></span><br><span class="line">  transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)</span><br><span class="line"></span><br><span class="line">  view.layer.addAnimation(transition,forKey:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>打开 Images.xcassets，选择 AppIcon：</p>
 <p>在 Finder 中选择 Icon 文件夹中的 icon-58.png,鼠标拖动到 29pt中 2x 格子里。将</p>
 <p>icon-87.png 拖到到 29pt 的 3x 格子里。将 Icon-80.png 拖到 40pt 的2x格子里，</p>
@@ -734,7 +735,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

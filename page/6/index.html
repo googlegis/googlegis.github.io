@@ -114,6 +114,7 @@
 <meta property="og:title" content="Log IT">
 <meta property="og:url" content="http://googlegis.github.io/page/6/index.html">
 <meta property="og:site_name" content="Log IT">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log IT">
 
@@ -609,17 +610,17 @@
 <p>Mono 是一个跨平台的 .Net 解决方案，最后被微软收购并进行维护和支持。</p>
 <p>应该说还是有一定的群众基础的。</p>
 <p>在 Linux 系统下推荐的是 MonoDeveloper</p>
-<p><a href="http://www.monodevelop.com" target="_blank" rel="external">http://www.monodevelop.com</a></p>
+<p><a href="http://www.monodevelop.com" target="_blank" rel="noopener">http://www.monodevelop.com</a></p>
 <p>在 Windows 和 Mac 系统下推荐的是 Xamarin Studio。</p>
-<p><a href="http://www.monodevelop.com/download/" target="_blank" rel="external">http://www.monodevelop.com/download/</a></p>
+<p><a href="http://www.monodevelop.com/download/" target="_blank" rel="noopener">http://www.monodevelop.com/download/</a></p>
 <p>从 Mono-Develop 的官方页面下载的版本是 5.6</p>
 <p>但是从 Xamarin 的官方页面下载的是 6.0</p>
-<p><a href="https://store.xamarin.com/account/my/subscription/downloads" target="_blank" rel="external">https://store.xamarin.com/account/my/subscription/downloads</a></p>
+<p><a href="https://store.xamarin.com/account/my/subscription/downloads" target="_blank" rel="noopener">https://store.xamarin.com/account/my/subscription/downloads</a></p>
 <p>如果只是开发 Web 页面，只下载 Xamarin Studio 的安装包即可。</p>
 <img src="/images/2016/0705/QQ20160705-0.png">
 <p>然后直接双击安装， 如果没有安装 Mono SDK，会提示要先安装 SDK。当然也可以</p>
 <p>从网站先下载安装 Mono SDK，安装再安装 Xamarin Studio。</p>
-<p><a href="http://www.mono-project.com/download/" target="_blank" rel="external">http://www.mono-project.com/download/</a></p>
+<p><a href="http://www.mono-project.com/download/" target="_blank" rel="noopener">http://www.mono-project.com/download/</a></p>
 <p>打开 Xamarin Studio，新建 Asp.Net Mvc 项目进行测试。</p>
 <img src="/images/2016/0705/QQ20160705-1@2x.png">
 <img src="/images/2016/0705/QQ20160705-2@2x.png">
@@ -787,20 +788,20 @@
 <p>首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。</p>
 <p>我不知道我的电脑上是什么时候安装的，但是可以直接用。</p>
 <p>在 命令行中输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">1.8</span><span class="number">.5</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">1.8</span><span class="number">.5</span></span><br></pre></td></tr></table></figure>
 <p>下面开始升级：</p>
 <p>首先，从官网下载升级包，</p>
 <p>git-2.8.1-intel-universal-mavericks.dmg</p>
 <p>加载后，打开 readme，里面有个卸载的命令，先运行一下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/git/uninstall.sh</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/git/uninstall.sh</span><br></pre></td></tr></table></figure>
 <p>双击安装包</p>
 <p> git-2.8.1-intel-universal-mavericks.pkg</p>
 <p>一路Next。</p>
 <p>默认安装 Git 到 /usr/local/git (需要输入mac密码赋予权限)</p>
 <p>然后完成安装。</p>
-<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">2.8</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">2.8</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
 <p>这样就完成了 git 的生机。</p>
 <p>如果命令行中仍然显示旧的版本号，不要着急，只是程序的路径没有添加到环境变量中。</p>
 <p>打开命令行工具：</p>
@@ -808,7 +809,7 @@
 <p>把下面这行添加到 .bash_profile 文件的后面，</p>
 <p>export PATH=/usr/local/git/bin:$PATH</p>
 <p>保存文件，退出编辑！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</div><div class="line">Executing Terminal bash profile...</div><div class="line"></div><div class="line">jays-MacBook-Pro:~ jay$</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</span><br><span class="line">Executing Terminal bash profile...</span><br><span class="line"></span><br><span class="line">jays-MacBook-Pro:~ jay$</span><br></pre></td></tr></table></figure>
 <p>再验证版本，就会看到最新的升级版本号。</p>
 <hr>
 
@@ -1795,29 +1796,29 @@
           
             <a id="more"></a>
 <p>1.安装 vscode</p>
-<p>vscode:  <a href="https://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
-<p>DNX-1.0.0-rc1-update1.pkg:<br><a href="https://go.microsoft.com/fwlink/?LinkId=703940" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
+<p>vscode:  <a href="https://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
+<p>DNX-1.0.0-rc1-update1.pkg:<br><a href="https://go.microsoft.com/fwlink/?LinkId=703940" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
 <hr>
-<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby –e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure></p>
-<p>2.安装nvm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</div></pre></td></tr></table></figure></p>
-<p>在 .profile 文件中添加路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=<span class="string">"$PATH:$HOME/.nvm"</span></div></pre></td></tr></table></figure></p>
-<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export NVM_DIR=<span class="string">"$HOME/.nvm"</span></div><div class="line">[ -s <span class="string">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="string">"$NVM_DIR/nvm.sh"</span> <span class="comment"># This loads nvm</span></div></pre></td></tr></table></figure></p>
+<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby –e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure></p>
+<p>2.安装nvm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>在 .profile 文件中添加路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="string">"$PATH:$HOME/.nvm"</span></span><br></pre></td></tr></table></figure></p>
+<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=<span class="string">"$HOME/.nvm"</span></span><br><span class="line">[ -s <span class="string">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="string">"$NVM_DIR/nvm.sh"</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure></p>
 <p>3.安装node</p>
-<p>查看有多少版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm ls-remote</div></pre></td></tr></table></figure></p>
-<p>安装对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
-<p>使用对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
-<p>设置全局的版本，不然在另外的command中node命令不起作用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
+<p>查看有多少版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure></p>
+<p>安装对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
+<p>使用对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
+<p>设置全局的版本，不然在另外的command中node命令不起作用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
 <p>4.安装Yeoman</p>
 <p>安装模版生成器，就是用yo命令来生成各个aspnet的项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g yo</div></pre></td></tr></table></figure>
-<p>5.安装generator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g generateor-aspnet</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g yo</span><br></pre></td></tr></table></figure>
+<p>5.安装generator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g generateor-aspnet</span><br></pre></td></tr></table></figure></p>
 <p>6.创建项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yo aspnet</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo aspnet</span><br></pre></td></tr></table></figure>
 <p>这里通过上下键来选择创建的类型。</p>
 <p>7.切换到当前项目目录</p>
 <p>项目依赖项</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnu restore</div></pre></td></tr></table></figure>
-<p>8.运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnx web</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu restore</span><br></pre></td></tr></table></figure>
+<p>8.运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnx web</span><br></pre></td></tr></table></figure></p>
 <p>9.查看网页</p>
 <p>在浏览器中输入 localhost:5000  出现Hello World! 说明创建成功。</p>
 <hr>
@@ -2176,7 +2177,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

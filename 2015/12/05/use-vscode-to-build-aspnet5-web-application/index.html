@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/12/05/use-vscode-to-build-aspnet5-web-application/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="1.安装 vscode vscode:  https://go.microsoft.com/fwlink/?LinkID=534106 DNX-1.0.0-rc1-update1.pkg:https://go.microsoft.com/fwlink/?LinkId=703940  这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。1ru">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-25T11:02:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 Mac 上使用VSCode开发asp.net5项目">
@@ -413,29 +414,29 @@
       
         <a id="more"></a>
 <p>1.安装 vscode</p>
-<p>vscode:  <a href="https://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
-<p>DNX-1.0.0-rc1-update1.pkg:<br><a href="https://go.microsoft.com/fwlink/?LinkId=703940" target="_blank" rel="external">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
+<p>vscode:  <a href="https://go.microsoft.com/fwlink/?LinkID=534106" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
+<p>DNX-1.0.0-rc1-update1.pkg:<br><a href="https://go.microsoft.com/fwlink/?LinkId=703940" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
 <hr>
-<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby –e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure></p>
-<p>2.安装nvm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</div></pre></td></tr></table></figure></p>
-<p>在 .profile 文件中添加路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=<span class="string">"$PATH:$HOME/.nvm"</span></div></pre></td></tr></table></figure></p>
-<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export NVM_DIR=<span class="string">"$HOME/.nvm"</span></div><div class="line">[ -s <span class="string">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="string">"$NVM_DIR/nvm.sh"</span> <span class="comment"># This loads nvm</span></div></pre></td></tr></table></figure></p>
+<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby –e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure></p>
+<p>2.安装nvm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>在 .profile 文件中添加路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="string">"$PATH:$HOME/.nvm"</span></span><br></pre></td></tr></table></figure></p>
+<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=<span class="string">"$HOME/.nvm"</span></span><br><span class="line">[ -s <span class="string">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="string">"$NVM_DIR/nvm.sh"</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure></p>
 <p>3.安装node</p>
-<p>查看有多少版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm ls-remote</div></pre></td></tr></table></figure></p>
-<p>安装对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
-<p>使用对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
-<p>设置全局的版本，不然在另外的command中node命令不起作用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></div></pre></td></tr></table></figure></p>
+<p>查看有多少版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure></p>
+<p>安装对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
+<p>使用对应的版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
+<p>设置全局的版本，不然在另外的command中node命令不起作用。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure></p>
 <p>4.安装Yeoman</p>
 <p>安装模版生成器，就是用yo命令来生成各个aspnet的项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g yo</div></pre></td></tr></table></figure>
-<p>5.安装generator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install –g generateor-aspnet</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g yo</span><br></pre></td></tr></table></figure>
+<p>5.安装generator<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g generateor-aspnet</span><br></pre></td></tr></table></figure></p>
 <p>6.创建项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yo aspnet</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo aspnet</span><br></pre></td></tr></table></figure>
 <p>这里通过上下键来选择创建的类型。</p>
 <p>7.切换到当前项目目录</p>
 <p>项目依赖项</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnu restore</div></pre></td></tr></table></figure>
-<p>8.运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dnx web</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu restore</span><br></pre></td></tr></table></figure>
+<p>8.运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnx web</span><br></pre></td></tr></table></figure></p>
 <p>9.查看网页</p>
 <p>在浏览器中输入 localhost:5000  出现Hello World! 说明创建成功。</p>
 <hr>
@@ -679,7 +680,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Log IT</title>
+  
   <subtitle>it is funny in the hello world!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -24,9 +25,12 @@
     
     <summary type="html">
     
-      &lt;p&gt;政治&lt;br&gt;人性&lt;br&gt;权力&lt;br&gt;国家&lt;br&gt;历史&lt;/p&gt;
+      
+      
+        &lt;p&gt;政治&lt;br&gt;人性&lt;br&gt;权力&lt;br&gt;国家&lt;br&gt;历史&lt;/p&gt;
 &lt;p&gt;对收视率的倾斜，虽然短暂的获取流量，早晚会造成对人群的损失。&lt;/p&gt;
 
+      
     
     </summary>
     
@@ -44,9 +48,17 @@
     <link href="http://googlegis.github.io/2017/08/07/just-a-movie/"/>
     <id>http://googlegis.github.io/2017/08/07/just-a-movie/</id>
     <published>2017-08-07T14:12:06.000Z</published>
-    <updated>2017-08-07T14:13:04.638Z</updated>
+    <updated>2017-08-09T10:50:02.438Z</updated>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先恭喜吴京的《战狼2》，当之无愧的拿下了票房冠军，要知道星爷的《美人鱼》应该是十年磨一剑的&lt;/p&gt;
+&lt;p&gt;巨著，而且档期排在春节黄金档，影院连续排片一个多月才创下了票房冠军记录，而吴京仅仅靠自己的拳脚，&lt;/p&gt;
+&lt;p&gt;拳拳到肉，脚脚到肚硬生生的打拼出来的。&lt;/p&gt;
+&lt;p&gt;
+      
     
     </summary>
     
@@ -64,18 +76,23 @@
     <link href="http://googlegis.github.io/2017/08/06/the-press-of-white-deer-one-white-deer-forever/"/>
     <id>http://googlegis.github.io/2017/08/06/the-press-of-white-deer-one-white-deer-forever/</id>
     <published>2017-08-06T08:40:57.000Z</published>
-    <updated>2017-08-07T17:49:25.403Z</updated>
+    <updated>2017-08-12T09:58:06.425Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;最近刚看完《白鹿原》的电视剧，从它的拍摄到上映，到看完还是有很多感触的。&lt;/p&gt;
+      
+      
+        &lt;p&gt;最近刚看完《白鹿原》的电视剧，从它的拍摄到上映，到看完还是有很多感触的。&lt;/p&gt;
 &lt;p&gt;我从2004年大学毕业后，在西安待了差不多四五年的时间，喜欢陕西特色的油泼面、喜欢冬天晚上加班回去&lt;/p&gt;
 &lt;p&gt;路上的一碗羊肉泡馍，喜欢空旷荒凉的原野，喜欢看坡下顺势而为的窑洞，喜欢陕
+      
     
     </summary>
     
       <category term="文章" scheme="http://googlegis.github.io/categories/%E6%96%87%E7%AB%A0/"/>
     
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
       <category term="白鹿影志" scheme="http://googlegis.github.io/tags/%E7%99%BD%E9%B9%BF%E5%BD%B1%E5%BF%97/"/>
     
@@ -92,18 +109,21 @@
     
     <summary type="html">
     
-      &lt;p&gt;“死亡”这个话题，在儿童教育中貌似和性教育一样，是一个不可触碰的话题，大多数家长认为，小孩子&lt;/p&gt;
+      
+      
+        &lt;p&gt;“死亡”这个话题，在儿童教育中貌似和性教育一样，是一个不可触碰的话题，大多数家长认为，小孩子&lt;/p&gt;
 &lt;p&gt;说死不吉利，一旦孩子说了，就严加职责，但是，大多数家长也只是限制孩子，以后不许说。孩子是不敢说&lt;/p&gt;
 &lt;p&gt;了，那只是因为她怕你打她，而不是因为她知道，“死”到底是
+      
     
     </summary>
     
       <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
     
-      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
-    
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
   </entry>
   
@@ -116,10 +136,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;今年二月份，因为一些其它原因，我把公众号转移到了另外一个账号上，平时写些家长里短，育儿故事。&lt;/p&gt;
+      
+      
+        &lt;p&gt;今年二月份，因为一些其它原因，我把公众号转移到了另外一个账号上，平时写些家长里短，育儿故事。&lt;/p&gt;
 &lt;p&gt;有的时候还会写些影评，书籍和故事。一来满足一下伪文艺青年的创作激情，二来，记录一下孩子的成长点滴，&lt;/p&gt;
 &lt;p&gt;等老了之后，也算是个念想。&lt;/p&gt;
 &lt;p&gt;上周，一个
+      
     
     </summary>
     
@@ -141,9 +164,12 @@
     
     <summary type="html">
     
-      &lt;p&gt;也许有很多人都不知道翻墙这回事，翻墙不是偷鸡摸狗的飞墙，也不是一枝红杏出墙来的出墙，而是一个翻越长城的壮举。&lt;/p&gt;
+      
+      
+        &lt;p&gt;也许有很多人都不知道翻墙这回事，翻墙不是偷鸡摸狗的飞墙，也不是一枝红杏出墙来的出墙，而是一个翻越长城的壮举。&lt;/p&gt;
 &lt;p&gt;中国北京有个被称为世界第八大奇迹的砖砌石垒的长城，当时修建是为了防御北虏侵略的重要的军事工程，现在已经成为全世界著名的参观景点了。&lt;/p&gt;
 &lt;p&gt;在中
+      
     
     </summary>
     
@@ -161,11 +187,14 @@
     <link href="http://googlegis.github.io/2017/07/21/the-first-of-people/"/>
     <id>http://googlegis.github.io/2017/07/21/the-first-of-people/</id>
     <published>2017-07-21T13:46:41.000Z</published>
-    <updated>2017-07-21T15:16:23.684Z</updated>
+    <updated>2017-08-12T11:48:02.116Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;娃子最近特别善于哭，这个哭不是闹人的哭，而是伤心的哭，很多次都是看电影的时候哭，看《神奇女侠》&lt;br&gt;哭，看《变形金刚》哭，看《神偷奶爸》哭。《神奇女侠》是在女侠在和最终大boss 打架时，眼看要打&lt;br&gt;不过了，她害怕的躲到我怀里，我搂着她，她哭了，问她为啥哭，她说怕那个
+      
+      
+        &lt;p&gt;娃子最近特别善于哭，这个哭不是闹人的哭，而是伤心的哭，很多次都是看电影的时候哭，看《神奇女侠》&lt;br&gt;哭，看《变形金刚》哭，看《神偷奶爸》哭。《神奇女侠》是在女侠在和最终大boss 打架时，眼看要打&lt;br&gt;不过了，她害怕的躲到我怀里，我搂着她，她哭了，问她为啥哭，她说怕那个
+      
     
     </summary>
     
@@ -173,6 +202,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
       <category term="人之初" scheme="http://googlegis.github.io/tags/%E4%BA%BA%E4%B9%8B%E5%88%9D/"/>
     
@@ -183,11 +214,14 @@
     <link href="http://googlegis.github.io/2017/07/13/not-too-fast/"/>
     <id>http://googlegis.github.io/2017/07/13/not-too-fast/</id>
     <published>2017-07-13T08:54:09.000Z</published>
-    <updated>2017-07-29T08:01:54.163Z</updated>
+    <updated>2017-08-12T11:48:10.796Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;很多父母都知道有篇文章《牵着蜗牛去散步》，很多时候，父母本意并没有想着加快蜗牛的速度，只是在行走的过程中不知不觉的加快了步伐。当回头看蜗牛的时候，它依然慢悠悠的走着，也许它比刚才的速度已经快了很多，只是当父母的没有注意到。依然拿蜗牛的速度和自己的速度对比，发现蜗牛竟然越走越
+      
+      
+        &lt;p&gt;很多父母都知道有篇文章《牵着蜗牛去散步》，很多时候，父母本意并没有想着加快蜗牛的速度，只是在行走的过程中不知不觉的加快了步伐。当回头看蜗牛的时候，它依然慢悠悠的走着，也许它比刚才的速度已经快了很多，只是当父母的没有注意到。依然拿蜗牛的速度和自己的速度对比，发现蜗牛竟然越走越
+      
     
     </summary>
     
@@ -195,6 +229,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
       <category term="牵着蜗牛去散步" scheme="http://googlegis.github.io/tags/%E7%89%B5%E7%9D%80%E8%9C%97%E7%89%9B%E5%8E%BB%E6%95%A3%E6%AD%A5/"/>
     
@@ -205,20 +241,27 @@
     <link href="http://googlegis.github.io/2017/07/09/prsion-of-the-player/"/>
     <id>http://googlegis.github.io/2017/07/09/prsion-of-the-player/</id>
     <published>2017-07-09T15:25:42.000Z</published>
-    <updated>2017-07-09T17:13:37.595Z</updated>
+    <updated>2017-08-12T11:53:42.404Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;这几天，有一款腾讯开发的游戏迅速的占领了个各个主流媒体的头条，不论是微博微信还是传统新闻网站，&lt;/p&gt;
+      
+      
+        &lt;p&gt;这几天，有一款腾讯开发的游戏迅速的占领了个各个主流媒体的头条，不论是微博微信还是传统新闻网站，&lt;/p&gt;
 &lt;p&gt;总能找到相关信息，这款游戏就是传说的《王者荣耀》，也就是民间传说的“王者农药”。它的广泛传播&lt;/p&gt;
 &lt;p&gt;倒不是因为这款游戏每年能够腾讯公司创收上百亿，也不是因为
+      
     
     </summary>
     
       <category term="育儿经" scheme="http://googlegis.github.io/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
     
-      <category term="-- 育儿经 -- 王者荣耀" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F-%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/"/>
+      <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
+      <category term="王者荣耀" scheme="http://googlegis.github.io/tags/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/"/>
     
   </entry>
   
@@ -227,14 +270,17 @@
     <link href="http://googlegis.github.io/2017/06/10/do-not-encouragement-child-to-lie/"/>
     <id>http://googlegis.github.io/2017/06/10/do-not-encouragement-child-to-lie/</id>
     <published>2017-06-10T12:35:14.000Z</published>
-    <updated>2017-06-10T11:27:05.000Z</updated>
+    <updated>2017-08-12T11:48:38.374Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;有次吃饭，娃子可能觉得不好吃，也可能是想去玩其它的，所以刚吃了两口就不想吃了，我告诉她说，&lt;/p&gt;
+      
+      
+        &lt;p&gt;有次吃饭，娃子可能觉得不好吃，也可能是想去玩其它的，所以刚吃了两口就不想吃了，我告诉她说，&lt;/p&gt;
 &lt;p&gt;“如果你不吃饭的话，从现在到你睡觉之前，除了可以喝水，都不能吃任何东西，包括水果！”&lt;/p&gt;
 &lt;p&gt;她想了想，答应了。&lt;/p&gt;
 &lt;p&gt;然后我就到书房看电脑，过了一会，娃
+      
     
     </summary>
     
@@ -242,6 +288,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
   </entry>
   
@@ -250,12 +298,15 @@
     <link href="http://googlegis.github.io/2017/06/09/a-wrong-way-to-tell-child/"/>
     <id>http://googlegis.github.io/2017/06/09/a-wrong-way-to-tell-child/</id>
     <published>2017-06-09T03:18:06.000Z</published>
-    <updated>2017-06-09T08:52:52.000Z</updated>
+    <updated>2017-08-12T11:48:44.853Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;万金油，就是清凉油，就是一种无论是蚊虫叮咬、皮肤瘙痒、疙瘩红豆，只要抹上去就能立刻好使的神奇东西。很多人都希望能有这种东西，但是有的时候，并不是万金油一直有用的，比如蹭皮摔伤就不能用，如果你敢往伤口里抹万金油，那是会有一种让你神往的感觉。&lt;/p&gt;
+      
+      
+        &lt;p&gt;万金油，就是清凉油，就是一种无论是蚊虫叮咬、皮肤瘙痒、疙瘩红豆，只要抹上去就能立刻好使的神奇东西。很多人都希望能有这种东西，但是有的时候，并不是万金油一直有用的，比如蹭皮摔伤就不能用，如果你敢往伤口里抹万金油，那是会有一种让你神往的感觉。&lt;/p&gt;
 &lt;p&gt;在家里，我算是对娃子
+      
     
     </summary>
     
@@ -263,6 +314,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
   </entry>
   
@@ -271,14 +324,17 @@
     <link href="http://googlegis.github.io/2017/06/03/sth-about-the-child-day/"/>
     <id>http://googlegis.github.io/2017/06/03/sth-about-the-child-day/</id>
     <published>2017-06-03T11:44:54.000Z</published>
-    <updated>2017-06-03T16:30:52.000Z</updated>
+    <updated>2017-08-12T11:48:55.371Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;娃子幼儿园的演出是安排在六月二号，星期五。&lt;/p&gt;
-&lt;p&gt;\&amp;lt;– read more –&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;娃子幼儿园的演出是安排在六月二号，星期五。&lt;/p&gt;
+&lt;p&gt;\&lt;-- read=&quot;&quot; more=&quot;&quot; --\=&quot;&quot;&gt;&lt;/--&gt;&lt;/p&gt;
 &lt;p&gt;老师们早早就排练起来，家长们也都提前该请假的请假，该调休的调休，就等这天和孩子们一起开心的玩一天呢。&lt;/p&gt;
-&lt;p&gt;按照幼儿园安排，演出是租用了其它学校的礼堂，早
+&lt;p&gt;按照幼儿园安排，演
+      
     
     </summary>
     
@@ -286,6 +342,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
   </entry>
   
@@ -294,12 +352,15 @@
     <link href="http://googlegis.github.io/2017/05/26/something-about-skit/"/>
     <id>http://googlegis.github.io/2017/05/26/something-about-skit/</id>
     <published>2017-05-26T01:48:57.000Z</published>
-    <updated>2017-06-05T15:01:46.000Z</updated>
+    <updated>2017-08-12T11:49:02.943Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在五六岁的小女孩群体中，正在掀起一股爱莎风，就是那个冰雪奇缘，唱着 let it go ,一跺脚起来一座冰雪城堡的公主，但很多倒对安娜公主不怎么喜爱，有次我问娃子，你问什么喜欢爱莎，娃子回答说爱莎会魔法，会变出雪花。&lt;/p&gt;
+      
+      
+        &lt;p&gt;在五六岁的小女孩群体中，正在掀起一股爱莎风，就是那个冰雪奇缘，唱着 let it go ,一跺脚起来一座冰雪城堡的公主，但很多倒对安娜公主不怎么喜爱，有次我问娃子，你问什么喜欢爱莎，娃子回答说爱莎会魔法，会变出雪花。&lt;/p&gt;
 &lt;p&gt;现在，无论是买衣服，买鞋子，买书，买牙刷，
+      
     
     </summary>
     
@@ -308,6 +369,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
   </entry>
   
   <entry>
@@ -315,7 +378,7 @@
     <link href="http://googlegis.github.io/2017/05/25/am-i-too-hardly-strict-with-susie/"/>
     <id>http://googlegis.github.io/2017/05/25/am-i-too-hardly-strict-with-susie/</id>
     <published>2017-05-25T00:14:57.000Z</published>
-    <updated>2017-05-30T00:28:44.000Z</updated>
+    <updated>2017-08-12T11:49:11.026Z</updated>
     
     <summary type="html">
     
@@ -328,6 +391,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
   </entry>
   
   <entry>
@@ -335,14 +400,17 @@
     <link href="http://googlegis.github.io/2017/05/24/do-the-part-of-parent/"/>
     <id>http://googlegis.github.io/2017/05/24/do-the-part-of-parent/</id>
     <published>2017-05-24T11:02:50.000Z</published>
-    <updated>2017-06-02T15:35:52.000Z</updated>
+    <updated>2017-08-12T11:49:17.064Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;上周一，去接娃子放学的时候，听到有的家长问老师有没有作业，老师说没有。回到家也就放心大胆的让孩子玩耍起来。&lt;/p&gt;
+      
+      
+        &lt;p&gt;上周一，去接娃子放学的时候，听到有的家长问老师有没有作业，老师说没有。回到家也就放心大胆的让孩子玩耍起来。&lt;/p&gt;
 &lt;p&gt;晚上 8:30，准时要求她去刷牙洗脸，然后上床讲故事、睡觉，等这一套动作打完之后，已经 9:30 了。&lt;/p&gt;
 &lt;p&gt;老婆下班回来问,&lt;/p&gt;
 &lt;p&gt;‘
+      
     
     </summary>
     
@@ -351,6 +419,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
   </entry>
   
   <entry>
@@ -358,7 +428,7 @@
     <link href="http://googlegis.github.io/2017/05/21/the-most-heaviliy-role-in-child-heart/"/>
     <id>http://googlegis.github.io/2017/05/21/the-most-heaviliy-role-in-child-heart/</id>
     <published>2017-05-21T13:04:01.000Z</published>
-    <updated>2017-05-25T10:26:12.000Z</updated>
+    <updated>2017-08-12T10:56:49.099Z</updated>
     
     <summary type="html">
     
@@ -371,6 +441,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
       <category term="看电影" scheme="http://googlegis.github.io/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
     
       <category term="当怪物来敲门" scheme="http://googlegis.github.io/tags/%E5%BD%93%E6%80%AA%E7%89%A9%E6%9D%A5%E6%95%B2%E9%97%A8/"/>
@@ -382,7 +454,7 @@
     <link href="http://googlegis.github.io/2017/05/21/the-heart-in-flood/"/>
     <id>http://googlegis.github.io/2017/05/21/the-heart-in-flood/</id>
     <published>2017-05-21T05:36:19.000Z</published>
-    <updated>2017-05-25T09:05:40.000Z</updated>
+    <updated>2017-08-12T11:32:08.158Z</updated>
     
     <summary type="html">
     
@@ -395,6 +467,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
       <category term="看电影" scheme="http://googlegis.github.io/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
     
       <category term="诺亚方舟漂流记" scheme="http://googlegis.github.io/tags/%E8%AF%BA%E4%BA%9A%E6%96%B9%E8%88%9F%E6%BC%82%E6%B5%81%E8%AE%B0/"/>
@@ -406,7 +480,7 @@
     <link href="http://googlegis.github.io/2017/05/15/it-is-the-dangal/"/>
     <id>http://googlegis.github.io/2017/05/15/it-is-the-dangal/</id>
     <published>2017-05-15T06:28:03.000Z</published>
-    <updated>2017-05-25T11:09:20.000Z</updated>
+    <updated>2017-08-12T10:56:27.357Z</updated>
     
     <summary type="html">
     
@@ -419,6 +493,8 @@
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
     
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
+    
       <category term="摔跤吧爸爸" scheme="http://googlegis.github.io/tags/%E6%91%94%E8%B7%A4%E5%90%A7%E7%88%B8%E7%88%B8/"/>
     
   </entry>
@@ -428,7 +504,7 @@
     <link href="http://googlegis.github.io/2017/05/06/the-little-pets-in-my-home/"/>
     <id>http://googlegis.github.io/2017/05/06/the-little-pets-in-my-home/</id>
     <published>2017-05-06T15:09:37.000Z</published>
-    <updated>2017-05-25T09:06:35.000Z</updated>
+    <updated>2017-08-11T08:12:15.748Z</updated>
     
     <summary type="html">
     
@@ -440,6 +516,8 @@
     
     
       <category term="育儿经" scheme="http://googlegis.github.io/tags/%E8%82%B2%E5%84%BF%E7%BB%8F/"/>
+    
+      <category term="wechat" scheme="http://googlegis.github.io/tags/wechat/"/>
     
   </entry>
   

@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/06/21/how-to-sideload-app-in-xcode7/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="WWDC 2015之后，大部分的内容都没有引起我的兴趣，唯一一点，Xcode7 可以直接把程序部署到真机 测试，让我兴奋不已。多少不想交钱就能真机测试党的福利啊！ 下面这篇文章主要内容来自：http://bouk.co/blog/sideload-iphone/ 加上一些我在实现过程中遇到的问题，记录下来备查。 Apple 最近刚发布了 Xcdoe7 预览版，新功能中最 主要的一点就是你需要成为">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/sideload/Accounts.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/sideload/target.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/06/sideload/fixbundle.png">
@@ -419,21 +420,21 @@
         <a id="more"></a>
 <p>WWDC 2015之后，大部分的内容都没有引起我的兴趣，唯一一点，Xcode7 可以直接把程序部署到真机</p>
 <p>测试，让我兴奋不已。多少不想交钱就能真机测试党的福利啊！</p>
-<p>下面这篇文章主要内容来自：<a href="http://bouk.co/blog/sideload-iphone/" target="_blank" rel="external">http://bouk.co/blog/sideload-iphone/</a></p>
+<p>下面这篇文章主要内容来自：<a href="http://bouk.co/blog/sideload-iphone/" target="_blank" rel="noopener">http://bouk.co/blog/sideload-iphone/</a></p>
 <p>加上一些我在实现过程中遇到的问题，记录下来备查。</p>
-<p>Apple 最近刚发布了 <a href="https://developer.apple.com/xcode/" target="_blank" rel="external">Xcdoe7 预览版</a>，新功能中最</p>
-<p>主要的一点就是你需要成为交费版开发者，就能把应用程序部署到设备上。下面我们以<a href="https://bitbucket.org/rileytestut/gba4ios" target="_blank" rel="external">GBA4iOS</a></p>
+<p>Apple 最近刚发布了 <a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener">Xcdoe7 预览版</a>，新功能中最</p>
+<p>主要的一点就是你需要成为交费版开发者，就能把应用程序部署到设备上。下面我们以<a href="https://bitbucket.org/rileytestut/gba4ios" target="_blank" rel="noopener">GBA4iOS</a></p>
 <p>为示范来看一下要如何操作。</p>
 <p>1.准备工作。</p>
-<p>首先你得有一台 mac 电脑吧。 然后要安装好 <a href="https://developer.apple.com/xcode/downloads/" target="_blank" rel="external">Xcode7 beta</a>，</p>
+<p>首先你得有一台 mac 电脑吧。 然后要安装好 <a href="https://developer.apple.com/xcode/downloads/" target="_blank" rel="noopener">Xcode7 beta</a>，</p>
 <p>2.打开Xcode7，在设置中登录Apple Account，这里不是交费会员也可以，只要你有Apple Id，在</p>
 <p>开发者中心注册过应该都可以。</p>
 <img src="/images/2015/06/sideload/Accounts.png">
 <p>3.下载 GBA4iOS 的源码，然后按照需求进行配置。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://bitbucket.org/rileytestut/gba4ios.git;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd gba4ios;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://bitbucket.org/rileytestut/gba4ios.git;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd gba4ios;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install;</span><br></pre></td></tr></table></figure>
 <p>如果以前没有用过 cocoapods ，最好去官网上看一下。这四步分别是：安装cocopods，下载</p>
 <p>源码，切换路径，安装组件。</p>
 <p>如果一切顺利的话，应该可以在 gba4ios 文件夹中看到 GBA4iOS.xcworkspace，记住是打开</p>
@@ -450,34 +451,34 @@
 <p>A:不需要，可以在任何版本iOS/OSX上运行。只要你跑的起Xcode7.</p>
 <p>Q:出现下面错误:</p>
 <img src="/images/2015/06/sideload/error.png">
-<p>A:换一个apple Id 试试，这是个<a href="https://twitter.com/kaptin/status/608727199965958144" target="_blank" rel="external">bug</a></p>
+<p>A:换一个apple Id 试试，这是个<a href="https://twitter.com/kaptin/status/608727199965958144" target="_blank" rel="noopener">bug</a></p>
 <p>Q:编译时，出现包含 ‘int’ 类型  ‘GCControllerPlayerIndex’ 错误。</p>
 <p>A: 在文件 GBA4iOS/GBAEmulationViewController.mm  第 546 行改为</p>
 <p>  [controller setPlayerIndex:GCControllerPlayerIndex1];</p>
 <hr>
-<p>原作者 <a href="https://twitter.com/BvdBijl" target="_blank" rel="external">Twitter</a></p>
+<p>原作者 <a href="https://twitter.com/BvdBijl" target="_blank" rel="noopener">Twitter</a></p>
 <p>另外我再补充一下，如果你得机器上安装了 octopress， 会提示很多莫名其妙的错误。</p>
 <p>很大一部分原因是 ocotpress 使用的 ruby 1.9.8， 而 cocoapods 可能需要更新版本的ruby。</p>
 <p>下面来顺便说明一下如何安装不同版本的 ruby，如何使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">curl -L get.rvm.io | bash -s stable --autolibs=enabled</div><div class="line"></div><div class="line">rvm get head</div><div class="line"></div><div class="line">rvm reload</div><div class="line"></div><div class="line">rvm -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -L get.rvm.io | bash -s stable --autolibs=enabled</span><br><span class="line"></span><br><span class="line">rvm get head</span><br><span class="line"></span><br><span class="line">rvm reload</span><br><span class="line"></span><br><span class="line">rvm -v</span><br></pre></td></tr></table></figure>
 <p>然后查看 ruby 的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure>
 <p>如果只有 1.9.3，再安装一个 2.2.1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm install ruby-2.2.1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm install ruby-2.2.1</span><br></pre></td></tr></table></figure>
 <p>如果提示失败什么的，可能有两个原因：</p>
 <p>1.被墙，翻墙。</p>
 <p>2.提示.git文件夹被占用，可以用下面的命令解决</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf /usr/local/ Cellar  /usr/local/.git &amp;&amp; brew cleanup</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /usr/local/ Cellar  /usr/local/.git &amp;&amp; brew cleanup</span><br></pre></td></tr></table></figure>
 <p>####.查看已安装版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm list</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">rvm rubies</div><div class="line"></div><div class="line">   ruby-1.9.3-p545 [ x86_64 ]</div><div class="line"></div><div class="line">=* ruby-2.2.1 [ x86_64 ]</div><div class="line"></div><div class="line"># =&gt; - current</div><div class="line"></div><div class="line"># =* - current &amp;&amp; default</div><div class="line"></div><div class="line">#  * - default</div></pre></td></tr></table></figure>
-<h4 id="使用高版本ruby重新安装一下cocoapods"><a href="#使用高版本ruby重新安装一下cocoapods" class="headerlink" title="使用高版本ruby重新安装一下cocoapods."></a>使用高版本ruby重新安装一下cocoapods.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">rvm use 2.2.1</div><div class="line"></div><div class="line">gem uninstall cocoapods</div><div class="line"></div><div class="line">gem install cocoapods</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm list</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rvm rubies</span><br><span class="line"></span><br><span class="line">   ruby-1.9.3-p545 [ x86_64 ]</span><br><span class="line"></span><br><span class="line">=* ruby-2.2.1 [ x86_64 ]</span><br><span class="line"></span><br><span class="line"># =&gt; - current</span><br><span class="line"></span><br><span class="line"># =* - current &amp;&amp; default</span><br><span class="line"></span><br><span class="line">#  * - default</span><br></pre></td></tr></table></figure>
+<h4 id="使用高版本ruby重新安装一下cocoapods"><a href="#使用高版本ruby重新安装一下cocoapods" class="headerlink" title="使用高版本ruby重新安装一下cocoapods."></a>使用高版本ruby重新安装一下cocoapods.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rvm use 2.2.1</span><br><span class="line"></span><br><span class="line">gem uninstall cocoapods</span><br><span class="line"></span><br><span class="line">gem install cocoapods</span><br></pre></td></tr></table></figure>
 <p>这里出错最有可能的原因: 被墙！！！！</p>
 <p>这里不建议是用 ruby.taobao.org 的源，可能会导致文件丢失安装失败。</p>
 <p>建议使用官方源，然后翻墙安装。</p>
 <hr>
 <p>翻墙的话，我一般使用greenvpn，如果觉得我的文章有帮助，可以使用该链接注册：</p>
-<p><a href="http://gjsq.me/637214" target="_blank" rel="external">http://gjsq.me/637214</a></p>
+<p><a href="http://gjsq.me/637214" target="_blank" rel="noopener">http://gjsq.me/637214</a></p>
 <hr>
 
       
@@ -744,7 +745,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

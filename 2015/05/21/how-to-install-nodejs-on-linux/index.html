@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/05/21/how-to-install-nodejs-on-linux/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="可以说 JavaScript 无处不在，从19世纪中叶它的出生地Netscape 浏览器到现在进入到各种现在流行的web浏览器，各种手机开发，并在Node.js的帮助下已经发展成为了羽翼丰满的web开发的服务器端语言。  Node.js 是一种非阻塞式引擎，也就它在聊天服务、分析、合作工具、交互游戏等一些实时web程序中成为了首选模式。 为了使用nodejs来开发应用程序，你需要安装NPM(No">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/nodejs.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/node-install-check.png">
 <meta property="og:updated_time" content="2017-05-25T10:44:37.000Z">
@@ -422,18 +423,18 @@
 <h2 id="必要条件"><a href="#必要条件" class="headerlink" title="必要条件"></a>必要条件</h2><p>###* 熟悉Linux命令行工具<br>用来安装和测试Node、NPM，也可以用来调用Node.js 和NPM。</p>
 <p>###* 依赖项</p>
 <p>####1.Ruby 和 GCC。 你需要安装Ruby1.8.6或更高版本，GCC4.2或更高版本。<br>  对于Ubuntu和Debian的linux版本，运行以下命令行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev</span><br></pre></td></tr></table></figure>
 <p>询问时，选择Y继续安装。</p>
 <p>  对于Fedora的linux版本，运行以下命令行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum groupinstall &apos;Development Tools&apos; &amp;&amp; sudo yum install curl git m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum groupinstall &apos;Development Tools&apos; &amp;&amp; sudo yum install curl git m4 ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel</span><br></pre></td></tr></table></figure>
 <p>  询问时，选择Y继续安装。</p>
 <h4 id="2-Homebrew"><a href="#2-Homebrew" class="headerlink" title="2.Homebrew."></a>2.Homebrew.</h4><p>  Homebrew 是mac上的包管理工具，在linux下被移植为Linuxbrew，<br>  对于很多开源库来说，更加方便安装。比如Node.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
-<p>  想要了解更多请到<a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>官网和<a href="http://brew.sh/linuxbrew" target="_blank" rel="external">Linuxbrew</a>官网。<br>  想要在linux下安装Homebrew，在命令行工具下输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<p>  想要了解更多请到<a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a>官网和<a href="http://brew.sh/linuxbrew" target="_blank" rel="noopener">Linuxbrew</a>官网。<br>  想要在linux下安装Homebrew，在命令行工具下输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)&quot;</span><br></pre></td></tr></table></figure>
 <p>  然后更加说明完成安装即可。</p>
 <p>  linuxbrew 安装完成后，需要添加下面三行到.bashrc 或者<br>  .zshrc 文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;$HOME/.linuxbrew/bin:$PATH&quot;</div><div class="line">export MANPATH=&quot;$HOME/.linuxbrew/share/man:$MANPATH&quot;</div><div class="line">export INFOPATH=&quot;$HOME/.linuxbrew/share/info:$INFOPATH&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$HOME/.linuxbrew/bin:$PATH&quot;</span><br><span class="line">export MANPATH=&quot;$HOME/.linuxbrew/share/man:$MANPATH&quot;</span><br><span class="line">export INFOPATH=&quot;$HOME/.linuxbrew/share/info:$INFOPATH&quot;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>为什么要用 HOMEBREW/LINUXBREW?<br>或许你会问，为什么一定非得要用第三方库的管理工具呢？以下是几个<br>优点:</p>
 </li>
@@ -447,7 +448,7 @@
 <ul>
 <li>1.打开命令行输入：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
 <ul>
 <li>2.坐好，等</li>
 </ul>
@@ -461,21 +462,21 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew update</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
 <ul>
-<li><ol>
+<li><ol start="2">
 <li>更新Node</li>
 </ol>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew upgrade node</div></pre></td></tr></table></figure>
-<h3 id="卸载Node和NPM"><a href="#卸载Node和NPM" class="headerlink" title="卸载Node和NPM"></a>卸载Node和NPM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew uninstall node</div></pre></td></tr></table></figure>
-<h3 id="其它平台"><a href="#其它平台" class="headerlink" title="其它平台"></a>其它平台</h3><p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
-<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade node</span><br></pre></td></tr></table></figure>
+<h3 id="卸载Node和NPM"><a href="#卸载Node和NPM" class="headerlink" title="卸载Node和NPM"></a>卸载Node和NPM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall node</span><br></pre></td></tr></table></figure>
+<h3 id="其它平台"><a href="#其它平台" class="headerlink" title="其它平台"></a>其它平台</h3><p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="noopener">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="noopener">如何在Mac下安装Node.js</a></p>
 <p>##总结：</p>
 <p>Node.js 和NPM安装完毕，现在 使用node.js来开发一些漂亮的网站了。<br>或者使用一些比较好的库i完善和优化前端到后端的工作流和逻辑。</p>
 <hr>
-<p><a href="http://blog.teamtreehouse.com/install-node-js-npm-linux" target="_blank" rel="external">原文地址:http://blog.teamtreehouse.com/install-node-js-npm-linux</a></p>
+<p><a href="http://blog.teamtreehouse.com/install-node-js-npm-linux" target="_blank" rel="noopener">原文地址:http://blog.teamtreehouse.com/install-node-js-npm-linux</a></p>
 <hr>
 
       
@@ -742,7 +743,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

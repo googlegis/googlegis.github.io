@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/05/13/How-to-install-nodejs-on-windows/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="JavaScipt 将要成为Web开发者的首选编程语言，前端开发人员使用JavaScript加强用户体会及交互操作，后台web开发使用ajax调用web services。服务端web开发人员也开始使用javascript，主要是因为它的事件驱动及非模块特性带来的高速度、高性能。  事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/nodejs.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/installer.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/output.png">
@@ -420,10 +421,10 @@
 <img src="/images/2015/05/nodejs.png">
 <p>事实上，掌握一门简单的语言，就能开发一个全栈web程序，javascript就是这样一个机遇。关键就在于Node.js，作为Chrome V8 JavaScript运行引擎，它让在服务端运行javascript成为了可能。</p>
 <p>Node.js 也被用来开发桌面程序，还可以作为部署工具使得开发web站点更加容易。比如：在你的桌面电脑上安装Node.js,能够快速转换CoffeeScript 到JavaScript，SASS到CSS，并且能大幅减少HTML、JavaScript、图片文件的大小。使用NPM(安装和管理Node模块的工具)能够在你的开发工具快速添加各种有用的工具。</p>
-<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
+<p>前面一篇文章《<a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="noopener">在mac下安装Node.js</a>》中，我讲述了如何在windows下安装Node.js,同样作为姊妹篇，我这篇文章讲如何在Windows下安装，幸运的是，对于windows用户，安装过程要比在mac下安装简单的多。</p>
 <h3 id="安装简述"><a href="#安装简述" class="headerlink" title="安装简述"></a>安装简述</h3><p>使用Node.js官网的安装包进行安装Node 和NPM比较简单。</p>
 <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a>.</li>
+<li>从官网直接下载安装包，下载地址：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a>.</li>
 <li>点击下载的安装包进行安装。(就是第1步下载的.msi文件)。</li>
 <li>按照默认的选项和步骤，一路next下去。</li>
 <li>重启。</li>
@@ -431,19 +432,19 @@
 <img src="/images/2015/05/installer.png">
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>要确认你已经成功安装Node和NPM，运行几个简单的命令行就能搞定。</p>
 <h4 id="测试Node"><a href="#测试Node" class="headerlink" title="测试Node"></a>测试Node</h4><p>打开Windows命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
 <h4 id="测试NPM"><a href="#测试NPM" class="headerlink" title="测试NPM"></a>测试NPM</h4><p>打开命令行工具，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <h4 id="测试文件"><a href="#测试文件" class="headerlink" title="测试文件"></a>测试文件</h4><p>创建一个JavaScript文件，命名为 hello.js, 添加代码，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Node is installed!&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;Node is installed!&apos;);</span><br></pre></td></tr></table></figure>
 <p>命令行运行到当前的文件目录，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node hello.js</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node hello.js</span><br></pre></td></tr></table></figure>
 <p>运行后返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Node is installed!</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node is installed!</span><br></pre></td></tr></table></figure>
 <p>说明Node.js 已经安装成功！</p>
 <img src="/images/2015/05/output.png">
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
-<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="external">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="external">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-linux/" target="_blank" rel="noopener">如何在Linux下安装Node.js</a></p>
+<h2 id="如何在Mac下安装Node-js"><a href="#如何在Mac下安装Node-js" class="headerlink" title="如何在Mac下安装Node.js"></a><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-mac/" target="_blank" rel="noopener">如何在Mac下安装Node.js</a></h2><p><a href="http://blog.teamtreehouse.com/install-node-js-npm-windows" target="_blank" rel="noopener">原文地址：http://blog.teamtreehouse.com/install-node-js-npm-windows</a></p>
 <hr>
 
       
@@ -710,7 +711,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

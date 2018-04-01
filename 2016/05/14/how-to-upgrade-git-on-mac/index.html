@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。 我不知道我的电脑上是什么时候安装的，但是可以直接用。 在 命令行中输入： 1jays-MacBook-Pro:~ jay$ git --version 1git version 1.8.5 下面开始升级： 首先，从官网下载升级包， git-2.8.1-intel-universal-mavericks.dmg">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-25T11:02:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何升级Mac上的git">
@@ -415,20 +416,20 @@
 <p>首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。</p>
 <p>我不知道我的电脑上是什么时候安装的，但是可以直接用。</p>
 <p>在 命令行中输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">1.8</span><span class="number">.5</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">1.8</span><span class="number">.5</span></span><br></pre></td></tr></table></figure>
 <p>下面开始升级：</p>
 <p>首先，从官网下载升级包，</p>
 <p>git-2.8.1-intel-universal-mavericks.dmg</p>
 <p>加载后，打开 readme，里面有个卸载的命令，先运行一下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/git/uninstall.sh</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/git/uninstall.sh</span><br></pre></td></tr></table></figure>
 <p>双击安装包</p>
 <p> git-2.8.1-intel-universal-mavericks.pkg</p>
 <p>一路Next。</p>
 <p>默认安装 Git 到 /usr/local/git (需要输入mac密码赋予权限)</p>
 <p>然后完成安装。</p>
-<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ git --version</div></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git version <span class="number">2.8</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+<p>查看 git 版本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">2.8</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
 <p>这样就完成了 git 的生机。</p>
 <p>如果命令行中仍然显示旧的版本号，不要着急，只是程序的路径没有添加到环境变量中。</p>
 <p>打开命令行工具：</p>
@@ -436,7 +437,7 @@
 <p>把下面这行添加到 .bash_profile 文件的后面，</p>
 <p>export PATH=/usr/local/git/bin:$PATH</p>
 <p>保存文件，退出编辑！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</div><div class="line">Executing Terminal bash profile...</div><div class="line"></div><div class="line">jays-MacBook-Pro:~ jay$</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</span><br><span class="line">Executing Terminal bash profile...</span><br><span class="line"></span><br><span class="line">jays-MacBook-Pro:~ jay$</span><br></pre></td></tr></table></figure>
 <p>再验证版本，就会看到最新的升级版本号。</p>
 <hr>
 
@@ -679,7 +680,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

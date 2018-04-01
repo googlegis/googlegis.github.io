@@ -117,6 +117,7 @@
 <meta property="og:url" content="http://googlegis.github.io/2015/05/18/how-to-install-nodejs-on-mac/index.html">
 <meta property="og:site_name" content="Log IT">
 <meta property="og:description" content="node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用 node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是grunt.js 想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/osxnodejs.png">
 <meta property="og:image" content="http://googlegis.github.io/images/2015/05/osxnodejsinstall.png">
 <meta property="og:updated_time" content="2017-05-25T10:44:37.000Z">
@@ -416,28 +417,28 @@
       
         <a id="more"></a>
 <p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
-<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a></p>
-<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="external">http://nodejs.org/</a>,</p>
+<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="noopener">grunt.js</a></p>
+<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a href="http://nodejs.org/" target="_blank" rel="noopener">http://nodejs.org/</a>,</p>
 <p>点击安装，下载最新的安装包。</p>
 <img src="/images/2015/05/osxnodejs.png">
 <p>打开下载的.dmg 文件，按照提示安装的话，node和npm都会自动安装。npm 就是 Node Package Manager,其实就是nodejs的各种库的安装管理工具。</p>
 <img src="/images/2015/05/osxnodejsinstall.png">
-<p>安装完成后确保 /usr/local/bin 在你的path路径下，打开命令行工具输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eecho $PATH</div></pre></td></tr></table></figure></p>
-<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a href="http://coolestguidesontheplanet.com/add-shell-path-osx/" target="_blank" rel="external">添加</a>。</p>
-<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">node</div><div class="line">&gt; console.log(&apos;hello node&apos;);</div><div class="line">hello node</div><div class="line">undefined</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>安装完成后确保 /usr/local/bin 在你的path路径下，打开命令行工具输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eecho $PATH</span><br></pre></td></tr></table></figure></p>
+<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a href="http://coolestguidesontheplanet.com/add-shell-path-osx/" target="_blank" rel="noopener">添加</a>。</p>
+<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node</span><br><span class="line">&gt; console.log(&apos;hello node&apos;);</span><br><span class="line">hello node</span><br><span class="line">undefined</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
 <p>退出nodejs的编辑模式，按两次‘control+c’即可。</p>
-<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v</div></pre></td></tr></table></figure></p>
-<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="external">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm search</div></pre></td></tr></table></figure>
+<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></p>
+<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/" target="_blank" rel="noopener">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm search</span><br></pre></td></tr></table></figure>
 <p>将会返回一个完整的可用的库包列表，使用install来进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install easyimage</div></pre></td></tr></table></figure>
-<p>查看已安装库包，使用ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm ls</div></pre></td></tr></table></figure></p>
-<p>升级库包使用 update<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm update</div></pre></td></tr></table></figure></p>
-<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a href="http://nodejs.org/" target="_blank" rel="external">nodejs.org</a>。</p>
-<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="external">如何在Windows下安装Node.js</a></p>
-<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/" target="_blank" rel="external">如何在Linux下安装Node.js</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install easyimage</span><br></pre></td></tr></table></figure>
+<p>查看已安装库包，使用ls<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure></p>
+<p>升级库包使用 update<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></p>
+<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a href="http://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a>。</p>
+<p><a href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/" target="_blank" rel="noopener">如何在Windows下安装Node.js</a></p>
+<p><a href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/" target="_blank" rel="noopener">如何在Linux下安装Node.js</a></p>
 <hr>
-<p><a href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/" target="_blank" rel="external">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
+<p><a href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/" target="_blank" rel="noopener">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
 <hr>
 
       
@@ -679,7 +680,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>

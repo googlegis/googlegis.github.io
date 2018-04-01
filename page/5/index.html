@@ -114,6 +114,7 @@
 <meta property="og:title" content="Log IT">
 <meta property="og:url" content="http://googlegis.github.io/page/5/index.html">
 <meta property="og:site_name" content="Log IT">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Log IT">
 
@@ -947,22 +948,22 @@
 <p>不过从 nodejs 的发展历程来看，也真是难为它了。</p>
 <p>不管怎么说，多版本共存的安装和管理工具确实是必不可少的。</p>
 <p>幸运的是 nvm 就是这一工具的颜值担当。</p>
-<h4 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone git://github.com/creationix/nvm.git ~/.nvm</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ . ~/.nvm/nvm.sh</div></pre></td></tr></table></figure>
+<h4 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://github.com/creationix/nvm.git ~/.nvm</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
 <p>安装好之后，需要把路径添加到环境变量 Path 中。</p>
 <p>可能是 ~/.bash_profile 或者 ~/.profile 或者 ~/.bashrc 文件中。</p>
 <p>或者直接使用下面的安装脚本，直接安装并配置环境变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
 <p>.. or ..</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><h5 id="查看可用版本"><a href="#查看可用版本" class="headerlink" title="查看可用版本"></a>查看可用版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm ls-remote</div></pre></td></tr></table></figure>
-<h5 id="安装特定版本"><a href="#安装特定版本" class="headerlink" title="安装特定版本"></a>安装特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install <span class="number">4.5</span><span class="number">.0</span></div></pre></td></tr></table></figure>
-<h5 id="查看已安装版本"><a href="#查看已安装版本" class="headerlink" title="查看已安装版本"></a>查看已安装版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm ls</div></pre></td></tr></table></figure>
-<h5 id="选择特定版本"><a href="#选择特定版本" class="headerlink" title="选择特定版本"></a>选择特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use <span class="number">4.5</span><span class="number">.0</span></div></pre></td></tr></table></figure>
-<h5 id="卸载特定版本"><a href="#卸载特定版本" class="headerlink" title="卸载特定版本"></a>卸载特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm uninstall <span class="number">4.5</span><span class="number">.0</span></div></pre></td></tr></table></figure>
-<h5 id="将特定版本作为默认版本"><a href="#将特定版本作为默认版本" class="headerlink" title="将特定版本作为默认版本"></a>将特定版本作为默认版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm  alias default <span class="number">4.5</span><span class="number">.0</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
+<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><h5 id="查看可用版本"><a href="#查看可用版本" class="headerlink" title="查看可用版本"></a>查看可用版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure>
+<h5 id="安装特定版本"><a href="#安装特定版本" class="headerlink" title="安装特定版本"></a>安装特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install <span class="number">4.5</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h5 id="查看已安装版本"><a href="#查看已安装版本" class="headerlink" title="查看已安装版本"></a>查看已安装版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br></pre></td></tr></table></figure>
+<h5 id="选择特定版本"><a href="#选择特定版本" class="headerlink" title="选择特定版本"></a>选择特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use <span class="number">4.5</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h5 id="卸载特定版本"><a href="#卸载特定版本" class="headerlink" title="卸载特定版本"></a>卸载特定版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm uninstall <span class="number">4.5</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h5 id="将特定版本作为默认版本"><a href="#将特定版本作为默认版本" class="headerlink" title="将特定版本作为默认版本"></a>将特定版本作为默认版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm  alias default <span class="number">4.5</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
 <p>最后可以通过 nvm ls 来查看已安装版本及相关信息。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  ~ nvm ls</div><div class="line">        v0.12.8</div><div class="line">         v4.5.0</div><div class="line">-&gt;       v6.6.0</div><div class="line">         system</div><div class="line">default -&gt; 4.5.0 (-&gt; v4.5.0)</div><div class="line">node -&gt; stable (-&gt; v6.6.0) (default)</div><div class="line">stable -&gt; 6.6 (-&gt; v6.6.0) (default)</div><div class="line">iojs -&gt; N/A (default)</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ nvm ls</span><br><span class="line">        v0<span class="number">.12</span><span class="number">.8</span></span><br><span class="line">         v4<span class="number">.5</span><span class="number">.0</span></span><br><span class="line">-&gt;       v6.6.0</span><br><span class="line">         system</span><br><span class="line">default -&gt; 4.5.0 (-&gt; v4.5.0)</span><br><span class="line">node -&gt; stable (-&gt; v6.6.0) (default)</span><br><span class="line">stable -&gt; 6.6 (-&gt; v6.6.0) (default)</span><br><span class="line">iojs -&gt; N/A (default)</span><br></pre></td></tr></table></figure>
 <p>以前总是纠结是用 npm 还是 nvm 管理 node，还是直接使用官方的安装包</p>
 <p>来进行管理，从目前的情况来看，还是 nvm 的这种方法比较合适！！！</p>
 <hr>
@@ -2166,7 +2167,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-anchor"></i>
   </span>
