@@ -161,182 +161,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/14/asp-net-5-in-linux-with-docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/06/14/asp-net-5-in-linux-with-docker/" class="post-title-link" itemprop="url">在linux上的docker容器中部署asp.net 5程序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-06-14 17:04:05" itemprop="dateCreated datePublished" datetime="2015-06-14T17:04:05+08:00">2015-06-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>我们知道ASP.Net 5 提供了跨平台开发。我们能够在Android、Liunx和Mac系统上开发和部署ASP.Net 5</p>
-<p>程序。微软介绍了第一款官方Docker镜像用来在Linux虚拟机上部署程序。所以这篇文章我们来介绍一下如何</p>
-<p>使用Docker来创建和部署ASP.Net5程序。</p>
-<p>现在第一个问题，什么事Docker？ 所以我们来谈一下。</p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>Docker是微软于2014年10月15日发布一款开源的微软工具，Docker主要的作用就是在任何平台上都能创建、</p>
-<p>加载、运行程序。这是一款非常流行的开源工具，因为它为开发人员和系统管理员在某个平台上创建和运行分发</p>
-<p>程序非常有用。Docker能够使我们在特殊环境下的程序运行在任何环境下。现在很多公司都在IT部署时使用</p>
-<p>Docker，因为它能够使同样的程序装载和运行在包括微软Azure云服务的任何其它操作系统上。</p>
-<img src="/images/2015/06/asplinux/Docker.png" class="">
-
-<p>现在我们学习如何在Linux虚拟机上，使用微软Azure和Docker来创建和部署Asp.Net5程序。程序可以在任何</p>
-<p>类型的操作系统上运行，但是有一点就是要安装特殊版本的系统Docker。如果Docker不合适，将不能在系统中</p>
-<p>运行命令，下面我们来一步一步来实现。</p>
-<h3 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h3><p>我们知道，目前为止Docker只能运行在Linux上，所以我们需要一个安装了Linux系统的机器或者是服务器上</p>
-<p>的Linux虚拟机能够运行运行Docker。安装Docker需要一些步骤，你可以在这个<a target="_blank" rel="noopener" href="https://docs.docker.com/installation/ubuntulinux/">Docker安装文档</a></p>
-<p>中查看安装步骤，或者使用专门的<a target="_blank" rel="noopener" href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-docker-ubuntu-quickstart/">Docker for Azure</a>。假设你已经在Linux系统中安装了Dock。下面继续下面的步骤。</p>
-<h3 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h3><p>想要在云或者Azure中部署程序就需要容器(Container)，所以我们首先创建一个容器镜像，我们的程序将部署</p>
-<p>在这个容器中。Docker容器镜像在容器中上面的位置，所以基本的镜像将会在容器镜像<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/u/microsoft/aspnet/">microsoft／aspnet</a>。</p>
-<p>这个镜像层会存储各种文件夹用来部署程序。有一个注意的是，当我们部署程序的时候，它既不包含任何ASP.Net</p>
-<p>的编译文件也不包含Linux的部署文件，只包含我们程序中的文件，这样能够让我们的部署文件更小一些，更容易</p>
-<p>部署到服务器上。为了创建Docker镜像，我们使用一个名为“Dockerfile”的文件。在这个文件里，说明了我们</p>
-<p>编译镜像需要条件。也就是说这就是我们需要用Docker编译镜像的先决文件。</p>
-<ul>
-<li><p>git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;</a>:aspnet&#x2F;Home.git aspnet-Home</p>
-</li>
-<li><p>cd aspnet&#x2F;samples&#x2F;HelloWeb</p>
-</li>
-</ul>
-<p>这个目录包含下面这些文件：</p>
-<ul>
-<li><p>startup.cs</p>
-</li>
-<li><p>image.jpg</p>
-</li>
-<li><p>project.json</p>
-</li>
-</ul>
-<p>现在我们在当前目录下创建一个文件，就是我们前面提到的 Dockerfile，并且包括以下内容：</p>
-<ul>
-<li><p>From microsoft&#x2F;aspnet</p>
-</li>
-<li><p>COPY .&#x2F;app</p>
-</li>
-<li><p>WORKDIR &#x2F;app</p>
-</li>
-<li><p>RUN[“kpm”,”restore”]</p>
-</li>
-<li><p>EXPOSE 5004</p>
-</li>
-<li><p>ENTRYPOINT[“k”,”kestrel”]</p>
-</li>
-</ul>
-<p>下面我们来一一说明这些都是什么意思，Dockerfile的内容包括六个文件，每个文件都很重要，所以我们来看</p>
-<p>一下：</p>
-<p>第一个内容：From microsoft&#x2F;aspnet 告诉Docker我们会使用官方ASP.Net镜像。</p>
-<p>第二个内容：COPY告诉Docker我们会使用当前目录下的内容，并拷贝这个目录下的内容到&#x2F;app目录下。</p>
-<p>第三个内容：WORKDIR高速容器，数据会移动到&#x2F;app 目录下。</p>
-<p>第四个内容:RUN告诉Docker，请运行kpm restore 命令来安装程序所需内容，并确定这个命令在第一次运行</p>
-<p>程序之前都是一直在运行的。</p>
-<p>第五个内容：EXPOse高速Docker，当前镜像使用的服务端口在5004</p>
-<p>最后一个内容：ENCRYPTION提供的kestral命令行来启动容器，并保证容器运行正常不出错。</p>
-<h3 id="步骤3"><a href="#步骤3" class="headerlink" title="步骤3"></a>步骤3</h3><p>完成上面那些步骤并设置好Dockerfile之后，我们的目录应该被改变为下面的结构：</p>
-<ul>
-<li><p>Dockerfile</p>
-</li>
-<li><p>startup.cs</p>
-</li>
-<li><p>image.jpg</p>
-</li>
-<li><p>project.json</p>
-</li>
-</ul>
-<p>下面我们就要编译Docker镜像，为了编译Docker镜像，我们需要运行下面给出的命令，这些命令必须在当前</p>
-<p>目录下运行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker build -t myapp</span><br></pre></td></tr></table></figure>
-<p>如果你在目录下运行该命令，它会根据Dockerfile编译一个镜像， 就是 myapp。所以无论你什么时候使用</p>
-<p>这个处理命令来改变你的程序，都会编译一个新的镜像。 如果我们想在linux虚拟机上的Docker镜像中看到我</p>
-<p>们的程序，就需要运行下面的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker images</span><br></pre></td></tr></table></figure>
-
-<img src="/images/2015/06/asplinux/Dockerfiles.png" class="">
-
-<p>现在我们就能看到我们的程序镜像和ASP.NET镜像已经存在目录下了，下面就可以部署我们的程序了。</p>
-<h3 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h3><p>下面一步是运行容器，在Linux虚拟机上，在Docker中运行以下命令来启动容器。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker run -t -d -p 80:5004 myapp</span><br></pre></td></tr></table></figure>
-
-<p>-t 是表示附加一个假的给容器的开关</p>
-<p>-d 是表示如果有其它进程运行在前台的时候，容器转到后台运行。</p>
-<p>-p 是表示映射 80端口到虚拟机 5004 端口的开关。</p>
-<p>这里是表示从80端口与容器5004端口创建链接。</p>
-<p>最终 myapp 镜像容器就要被启动了，下面我们的容器应该是启动状态，如果我们看运行容器的信息，会看到</p>
-<p>下面命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker ps</span><br></pre></td></tr></table></figure>
-
-<p>信息应该如图所示：</p>
-<img src="/images/2015/06/asplinux/containerinfo.png" class="">
-
-<p>现在，我们的容器应该是运行状态，现在我们来完成其它任务。我们仅仅是完成了Azure VM的端口映射。所以</p>
-<p>我们要去Azure官网，映射公共端口80到我们自己linux虚拟机上的80端口。因为我们要在我们本地运行程序。</p>
-<p>现在，我们在浏览器中的地址栏中输入：”<a target="_blank" rel="noopener" href="http://your-cloud-service-name.cloudapp.net/">http://your-cloud-service-name.cloudapp.net:80/</a>“,</p>
-<img src="/images/2015/06/asplinux/output.png" class="">
-
-<p>这就是说明，我们在linux虚拟机上的Docker中运行程序成功了。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里就是在linux虚拟机上安装Docker文件的所有知识点，我希望这篇文章能够那些想要在linux环境下用</p>
-<p>Docker部署程序的读者一些帮助，Docker是ASP.NET 5 的一部分，所以将来微软会对Docker做一些改进。</p>
-<p>Docker能够节省时间，并且最重要的是它能帮助你在任何系统下都能快速的部署你的程序。</p>
-<hr>
-<p>此文为翻译文章，原文地址：<a target="_blank" rel="noopener" href="http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/">http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/</a></p>
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/12/the-ios-apprentice-one-bull-eyes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1584,10 +1408,113 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/18/how-to-install-nodejs-on-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/05/18/how-to-install-nodejs-on-mac/" class="post-title-link" itemprop="url">在Mac上安装Nodejs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-05-18 20:44:24" itemprop="dateCreated datePublished" datetime="2015-05-18T20:44:24+08:00">2015-05-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>node.js 作为常规解释javascript浏览器的替代品，允许你以命令行方式解释javascript，而且在web开发方面已经成为了一个现代化的工作流。使用</p>
+<p>node.js 的管理包工具NPM能够对nodejs进行各种工具包的管理，其中相当多web开发重要包里的一个就是<a target="_blank" rel="noopener" href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/">grunt.js</a></p>
+<p>想要在OSX10.10 Yosemite中安装node.js, 你可以下载二进制预编译包，这种方法比较方便而友好。打开<a target="_blank" rel="noopener" href="http://nodejs.org/">http://nodejs.org/</a>,</p>
+<p>点击安装，下载最新的安装包。</p>
+<img src="/images/2015/05/osxnodejs.png" class="">
+
+<p>打开下载的.dmg 文件，按照提示安装的话，node和npm都会自动安装。npm 就是 Node Package Manager,其实就是nodejs的各种库的安装管理工具。</p>
+<img src="/images/2015/05/osxnodejsinstall.png" class="">
+
+
+<p>安装完成后确保 &#x2F;usr&#x2F;local&#x2F;bin 在你的path路径下，打开命令行工具输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eecho $PATH</span><br></pre></td></tr></table></figure>
+<p>如果没有存在，请在home目录下的.bash_profile 或者 .bashrc 中任选一个<a target="_blank" rel="noopener" href="http://coolestguidesontheplanet.com/add-shell-path-osx/">添加</a>。</p>
+<p>安装完成后，检测是否安装正确。打开命令行工具，输入 node，开始javascript命令模式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node</span><br><span class="line">&gt; console.log(&#x27;hello node&#x27;);</span><br><span class="line">hello node</span><br><span class="line">undefined</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>退出nodejs的编辑模式，按两次‘control+c’即可。</p>
+<p>如果你的机器已经安装了较早版本的nodejs,在安装新版的时候会直接替换旧版本。<br>也可以在命令行中检测node 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>####给nodejs安装库包<br>目前nodejs已经有很多第三方流行实用的库包，比如 <a target="_blank" rel="noopener" href="http://coolestguidesontheplanet.com/install-gruntjs-osx-10-9-mavericks/">grunt.js</a>, 也可以通过npm命令来查看完整的列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm search</span><br></pre></td></tr></table></figure>
+
+<p>将会返回一个完整的可用的库包列表，使用install来进行安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install easyimage</span><br></pre></td></tr></table></figure>
+<p>查看已安装库包，使用ls</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure>
+
+<p>升级库包使用 update</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure>
+
+<p>但是，如果想要升级nodejs，你就必需从官网下载最新版本<a target="_blank" rel="noopener" href="http://nodejs.org/">nodejs.org</a>。</p>
+<p><a target="_blank" rel="noopener" href="http://lookfour.me/blog/2015/05/13/how-to-install-nodejs-on-windows/">如何在Windows下安装Node.js</a></p>
+<p><a target="_blank" rel="noopener" href="http://lookfour.me/blog/2015/05/18/how-to-install-nodejs-on-linux/">如何在Linux下安装Node.js</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/">原文地址：http://coolestguidesontheplanet.com/installing-node-js-on-osx-10-10-yosemite/</a></p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1653,20 +1580,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">73</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

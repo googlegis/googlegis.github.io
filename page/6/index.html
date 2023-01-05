@@ -161,125 +161,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/11/use-section-in-html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/07/11/use-section-in-html/" class="post-title-link" itemprop="url">使用 section 注册 Js 脚本和 Css 样式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-07-11 22:09:13" itemprop="dateCreated datePublished" datetime="2016-07-11T22:09:13+08:00">2016-07-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xamarin/" itemprop="url" rel="index"><span itemprop="name">Xamarin</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>我们一般写 JavaScript 脚本，都会直接写在页面中，比如我们将一个</p>
-<p>alert 的提示框写在 layout</p>
-<p>的页面中，这样每个以此为模版的页面都会弹出一个提示框！</p>
-<img src="/images/2016/0711/2016-07-11-1.png" class="">
-
-<img src="/images/2016/0711/2016-07-11-2.png" class="">
-
-
-<p>下面，我们看一下如何使用 section 在 layout 中注册该段代码。</p>
-<p>首先，我们将代码段以 section 名称的样式写在 index 的页面中，</p>
-<img src="/images/2016/0711/2016-07-11-4.png" class="">
-
-<p>然后在 layout 中注册该 section 名称。</p>
-<img src="/images/2016/0711/2016-07-11-5.png" class="">
-
-<p>然后再运行代码，出现如下提示，这说明我们注册 section 中的代码</p>
-<p>段成功了！</p>
-<img src="/images/2016/0711/2016-07-11-3.png" class="">
-
-<p>RendeSection 是注册 section 的函数，参数1标识 section</p>
-<p>的名称， required 标识该 section 是否是必须的。如果该参数标识为</p>
-<p> true ，则每个以 layout 为模版的页面都必须要有 PartJavaScript</p>
-<p>的 section 代码段；如果为 false ，以 layout 的模版的页面，</p>
-<p>可有可无以 PartJavaScript 的 section代码段。</p>
-<p>当然了，section 标识不仅仅能够写 JavaScript 代码段那么简单，</p>
-<p>添加引用的 js 库和 css 库也同样适用。</p>
-<p>首先在 index 中注册 jquery 的 js 库引用，使用名称为 RenderPartJs</p>
-<p>的 section。</p>
-<img src="/images/2016/0711/2016-07-11-6.png" class="">
-
-<p>然后在 layout 的 head 部分注册名称 RenderPartJs 的 section。</p>
-<img src="/images/2016/0711/2016-07-11-7.png" class="">
-
-<p>然后运行代码，发现弹出提示框，说明引用成功！</p>
-<img src="/images/2016/0711/2016-07-11-8.png" class="">
-
-<p>这里说明一个问题，就是 section 的位置在哪里并不重要，重要的是注册</p>
-<p>section 的位置。</p>
-<p>如果是在 head 部位注册 section，就是在 head部位参与了 js 库的引用。</p>
-<p>这种方法同样适用注册 css 样式。</p>
-<p>如图，在 index 注册名为 RenderPartStyle 的 css 样式。</p>
-<img src="/images/2016/0711/2016-07-11-9.png" class="">
-
-<p>然后在 layout 中进行注册。</p>
-<img src="/images/2016/0711/2016-07-11-10.png" class="">
-
-<p>运行代码后，同样弹出提示框，并且页面的字体样式发生了改变。说明我们注册</p>
-<p>引用的 css 文件起作用了。</p>
-<p>如果在网页中查看页面源码的话，就能够看到页面里引用的 js 库和 css 库。</p>
-<img src="/images/2016/0711/2016-07-11-11.png" class="">
-
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1135,10 +1016,126 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/05/use-vscode-to-build-aspnet5-web-application/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/12/05/use-vscode-to-build-aspnet5-web-application/" class="post-title-link" itemprop="url">在 Mac 上使用VSCode开发asp.net5项目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-12-05 17:06:30" itemprop="dateCreated datePublished" datetime="2015-12-05T17:06:30+08:00">2015-12-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>1.安装 vscode</p>
+<p>vscode:  <a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?LinkID=534106">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
+<p>DNX-1.0.0-rc1-update1.pkg:<br><a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?LinkId=703940">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
+<hr>
+<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby –e <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.安装nvm</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>在 .profile 文件中添加路径。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="string">&quot;$PATH:$HOME/.nvm&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=<span class="string">&quot;$HOME/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;$NVM_DIR/nvm.sh&quot;</span> ] &amp;&amp; . <span class="string">&quot;$NVM_DIR/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
+
+<p>3.安装node</p>
+<p>查看有多少版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure>
+
+<p>安装对应的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+
+<p>使用对应的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+
+<p>设置全局的版本，不然在另外的command中node命令不起作用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+
+<p>4.安装Yeoman</p>
+<p>安装模版生成器，就是用yo命令来生成各个aspnet的项目模版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g yo</span><br></pre></td></tr></table></figure>
+
+<p>5.安装generator</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g generateor-aspnet</span><br></pre></td></tr></table></figure>
+
+<p>6.创建项目模版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo aspnet</span><br></pre></td></tr></table></figure>
+
+<p>这里通过上下键来选择创建的类型。</p>
+<p>7.切换到当前项目目录</p>
+<p>项目依赖项</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu restore</span><br></pre></td></tr></table></figure>
+<p>8.运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnx web</span><br></pre></td></tr></table></figure>
+
+<p>9.查看网页</p>
+<p>在浏览器中输入 localhost:5000  出现Hello World! 说明创建成功。</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1204,20 +1201,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">73</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
