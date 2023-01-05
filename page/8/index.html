@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/19/save-and-load-data/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/08/01/oh-my-feather/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +175,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/19/save-and-load-data/" class="post-title-link" itemprop="url">Swift 2.0 纯学习之旅-- 10.Save and loading 数据</a>
+            <a href="/2014/08/01/oh-my-feather/" class="post-title-link" itemprop="url">我得了脂肪肝</a>
         </h2>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-19 23:16:33" itemprop="dateCreated datePublished" datetime="2015-07-19T23:16:33+08:00">2015-07-19</time>
+              <time title="创建时间：2014-08-01 09:24:07" itemprop="dateCreated datePublished" datetime="2014-08-01T09:24:07+08:00">2014-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
                 </span>
             </span>
 
@@ -209,36 +209,24 @@
 
       
           <span id="more"></span>
-<p>当然，一个真正的程序不仅仅前面讲到的一些内容。如果你的程序关闭之后再重启呢？</p>
-<p>前面写入的内容就会全部消失了，用户还得要重新再写一遍，可以预见，哪个用户都不愿意用这样</p>
-<p>的软件。所以我们要学会保存数据和加载数据。</p>
-<h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><p>在 ChecklistViewController.swift 中添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func documentsDirectory() -&gt; String &#123;</span><br><span class="line"></span><br><span class="line">  let paths = NSSearchPathForDirectoriesInDomains(</span><br><span class="line"></span><br><span class="line">              .DocumentDirectory,.UserDomainMask,true) <span class="keyword">as</span>! [String]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> paths[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func dataFilePath() -&gt; String &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> documentsDirectory().stringByAppendingPathComponent(<span class="string">&quot;Checklist.plist&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>定义了一个系统路径，并设置了一个名为 Checklist.plist 的文件。</p>
-<p>在 ChecklistViewController.swift 的 init(coder) 函数中，添加语句：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Documents folder is \(documentsDirectory())&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Data file is \(dataFilePath())&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>添加函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func saveChecklistItems()&#123;</span><br><span class="line"></span><br><span class="line">  let data = NSMutableData()</span><br><span class="line"></span><br><span class="line">  let archiver = NSKeyedArchiver(forWritingWithMutableData:data)</span><br><span class="line"></span><br><span class="line">  archiver.encodeObject(items,forKey:<span class="string">&quot;ChecklistItems&quot;</span>)</span><br><span class="line"></span><br><span class="line">  archiver.finishEncoding()</span><br><span class="line"></span><br><span class="line">  data.writeToFile(dataFilePath(),atomically: true)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后在 itemDetailViewController(didFinishAddingItem)、ItemDetailViewController、</p>
-<p>tableView(commitEditingStyle)、tableView(didSelectRowAtIndexPath) 函数中添加  </p>
-<p> saveChecklistItems() 函数。</p>
-<p> 然后修改 ChecklistItem.swift 中的类头：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistItem</span>:NSObject,NSCoding &#123;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后在 ChecklistItem.swift 中添加函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func encodeWithCoder(aCoder: NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">  aCoder.encodeObject(text,forKey:<span class="string">&quot;Text&quot;</span>)</span><br><span class="line"></span><br><span class="line">  aCoder.encodeBool(checked,forKey:<span class="string">&quot;checked&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">required init(code aDecoder: NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override init() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h3><p>在 ChecklistItem.swift 中修改函数 init(coder)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">required init(coder aDecoder:NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">  text = aDecoder.decoderObjectForKey(<span class="string">&quot;Text&quot;</span>) <span class="keyword">as</span>! String</span><br><span class="line"></span><br><span class="line">  checked = aDecoder.decoderBoolForKey(<span class="string">&quot;Checked&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init()</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在 ChecklistViewController.swift 修改函数 init(coder):</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">required init(coder aDecoder:NSCoder)&#123;</span><br><span class="line"></span><br><span class="line">  items = [ChecklistItem]()</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init(coder:aDecoder)</span><br><span class="line"></span><br><span class="line">  loadChecklistItems()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func loadChecklistItems() &#123;</span><br><span class="line"></span><br><span class="line">  let path = dataFilePath()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> NSFileManager.defaultManager().fileExistsAtPath(path)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> let data = NSData(contentsOfFile:path)&#123;</span><br><span class="line"></span><br><span class="line">      let unarchiver = NSKeyedUnarchiver(forReadingWithData:data)</span><br><span class="line"></span><br><span class="line">      items = unarchiver.decoderObjectForKey(<span class="string">&quot;ChecklistItems&quot;</span>)</span><br><span class="line"></span><br><span class="line">                                      <span class="keyword">as</span>! [ChecklistItem]</span><br><span class="line"></span><br><span class="line">      unarchiver.finishDecoding()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>个人原创，转载请注明出处：<a target="_blank" rel="noopener" href="https://www.github.com/googlegis">GitHub</a></p>
+<p>病从气上出，不出所料，得病了。这个是我想都不敢想的病，竟然会得脂肪肝。</p>
+<p>总结一下可能的几个原因：</p>
+<ol>
+<li><p>心情：已经很长一段时间没用开心过了。心情是极度的压抑和抑郁。</p>
+</li>
+<li><p>饮食：自从丈母娘来到之后，老婆想着每天都要吃点好的，所以基本上每天晚上<br> 都要吃肉，而且一吃就是吃三年，如果白天上班的时候再吃肉的话，基本上每天就是两顿肉，天天如此，饮食结构坏掉了。而且丈母娘有个坏习惯，她以为你吃的多，吃撑了是好事，所以每次必做多，每次吃饭必劝饭，很多时候，为了照顾她的颜面，不自觉的会多吃了一点；她认为如果不做肉吃，炒菜多放油也是能够提供营养的，所以无论炒什么菜，都是油当先。<br> 也怪自己立场不定，为了照顾他人颜面，必定会对自己造成伤害。</p>
+</li>
+<li><p>运动：锻炼都是断断续续，没有坚持下来，也从来没有考虑过自己会得病。跑步跑了一段时间，没有坚持下来，仰卧起坐一段时间，没有坚持下来。好多时候都是自己放弃了。都是自己放弃了。</p>
+</li>
+</ol>
+<p>书到用时方恨少，病到身上才知多。</p>
+<p>决定从几个方面做改善：</p>
+<ol>
+<li>心情：把工作和锻炼放在第一位，不把注意力放在生活琐事上，这样就能转移注意力。必要的时候才会专门讨论这些事情。</li>
+</ol>
+<p>2.饮食：坚持健康的饮食习惯，坚持自己的原则。不因为别人的言语而改变。</p>
+<p>3.运动：暴走，从家里去公司约5公里，每天来回一次10公里。周末到世纪公园来回15公里。</p>
+<p>一个月后看情况。</p>
 
       
     </div>
@@ -258,7 +246,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/18/edit-item/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -272,7 +260,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/18/edit-item/" class="post-title-link" itemprop="url">Swift 2.0 纯学习之旅--9.Edit Items</a>
+            <a href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" class="post-title-link" itemprop="url">解决搜狗输入法引起yosemite卡死在登录界面</a>
         </h2>
 
         <div class="post-meta">
@@ -282,7 +270,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-18 23:16:06" itemprop="dateCreated datePublished" datetime="2015-07-18T23:16:06+08:00">2015-07-18</time>
+              <time title="创建时间：2014-07-10 11:30:05" itemprop="dateCreated datePublished" datetime="2014-07-10T11:30:05+08:00">2014-07-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,7 +278,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -306,65 +294,29 @@
 
       
           <span id="more"></span>
-<p>还记得上一节中有个说法对于编程人员来说，逻辑流程无外乎添加、修改、删除的说法乎？</p>
-<p>上面已经完成了添加和删除(删除很简单，一个函数就搞定了！)，那么我们就着重讲一下修改！</p>
-<h3 id="修改界面"><a href="#修改界面" class="headerlink" title="修改界面"></a>修改界面</h3><p>选择 View2 中选择 Table view cell ,在 Attributes inspector 中，设置 Accessory</p>
-<p>为 Detail Disclosure。并且放一个 Label 在它的左边，设置为以下属性：</p>
-<img src="/images/2015/07/tableview/QQ20150719-12.png" class="">
+<p>对着10.10流口水差不多一个多月了，从发布会那天起就开始想要装个系统。</p>
+<p>这么长时间过去了，在今天凌晨荷兰对阵阿根廷的那场无聊的比赛中，我从网上</p>
+<p>找来资源开始安装。</p>
+<p>从10.9.4冒险直接升级安装，反正球赛无聊，无聊到我想如果装叉了就想重新安装</p>
+<p>系统的冲动。</p>
+<p>还好，下载了一个 DP1安装后，一路Next，重启升级，在AppStore中系统升级，</p>
+<p>再安装重启，再到AppStore中升级，可以直接升级DP3. 貌似ok。 点击几个别人说</p>
+<p>的有bug的软件，好像还都启动的不错哦。而且重启了几次都可以进入。</p>
+<p>6.30球赛踢完睡觉，一场郁闷的比赛。</p>
+<p>11.起床，再去进系统，发现卡死在那个登陆框那里了。</p>
+<p>鼠标可以移动，形状是风火轮一直转，密码输入框无法获得焦点，更不用说按回车</p>
+<p>了。心里黯然，这下叉了。重启了几次，都是卡在这里，心里有了重新安装的冲</p>
+<p>动。</p>
+<p>上厕所期间，用手机搜索了一下 yosemite 10.10 被卡在登陆框的文章，还真有而且</p>
+<p>很多。说法不一，有的说是直接升级造成的，有的说法是搜狗输入法造成的。</p>
+<p>联想到windows登录的时候，都可以在登录界面切换输入法，莫不是这个也是这种</p>
+<p>原因，在登陆窗口想加载输入法信息，结果搜狗给卡成狗屎了。</p>
+<p>本着最小破坏原则，决定先试一下修复输入法的方案，实在不行，就再重新安装。</p>
+<p>在网上搜了一下，找到这个：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">找到解决办法了，试了，可以用，转自威锋</span><br><span class="line"></span><br><span class="line">查明是第三方输入法引起的问题，我用的是搜狗输入法，所以把搜狗卸载就好了。（注意是卸载，不是单纯的从输入源里移除）</span><br><span class="line">操作的思路是，首先要进入计算机，才能进行操作。</span><br><span class="line"></span><br><span class="line">办法是开机进入单机模式，删除苹果一个文件，让系统认为该计算机还没有被配置，开机后直接进入配置计算机和用户的界面，新建立一个用户，就可以进入桌面删除万恶的输入法了。</span><br><span class="line"></span><br><span class="line">首先开机的时候按 Command+s;</span><br><span class="line"></span><br><span class="line">进入命令提示符画面后</span><br><span class="line"></span><br><span class="line">1， 输入 sbin/mount -uaw 回车</span><br><span class="line">这里注意看回车后的提示，只要不是not found之类的就可以了</span><br><span class="line"></span><br><span class="line">2，输入 rm /var/db/.AppleSetupDone 回车</span><br><span class="line">这里注意rm后面有空格。这里回车后可能无提示，如果有，只要不是not found一类的就可以了，如果老提示not found 仔细检查有没有弄错，rm前面加／试试看等等。</span><br><span class="line"></span><br><span class="line">字母符号别打错</span><br><span class="line"></span><br><span class="line">3，输入 reboot 回车重启</span><br><span class="line"></span><br><span class="line">重启后配置建立完用户就进入系统了</span><br><span class="line"></span><br><span class="line">下载一个搜狗输入法的DMG，打开后选择卸载搜狗输入法。</span><br><span class="line"></span><br><span class="line">重启，删除刚才为了进入系统新配置的账户，天下大吉。</span><br></pre></td></tr></table></figure>
 
-<p>Text: √</p>
-<p>Font：System Bold, size 22</p>
-<p>Tag:1001</p>
-<img src="/images/2015/07/tableview/QQ20150719-13.png" class="">
-
-<p>适当调整 text label 使得它即压不住前面的的 checkLabel 也压不住后面的 Detail</p>
-<p>Disclosure。</p>
-<p>修改 ChecklistViewController.swif 中的 configureCheckmarkForCell() 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func configureCheckmarkForCell(cell: UITableViewCell,</span><br><span class="line"></span><br><span class="line">                              withChecklistItem item: ChecklistItem) &#123;</span><br><span class="line"></span><br><span class="line">      let label = cell.viewWithTag(<span class="number">100</span>) <span class="keyword">as</span>! UILabel</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> item.checked &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;√&quot;</span></span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行一下查看效果：</p>
-<p>选择 ChecklistViewController（viewController2） 中的 tableviewcell ，ctrl + 拖动</p>
-<p>指向右边的 NavigationViewController(viewController3),在弹出框的 Accessory Action</p>
-<p>中选择 present modally， 注意： 不是 Selection Segue.</p>
-<p>在新建的 segue 的 Identifier 中设置为 EditItem.</p>
-<img src="/images/2015/07/tableview/QQ20150719-14.png" class="">
-
-<p>在 AddItemViewController.swift 中，添加代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var itemToEdit: ChecklistItem?</span><br><span class="line"></span><br><span class="line">override func viewDidLoad()&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">  tableView.rowHeight = <span class="number">44</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    title = <span class="string">&quot;Edit Item&quot;</span></span><br><span class="line"></span><br><span class="line">    textField.text = item.text</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后修改 ChecklistViewController.swift 中的 prepareForSegue() 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func prepareForSegue(segue: UIStoryboardSegue,</span><br><span class="line"></span><br><span class="line">                             sender: AnyObject) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> segue.identifier == <span class="string">&quot;AddItem&quot;</span> &#123;</span><br><span class="line"></span><br><span class="line">      ...</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> segue.identifier == <span class="string">&quot;EditItem&quot;</span> &#123;</span><br><span class="line"></span><br><span class="line">      let navigationController = segue.destinationViewController</span><br><span class="line"></span><br><span class="line">                                  <span class="keyword">as</span>! UINavigationController</span><br><span class="line"></span><br><span class="line">      let controller = navigationController.topViewController <span class="keyword">as</span>!</span><br><span class="line"></span><br><span class="line">                                   AddItemViewController</span><br><span class="line"></span><br><span class="line">      controller.delegate = self</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> let indexPath = tableView.indexPathForCell(</span><br><span class="line"></span><br><span class="line">                                    sender <span class="keyword">as</span>! UITableViewCell) &#123;</span><br><span class="line"></span><br><span class="line">                controller.itemToEdit = items[indexPath.row]</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改 AddItemViewController.swift 中的 viewDidLoad() 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func viewDidLoad() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">  tableView.rowHeight = <span class="number">44</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    title = <span class="string">&quot;Edit Item&quot;</span></span><br><span class="line"></span><br><span class="line">    textField.text = item.text</span><br><span class="line"></span><br><span class="line">    doneBarButton.enabled = true</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里与前面的不同，只在于把 doneBarButton 的 enabled 设为 true，因为你要修改一个item</p>
-<p>初始化的时候，item 的 text 已经在 textField 中显示出来。</p>
-<p>在 AddItemViewController.swift 中的 protocol 中添加对应协议。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func addItemViewController(controller:addItemViewController,</span><br><span class="line"></span><br><span class="line">                          didFinishEditingItem item:ChecklistItem)</span><br></pre></td></tr></table></figure>
-
-<p>然后在 AddItemViewController.swift 中，修改 done() 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done() &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    delegate?.addItemViewController(self,didFinishEditingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    let item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    item.checked = false</span><br><span class="line"></span><br><span class="line">    delegate?.addItemViewController(self,didFinishAddingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在 ChecklistViewController.swift 中添加对应的协议函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func addItemViewController(controller: AdditemViewController,</span><br><span class="line"></span><br><span class="line">                          didFinishEditingItem item:ChecklistItem) &#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> let index = items.indexOf(item) &#123;</span><br><span class="line"></span><br><span class="line">        let indexPath = NSIndexPath(forRow: index,inSection: <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</span><br><span class="line"></span><br><span class="line">          configureTextForCell(cell,withChecklistItem:item)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     dismissViewControllerAnimated(true,completion:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>由于这里用到 indexOf 这样的查询比较函数，而且这类函数只能是针对对象才能使用，</p>
-<p>所以要修改 ChecklistItem 的父类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistItem</span>: NSObject</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>我们已经有 AddItem 和 EditItem 两个操作方式，但是对应的swift 文件还是 AddItem….</p>
-<p>还有一些其他的函数命名方式都是以 AddItem… 开头，这个代码可读性就大大降低了啊。所以</p>
-<p>我们要重构。这里的重构，只是简单的修改，当然不是修改数据结构啊，数据模型啊… 那些大手术。</p>
-<p>其实在 Objective-C 中，有个 Edit-&gt;Refactor-&gt;Rename 方式，但是目前的 Xcode 还不支持</p>
-<p>在 swift 语言下进行重构。</p>
-<p>现在的解决方式：</p>
-<p>在 Search Navigator 中，点击 Find ，切换到 Replace 。 选择 Matching Case, 分别替换</p>
-<p>AddItemViewController –&gt; ItemDetailViewController, addItemViewController–&gt;</p>
-<p>itemDetailViewController 。</p>
-<img src="/images/2015/07/tableview/QQ20150719-15.png" class="">
-
-
+<p>终于可以进来了，谢天谢地。</p>
+<p>程序员这种折腾的精神，就是那种不作就不会的精神。</p>
 <hr>
 
       
@@ -385,7 +337,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/17/checklist-and-checkitem/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/09/germany-in-the-world-cup-2014/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -399,7 +351,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/17/checklist-and-checkitem/" class="post-title-link" itemprop="url">Swift 2.0 纯学习之旅--8.checklist and checkitem </a>
+            <a href="/2014/07/09/germany-in-the-world-cup-2014/" class="post-title-link" itemprop="url">世界杯中的德国队</a>
         </h2>
 
         <div class="post-meta">
@@ -409,7 +361,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-17 23:15:49" itemprop="dateCreated datePublished" datetime="2015-07-17T23:15:49+08:00">2015-07-17</time>
+              <time title="创建时间：2014-07-09 08:06:58" itemprop="dateCreated datePublished" datetime="2014-07-09T08:06:58+08:00">2014-07-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -417,7 +369,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
                 </span>
             </span>
 
@@ -433,166 +385,40 @@
 
       
           <span id="more"></span>
-<p>既然有了Checklist，就要想方设法的完善它的逻辑才能算的上一个完整的应用，对于我们程序来说</p>
-<p>逻辑上的流程不外乎三种，添加、修改、删除。</p>
-<p>下面我要讨论往这三种逻辑流程。</p>
-<h3 id="导航控件"><a href="#导航控件" class="headerlink" title="导航控件"></a>导航控件</h3><p>打开 Main.storyboard , 选择 Checklist View Controller ，然后选择菜单中 Editor -&gt;</p>
-<p>Embed In -&gt; Navigation Controller 。然后就自动添加了一个 NavigationViewController</p>
-<img src="/images/2015/07/tableview/QQ20150718-01.png" class="">
+<p>今早老婆问我，最近有没有给世界杯写点文章，我说还没有</p>
+<p>老婆说还是写点吧，毕竟你还是看球的。</p>
+<hr>
+<p>凌晨的世界杯 德国-巴西  7:1 .</p>
+<p>谁能想到，世界上还有人敢菜巴西7个球。</p>
+<p>其实对德国队偏爱有加，就算他们在没落的时期，98年的时候还不怎么看球，只是听闻有足球世界杯这回事，知道那个时候有个贝克汉姆，知道德国的三驾马车已经没落。后来上大学，正好赶上2002年的韩日世界杯，热血青年加上平时也和同学踢球，就看球看了个天昏地暗，那个时候的德国队应该是属于巴拉克和卡恩的年代。没落了。</p>
+<p>但是也就是从卡恩和巴拉克身上开始喜欢德国队，坚韧刚强。</p>
+<p>2006年正好赶上事业的上升期，把世界杯这茬给忘了，翻资料来看，那个时候，</p>
+<p>拉姆、波多尔斯基、博罗夫斯基、施奈德等已经在和巴拉克&#x2F;卡恩那个阶段的人开始交替了。</p>
+<p>2010年世界杯，就会发现，德国队的阵容完全变了，这里面只有克洛泽是老人了，但是他永远都是一个年轻的面容，诺伊尔&#x2F;拉姆&#x2F;施魏因斯泰格&#x2F;厄齐尔&#x2F;戈麦斯&#x2F;穆勒，</p>
+<p>这些现在牛逼的人2010年就出现在世界杯上，那时的我也在想，这不是娃娃军团吗？这来打什么球啊？明知他们不会走很远，但是还是默默的注视着他们，等4年之后吧。</p>
+<p>4年之后这些人就牛逼了。</p>
+<p>2014年世界杯，上届世界杯上的那些人又回来了。</p>
+<p>踢巴西 7:1, 看着巴西球迷的哭泣，真的感到可怜，可是足球就是战场，没有人会怜悯</p>
+<p>你，就像当年没有人会怜悯德国队一样。</p>
+<p>联想到前面已经走的那几个球队，西班牙&#x2F;英格兰&#x2F;意大利&#x2F;法国，有的还是老弱病残占</p>
+<p>据主力不肯下来，有的则是缺乏血液循环，后续跟不上，再则是新手还没有大赛经验</p>
+<p>需要时间和经历来磨练。</p>
+<p>这么看来，后面无论是阿根廷或者荷兰，还真的不是德国的个了。</p>
+<p>好吧。德国队，这次你牛逼起来吧。也不枉我支持你12年了。</p>
+<p>已经走了的那几个国家队，回去更换血液，积累经验，下次再来吧。</p>
+<p>巴西，这个国家不想说，从小罗不踢的那个时候就开始走下坡路，足球王国也毕竟是</p>
+<p>皇帝的新装，缺一两个人整个球队就溃不成军，德国队则是那个说实话的小孩。</p>
+<p>足球只会用进球来说话。</p>
+<p>足球，两个字，进对方的球门，对方进自己的球门。</p>
+<p>进对方球门的队伍留下，进自己球门的队伍出去。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2014巴西世界杯德国23人名单:</span><br><span class="line"></span><br><span class="line">守门员：诺伊尔（拜仁）、魏登费勒（多特）、齐勒（汉诺威）</span><br><span class="line"></span><br><span class="line">后卫：博阿滕（拜仁）、杜尔姆（多特）、格罗斯克罗伊茨（多特）、赫韦德斯（沙尔克）、胡梅尔斯（多特）、拉姆（拜仁）、默特萨克（阿森纳）</span><br><span class="line"></span><br><span class="line">中场：德拉克斯勒（沙尔克）、京特尔（弗赖堡）、格策（拜仁）、赫迪拉（皇马）、克拉默（门兴）、克罗斯（拜仁）、穆勒（拜仁）、厄齐尔（阿森纳）、波多尔斯基（阿森纳）、罗伊斯（多特）、许尔勒（切尔西）、施魏因斯泰格（拜仁）</span><br><span class="line"></span><br><span class="line">前锋：克洛泽（拉齐奥）</span><br></pre></td></tr></table></figure>
 
-<img src="/images/2015/07/tableview/QQ20150718-02.png" class="">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2010</span>年南非世界杯参赛队之德国</span><br><span class="line"></span><br><span class="line">    德国<span class="number">23</span>人名单：</span><br><span class="line"></span><br><span class="line">    门将：<span class="number">1</span>-诺伊尔(沙尔克04)、<span class="number">12</span>-维泽(不来梅)、<span class="number">22</span>-布特(拜仁)</span><br><span class="line"></span><br><span class="line">    后卫：<span class="number">3</span>-弗里德里希(柏林赫塔)、<span class="number">17</span>-默特萨克(不来梅)、<span class="number">20</span>-杰罗姆-博阿滕(汉堡)、<span class="number">16</span>-拉姆(拜仁)、<span class="number">5</span>-塔什彻(斯图加特)、<span class="number">14</span>-巴德施图伯(拜仁)、<span class="number">4</span>-奥戈(汉堡)、<span class="number">2</span>-杨森(汉堡)</span><br><span class="line"></span><br><span class="line">    中场：<span class="number">6</span>-赫迪拉(斯图加特)、<span class="number">18</span>-克罗斯(勒沃库森)、<span class="number">7</span>-施魏因斯泰格(拜仁)、<span class="number">8</span>-厄齐尔(不来梅)、<span class="number">21</span>-马林(不来梅)、<span class="number">15</span>-特罗霍夫斯基(汉堡)</span><br><span class="line"></span><br><span class="line">    前锋：<span class="number">19</span>-卡考(斯图加特)、<span class="number">23</span>-戈麦斯(拜仁)、<span class="number">11</span>-克洛泽(拜仁)、<span class="number">9</span>-基斯林(勒沃库森)、<span class="number">10</span>-波多尔斯基(科隆)、<span class="number">13</span>-托马斯-穆勒(拜仁)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>运行看一下，是不是比添加 NavigationViewController 之前好看多了。</p>
-<p>在 storyboard 中双击ChecklistViewController 中的 navigation bar 中的title，输入</p>
-<p>Checklists。</p>
-<img src="/images/2015/07/tableview/QQ20150718-3.png" class="">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">2006</span>年，德国队再次在主场参加世界杯，虽然被意大利队挡在了决赛之外，但第三名的成绩也足以令国人满意。</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>	门将	诺伊尔（Manuel Neuer）	沙尔克04	德甲	<span class="number">1986</span>-<span class="number">3</span>-<span class="number">27</span>	<span class="number">192</span>	<span class="number">92</span></span><br><span class="line"><span class="number">12</span>	门将	维泽（Tim Wiese）	不来梅	德甲	<span class="number">1981</span>-<span class="number">12</span>-<span class="number">17</span>	<span class="number">193</span>	<span class="number">88</span></span><br><span class="line"><span class="number">22</span>	门将	布特（Hans-Jörg Butt）	拜仁慕尼黑	德甲	<span class="number">1974</span>-05-<span class="number">28</span>	<span class="number">191</span>	<span class="number">91</span></span><br><span class="line"><span class="number">2</span>	后卫	扬森（Marcell JANSEN）	汉堡	德甲	<span class="number">1985</span>-<span class="number">11</span>-<span class="number">4</span>	<span class="number">190</span>	<span class="number">84</span></span><br><span class="line"><span class="number">3</span>	后卫	A.弗雷德里希（Arne Friedrich）	柏林赫塔	德甲	<span class="number">1979</span>-<span class="number">5</span>-<span class="number">29</span>	<span class="number">185</span>	<span class="number">75</span></span><br><span class="line"><span class="number">4</span>	后卫	奥戈（Dennis Aogo）	汉堡	德甲	<span class="number">1987</span>-<span class="number">1</span>-<span class="number">14</span>	<span class="number">182</span>	<span class="number">76</span></span><br><span class="line"><span class="number">5</span>	后卫	塔什彻（Serdar TASCI）	斯图加特	德甲	<span class="number">1987</span>-<span class="number">4</span>-<span class="number">27</span>	<span class="number">186</span>	<span class="number">75</span></span><br><span class="line"><span class="number">14</span>	后卫	巴德斯图伯（Holger Badstuber）	拜仁慕尼黑	德甲	<span class="number">1989</span>-<span class="number">3</span>-<span class="number">13</span>	<span class="number">182</span>	<span class="number">76</span></span><br><span class="line"><span class="number">16</span>	后卫	拉姆（Philipp LAHM）	拜仁慕尼黑	德甲	<span class="number">1983</span>-<span class="number">11</span>-<span class="number">11</span>	<span class="number">170</span>	<span class="number">61</span></span><br><span class="line"><span class="number">17</span>	后卫	默特萨克（Per Mertesacker）	不来梅	德甲	<span class="number">1984</span>-<span class="number">9</span>-<span class="number">29</span>	<span class="number">198</span>	<span class="number">90</span></span><br><span class="line"><span class="number">20</span>	后卫	博阿滕（Jerome BOATENG）	汉堡	德甲	<span class="number">1988</span>-<span class="number">9</span>-<span class="number">3</span>	<span class="number">190</span>	<span class="number">79</span></span><br><span class="line"><span class="number">6</span>	中场	赫迪拉（Sami Khedira）	斯图加特	德甲	<span class="number">1987</span>-<span class="number">4</span>-<span class="number">4</span>	<span class="number">189</span>	<span class="number">81</span></span><br><span class="line"><span class="number">7</span>	中场	施魏因斯泰格（Bastian SCHWEINSTEIGER）	拜仁慕尼黑	德甲	<span class="number">1984</span>-<span class="number">8</span>-<span class="number">1</span>	<span class="number">183</span>	<span class="number">79</span></span><br><span class="line"><span class="number">8</span>	中场	厄齐尔（Mesut OZIL）	不来梅	德甲	<span class="number">1988</span>-<span class="number">10</span>-<span class="number">15</span>	<span class="number">180</span>	<span class="number">70</span></span><br><span class="line"><span class="number">15</span>	中场	特罗霍夫斯基（Piotr TROCHOWSKI）	汉堡	德甲	<span class="number">1984</span>-<span class="number">3</span>-<span class="number">22</span>	<span class="number">169</span>	<span class="number">70</span></span><br><span class="line"><span class="number">18</span>	中场	克罗斯（Toni Kroos）	勒沃库森	德甲	<span class="number">1990</span>-<span class="number">1</span>-<span class="number">4</span>	<span class="number">180</span>	<span class="number">68</span></span><br><span class="line"><span class="number">21</span>	中场	马林（Marko Marin）	不来梅	德甲	<span class="number">1989</span>-<span class="number">3</span>-<span class="number">13</span>	<span class="number">170</span>	<span class="number">63</span></span><br><span class="line"><span class="number">9</span>	前锋	基斯林（Stefan KIESSLING）	勒沃库森	德甲	<span class="number">1984</span>-<span class="number">1</span>-<span class="number">25</span>	<span class="number">194</span>	<span class="number">75</span></span><br><span class="line"><span class="number">10</span>	前锋	波多尔斯基（Lukas PODOLSKI）	科隆	德甲	<span class="number">1985</span>-<span class="number">6</span>-<span class="number">4</span>	<span class="number">182</span>	<span class="number">81</span></span><br><span class="line"><span class="number">11</span>	前锋	克洛泽（Miroslav Klose）	拜仁慕尼黑	德甲	<span class="number">1978</span>-<span class="number">6</span>-<span class="number">9</span>	<span class="number">182</span>	<span class="number">74</span></span><br><span class="line"><span class="number">13</span>	前锋	穆勒（Thomas Muller）	拜仁慕尼黑	德甲	<span class="number">1989</span>-09-<span class="number">13</span>	<span class="number">186</span>	<span class="number">74</span></span><br><span class="line"><span class="number">19</span>	前锋	卡考（CACAU）	斯图加特	德甲	<span class="number">1981</span>-<span class="number">3</span>-<span class="number">27</span>	<span class="number">178</span>	<span class="number">74</span></span><br><span class="line"><span class="number">23</span>	前锋	马里奥·戈麦斯（Mario GOMEZ）	拜仁慕尼黑	德甲	<span class="number">1985</span>-<span class="number">7</span>-<span class="number">10</span>	<span class="number">189</span>	<span class="number">86</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="添加-Item"><a href="#添加-Item" class="headerlink" title="添加 Item"></a>添加 Item</h3><p>拖动一个 Bar Button Item 到 navigation bar 的右侧，然后在 System Item 中选择 Add。</p>
-<img src="/images/2015/07/tableview/QQ20150718-4.png" class="">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">2002世界杯 7战5胜1平1负</span><br><span class="line"></span><br><span class="line">时间 阶段 赛果</span><br><span class="line">2002-06-01 E 组 德国 8-0 沙特阿拉伯</span><br><span class="line">2002-06-05 E 组 德国 1-1 爱尔兰</span><br><span class="line">2002-06-11 E 组 德国 2-0 喀麦隆</span><br><span class="line">2002-06-15 1/8 决赛 德国 1-0 巴拉圭</span><br><span class="line">2002-06-21 1/4 决赛 德国 1-0 美国</span><br><span class="line">2002-06-25 半决赛 韩国 0-1 德国</span><br><span class="line">2002-06-30 决赛 巴西 2-0 德国</span><br><span class="line"></span><br><span class="line">队员名单</span><br><span class="line">汉斯-布特</span><br><span class="line">托斯滕-弗林斯</span><br><span class="line">克里斯托夫-梅策尔德</span><br><span class="line">奥利弗-比埃霍夫</span><br><span class="line">伯恩德-施奈德</span><br><span class="line">约尔格-博梅</span><br><span class="line">马科-博德</span><br><span class="line">延斯-耶雷梅斯</span><br><span class="line">塞巴斯汀-科赫尔</span><br><span class="line">杰拉德-阿萨莫阿</span><br><span class="line">迈克尔-巴拉克</span><br><span class="line">延斯-莱赫曼</span><br><span class="line">米罗斯拉夫-克劳斯</span><br><span class="line">拉尔斯-里肯</span><br><span class="line">卡斯滕-扬克尔</span><br><span class="line">迪特马尔-哈曼</span><br><span class="line">奥利弗-诺伊维尔</span><br><span class="line">克里斯蒂安-齐格</span><br><span class="line">卡斯滕-拉梅洛</span><br><span class="line">弗兰克-鲍曼</span><br><span class="line">马尔科-雷赫默</span><br><span class="line">托马斯-林克</span><br><span class="line">奥利弗-卡恩</span><br></pre></td></tr></table></figure>
 
-<p>在 ChecklistViewController.swift 中，添加函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func addItem() &#123;</span></span><br><span class="line"></span><br><span class="line">    let newRowIndex = items.count</span><br><span class="line"></span><br><span class="line">    let item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    item.text = <span class="string">&quot;I am a new Row&quot;</span></span><br><span class="line"></span><br><span class="line">    item.checked = false</span><br><span class="line"></span><br><span class="line">    items.append(item)</span><br><span class="line"></span><br><span class="line">    let indexPath = NSIndexPath(forRow: newRowIndex, inSection: <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    let indexPaths = [indexPath]</span><br><span class="line"></span><br><span class="line">    tableView.insertRowsAtIndexPaths(indexPaths,withRowAnimation: .Automatic)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>连接 Add button 到 addItem 函数。(在storyboard中，ctrl+拖动按钮到viewController，在</p>
-<p>弹出框中选择 addItem 函数)</p>
-<img src="/images/2015/07/tableview/QQ20150718-7.png" class="">
-
-<p>然后运行，你每点一次 ＋ 按钮，都会出来一条新的记录。</p>
-<h3 id="删除-Item"><a href="#删除-Item" class="headerlink" title="删除 Item"></a>删除 Item</h3><p>在 ChecklistViewController.swift 中，添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">                  commitEditingStyle editingStyle: UITableViewCellEditingStyle,</span><br><span class="line"></span><br><span class="line">                  forRowAtIndexPath indexPath: NSIndexPath)&#123;</span><br><span class="line"></span><br><span class="line">       items.removeAtIndex(indexPath.row)  </span><br><span class="line"></span><br><span class="line">       let indexPaths = [indexPath]</span><br><span class="line"></span><br><span class="line">       tableView.deleteRowsAtIndexPaths(indexPaths,withRowAnimation:.Automatic)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<img src="/images/2015/07/tableview/QQ20150718-8.png" class="">
-
-<h3 id="添加-Item-的界面"><a href="#添加-Item-的界面" class="headerlink" title="添加 Item 的界面"></a>添加 Item 的界面</h3><p>拖一个 tableView Controller 的控件到 storyboard 中，从刚才的 Checklist</p>
-<p>ViewController 中 ＋ 按钮，ctrl 拖拉一条线到新建的 TableViewController 中，然后在</p>
-<p>弹出框中选择 show。</p>
-<p>然后两个viewController中间出现一个连接线(segue)，点击加号到新的界面，点击 Checklists</p>
-<p>返回主界面。</p>
-<p>选中 ＋ 按钮，然后在 Connections inspector 中，删除 addItem</p>
-<img src="/images/2015/07/tableview/QQ20150718-10.png" class="">
-
-<p>选中 segue， 在 Attributes inspector 中，选中 Segue：Present Modally。</p>
-<img src="/images/2015/07/tableview/QQ20150718-9.png" class="">
-
-<p>选中新的 TableViewController，然后在菜单 Editor -&gt; Embed In -&gt;</p>
-<p>Navigation Controller ,然后就可以依次看到四个viewController， 1、3 分别为</p>
-<p>Navigation Controller， 2、4 分别为 TableViewController。修改 ViewController4 的</p>
-<p>title 为 Add Item.</p>
-<p>拖放两个Bar Button Items 到 navigation bar 4中，左边的按钮在 Attributes inspector</p>
-<p>中选择 Identifier：Cancel，右边的按钮在 Attirbutes inspector 中选择 Identifier 和</p>
-<p>Style 都为 Done。</p>
-<img src="/images/2015/07/tableview/QQ20150718-11.png" class="">
-
-<img src="/images/2015/07/tableview/QQ20150718-12.png" class="">
-
-<h3 id="添加-AddItem-Class"><a href="#添加-AddItem-Class" class="headerlink" title="添加 AddItem Class"></a>添加 AddItem Class</h3><p>在文件导航栏中，选中项目，右键， New File… ,选择 Cocoa Touch Class 。</p>
-<img src="/images/2015/07/tableview/QQ20150718-14.png" class="">
-
-<img src="/images/2015/07/tableview/QQ20150718-15.png" class="">
-
-<p>创建文件，然后在 Storyboard 中，选择 viewController4 ，在Identity inspector 中，</p>
-<p>Custom Class–&gt; AddItemViewController 。这样的作用，你懂得！</p>
-<img src="/images/2015/07/tableview/QQ20150718-16.png" class="">
-
-<p>在 AddItemViewController.swift 中，删除所有内容，然后添加以下内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AdditemViewController</span>: UITableViewController &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@IBAction func cancel() &#123;</span></span><br><span class="line"></span><br><span class="line">  dismissViewControllerAnimated(true,completion:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done()&#123;</span></span><br><span class="line"></span><br><span class="line">  dismissViewControllerAnimated(true,completion:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后把 cancel 按钮，连接到 IBAction cancel 上，done 按钮连接到 IBAction done 上。</p>
-<p>这个时候，如果点击主界面的 ＋ 应该能够弹出新的界面，在新界面点击 Cancel 或者 Done 就会</p>
-<p>关闭新界面回到主界面。</p>
-<h3 id="static-table-cells"><a href="#static-table-cells" class="headerlink" title="static table cells"></a>static table cells</h3><p>一直在想，这个用中文怎么说呢？ 静态表格单元格 还是 静态单元格？ 还是不翻译了吧，直接用</p>
-<p>英文说，意思更明了简单些。</p>
-<p>在 storyboard 中选择 AddItem ViewController 中的 TableView ,然后在 Attributes</p>
-<p>inspector 中的 Content 设置为 Static Cells。 这里默认的是三行数据，需要删除下面两行。</p>
-<img src="/images/2015/07/tableview/QQ20150719-1.png" class="">
-
-<img src="/images/2015/07/tableview/QQ20150719-2.png" class="">
-
-<p>在 Style 中设置为 Grouped。 拖一个 TextField 控件到 cell 中，把长度增加。</p>
-<img src="/images/2015/07/tableview/QQ20150719-3.png" class="">
-
-<p>然后设置 Border Style 设置为 none。</p>
-<img src="/images/2015/07/tableview/QQ20150719-4.png" class="">
-
-<p>在 AddItemViewController.swift 中，添加下面函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">              willSelectRowAtIndexPath indexPath: NSIndexPath) -&gt; NSIndexPath?&#123;</span><br><span class="line"></span><br><span class="line">              <span class="keyword">return</span> nil</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果你在 textField 中输入字符时，是不是变灰色了呢？因为你上面返回的是个空值呢，如何在返回</p>
-<p>空值的时候也能不变灰呢？</p>
-<p>选择 Table view Cell，然后在 Attributes inspector 中的 Selection 设为 None。</p>
-<p>再试一下，是不是舒爽多了？</p>
-<h3 id="读取-TextField-值"><a href="#读取-TextField-值" class="headerlink" title="读取 TextField 值"></a>读取 TextField 值</h3><p>在 AddItemViewController.swift 创建对应的 IBOutlet。一般步骤为：打开 Assistant</p>
-<p>editor，就是右上角的那个双环图标，</p>
-<img src="/images/2015/07/tableview/QQ20150719-5.png" class="">
-
-<p>从路径地方切换到一个是 storyboard，一个是 swift 代码。</p>
-<p>然后从 storyboard 中 ctrl + 拖动 textField 到swift 代码中，在弹出的界面中输入以下内容：</p>
-<img src="/images/2015/07/tableview/QQ20150719-6.png" class="">
-
-<img src="/images/2015/07/tableview/QQ20150719-7.png" class="">
-
-<p>然后生成的代码应该是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBOutlet weak var textField: UITextField!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后修改 AddItemViewController.swift 中的 done（） 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done() &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Content of the textField:\(textField.text)&quot;</span>)</span><br><span class="line"></span><br><span class="line">  dismissViewControllerAnimated(true,completion: nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果你想再做的友好点，比如用户一打开添加界面，鼠标自动跑到输入框，等着输入呢。</p>
-<p>这么精心的服务，谁不喜欢呢。那需要再 AddItemViewController.swift 中添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func viewWillAppear(animated: Bool) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.viewWillAppear(animated)</span><br><span class="line"></span><br><span class="line">  textField.becomeFirstResponder()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>再美化下 textField 样式：</p>
-<p>Placeholder： Name of the Item</p>
-<p>Font: System 17</p>
-<p>Adjust to Fit: Uncheck this</p>
-<p>Capitalization: Sentences</p>
-<p>Return Key: Done</p>
-<p>再打开 Connection inspector, 拖动 Did End on Exit 事件到 ViewController 上，</p>
-<p>选择 done 。</p>
-<img src="/images/2015/07/tableview/QQ20150719-8.png" class="">
-
-<p>在 Attributes inspector 中，勾选 Auto-enable Return Key.</p>
-<img src="/images/2015/07/tableview/QQ20150719-11.png" class="">
-
-<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>委托，如果有其它的编程语言基础，应该也能够碰到很多委托的概念，比如 C# 中就有很多委托的概念。</p>
-<p>委托，在实际生活中也会碰到，如果有件事，你自己办不了，或者不方便直接出面办，就找个中间人，</p>
-<p>委托它去办，如果是到政府机构里办事，还需要写个委托书。我们这里所要了解的也就是委托书。</p>
-<p>在 AddItemViewController.swift 中，修改类头：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AddItemViewController</span>: UITableViewController,UITextFieldDelegate</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在 AddItemViewController.swift 中给 doneButton 创建一个 IBOutlet。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@IBOutlet weak var doneBarButton: UIBarButtonItem!</span><br><span class="line"></span><br><span class="line">func textField(textField: UITextField,</span><br><span class="line"></span><br><span class="line">               shouldChangCharactersInRange range: NSRange,</span><br><span class="line"></span><br><span class="line">               replacementString string: String) -&gt; Bool &#123;</span><br><span class="line"></span><br><span class="line">    let oldText: NSString = textField.text！</span><br><span class="line"></span><br><span class="line">    let newText: NSString = oldText.stringByReplaceingCharactersInRanger(</span><br><span class="line"></span><br><span class="line">                                            range, withString: string)</span><br><span class="line"></span><br><span class="line">    doneBarButton.enabled = (newText.length &gt; 0)</span><br><span class="line"></span><br><span class="line">    return true</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里是根据你输入的字符长度来判定 Done 按钮是否被激活，所以当然初始化的时候，这个按钮应该</p>
-<p>是 Disable 的。 选中 Done 按钮，在 Attributes inspector 中， 取消勾选 Enabled。</p>
-<img src="/images/2015/07/tableview/QQ20150719-10.png" class="">
-
-<p>下面一步就是比较重要的委托了，如果你在 AddItemViewController 中输入一个 text ，然后怎么</p>
-<p>把这个值传到主界面， 因为你要在主界面显示 lists 啊。有委托，就要有委托书，在程序里，</p>
-<p>委托书就是协议- protocol。</p>
-<p>在 AddItemViewController.swift 中的 import 和 class 中间加入下面代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">protocol AddItemViewControllerDelegate: <span class="keyword">class</span> &#123;</span><br><span class="line"></span><br><span class="line">    func addItemViewControllerDidCancel(controller: AddItemViewController)</span><br><span class="line"></span><br><span class="line">    func AddItemViewController(controller: AddItemViewController,</span><br><span class="line"></span><br><span class="line">                              didFinishAddingItem item:ChecklistItem)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后在 class 中添加以下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">weak var delegate: AddItemViewControllerDelegate?</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>然后修改函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func cancel() &#123;</span></span><br><span class="line"></span><br><span class="line">  delegate?.addItemViewControllerDidCancel(self)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done()&#123;</span></span><br><span class="line"></span><br><span class="line">  let item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">  item.text = textField.text！</span><br><span class="line"></span><br><span class="line">  item.checked = false</span><br><span class="line"></span><br><span class="line">  delegate?.addItemViewController(self,didFinishAddingItem: item)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>当然，写到这里当然是不够的。 委托人和委托书都有了，那被委托人在哪里，它还没有干活呢！</p>
-<p>在 ChecklistViewController.swift 中，</p>
-<p>修改类头：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistViewController</span>: UITableVIewController,</span><br><span class="line"></span><br><span class="line">                                AddItemViewControllerDelegate &#123;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>添加函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func addItemViewControllerDidCancel(controller:AddItemViewController) &#123;</span><br><span class="line"></span><br><span class="line">  dismissViewControllerAnimated(true,completion:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func addItemViewController(controller: addItemViewController,</span><br><span class="line"></span><br><span class="line">                          didFinishAddingItem item: ChecklistItem) &#123;</span><br><span class="line"></span><br><span class="line">    let newRowIndex = items.count</span><br><span class="line"></span><br><span class="line">    items.append(item)</span><br><span class="line"></span><br><span class="line">    let indexPath = NSIndexPath(forRow: newRowIndex, inSection: <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    let indexPaths = [indexPath]</span><br><span class="line"></span><br><span class="line">    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation:.Automatic)</span><br><span class="line"></span><br><span class="line">    dismissViewControllerAnimated(true,completion:nil)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> segue.Identifier == <span class="string">&quot;AddItem&quot;</span> &#123;</span><br><span class="line"></span><br><span class="line">    let naviationController = segue.destinationViewController</span><br><span class="line"></span><br><span class="line">                                        <span class="keyword">as</span>! UINavigationController</span><br><span class="line"></span><br><span class="line">    let controller = navigationController.topViewController</span><br><span class="line"></span><br><span class="line">                                        <span class="keyword">as</span>! addItemViewController</span><br><span class="line"></span><br><span class="line">    controller.delegate = self</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>选中 view2 - View3 之间连接 segue，然后在 Attributes inspector 中的 Identifier 中</p>
-<p>输入： AddItem 。</p>
-<p>删除 addItem() 函数，因为已经用不到它了。！！</p>
-<img src="/images/2015/07/tableview/QQ20150719-9.png" class="">
-
-<p>知道上图中有个空白是什么造成的吗？肯定是添加了一个空白的 text 呗，点击 done 的时候，text</p>
-<p>还是空白，也就是说，判断 dongButton.enabled 那句话没有起作用，仔细检查一下，原来是</p>
-<p>doneButton 的初始化界面时，Enable 没有取消勾选。</p>
 <hr>
 
       
@@ -613,7 +439,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/16/red-bean/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/05/they-all-are-richer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -627,7 +453,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/16/red-bean/" class="post-title-link" itemprop="url">红豆生南国的红豆</a>
+            <a href="/2014/07/05/they-all-are-richer/" class="post-title-link" itemprop="url">他们都比我有钱</a>
         </h2>
 
         <div class="post-meta">
@@ -637,7 +463,249 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-16 09:09:49" itemprop="dateCreated datePublished" datetime="2015-07-16T09:09:49+08:00">2015-07-16</time>
+              <time title="创建时间：2014-07-05 23:01:09" itemprop="dateCreated datePublished" datetime="2014-07-05T23:01:09+08:00">2014-07-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>本来以为自己的努力已经够了，谁知道连底层都不算，最多也就是个乞丐级别的人物。</p>
+<p>突然之间自己就没有钱了。如同自己像狗一样的流浪，哪里有一点像是有家有室的样子。</p>
+<p>据目前的局势来看，他们都比我有钱，我不是嫉妒他们，而是恨我自己。通过过</p>
+<p>来，竟然以自己没有钱的原因而躲开了。:-(</p>
+<p>这是TMD的什么精神，这是安逸享乐不思进取的精神。</p>
+<p>整天的老婆孩子热炕头，你侬我侬大家侬，没有钱凭什么给老婆美丽的外表，</p>
+<p>没有钱凭什么给孩子美好的未来，没有钱凭什么给父母安享晚年。</p>
+<p>总是以为自己努力够了，每天假装忙碌的样子，好让自己看起来很踏实的样子，</p>
+<p>可是钱不到手，一切都是白搭。</p>
+<p>钱，谁能和钱过不去。</p>
+<p>钱根本就是省下来的，钱是挣出来的。</p>
+<p>凭什么别人半夜两点睡，你10.半就能爬上床，凭什么别人在那里拼死拼活的加</p>
+<p>班，你却抱着娃在那里悠哉悠哉的逛大街。什么是差距，这就是差距，</p>
+<p>差距就在于别人能买房开车，而自己却只能租房公交；别人35岁之前已经能够</p>
+<p>安定的生活，自己35岁还在像刚毕业的毛头小伙子一样毛手毛脚。</p>
+<p>朝自己脸上扇一耳巴子，告诉自己，该醒醒了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/02/tansform-one-two-three-four/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/07/02/tansform-one-two-three-four/" class="post-title-link" itemprop="url">变形金刚1234</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-07-02 21:10:44" itemprop="dateCreated datePublished" datetime="2014-07-02T21:10:44+08:00">2014-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>这段时间变形金刚4上映了，根据几个朋友的反应来说还不错。</p>
+<p>可是没有时间去看。在家把123看了一遍，算是回忆一下。</p>
+<ol>
+<li><p>变形金刚出现，有好有坏，打的乱七八糟。</p>
+</li>
+<li><p>擎天柱被砍，靠7大领导的心复活。</p>
+</li>
+<li><p>救活御天敌，叛变，启动星球传输，御天敌被砍。</p>
+</li>
+</ol>
+<p>有的人说，小孩看的玩意都拍到第四部了，除了破坏城市还是破坏，有什么看头。</p>
+<p>话说，美国的科幻有几个不是动画改编的。不说派拉蒙的，其他的也有不少吧。</p>
+<p>这种片子，看的镜头爽就行了，说实话，看变形金刚就是看两个机器人打架。</p>
+<p>其他的有什么看头啊。看男女亲嘴，我不如看电子情书；看枪火动作，不如看汤姆</p>
+<p>克鲁斯和威尔史密斯；看人文情怀我不如看斯皮尔伯格。</p>
+<p>变形金刚，就是两个机器人打架，看他们如何在真人中变形，看他们打的乱七八糟。</p>
+<p>看了4之后，再来扩充。</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/24/sth-about-the-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/06/24/sth-about-the-mac/" class="post-title-link" itemprop="url">关于 mac的几点想法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-06-24 14:06:02" itemprop="dateCreated datePublished" datetime="2014-06-24T14:06:02+08:00">2014-06-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>   今年的春天，买了RMBP 2013later，32岁的年龄，还是觉得要冲一下，在有一定基础的情况下，做一次自己喜欢的事情。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2014/06/24/sth-about-the-mac/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/05/some-point-about-take-care-baby/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/06/05/some-point-about-take-care-baby/" class="post-title-link" itemprop="url">带孩子的几点想法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-06-05 08:30:08" itemprop="dateCreated datePublished" datetime="2014-06-05T08:30:08+08:00">2014-06-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -661,18 +729,75 @@
 
       
           <span id="more"></span>
-<img src="/images/2015/07/redbean.jpg" class="">
+<h2 id="1-不要总是盯着缺点"><a href="#1-不要总是盯着缺点" class="headerlink" title="1. 不要总是盯着缺点"></a>1. 不要总是盯着缺点</h2><p>丈母娘从2011年9月份来上海，照顾老婆然后一直照顾小孩，老年人的习惯加上老家的思想，总是感觉处处</p>
+<p>不如意，时不时的就莫名的来火上气，总感觉这做的不像样，那也做的不像样，什么都做不好。</p>
+<p>有时候，自己脾气上来就给别人脸色看，老婆不高兴，丈母娘不高兴，连着小娃子都要受委屈。</p>
+<p>这次独自带娃子去武汉参加同学聚会，真的是感觉到了带小孩的辛苦。</p>
+<p>吃饭喝水，拉屎撒尿，闹人睡觉，嘘寒问暖，样样要操心，样样要做到，我自己做来还破费周折，况且还没</p>
+<p>有其他人在跟前看着，更没有人会对我检查。即便这样，我还是不能随心应手，更何况一个老年人，照顾自</p>
+<p>尚且有困难，还加上一个不怎么听话的娃子，还担心女婿晚上回来看到没有做到的地方会生气。</p>
+<p>:-(</p>
+<p>我犯了大错了。</p>
+<p>前段时间，总是想找个人问问，该如何缓解和丈母娘之间的这种对立的情绪。</p>
+<p>这下自然的消除了一部分，虽然有时还是会看到做的不对的生气，但是自我感觉没有以前的那种恨铁不成钢</p>
+<p>的气势了，毕竟是老年人了，而且，自己又不是亲儿子，娃子又不是亲孙女，刷锅做饭，洗衣倒水，还不都</p>
+<p>为了她闺女，我媳妇吗。</p>
+<p>站在媳妇的角度，站在丈母娘的角度，再看看，所有的事情都不值得生气了。</p>
+<p>娃子慢慢的长吧。</p>
+<p>希望不要丢失了自己的灵性。</p>
+<h2 id="2-小孩是要哄的"><a href="#2-小孩是要哄的" class="headerlink" title="2.小孩是要哄的"></a>2.小孩是要哄的</h2><p>小娃子哭，小娃子闹，小娃娃天天睡大觉。我的脾气不好，估计和最近的工作压力有关，也和这行的工作</p>
+<p>性质有关，喜欢一个人安静的听从自己的安排。电脑听自己的，代码听自己，周围的人都听自己，不允许</p>
+<p>有瑕疵，有bug，(话说我是什么星座？)，但是小娃子就不一样了，小娃子有个性，会思考，会讲理，自己</p>
+<p>有腿有脚，会自己跑，哪能事事听你的啊。</p>
+<p>有时候自己的脾气上来就用强力制止小娃子，小娃子就会用哭来抵抗，自己还总是训她不听话，两败俱伤。</p>
+<p>其实你换个方法也许更好，比如买个糖，买个玩具。</p>
+<p>如同聚会的时候，如果她不听话，买个糖或者玩具给她，她就会老实下来。</p>
+<p>娃子是个吃货，</p>
+<p>不要和她较劲，用个糖哄一下，比你教育的效果好。</p>
+<h2 id="3-难题"><a href="#3-难题" class="headerlink" title="3.难题"></a>3.难题</h2><p>一直都是教育娃子过马路，红灯不能过绿灯能过，娃子也很听话，平时总能遵守规则，时不时带她出去</p>
+<p>玩的时候还测试她：这个是什么灯，能不能过？</p>
+<p>娃子总能按照红灯停绿灯行的规则回答。</p>
+<p>小区后面有个大马路，有拐弯灯，平时过马路时，车辆直行灯变红时，拐弯灯变绿，但是人行道上灯还</p>
+<p>是红色的。但是大家根本等不及人行道灯变绿，就直接闯红灯过去了。</p>
+<p>有次带她出去玩，回来晚了，当时也没有太注意，正好赶上拐弯灯变绿，就问娃子：现在能不能过？</p>
+<p>娃子说：能过！</p>
+<p>“那现在不是红灯吗？怎么能过呢？”</p>
+<p>“别人都能过了！”</p>
+<p>我脑子停顿了一下，别人都能过了，该怎么解释呢？</p>
+<p>“别人都不是乖宝宝，上幼儿园回来老师不发小红花，娃子是乖宝宝，上幼儿园老师发小红花。”</p>
+<p>出一头汗，总算混过去了。</p>
+<p>估计以后还会多次碰到这种情况，别人为什么能插队？别人为什么能受贿？别人为什么能偷钱？</p>
+<p>:-(</p>
+<p>等她再长大一点慢慢解释吧。</p>
+<img src="/images/2014/traffic.jpg" class="">
 
-<p>  红豆生南国</p>
-<p>  春来发几枝</p>
-<p>  愿君多采撷</p>
-<p>  此物最相思</p>
-<p>遇见路边花摊，小朋友说：妈妈，买束花吧！</p>
-<p>卖花阿姨说：买红豆吧，很特别。</p>
-<p>小朋友脱口说：是红豆生南国的红豆吗？</p>
-<p>阿姨说：是啊！</p>
-<p>小朋友就顺口背开了：红豆生南国，春来发几枝….</p>
-<p>然后，阿姨就奖励了小朋友一枝红豆，她高高兴兴的扛回来了。</p>
+
+<h2 id="4-智商"><a href="#4-智商" class="headerlink" title="4. 智商"></a>4. 智商</h2><p>出去玩回来第二天，妈妈有几个口香糖放在桌子上，不知道怎么让娃子看到了，拿到手里不肯松开，</p>
+<p>要给她夺下来，还和你讲理：俏俏又不吃，俏俏拿着。</p>
+<p>不过那个口香糖的味道确实香，娃子手里掐了一点，放在鼻子上闻闻，放在嘴边舔舔，你一看她，她</p>
+<p>就说： 俏俏又不吃。</p>
+<p>好，拿着就拿着吧。</p>
+<p>妈妈下班了，带她出去接妈妈，外面想下雨，拿着伞，娃子手里还是拿着口香糖。</p>
+<p>出了小区，过马路，娃子双手搂着我的脖子，等她回过脸的时候，看她一脸神秘的微笑，我看口香糖上</p>
+<p>已经有口水的印子了，问她：你是不是吃口香糖了。</p>
+<p>娃子只是笑，过了一会，娃子说：爸爸你打伞吧，下雨了。</p>
+<p>其实在树下走，天空还没有开始下雨，</p>
+<p>“没有下雨啊”</p>
+<p>“你看，都滴到俏俏的脸上了”</p>
+<p>“在哪里？” 我问，</p>
+<p>“你看你看，”</p>
+<p>她这么一说，我还真觉得有点下了，我当时是一个胳膊抱着她，一个手拿着伞，还得用另外一个手帮着</p>
+<p>撑开伞，就在我撑开伞的那一个瞬间，我看见娃子的手，迅速的把口香糖放到嘴里，然后快速的闭上嘴。</p>
+<p>我连忙从她嘴里把口香糖扣出来，她自然是不愿意，哭得稀里哗啦，</p>
+<p>我想既然哭了，索性把手里的都扔了吧。她双手攥的紧紧的，哭得昏天暗地。她去打疫苗时都没有哭。</p>
+<p>小娃子，这个东西你不能吃。</p>
+<p>等她稍微缓了点劲，告诉她，“有些东西可以吃，有些东西不能吃，棒棒糖可以吃，口香糖不能吃。”</p>
+<p>最后买了个棒棒糖哄她，才停止啜泣。</p>
+<p>晚上的时候，在想，小娃子告诉我下雨了，让我去打伞，是不是早就准备好了要吃口香糖呢，</p>
+<p>她是不是知道我一直盯着她的话，她就不能吃到嘴里，必须要趁我不注意快速的吃掉呢。</p>
+<p>那她是怎么想起让我去打伞的这个机会的呢？</p>
+<p>这么说来整个事情都是小娃子的预谋了。</p>
+<p>两岁半的小娃子就能这么思考(也许是本能)，比你爹强。</p>
 
       
     </div>
@@ -692,7 +817,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/15/tableviewcontroller/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/02/take-care-the-little-daughter-my-self-three/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -706,7 +831,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/15/tableviewcontroller/" class="post-title-link" itemprop="url">Swift 2.0 纯学习之旅--7.tableviewController</a>
+            <a href="/2014/06/02/take-care-the-little-daughter-my-self-three/" class="post-title-link" itemprop="url">独自带娃去旅游-3</a>
         </h2>
 
         <div class="post-meta">
@@ -716,7 +841,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-15 23:14:47" itemprop="dateCreated datePublished" datetime="2015-07-15T23:14:47+08:00">2015-07-15</time>
+              <time title="创建时间：2014-06-02 23:56:08" itemprop="dateCreated datePublished" datetime="2014-06-02T23:56:08+08:00">2014-06-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -724,7 +849,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -740,107 +865,47 @@
 
       
           <span id="more"></span>
-<pre><code>这里是学习 iOS Apprentice 的第二课 Checklist 的笔记记录，仅供自己查阅。
-</code></pre>
-<p>tableView 和 nagView 是 iOS 开发中最常用到的两个 viewController，不论你的主界面就是</p>
-<p>tableView 的列表显示，还是仅仅用 tableView  来显示属性设置，它都是一个普遍而又重要的</p>
-<p>组件。</p>
-<p>在 Checklist 的开发过程就大量使用了 tableView 和 navView，navView 是从一个 scence</p>
-<p>跳转到另外一个 scence 的重要纽带，这两者结合在一起，恐怕缺少的就只是你的想象力了。</p>
-<pre><code>everything is possible here!
-</code></pre>
-<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>打开 Xcode ，新建 Single View Application ，</p>
-<img src="/images/2015/07/tableview/QQ20150717-1.png" class="">
+<h1 id="6-02"><a href="#6-02" class="headerlink" title="6.02"></a>6.02</h1><p>今天准备回去了，6.自然醒。</p>
+<p>收拾东西，烧水，洗脸，等娃子醒。</p>
+<p>娃子没有睡懒觉，6.30就醒了。</p>
+<p>穿衣服，洗脸，喝奶。准备出发。</p>
+<p>去服务台办理退房手续，两夜加上一瓶天价水共485，看来每夜才235，真的是相当便宜。</p>
+<p>同学真是太给力了。</p>
+<p>10分钟办好手续，走人。娃子抱着她的大熊氢气球，我抱着娃子，背着双肩包。Let’s Go!</p>
+<img src="/images/2014/ballon.jpg" class="">
 
-<p>在 TARGETS 选中 Checklists，然后在 General–&gt;Deployment Info–&gt;Device Orientation</p>
-<p>中确保只有 Portrait 被勾选。</p>
-<img src="/images/2015/07/tableview/QQ20150717-2.png" class="">
-
-<h3 id="添加-tableviewController"><a href="#添加-tableviewController" class="headerlink" title="添加 tableviewController"></a>添加 tableviewController</h3><p>选中 Main.storyboard 中的 viewController ， 然后 Delete 键删除，如果不好选择，可以</p>
-<p>通过 Outline pane 中的控件选择，不得不说， outline  pane 是个好东西。</p>
-<p>然后，在 ViewController.swift 中,修改类名为:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistViewController</span>:UITableViewController&#123;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>然后在文件导航栏中，双击修改 ViewController.swift 文件名为 ChecklistViewController</p>
-<p>.swift ,如果有提示，就 Save Anyway。</p>
-<p>然后在 Identity inspector 中，Custom Class 选择为 ChecklistViewControllerself.</p>
-<img src="/images/2015/07/tableview/QQ20150717-3.png" class="">
-
-<p>到这里一切似乎都很熟悉，就是把 storyboard 中的 viewcontroller 与代码中的 swift 文件</p>
-<p>绑定， 其实可以不是同一个名称，也可以是不同的名称，同一个名称是为了更好的同其他的</p>
-<p>viewController 区分开来，因为我们在这个项目里将会不只一个 viewController 。</p>
-<p>然后在 Attributes inspector 中，勾选 Is Initial View Controller , 使其作为默认的</p>
-<p>起始 ViewController ，这和其他编程语言和 IDE 类似， 如 “C#” WinForm 中 的 main 函数</p>
-<p>中初始化一个窗体作为起始窗体。</p>
-<img src="/images/2015/07/tableview/QQ20150717-4.png" class="">
-
-<p>跑一下试试，当然是空白，因为还没有加入内容。</p>
-<p>选中 Table View Cell(当然可以在 outline pane 中选)，拖动一个 label 按钮到 cell 中，</p>
-<p>然后拉动 label 足够宽，在 cell 的右边留下一小部分空白。</p>
-<img src="/images/2015/07/tableview/QQ20150717-5.png" class="">
-
-<p>再次选择 Table View Cell ，然后在 Attributes inspector 中，选择 Accessory 为</p>
-<p>Checkmark ，然后你就可以看到变化了。</p>
-<img src="/images/2015/07/tableview/QQ20150717-6.png" class="">
-
-<p>是的，右边出现了一个漂亮的符号 √ 。</p>
-<img src="/images/2015/07/tableview/QQ20150717-7.png" class="">
-
-<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>因为 tableViewController 一般都是和不固定数据量绑定有关，也就说，你在设计程序写代码</p>
-<p>时更不不知道将会有多少行数据，所以你需要将这个 Table View Cell 设置为可重复使用的控件。</p>
-<p>以便在后面使用时，省去重复的繁琐劳动。</p>
-<p>在 Identifier 中输入 ChecklistItem 。</p>
-<p>在 ChecklistViewController.swift 文件中，键入下面的函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">               numberOfRowsInSection section:Int) -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell&#123;</span><br><span class="line"></span><br><span class="line">      let cell =</span><br><span class="line"></span><br><span class="line">      tableView.dequeueReusableCellWithIdentifier(<span class="string">&quot;ChecklistItem&quot;</span>)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">as</span> UITableViewCell！</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> cell</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>跑一下，看出来什么了。</p>
-<img src="/images/2015/07/tableview/QQ20150717-8.png" class="">
-
-<p>不错，是 5 行相同的数据。</p>
-<p>在 storyboard 中选中 cell 中的 label， 然后在 Attributes inspector 中 Tag 设为 1000</p>
-<p>然后修改 ChecklistViewController.swift 中的 tableView(cellForRowAtIndexPath) 函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">          cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</span><br><span class="line"></span><br><span class="line">  let cell = tableView.dequeueReusableCellWithIdentifier(<span class="string">&quot;ChecklistItem&quot;</span>)</span><br><span class="line"></span><br><span class="line">                      <span class="keyword">as</span> UITableViewCell!</span><br><span class="line"></span><br><span class="line">  let label = cell.viewWithTag(<span class="number">1000</span>) <span class="keyword">as</span>! UILabel</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> indexPath.row == <span class="number">0</span> &#123;</span><br><span class="line"></span><br><span class="line">      label.text = <span class="string">&quot;Walk the dog&quot;</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">      label.text = <span class="string">&quot;Brush my teeth&quot;</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">      label.text = <span class="string">&quot;Learn iOS development&quot;</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">3</span> &#123;</span><br><span class="line"></span><br><span class="line">      label.text = <span class="string">&quot;Soccer practice&quot;</span></span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">4</span> &#123;</span><br><span class="line"></span><br><span class="line">      label.text = <span class="string">&quot;Eat ice cream&quot;</span></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>再跑一遍，应该能够看到内容了。</p>
-<img src="/images/2015/07/tableview/QQ20150717-9.png" class="">
-
-<p>关键问题是，看到是能看到内容了，这里只有 5 条信息，那要是 100 条呢？</p>
-<p>你要写 100 个 if … else 来判断吗？</p>
-<p>首先修改函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              numberOfRowsInSection section: Int) -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell&#123;</span><br><span class="line"></span><br><span class="line">    let cell = tableView.dequeueReusableCellWithIdentifier(<span class="string">&quot;ChecklistItem&quot;</span>)</span><br><span class="line"></span><br><span class="line">                  <span class="keyword">as</span> UITableViewCell!</span><br><span class="line"></span><br><span class="line">    let label = cell.viewWithTag(<span class="number">1000</span>) <span class="keyword">as</span>! UILabel</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> indexPath.row % <span class="number">5</span> == <span class="number">0</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;Walk the dog&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row % <span class="number">5</span> == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;Brush my teeth&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row % <span class="number">5</span> == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;Learn iOS development&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row % <span class="number">5</span> == <span class="number">3</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;Soccer practice&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row % <span class="number">5</span> == <span class="number">4</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = <span class="string">&quot;Eat ice cream&quot;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里用余数判断解决了 100 个数据的问题，但是要知道，实际的数据根本不可能试这样的。</p>
-<p>这里只是做个例子，后面会详细讲到实际的应用。</p>
-<h3 id="点击效果"><a href="#点击效果" class="headerlink" title="点击效果"></a>点击效果</h3><p>我们一般都是点击一行后，后面的 √ 应该是取消的，再点击，√ 是出来的。</p>
-<p>在 ChecklistViewController.swift 文件添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">overrid func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">            didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</span><br><span class="line"></span><br><span class="line">                  <span class="keyword">if</span> cell.accessoryType == .<span class="literal">None</span> &#123;</span><br><span class="line"></span><br><span class="line">                     cell.accessoryType = .Checkmark</span><br><span class="line"></span><br><span class="line">                  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                     cell.accessoryType = .<span class="literal">None</span></span><br><span class="line"></span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tableView.deselectRowAtIndexPath(indexPath,animated: true)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>首先在类的前面添加几个变量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistViewController</span>: UITableViewController &#123;</span><br><span class="line"></span><br><span class="line">   var row0text  = <span class="string">&quot;Walk the dog&quot;</span></span><br><span class="line"></span><br><span class="line">   var row1text = <span class="string">&quot;Brush teeth&quot;</span></span><br><span class="line"></span><br><span class="line">   var row2text = <span class="string">&quot;Learn iOS development&quot;</span></span><br><span class="line"></span><br><span class="line">   var row3text = <span class="string">&quot;Soccer practice&quot;</span></span><br><span class="line"></span><br><span class="line">   var row4text = <span class="string">&quot;Eat ice cream&quot;</span></span><br><span class="line"></span><br><span class="line">   var row0checked = false</span><br><span class="line"></span><br><span class="line">   var row1checked = false</span><br><span class="line"></span><br><span class="line">   var row2checked = false</span><br><span class="line"></span><br><span class="line">   var row3checked = false</span><br><span class="line"></span><br><span class="line">   var row4checked = false</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">overide func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              numberOfRowsInSection section: Int) -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">overide func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">        cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</span><br><span class="line"></span><br><span class="line">      let cell = tableView.dequeueReusableCellWithIdentifier(<span class="string">&quot;ChecklistItem&quot;</span>)</span><br><span class="line"></span><br><span class="line">                  <span class="keyword">as</span> UITableViewCell!</span><br><span class="line"></span><br><span class="line">      let label = cell.viewWithTag(<span class="number">1000</span>) <span class="keyword">as</span>! UILabel</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> indexPath.row == <span class="number">0</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = row0text</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = row1text</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = row2text</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">3</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = row3text</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">4</span> &#123;</span><br><span class="line"></span><br><span class="line">        label.text = row4text</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      configureCheckmarkForCell(cell,indexPath: indexPath)</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> cell</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</span><br><span class="line"></span><br><span class="line">        var isChecked = false</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> indexPath.row == <span class="number">0</span> &#123;</span><br><span class="line"></span><br><span class="line">            row0checked = !row0checked</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">                    row1checked = !row1checked</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">                    row2checked = !row2checked</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">3</span> &#123;</span><br><span class="line"></span><br><span class="line">                    row3checked = !row3checked</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">4</span> &#123;</span><br><span class="line"></span><br><span class="line">                    row4checked = !row4checked</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       configureCheckmarkForCell(cell,indexPath: indexPath)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tableView.deselectRowAtIndexPath(indexPath,animated: true)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func configureCheckmarkForCell(cell: UITableViewCell,indexPath: NSIndexPath)&#123;</span><br><span class="line"></span><br><span class="line">var isChecked = false</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> indexPath.row == <span class="number">0</span> &#123;</span><br><span class="line"></span><br><span class="line">    isChecked = row0checked</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            isChecked = row1checked</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">            isChecked = row2checked</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">3</span> &#123;</span><br><span class="line"></span><br><span class="line">            isChecked = row3checked</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> indexPath.row == <span class="number">4</span> &#123;</span><br><span class="line"></span><br><span class="line">            isChecked = row4checked</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> isChecked &#123;</span><br><span class="line"></span><br><span class="line">  cell.accessoryType = .Checkmark</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">  cell.accessoryType = .<span class="literal">None</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>如果稍微懂点编程或者数学知识的话，应该对数组这个概念不陌生。一般用来存储一组相同属性的东西。</p>
-<p>给项目添加 swift 文件，命名为 ChecklistItem.swift</p>
-<img src="/images/2015/07/tableview/QQ20150718-1.png" class="">
-
-<img src="/images/2015/07/tableview/QQ20150718-2.png" class="">
-
-<p>添加内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChecklistItem</span> &#123;</span><br><span class="line"></span><br><span class="line">    var text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    var checked = false</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在 ChecklistViewController.swift 文件中，删除前面的变量，添加数组变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var row0item: ChecklistItem</span><br><span class="line"></span><br><span class="line">var row1item: ChecklistItem</span><br><span class="line"></span><br><span class="line">var row2item: ChecklistItem</span><br><span class="line"></span><br><span class="line">var row3item: ChecklistItem</span><br><span class="line"></span><br><span class="line">var row4item: ChecklistItem</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后添加函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">required init(coder aDecoder: NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">row0item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">row0item.text = <span class="string">&quot;Walk the dog&quot;</span></span><br><span class="line"></span><br><span class="line">row0item.checked = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">row1item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">row1item.text = <span class="string">&quot;Brush teeth&quot;</span></span><br><span class="line"></span><br><span class="line">row1item.checked = true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">row2item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">row2item.text = <span class="string">&quot;Learn iOS development&quot;</span></span><br><span class="line"></span><br><span class="line">row2item.checked = true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">row3item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">row3item.text = <span class="string">&quot;Soccer practice&quot;</span></span><br><span class="line"></span><br><span class="line">row3item.checked = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">row4item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">row4item.text = <span class="string">&quot;Eat ice cream&quot;</span></span><br><span class="line"></span><br><span class="line">row4item.checked = true</span><br><span class="line"></span><br><span class="line"> <span class="built_in">super</span>.init(coder: aDecoder)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>既然，前面已经提到了数组，这里是不是可以优化成数组呢？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var items: [ChecklistItem]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改函数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">required init(coder aDecoder: NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">    items = [ChecklistItem]</span><br><span class="line"></span><br><span class="line">    let row0item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    row0item.text = &quot;Walk the dog&quot;</span><br><span class="line"></span><br><span class="line">    row0item.checked = false</span><br><span class="line"></span><br><span class="line">    items.append(row0item)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    let row1item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    row1item.text = &quot;Brush my teeth&quot;</span><br><span class="line"></span><br><span class="line">    row1item.checked = true</span><br><span class="line"></span><br><span class="line">    items.append(row1item)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    let row2item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    row2item.text = &quot;Learn iOS development&quot;</span><br><span class="line"></span><br><span class="line">    row2item.checked = false</span><br><span class="line"></span><br><span class="line">    items.append(row2item)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    let row3item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    row3item.text = &quot;Soccer practice&quot;</span><br><span class="line"></span><br><span class="line">    row3item.checked = false</span><br><span class="line"></span><br><span class="line">    items.append(row3item)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    let row4item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    row4item.text = &quot;Eat ice cream&quot;</span><br><span class="line"></span><br><span class="line">    row4item.checked = true</span><br><span class="line"></span><br><span class="line">    items.append(row4item)</span><br><span class="line"></span><br><span class="line">    super.init(coder: aDecoder)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              cellForRowAtIndexPath indexPath: NSIndexPath)-&gt;UITableViewCell &#123;</span><br><span class="line"></span><br><span class="line">        let cell = tableView.dequeueReusableCellWithIdentifier(&quot;ChecklistItem&quot;)</span><br><span class="line"></span><br><span class="line">            as! UITableViewCell</span><br><span class="line"></span><br><span class="line">        let item = items[indexPath.row]</span><br><span class="line"></span><br><span class="line">        configureTextForCell(cell,withChecklistItem: item)</span><br><span class="line"></span><br><span class="line">        configureCheckmarkForCell(cell,withChecklistItem: item)</span><br><span class="line"></span><br><span class="line">        return cell</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">              didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</span><br><span class="line"></span><br><span class="line">if let cell = tableView.cellForRowAtIndexPath(indexPath) &#123;</span><br><span class="line"></span><br><span class="line">    let item = items[indexPath.row]</span><br><span class="line"></span><br><span class="line">    item.toggleChecked()</span><br><span class="line"></span><br><span class="line">    configureCheckmarkForCell(cell,withChecklistItem: item)</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  tableView.deselectRowAtIndexPath(indexPath,animated:true)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func configureCheckmarkForCell(cell:UITableViewCell,</span><br><span class="line"></span><br><span class="line">                               withChecklistItem item: ChecklistItem)&#123;</span><br><span class="line"></span><br><span class="line">  if item.checked &#123;</span><br><span class="line"></span><br><span class="line">    cell.accessoryType = .Checkmark</span><br><span class="line"></span><br><span class="line">  &#125; else &#123;</span><br><span class="line"></span><br><span class="line">    cell.accessoryType = .None</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView: UITableView,</span><br><span class="line"></span><br><span class="line">                numberOfRowsInSection section: Int) -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">    return items.count</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func configureTextForCell(cell: UITableViewCell,</span><br><span class="line"></span><br><span class="line">                          withChecklistItem item: ChecklistItem) &#123;</span><br><span class="line"></span><br><span class="line">      let label = cell.viewWithTag(1000) as! UILabel</span><br><span class="line"></span><br><span class="line">      label.text = item.text</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>同时需要在 ChecklistItem.swift 中添加函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func toggleChecked() &#123;</span><br><span class="line"></span><br><span class="line">  checked = !checked</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>到这里，你是不是看到了，使用数组和数据对象是不是比前面一个一个的撸方便多了呢？</p>
+<p>到地铁站买票，进站时，氢气球不让带进站，放气收起来让娃子拿着。</p>
+<p>地铁里，娃子明显疲软，想晕车，就抱着她，让她睡觉。</p>
+<p>中南路倒车，地铁出站娃子还在睡觉呢。</p>
+<p>在火车站前的石球上坐着歇着，娃子睁开眼：爸爸，好多人啊，这里有人，这里也有人。</p>
+<p>娃子一个最大的特点，就是睡醒不迷糊。</p>
+<p>带娃子进站，找候车室，一切顺利。</p>
+<p>等车间隙，娃子又是各种调皮，爬高上低，左顾右盼。</p>
+<p>怕她在车上晕车，总是逗她玩。</p>
+<p>到点上车，还好是最近的车道，不用爬楼梯。</p>
+<p>整好走人。</p>
+<p>在车上，先是找到座位，开始不老实的乱坐。新鲜了半个小时，然后开始想闹人，我赶紧搂住她哄她睡</p>
+<p>觉，怕她又晕车。一会睡着，一直到合肥才醒。差不多一半路程了，下面就容易对付点了。</p>
+<p>只要不晕车，其他的都不是事。</p>
+<p>醒了，先给她找点饼干吃，然后带她去厕所尿尿，洗脸回来喝了点水，去餐车找饭吃。</p>
+<p>到地方才发现，没有餐车，只有卖盒饭的，要了个奥尔良烤翅的盒饭。</p>
+<p>娃子喜欢吃烤翅上的皮。四块烤翅吃了三个的皮，最后一个掉地下了。</p>
+<p>我吃了一份饭。</p>
+<p>然后和娃子各种耍。</p>
+<p>3.30左右，娃子坚持不住了，闹人，又是一阵哄。</p>
+<p>4.08分，列车准点到达上海虹桥，带娃子下车出站，在门口等妈妈。</p>
+<p>妈妈不知道上哪里去了，给妈妈打电话，娃子闹着我要打，我要打，</p>
+<p>本来就着急没有让她打，娃子伤心的哭了。</p>
+<p>等妈妈来，也不理妈妈，然后妈妈用樱桃把娃子哄的不哭了。</p>
+<p>娃子连连吃了很多樱桃，然后不哭了。准备坐地铁回家。</p>
+<p>可能因为和6.4连的太紧了，地铁入站口，查得相当严。门口排起了长队。</p>
+<p>进去之后，找了个车头位置人少的地方恰好能找到座位。</p>
+<p>路上娃子可能有晕车反应了，搂着她睡觉了。</p>
+<p>到小区门口娃子醒了，电梯上楼，到家门口，娃子不愿意了，哭着闹着：上爸爸上学的地方吧！</p>
+<p>老婆和丈母娘说她不想家，我想可能是因为3天之内，时空变换太快，她还没有适应一个地方就立刻</p>
+<p>换了，所以一下子没有接受。抱着在门口哄了20分钟，终于愿意进屋了，进屋之后，黏在我身上不</p>
+<p>下来，又是一阵好哄，最后妈妈用樱桃把她哄下来了。</p>
+<p>10分钟后，娃子又恢复到3天前的状态了，到处乱跑乱蹦。O(∩_∩)O哈哈~，调皮的小娃子又回来了。</p>
 <hr>
 
       
@@ -861,7 +926,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/14/kings-man-the-secret-service/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/01/take-care-the-little-daughter-my-self-two/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -875,7 +940,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/14/kings-man-the-secret-service/" class="post-title-link" itemprop="url">王的男人之秘密服务</a>
+            <a href="/2014/06/01/take-care-the-little-daughter-my-self-two/" class="post-title-link" itemprop="url">独自带娃去旅游-2</a>
         </h2>
 
         <div class="post-meta">
@@ -885,7 +950,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-14 20:58:24" itemprop="dateCreated datePublished" datetime="2015-07-14T20:58:24+08:00">2015-07-14</time>
+              <time title="创建时间：2014-06-01 23:56:08" itemprop="dateCreated datePublished" datetime="2014-06-01T23:56:08+08:00">2014-06-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -893,7 +958,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/" itemprop="url" rel="index"><span itemprop="name">看电影</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -909,116 +974,73 @@
 
       
           <span id="more"></span>
-<img src="/images/2015/07/kingsman.jpg" class="">
+<h1 id="6-01"><a href="#6-01" class="headerlink" title="6.01"></a>6.01</h1><p>今天是儿童节，在酒店睡到自然醒，其实也不算。</p>
+<p>因为自从有了娃子之后，我总是6.左右就自然醒。</p>
+<p>起来先烧上水，然后发现免费的水昨天晚上喝完了。</p>
+<p>没有计算好，只有从小冰柜了拿了已个天价矿泉水，15元RMB。</p>
+<p>忍了，娃子还在睡，不能自己出去买，同学们昨天晚上吃完饭又去唱k，估计凌晨2.才睡吧。</p>
+<p>收拾背包里的东西，然后把自己的衣服洗了，又想起来刮胡刀没有带。</p>
+<p>娃子7.的时候，自己爬起来：爸爸，俏俏要喝奶。</p>
+<p>赶紧整水弄奶，抱着娃子在窗户那里看着大车喝。</p>
+<p>窗户外面跑着越来越多的双层巴士，说明外面的人开始活动了。</p>
+<p>喝过奶之后，娃子竟然又睡着了。睡吧。</p>
+<p>趁娃子睡着，打开电视看一会，怕娃子睡得太多，晚上又不睡。看会电视也没有事。</p>
+<p>外面下着雨，还不知道等会同学们要去哪里。</p>
+<p>8.娃子醒了，烧好热水，给娃子带了一个雨衣，拿着酒店提供的雨伞，带娃子出去觅食。</p>
+<p>出酒店往学校方向，不到红绿灯，有个 郭记肉夹馍 ，进去要了个肉夹馍，要了一碗红豆粥，</p>
+<p>又看有粽子，想着明天端午节呢，回到家不知道几点，先要两个粽子尝尝，全程娃子都很配合。</p>
+<p>自己吃饭，自己吃粽子，吃肉夹馍。中间碰到皇兄携夫人一起来就餐。</p>
+<p>吃好出去，娃子就不是那样了，要爸爸抱着，东西也不让别人帮拿。然后就一路抱到学校门口。</p>
+<p>学校门口几个同学正在玩，然后他们要去吃饭，我就不去了，我和娃子刚吃过，就抱着娃子去</p>
+<p>学校里面。还是那个小门，顺着熟悉的路往前走，可以看到前面的南湖，到以前的篮球场那里，</p>
+<p>现在改成了体育馆，顺着斜坡上去，就来到以前住的2栋。把娃子放在门前的雪松下，照了几张照片，</p>
+<img src="/images/2014/house2.jpg" class="">
 
-<p>王的男人-秘密服务，这个是我最近看到的最逗比的翻译，可是这个翻译可是正规的公司翻译的。</p>
-<p>这个片子也是因为听说好看才去看的，也是传统的故事情节，小人物的成长史。</p>
-<p>一个足够聪明和足够有能力的小混混，因为某些原因不得志，整日混来混去，幸得一位极好</p>
-<p>的老师指点，成为一代人才并最终力挽狂澜的故事。</p>
-<p>这样的故事情节被周星驰老师不知道炒了多少剩饭了，国内观众应该比较认可这样的故事套路，</p>
-<p>稍加处理就可以很容易得到好评，但是整个故事看完，就记住了男主角的师傅在教堂大开杀戒，</p>
-<p>杀的昏天暗地，神哭鬼号的那段，和结尾瑞典公主的大屁股。</p>
-<p>估计也只有瑞典的公主可以被影片拿来调戏吧。</p>
-<p>不过教堂杀戮那段拍的实在是太过瘾了，死的太惨太真实了，一个个活人在你眼前就那么眼睁睁的被</p>
-<p>杀死了，还都能看到被砍的位置，我想应该是位中国的武指设计的吧。国外的动作设计根本设计不了</p>
-<p>这么精细的动作和场面。</p>
-<p>如果非要王的男人和疯狂的max有个比较的话，但就导演功力上，王的男人要高疯狂的max一头。</p>
-<p>疯狂的max是用机械的轰鸣和躁动的电吉他，配上模特的身材刺激你的肾上腺，让你无暇思考它的故事</p>
-<p>情节啊，故事推动啊，合理性啊。 这要是在中国，被一个中国导演拍出个这样的片子，肯定被批个</p>
-<p>傻大粗装(如姜文);而王的男人则更注重细节，情节推动，故事的叙述性和完整性(再如姜文)。</p>
-<p>单个打斗场面细腻而清晰，是人物推动故事发展，而不是导演推动故事发展。</p>
-<p>虽然我找了疯狂的max和王的男人这么多缺点，但不可否认它们还都是好电影，只不过不是那种让人</p>
-<p>能记住的电影。</p>
-<p>疯狂的max导演就是要不走寻常路，王的男人导演是要突破007的极限。</p>
+<p>然后娃子就往前走，我喊她，她反而不理我，刚下过雨，她踩着积水就走过去，鞋子什么的都湿了。</p>
+<p>我过去一把抓住她，她就委屈的哭了： 爸爸，俏俏要走。</p>
+<p>“那你的鞋子湿了没”</p>
+<p>她不管，“爸爸，俏俏要走！”</p>
+<p>在宿舍前面，一个女生喊道：别哭！</p>
+<p>我突然意识到，我错了，我本来可以用其他的东西把她哄过来的，为什么针对她进行教育呢。</p>
+<p>然后抱着她：爸爸抱你去看鱼鱼好不好，那边水里有很多鱼。</p>
+<p>哄了半天不哭了。</p>
+<p>在南湖边上绕了一圈，在操场绕了一圈，她又想踩水，没让，又委屈了一小会。</p>
+<p>在主席台躲雨，同学们打电话过来说去认领的树那里照相，就过去。</p>
+<p>同学们已经在那里了，有个女生还送给娃子一个氢气球，大熊的那种，小娃娃特喜欢，可是她不愿</p>
+<p>叫人，也不愿意别人摸她，就在那里喊着：爸爸，我们回去吧，爸爸，我们回去吧。</p>
+<p>终于在一个男生摸了她一下之后，彻底的发作了，哭得稀里哗啦的。</p>
+<p>没有办法，不能和同学去玩了，抱娃子回酒店睡觉。</p>
+<p>11.40左右了，娃子该睡觉了。</p>
+<p>一路上，娃子就是不下来，一直都是让抱着，把她放下来，她就耍赖。</p>
+<p>今天是6.1，儿童节，她的节日，她最大，就抱着吧。不就是胳膊累了点吗。</p>
+<p>走到一个良品铺子，买了一点她喜欢吃的东西。这下抱着她，我就更累了。</p>
+<p>刚才过来的时候，没有感觉那么远啊。胳膊累的又酸又疼，几次把她放下来想歇会，她就把腿蜷起来，</p>
+<p>脚尖歪着，不让放到地下。没有办法，只有硬撑着往前走。</p>
+<p>还好，我之前一个星期，每天都跑5公里，锻炼了足够的脚力和耐力，就是胳膊累的很，臂弯那里酸</p>
+<p>疼的厉害。</p>
+<p>谢天谢地，终于到酒店，喝水，休息。然后，然后娃子就来精神了，带着娃子玩，玩了差不多两个小时，</p>
+<p>娃子终于睡着了，我也可以休息睡觉了。同学们到5点左右才回来。</p>
+<p>6.左右，娃子醒了，整点水喝，休整一下，出去觅食。</p>
+<p>来到早晨的那个肉夹馍店，要了一碗牛肉面和一碗鸡蛋面，我知道娃子肯定饿了，又找了个小碗，给她</p>
+<p>一双筷子，挑一小部分放到她小碗里，娃子吃的津津有味。吃了还吃，吃了还吃，足足吃了有5小碗。</p>
+<p>这下吃饱了，还惊奇的发现，娃子竟然会用筷子了，以前都是孙悟空吃面条，两只筷子手心里攥，这次</p>
+<p>竟然知道用拇指和食指夹住，然后用无名指和小指去挑动筷子往嘴里扒。于是夸她会用筷子了，她吃的</p>
+<p>更欢了，还骄傲的对我说：爸爸，你可知道为啥吧，俏俏长大了。</p>
+<img src="/images/2014/food.jpg" class="">
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/13/what-about-the-mad-max/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/07/13/what-about-the-mad-max/" class="post-title-link" itemprop="url">疯狂的麦克斯</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-07-13 19:34:11" itemprop="dateCreated datePublished" datetime="2015-07-13T19:34:11+08:00">2015-07-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/" itemprop="url" rel="index"><span itemprop="name">看电影</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<img src="/images/2015/07/085712.jpg" class="">
-
-<p>说实话，我是被影评吸引来看疯狂的麦克斯的，以前我都不知道是梅尔吉布森演了前面的三部，</p>
-<p>更不知道还有这样一部影片，如果只看海报，我是不会被它吸引的，但是我还是被微信里的好评给吸引</p>
-<p>了。其实是很老套的好莱坞式的个人英雄式影片，在我的个人观影生涯里不会留下太深印象，</p>
-<p>就如同匆匆过客，来的快去的快。</p>
-<p>有的人说是小成本电影，什么什么的….</p>
-<p>我其实不知道它的投资，但就整个影片的节奏来说，闹腾，闹心，除了那几个模特的身材看着还</p>
-<p>可以外其他都不怎么样？</p>
-<p>里面的造型恶心，音乐聒噪，故事推动简单粗暴，这样的影片在好莱坞应该有很多很多。</p>
-<p>但是它出来的太是时候，从温暖的大白之后，这段时间根本没有什么能够拿得出手的外国大片，</p>
-<p>它的太是时候，简单的节奏，粗狂的线条，有负责养眼的，有负责耍酷的，有负责恶心的，有负责良心</p>
-<p>救赎的。</p>
-<p>我不知道这个片子在国外是什么级别，就单开始的从人身上抽血补血我就受不了，更不用说那些头上</p>
-<p>刻着蚊香盘，嘴用针缝了一圈的野蛮人了。我想这部片子在国外应该不适合未成年人观看吧。</p>
-<p>然后就是负责追车和电吉他。</p>
-<p>比较意外的是女主角的查理斯塞隆，一开始我都没有看出来，无论外形和演技都更胜一筹。</p>
-<p>里面女主角的过去和男主角的过去，可能是为了续集做铺垫。</p>
-<p>这样的电影，正符合现在社会浮躁的心态，刺激and丑陋，恶心and漂亮，机械轰鸣and高音吉他，</p>
-<p>什么都是这样的快速而激情。</p>
-<p>其中比较有印象的就是模特的好身材，和那个会给枪装子弹的女孩，或许是阿富汗，塔利班之类的。</p>
-<p>续集或许会有她的戏！</p>
+<p>吃完饭，回酒店，同学们休息的差不多了，他们相约去步行街，去吃烤肉，我抱娃子去7层找他们玩，</p>
+<p>小娃子见了他们又是一个一不理二不叫，一个阿姨用萨琪玛和饼干才换来她的直视，仅仅是直视。就是不</p>
+<p>和人家说话。</p>
+<p>过了一会他们该走了，我不能去了，娃子估计9.30左右又该闹着睡觉了，我到那里也不能玩，抱着还那</p>
+<p>么重。</p>
+<p>回到房间继续和娃子玩，上午有个狗熊的球球，下午有饼干，还有自己的芭比娃娃。</p>
+<p>同学怕我吃不上饭，还给我送来一份白粥，真的是万分感谢。</p>
+<p>9.30时，娃子再一次安静的睡着了。</p>
+<p>这一天，真的是最累的一天，胳膊肘子快要累断了。</p>
+<p>躺下歇歇。喝点水，看会电视，看看昨天的衣服和今天的衣服干了没，翻翻晾晾。希望明天走的时候不湿</p>
+<p>就好了。</p>
+<p>把娃子的玩具和衣服收拾好，然后看了一会电视睡着了，同学发消息来邀我去玩，要给我带烤肉回来吃，</p>
+<p>好意心领了，太晚太困了。睡觉了先，明天要早起赶地铁去火车站。</p>
 <hr>
 
       
@@ -1039,7 +1061,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/09/could-not-find-developer-disk-image/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/06/01/take-care-the-little-daughter-my-self-one/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1053,7 +1075,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/07/09/could-not-find-developer-disk-image/" class="post-title-link" itemprop="url">could not find developer Disk image</a>
+            <a href="/2014/06/01/take-care-the-little-daughter-my-self-one/" class="post-title-link" itemprop="url">独自带娃去旅游-1</a>
         </h2>
 
         <div class="post-meta">
@@ -1063,7 +1085,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-07-09 20:53:35" itemprop="dateCreated datePublished" datetime="2015-07-09T20:53:35+08:00">2015-07-09</time>
+              <time title="创建时间：2014-06-01 00:06:08" itemprop="dateCreated datePublished" datetime="2014-06-01T00:06:08+08:00">2014-06-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1071,7 +1093,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -1087,338 +1109,88 @@
 
       
           <span id="more"></span>
-
-<p>iOS新升级到8.4后，Xcode 7.0 beat版运行程序到真机报错，提示Could not find developer</p>
-<p> disk image，Xcode Device栏处的真机右侧显示“（unavailable）”</p>
-<p>原因是你的Xcode很有可能没有8.4的包！</p>
-<p>解决方法:</p>
-<p>如果你有 Xcode 6.4的话，可以从Xcode 6.4中拷贝8.4(12H141)的文件夹到Xcode 7下</p>
-<p>Xcode 6.4路径为</p>
-<p>&#x2F;Applications（应用程序）&#x2F;Xcode（右键显示包内容）&#x2F;Contents&#x2F;Developer&#x2F;Platforms&#x2F;</p>
-<p>iPhoneOS.platform&#x2F;DeviceSupport</p>
-<p>Xcode 7.0 beta路径为</p>
-<p>&#x2F;Applications（应用程序）&#x2F;Xcode-beta（右键显示包内容）&#x2F;Contents&#x2F;Developer&#x2F;Platforms</p>
-<p>&#x2F;iPhoneOS.platform&#x2F;DeviceSupport</p>
+<p>这事还得从头说起，那一天，有同学给沉寂的校友群里扔了个炸弹：毕业十年，要不要回母校聚一下。</p>
+<p>母校，武汉中南民族大学，我们进去的时候，它还叫中南民族学院，我在上学期间简直是最沉闷的一个，</p>
+<p>不交友，不学习，不上课，不社团，就是一个人在宿舍那个集体里还能说上几句话的人。记得毕业的时</p>
+<p>候，有人问我：你是不是对我有意见，你从来都没有和我说过一句话! 我尴尬的笑笑，又没有说话，走开</p>
+<p>了。不好意思，我和1&#x2F;3的同学都没有说过一句话。</p>
+<p>十年了，从毕业时的寸步难行，到中间的重创受伤，到现在温暖的小窝，乖巧的小娃子，我满足了。</p>
+<p>说来就来，宿舍老大打电话过来询问能够参加，第二天回复，可以参加。还有个决定是带着娃子去。</p>
+<p>女儿27个月了，脾气暴躁，爱闹人，不过很精明，比我小时候聪明多了，总是黏着我，爸爸爸爸的跟在</p>
+<p>屁股后面。独自带娃出去，我也是想证明给老婆看，我一个人也能把娃子带好。</p>
+<p>提前一周，开始给娃子上教育课，再过一周，到星期六，爸爸带你去坐大火车，特别大，你要听话好不</p>
+<p>好。</p>
+<p>娃子总是特别希翼的眼神望着我，狠狠的：嗯！</p>
+<h1 id="5-31"><a href="#5-31" class="headerlink" title="5.31"></a>5.31</h1><p>早晨老婆和丈母娘早早的5.30分就出去坐车游玩了，就剩下我和娃了，我起来给娃穿好喝奶，检查</p>
+<p>收拾东西，为了路上方便，把所有衣物都装在一个包里，另外再抱个娃，这样就容易一些了。</p>
+<p>7.30分开始离家出走，门口打的，虽然知道娃子可能会晕车，但是想到地铁里冷冷的空气，和漫长的转</p>
+<p>车等车时间还是决定了打车去，这一决定，直接导致了娃子后面一整天的呕吐不止。</p>
+<p>一路上，娃子是晕头转向，我搂着她，让她睡觉，娃子则是迷迷糊糊的一路睡。</p>
+<p>大概8.30分得时候到达虹桥火车站，我动了动准备下车，娃子睁开眼问：爸爸，好了没有啊。</p>
+<p>我说到了，师傅找了钱，拿包下车，两步刚走，娃子哇的一声全吐出来了。</p>
+<p>衣服上全部都是，没有办法，把娃子放下来，从包里拿出干净衣服换上，把脏衣服用塑料袋装好放包里，</p>
+<p>进站换票，换票点简直是人山人海，小娃子受不了那个味道，一直在问：爸爸，好了没有啊？</p>
+<p>听着都心疼。</p>
+<p>终于把票换出来，带娃上去找东西吃，</p>
+<p>肯德基只有汉堡套餐，而且品种很少，去了旁边的永和，要了一份套餐：皮蛋瘦肉粥和蛋饼油条。</p>
+<p>小娃子特别喜欢喝粥，忘记带小碗和勺子，就用盛蛋饼的盘子给娃子冷粥，然后顺着盘子娃子喝的又香</p>
+<p>又甜。</p>
+<p>第一次带娃出去，心里紧张，娃子喝的衣服上都是米粥，娃娃说：我要和妈妈说话，妈妈，我喝粥弄到</p>
+<p>衣服上了，你快点回来吧，俏俏想你了！</p>
+<p>泪水差点夺眶而出。</p>
+<p>开弓没有回头箭，只有自己加油了。</p>
+<p>吃完饭，我候车室等车，娃子各种调皮，一会要站凳子，一会要跑到那边，一会要喝凉水，左哄右挡，</p>
+<p>终于到车上了，还是没有经验，自己选了一个靠窗户的三人座最里面的座位，为后来的照顾小娃子添加了</p>
+<p>很大的的阻力。</p>
+<p>娃子先上来很兴奋，爬高上低，左顾右盼，慢慢的就开始疲软了，慢慢显示出晕车的症状来。</p>
+<p>没有精神，想闹人，软绵绵的趴在我怀里一动不动，还不想睡觉，左哄右哄，终于睡着了，也许是因为火</p>
+<p>车晃动如摇篮的原因，娃子睡得很香，一直睡到一半路才醒。</p>
+<p>然后才是艰难的时刻。</p>
+<p>醒了之后，带娃子去尿尿，然后洗脸回来，想起来妈妈给带了一个士力架，拿出来给娃子吃，娃子自然</p>
+<p>是不讲意思，大口吃。一个人吃了将近一半，然后又闹着喝了一点凉的矿泉水，看着娃子大吃二喝，心</p>
+<p>想，应该没有问题吧，吃就吃吧。</p>
+<p>半小时之后，娃子开始有反应了，又全身疲软下来，躺在我怀里一动不动，闹人似的吭唧。</p>
+<p>过了十分钟，突然( ⊙o⊙ )哇的一下全吐出来了。吐的是稀里哗啦，眼泪汪汪。没有办法，只好搂了又</p>
+<p>搂，哄了又哄，带娃子去洗手洗脸，还好娃子身上吐的不多，我的裤子上倒是不少，我也不换了，赶紧</p>
+<p>哄娃。</p>
+<p>娃子从此开始吐的历程，一直状态不好，在怀里吭吭唧唧的闹人，不躺不做，就让抱着，还得站起来出</p>
+<p>去抱着，没有办法，抱着她在列车接头处走啊走，晃啊晃，想把娃娃晃睡着，可能是晕得太厉害了，娃</p>
+<p>子一直都没有睡着，抱着抱着，娃子又哇的一下全吐了，这次吐的鼻子里都冒水了，只能抱着娃赶快哄，</p>
+<p>怕她自己害怕。</p>
+<p>娃子精神稍微好点了，要喝水，又把带的热水给她喝，喝了好多水，我想水总没有事吧。</p>
+<p>半小时之后，事实推翻了我的想法，娃子连清水都吐出来了。娃子在怀里喊：爸爸，咱们下去吧。</p>
+<p>没有办法，宝贝，爸爸下次在家和你玩，也不带你出来了。</p>
+<p>好歹下车了，收拾东西，抱着软趴在肩膀的娃娃下车，又给她换了一套衣服。</p>
+<p>走，出去坐地铁去。</p>
+<p>地铁倒是好找，买票，坐车，车上真冷。嗖嗖的风，用双臂护着娃娃的胳膊，怕娃娃再一受凉，发烧了就</p>
+<p>麻烦了。</p>
+<p>出地铁10分钟，到酒店，check-in 安排好，给娃子整点热水，洗洗脸，然后放水洗衣服。</p>
+<p>同学们说晚7.在饭店集合吃饭，已经6.20了，而且还不知道饭店在哪里。整到6.40，同学打电话过来</p>
+<p>问在哪里，稍微收拾了一下，准备出发，发现剃须刀没有带，前天又没有刮胡子。唉， 凑合吧。</p>
+<p>路上碰到同学回来拿东西，于是一起去饭店。 老师，同学都已经到了，嘻嘻哈哈的说不停，十年没有</p>
+<p>见了，加上上学的四年，总共有14年了，我住的酒店在14楼，上海租得房子也在14楼。真巧。</p>
+<p>段老师还是那样温文尔雅，特漂亮;司老师还是那样说话声音响亮，声线往上飘；后面来的韦老师也是</p>
+<p>老样子，一点都没有怎么变样，再看同学们，男的成熟稳重了，女的纤瘦漂亮了，大家都在自己的路</p>
+<p>上稳步前行，还是带着10年前的迷人的微笑，一点都没有变，真好。</p>
+<p>两桌同学，20几个人，见了面还是那样亲切自然。还是那样亲热招呼。真好。</p>
+<p>大家坐下，领导讲话，老师献词，回忆了一下过去，表达了一下现在，畅想了一下未来。</p>
+<p>然后就开始酒过三巡，不分大小了，走过来串过去，大家开始互相把酒言欢了。彼此高声畅谈，</p>
+<p>真的是酒不醉人人自醉，抽刀断水水更流。</p>
+<p>小娃子在老师献词的时候就开始闹着要吃东西。我又不好直接起来拿东西吃，就和她谈条件：乖一点，</p>
+<p>等会爸爸给你拿黄瓜。</p>
+<p>没有想到这家伙得寸进尺，大声喊：要吃黄瓜。</p>
+<p>只好抱出去整治一番，再进去。三个老师，都要献词，小娃子又闹，没有办法，抱出去再整。再进去。</p>
+<p>开吃，小娃子爱上了鸡汤，喝了一碗又一碗，喝了一杯又一杯，不停的在喝，可能是因为吐的原因，</p>
+<p>要补水，就放开了喝吧。很多同学要和她玩，小娃子不理人家，让叫叔叔阿姨也不叫，就是喝汤。</p>
+<p>我想端着酒杯和同学叙叙旧，她一会爸爸，一会爸爸的喊我。我又怕她一个人在那里害怕会哭，就不敢</p>
+<p>走远，附近的人就举举杯，说上两句，大家都还好，来回走动着，互相喝酒说话。</p>
+<p>9.30的时候，娃子喝好汤了，然后就开始闹人了，爸爸：俏俏要睡觉。</p>
+<p>没有办法，抱她去厕所尿尿，然后洗洗手和脸，上屋里找个同学让代说一下，抱娃子回酒店了。</p>
+<p>路上娃子也没有睡，到酒店来精神了。可能是因为在火车上一直睡，现在不困了，就陪着她一直玩，</p>
+<p>要给她洗澡也不让，就另外再换了一个t恤，准备睡觉穿。</p>
+<p>看电视，穿着袜子在地毯上跑，要喝水，要看画书，要玩芭比娃娃，终于玩到11.30 睡着了。</p>
+<p>这一天真累。洗澡睡觉。</p>
 <hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/04/steps-10-to-profession-developer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/07/04/steps-10-to-profession-developer/" class="post-title-link" itemprop="url">10步成为专业的iOS开发者</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-07-04 08:53:00" itemprop="dateCreated datePublished" datetime="2015-07-04T08:53:00+08:00">2015-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>你想在手机应用开发中分一杯羹吗？这是时下最火的技术。 绝对正确的决定。</p>
-<p>应用开发很火，毫无疑问可能在未来几年里也会很火。无论你身在何地，将会有大量的工作机会在等待</p>
-<p>你们。公司在搜寻各个级别的开发人员，小白，菜鸟，中级，高级，专家。这篇文章也适合起步者-</p>
-<p>我将会帮助你作为一个iOS程序员获得第一份工作。</p>
-<h3 id="我为什么要听你的？"><a href="#我为什么要听你的？" class="headerlink" title="我为什么要听你的？"></a>我为什么要听你的？</h3><p>你也许会这么问，是个好问题！听从一个毫无所知的人的错误建议并不是一个好主意。</p>
-<p>我不是一个毫无疑问的真相的源头，甚至我还不是一个经验丰富的iOS开发者-但是我有足够的能力帮助</p>
-<p>你。</p>
-<p>我是从几个非主流的低收入app做起的，但是这些收入却足以够我吃饭和应付账单，以便我能够专心</p>
-<p>在app上，然后我作为高级iOS开发人员加入了一家公司，最终还是辞职，再次完全专心的在我自己的</p>
-<p>应用开发上而不用担心明天。如果我想的话我还是可以回去帮别人打工。(但是不太可能而来，自己</p>
-<p>  当老板的意愿由来已久了！)。</p>
-<p>所以，少说多做，—我们还是来谈谈要想成为一个iOS开发人员都需要做些什么？</p>
-<h3 id="1-如果你还没有Mac和iPhone，那就买个"><a href="#1-如果你还没有Mac和iPhone，那就买个" class="headerlink" title="1. 如果你还没有Mac和iPhone，那就买个"></a>1. 如果你还没有Mac和iPhone，那就买个</h3><img src="/images/2015/07/10steps/ios1.jpeg" class="">
-
-<p>想要开发iOS，你需要个Mac</p>
-<p>当然也有很多变通的方法(黑苹果或者云端Mac)，但是要正式的告诉你，作为一个iOS开发者，Mac是</p>
-<p>你主要的工作工具，你不必有一个最新最快最贵的，但是你确实需要一个Mac。如果你确实想入手一个</p>
-<p>设备，考虑一下Mac Mini-或许这是性价比最高的一个Mac了。如果你和我一样，应用开发是你的首要</p>
-<p>任务，买个Air吧，它的大屏非常爽。你完全没有必要去买个新的，从eBay买个二手的就OK！</p>
-<h3 id="2-Install-Xcode"><a href="#2-Install-Xcode" class="headerlink" title="2. Install Xcode"></a>2. Install Xcode</h3><img src="/images/2015/07/10steps/ios2.png" class="">
-
-<p>现在，你有一个闪闪发亮的新Mac(二手Mac你擦干净的也算新的)摆在桌子上了，现在开始安装一些</p>
-<p>用来iOS开发的重要的软件了-XCode。 XCode 是你开发iOS 应用的开发环境(IDE-integrated development</p>
-<p>environment)。你可以从 Mac 应用商店免费下载，或许你现在正在下载。</p>
-<p>在Xcode下，你可以编写代码，调试代码，绘制界面，单元测试以及很多很多其他的事情，你也可以</p>
-<p>使用Xcode上传你的app到应用商店。掌握并熟悉Xcode，这是每个iOS开发者最重要的软件。</p>
-<h3 id="3-学习编程基础-可能是最难的部分"><a href="#3-学习编程基础-可能是最难的部分" class="headerlink" title="3. 学习编程基础(可能是最难的部分)"></a>3. 学习编程基础(可能是最难的部分)</h3><img src="/images/2015/07/10steps/ios3.png" class="">
-
-<p>现在是最难得部分了，你需要直接编写代码。如果你有其他的编程背景，学些Objective-C(较难)和</p>
-<p>Swift(较容易)不会太难，它们是标准的，面向对象的编程语言。如果你之前的人生中都没有编写过</p>
-<p>一句代码，别担心，这里有两个针对初学者的很不错的资源网站。</p>
-<p>1.<a target="_blank" rel="noopener" href="http://rypress.com/tutorials/objective-c/">Ry’s Objective-C tutorial</a>–Objective-C 粉丝的老学校，你不必真的去完全掌握</p>
-<p>Objective-C(Swift才是王道),至少要懂得基本语法，能够读写代码。</p>
-<p>2.<a target="_blank" rel="noopener" href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">Swift language guide</a> 这是我们要学的Swift语言的官方文档，Apple出品，必属精品。</p>
-<p>你不必对所有的知识点都有深度的了解，这些会在以后的实际工作经验中接触到，但是你要把自己完全</p>
-<p>沉浸在变量、指针、类、数据类型和递归这些知识的海洋里，它提供给你更进一步学习的环境。</p>
-<h3 id="4-根据教程一步一步写一些不同的app"><a href="#4-根据教程一步一步写一些不同的app" class="headerlink" title="4. 根据教程一步一步写一些不同的app"></a>4. 根据教程一步一步写一些不同的app</h3><img src="/images/2015/07/10steps/ios4.jpeg" class="">
-
-<p>当你想要做些什么有用的app时，这些网站也许能帮助你。</p>
-<p>1.<a target="_blank" rel="noopener" href="http://www.appcoda.com/">AppCoda</a>-比较适合初学者，你将会发现很多不同的教程，跟着说明一步一步来，</p>
-<p>确保能够完整的走一遍。</p>
-<p>2.<a target="_blank" rel="noopener" href="http://www.raywenderlich.com/">Ray Wdnderlick</a>–另外一个有着海量iOS开发教程的网站，一步一步学习是最重要的。</p>
-<p>但是不要只在这些网上教程上来回学习，自己亲自动手做一些app，比如计算器，天气，货币转换，</p>
-<p>音乐app，任何你可以在教程上找到的都可以做。</p>
-<p>跟着这些app教程学习，直到你觉得对Xcode 和 编程语言(Swift) 比较熟悉了。就要开始下面的步骤。</p>
-<p>###5. 编写自己的app</p>
-<img src="/images/2015/07/10steps/ios5.jpeg" class="">
-
-<p>现在是重点部分了，你需要做一个自己的app将来可以在面试的时候给你未来的雇主演示。</p>
-<p>但是，别紧张，你不必做再做一个Facebook出来，你只是要找一个低级职位，OK？一个你需要从竞争</p>
-<p>对手那里学习，而不是需要你一个需要5年经验的专家。</p>
-<p>所以，冷静下来想一下，你要开发在哪个行业或者领域的app.</p>
-<p>可能你写的是一个使用了网络传输的app，也可能是你使用UIKit设计了一个非常舒服的复杂用户接口。</p>
-<p>或者可能你最擅长的开发是一个音乐或声音播放器。使用这些有趣的知识创建自己的app，主要要一个</p>
-<p>干净、清晰、能够正常工作的代码。</p>
-<p>###6. 同时，尽可能多的学习软件开发技能</p>
-<img src="/images/2015/07/10steps/ios6.jpeg" class="">
-
-<p>如果你读到这里，你可能不希望去大学再花费几年时间学习计算机科学。好消息是你不必这么做。</p>
-<p>很多计算机科学&#x2F;编程&#x2F;软件科学 可能都能在家里在线学习。</p>
-<p>当然，这样肯定是拿不到学位的，但是获得一个iOS开发者的工作不需要这个，参看上面的图片，学习</p>
-<p>这些知识点。我不会给出链接–搜索信息是一个开发者的技巧中最重要的一点。</p>
-<p>开始学习吧，Google 是你的朋友。</p>
-<p>###7. 完成你的app</p>
-<img src="/images/2015/07/10steps/ios7.jpeg" class="">
-
-<p>在经历了几天，几周，甚至几个月的学习和工作在你的app上，你应该有一个完整的app了，这个app就</p>
-<p>是你的简历，你应该把它当成你最好的项目，这里有一些公司主要看中的几个点：</p>
-<ul>
-<li><p>可以运行的app</p>
-</li>
-<li><p>干净的代码</p>
-</li>
-<li><p>代码组织–类的粒度，变量合适的名字，Xcode项目中合适的文件分组。</p>
-</li>
-<li><p>storyboard的使用（如果你能同时使用storyboard和代码进行用户界面编写会加分）</p>
-</li>
-<li><p>CocoaPds 使用。</p>
-</li>
-<li><p>简单的单元测试。</p>
-</li>
-<li><p>扩展库的使用（比如Github上的一些开源库，实际工作中确实经常用到这些库。）</p>
-</li>
-</ul>
-<p>当然，所有的一切都取决公司和你工作需要的内容，但是这些技能基本就能让你适应基本的初级iOS</p>
-<p>开发人员职位。</p>
-<p>OK，现在你有一个漂亮，闪闪发亮的app了，下一步骤是：</p>
-<p>###8. 把你的app发布到商店</p>
-<img src="/images/2015/07/10steps/ios8.jpeg" class="">
-
-<p>OK，首先必须要声明一下：这一步是可选的，因为要做这一步，你必须需要一个每年99$的 iOS 开发</p>
-<p>账号，而这笔花费对你的app将是一个大的挑战。</p>
-<p>你有没有app在应用商店上架，是大多数公司给你简历加分的重要标准。</p>
-<p>在应用商店中有app说明你懂得发布应用的流程，Apple 对app的限制是什么？除了app本身还需要什么<br>（说明，关键字，截图，说明视频）等等。</p>
-<p>你不必非得做这个步骤，但是我强烈建议你完成。(我在应用商店的app帮助我找到了第一个工作。)</p>
-<p>###9. 上传你的app到Github</p>
-<img src="/images/2015/07/10steps/ios9.jpeg" class="">
-
-<p>GitHub 是一个以代码分享为主的社交平台(第二貌似是Bitbucket)</p>
-<p>在这里，你可以上传你的代码，可以查看别人的代码，你也可以给开源项目贡献代码。它是如此广泛</p>
-<p>的被使用，甚至如果你是个人开发者也能从中获益。更好的组织代码和更好的备份代码。</p>
-<p>为什么要上传代码？好吧，是为了给你未来的雇主查看。</p>
-<p>千万不要用Email发送代码，我们又不是在90年代。</p>
-<p>###10. 联系你想工作的公司</p>
-<img src="/images/2015/07/10steps/ios10.jpeg" class="">
-
-<p>现在你准备开始作为iOS开发者的第一份工作了，重要的是你已经有了获取第一份工作的技能。</p>
-<p>当你做到这一点时，剩下的就看命运了。</p>
-<p>####所以，准备好简历，找一家好公司，去开发一些牛逼的app吧。</p>
-<p>假如你现在有了开发技能，在你开始找工作之前，想作为一个个人开发者，但是不知道想做什么样</p>
-<p>的app，想要寻找一些灵感，来订阅我的<a target="_blank" rel="noopener" href="http://iosappsweekly.com/">iOS应用和游戏</a>新闻吧。</p>
-<p>主要是我打理，这里有iOS开发者的各种app。</p>
-<p>如果已经在应用商店里有了非常酷的app，你可以在 <a target="_blank" rel="noopener" href="https://twitter.com/pawel_bialecki">Twitter</a> 上给我发消息，</p>
-<p>或许下次的推荐里就会有你的app出现。</p>
-<hr>
-<h2 id="此文为翻译文章-原文地址"><a href="#此文为翻译文章-原文地址" class="headerlink" title="此文为翻译文章 原文地址"></a>此文为翻译文章 <a target="_blank" rel="noopener" href="https://medium.com/ios-os-x-development/10-steps-to-become-a-professional-ios-developer-11b82b6aea4c">原文地址</a></h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/01/wave-us-company-to-china/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/07/01/wave-us-company-to-china/" class="post-title-link" itemprop="url">一大波美国互联网公司成功登陆中国--它想要啥就给它啥</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-07-01 06:30:15" itemprop="dateCreated datePublished" datetime="2015-07-01T06:30:15+08:00">2015-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>一大波，确实，是一大波。</p>
-<p>2009年，Facebook 发现它被中国墙在外面了，同年twitter也被封锁。</p>
-<p>2010年，Google 在一次政府hack行为之后也从中国大陆撤出了搜索服务。</p>
-<p>北京，在给这些牛逼的美国互联网公司发出一个强烈的信号：想玩就按我的规则来玩，要么就别玩。</p>
-<p>自从 Google 退出之后，这三家公司一直没有回归的迹象。但是近些年，一些其他美国互联网公司</p>
-<p>在中国貌似已经取得了一定的成功–至少目前看来比它们前面那三家公司安全。</p>
-<p>方法很简单–公司交出数据和控制权，中国政府交给你进入市场的机会。</p>
-<p>中国市场研究集团的首席告诉 Quartz: 如果你想在中国发展互联网商业，就必需</p>
-<p>要把中国政府伺候舒服了，哪怕是内容审查和数据获取权利。</p>
-<h3 id="大象笔记-Evernote"><a href="#大象笔记-Evernote" class="headerlink" title="大象笔记 Evernote"></a>大象笔记 Evernote</h3><p>2o12年，这家位于加利福尼亚的笔记软件公司 Evernote，宣布他们将为中国用户一个独立的产品。</p>
-<p>公司配备了一个独立自主的本地团队来运营中国产品–印象笔记。并把他们自己的大象logo放上去。</p>
-<p>公司为印象笔记启用了单独的API以和国际版的Evernote区别开，包括社交分享功能，本地支付服务，</p>
-<p>和中国版的帮助界面。</p>
-<p>并且 Evernote 向中国政府屈服，公司CEO Phil Libin 在 2012 年 6 月的一篇博客中声明：</p>
-<p>印象笔记的用户数据存储在中国服务器上，以便当局能够有权获取。国际版Evernote的数据存储在</p>
-<p>加州服务器。</p>
-<p>中国政府从公司的一直以来的条款中移除了相矛盾的内容：这里的内容：与我们相关的事情，</p>
-<p>我们反对的事情，和我们做的每一个决定都息息相关的事情–就是说用户的数据就是 个人的，</p>
-<p>受保护的，自由的。</p>
-<p>这些战略部署是至少在用户数量方面是卓有成效的，2014年11月，Libin 宣布，印象笔记在中国已有</p>
-<p> 1150万用户，成为继美国之后的第二大市场。</p>
-<p>2015年1月，因为香港的雨伞行动，迫于政府的新的要求，公司停止了公开分享功能。</p>
-<h3 id="领英-LinkedIn的中国技巧"><a href="#领英-LinkedIn的中国技巧" class="headerlink" title="领英  LinkedIn的中国技巧"></a>领英  LinkedIn的中国技巧</h3><p>LinkedIn ,一家面向工作的社交网络公司，也同样同意在中国接受内容审查！</p>
-<p>从2014年2月，LinkedIn像Evernote一样，建立一个单独的中国版网站，开始在中国服务器上存储</p>
-<p>用户数据，不久，该公司就面临了严重的公关危机，澳大利亚记者 Fergus Ryan 发现，在中国能够对</p>
-<p>国外数据进行内容审核。LinkedIn 不久就改变了政策，中国只能对来自中国的用户数据进行审核。</p>
-<p>LinkedIn CEO Jeff Wiener 接受华尔街日报采访时坦言：接收审核是公司发展的一个折中方法，</p>
-<p>我们坚决支持言论自由，反对审查制度。但是如果我们想要在我们的会员数量上有所增加，就必须向</p>
-<p>这种制度屈服。</p>
-<p>这种策略也明显有成效，2014年6月，公司宣布，亚太地区收入从64分增长到 460 万美元，</p>
-<p>其中大部分来自中国。</p>
-<h3 id="Uber-推动社会稳定"><a href="#Uber-推动社会稳定" class="headerlink" title="Uber 推动社会稳定"></a>Uber 推动社会稳定</h3><p>Uber 貌似在中国的汹涌的波涛中顺风顺水，尽管最近有些因为它的外国资质和引起的一些抗议。</p>
-<p>在Uber进入中国不到一年的时间里，CEO Travis Kalanick 宣布，中国每日的用车量达到</p>
-<p>1 million，尽管有些人认为这个数字有些虚高。最近Uber在国内找到了一个重量级的投资者和</p>
-<p>合作伙伴–百度，将会投资10亿用来加快中国的扩张。</p>
-<p>Uber与其他的互联网公司不太一样的是，它对当地的经济有直接的影响。在当地，Uber让出租车司机</p>
-<p>失业，但是给另外的人创造了更多的就业机会，使得它远远超过了LinkedIn 和 Evernote，</p>
-<p>至少在争论的级别上更接近 Google  和 Facebook。</p>
-<p>在中国本地层面，Uber 正在其他市场积极部署，完全忽视晃动的拳头，政府镇压，和要求离境的呼声。</p>
-<p>尽管看起来态度傲慢，但是Uber已经明确表态在对待问题上和政府保持统一的战线–中国政府表述</p>
-<p>的社会稳定。</p>
-<p>当中国的两个南方城市，杭州和广州爆发支持hailing公司的抗议时，Uber 公司发表了反对示威游行</p>
-<p>的声明。</p>
-<p>它也曾被报道跟踪司机的GPS信息，告诫司机如果他们接近这些暴乱城市，就将会被公司开除。如果政府</p>
-<p>方面指责Uber推动暴乱，Uber公司就能够把上面这些拿出来作为证明表明自己的立场！</p>
-<p>这与Uber公司在美国的风格大相径庭，在美国，Uber公司不停的鼓励旅客和司机去游行集会以获取更</p>
-<p>多的利益。</p>
-<p>Uber，Evernote，LinkedIn， 都在中国存储用户数据，也就是说中国政府可能很容易就能获取公司</p>
-<p>用户和司机的动向。比如Uber，至少中国版的个人隐私条款和美国的个人隐私条款有很大区别，这也导</p>
-<p>致了大量的批评。</p>
-<h3 id="理想和现实"><a href="#理想和现实" class="headerlink" title="理想和现实"></a>理想和现实</h3><p>Evernote，Uber 和 LinkedIn 这样的公司，就该为同意中国政府获取用户数据和内容审核而羞愧吗？</p>
-<p>现在，这种问题的质疑声已经越来越少了。像 Google 和 Facebook 这样的被中国政府关在门外的</p>
-<p>互联网巨头也在想办法敲开中国市场的大门了。Facebook 被报道已经在北京建立了一家办公室，</p>
-<p>意在开发一个面向用户的产品;同时，Google 也有传言说将会开发一个中国版应用商店，不必通过</p>
-<p>它们的搜索引擎就能提供给用户使用。</p>
-<p>Cavender 说，Google 决定建立一个标准，有效的把自己锁在市场之外，但是中国市场对公司的发展</p>
-<p>和长期战略措施有着重要的意义。</p>
-<p>审查监控防火墙的隐藏发言人，Charlie Smith相信，大多数公司就算不把自己处于因屈从于中国的</p>
-<p>审查制度而丧失道德底线的地步，也同样能够从中国市场赚到钱。他特别指出Twitter公司作为其他</p>
-<p>公司从中国市场赚钱的榜样，Twitter公司以对中国商业卖广告位，而避免了社交网络审查而造成的</p>
-<p>道德沦丧。</p>
-<p>它们认识到中国的审查制度，但是他们不能到那种严格的自我审核的制度平台下，或许他能，但是他</p>
-<p>决定不过这个整天审查得日子，但是在中国，他们举办会议，让中国广告商在Twitter上打广告。</p>
-<p>这非常棒。</p>
-<p>Smith 认为，LinkedIn 和 Evernote 给其他想要在中东读取赚钱的互联网公司起了一个危险的开头。</p>
-<p>更多的美国公司将会认为把中国作为第二个信息处理中心会很好。</p>
-<hr>
-<p>此文为翻译文章，<a target="_blank" rel="noopener" href="http://qz.com/435764/a-new-wave-of-us-internet-companies-is-succeeding-in-china-by-giving-the-government-what-it-wants/">原文地址</a></p>
-<hr>
-<p>个人原创，转载请注明出处：<a target="_blank" rel="noopener" href="https://www.github.com/googlegis">GitHub</a></p>
 
       
     </div>
@@ -1437,7 +1209,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1503,20 +1275,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

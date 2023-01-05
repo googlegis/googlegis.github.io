@@ -28,7 +28,7 @@
 <meta property="og:description" content="对着10.10流口水差不多一个多月了，从发布会那天起就开始想要装个系统。 这么长时间过去了，在今天凌晨荷兰对阵阿根廷的那场无聊的比赛中，我从网上 找来资源开始安装。 从10.9.4冒险直接升级安装，反正球赛无聊，无聊到我想如果装叉了就想重新安装 系统的冲动。 还好，下载了一个 DP1安装后，一路Next，重启升级，在AppStore中系统升级， 再安装重启，再到AppStore中升级，可以直接升">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-07-10T03:30:05.000Z">
-<meta property="article:modified_time" content="2017-05-25T10:44:37.000Z">
+<meta property="article:modified_time" content="2023-01-05T08:42:14.167Z">
 <meta property="article:author" content="豆棚瓜架">
 <meta property="article:tag" content="搜狗输入法">
 <meta property="article:tag" content="Yosemite">
@@ -199,7 +199,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -234,7 +234,7 @@
 <p>原因，在登陆窗口想加载输入法信息，结果搜狗给卡成狗屎了。</p>
 <p>本着最小破坏原则，决定先试一下修复输入法的方案，实在不行，就再重新安装。</p>
 <p>在网上搜了一下，找到这个：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">找到解决办法了，试了，可以用，转自威锋</span><br><span class="line"></span><br><span class="line">查明是第三方输入法引起的问题，我用的是搜狗输入法，所以把搜狗卸载就好了。（注意是卸载，不是单纯的从输入源里移除）</span><br><span class="line">操作的思路是，首先要进入计算机，才能进行操作。</span><br><span class="line"></span><br><span class="line">办法是开机进入单机模式，删除苹果一个文件，让系统认为该计算机还没有被配置，开机后直接进入配置计算机和用户的界面，新建立一个用户，就可以进入桌面删除万恶的输入法了。</span><br><span class="line"></span><br><span class="line">首先开机的时候按 Command+s;</span><br><span class="line"></span><br><span class="line">进入命令提示符画面后  </span><br><span class="line"></span><br><span class="line">1， 输入 sbin/mount -uaw 回车</span><br><span class="line">这里注意看回车后的提示，只要不是not found之类的就可以了</span><br><span class="line"></span><br><span class="line">2，输入 rm /var/db/.AppleSetupDone 回车</span><br><span class="line">这里注意rm后面有空格。这里回车后可能无提示，如果有，只要不是not found一类的就可以了，如果老提示not found 仔细检查有没有弄错，rm前面加／试试看等等。</span><br><span class="line"></span><br><span class="line">字母符号别打错</span><br><span class="line"></span><br><span class="line">3，输入 reboot 回车重启</span><br><span class="line"></span><br><span class="line">重启后配置建立完用户就进入系统了</span><br><span class="line"></span><br><span class="line">下载一个搜狗输入法的DMG，打开后选择卸载搜狗输入法。</span><br><span class="line"></span><br><span class="line">重启，删除刚才为了进入系统新配置的账户，天下大吉。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">找到解决办法了，试了，可以用，转自威锋</span><br><span class="line"></span><br><span class="line">查明是第三方输入法引起的问题，我用的是搜狗输入法，所以把搜狗卸载就好了。（注意是卸载，不是单纯的从输入源里移除）</span><br><span class="line">操作的思路是，首先要进入计算机，才能进行操作。</span><br><span class="line"></span><br><span class="line">办法是开机进入单机模式，删除苹果一个文件，让系统认为该计算机还没有被配置，开机后直接进入配置计算机和用户的界面，新建立一个用户，就可以进入桌面删除万恶的输入法了。</span><br><span class="line"></span><br><span class="line">首先开机的时候按 Command+s;</span><br><span class="line"></span><br><span class="line">进入命令提示符画面后</span><br><span class="line"></span><br><span class="line">1， 输入 sbin/mount -uaw 回车</span><br><span class="line">这里注意看回车后的提示，只要不是not found之类的就可以了</span><br><span class="line"></span><br><span class="line">2，输入 rm /var/db/.AppleSetupDone 回车</span><br><span class="line">这里注意rm后面有空格。这里回车后可能无提示，如果有，只要不是not found一类的就可以了，如果老提示not found 仔细检查有没有弄错，rm前面加／试试看等等。</span><br><span class="line"></span><br><span class="line">字母符号别打错</span><br><span class="line"></span><br><span class="line">3，输入 reboot 回车重启</span><br><span class="line"></span><br><span class="line">重启后配置建立完用户就进入系统了</span><br><span class="line"></span><br><span class="line">下载一个搜狗输入法的DMG，打开后选择卸载搜狗输入法。</span><br><span class="line"></span><br><span class="line">重启，删除刚才为了进入系统新配置的账户，天下大吉。</span><br></pre></td></tr></table></figure>
 
 <p>终于可以进来了，谢天谢地。</p>
 <p>程序员这种折腾的精神，就是那种不作就不会的精神。</p>
@@ -262,8 +262,8 @@
       <i class="fa fa-chevron-left"></i> 世界杯中的德国队
     </a></div>
       <div class="post-nav-item">
-    <a href="/2014/07/24/a-swift-tour/" rel="next" title="swift 通览">
-      swift 通览 <i class="fa fa-chevron-right"></i>
+    <a href="/2014/08/01/oh-my-feather/" rel="next" title="我得了脂肪肝">
+      我得了脂肪肝 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -336,20 +336,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

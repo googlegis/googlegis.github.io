@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/08/add-new-packages-and-system-refrence/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/09/26/the-7th-years-of-marry/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +175,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/07/08/add-new-packages-and-system-refrence/" class="post-title-link" itemprop="url">添加系统引用和包的引用</a>
+            <a href="/2015/09/26/the-7th-years-of-marry/" class="post-title-link" itemprop="url">七年之痒</a>
         </h2>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2016-07-08 07:20:32" itemprop="dateCreated datePublished" datetime="2016-07-08T07:20:32+08:00">2016-07-08</time>
+              <time title="创建时间：2015-09-26 18:44:40" itemprop="dateCreated datePublished" datetime="2015-09-26T18:44:40+08:00">2015-09-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xamarin/" itemprop="url" rel="index"><span itemprop="name">Xamarin</span></a>
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
                 </span>
             </span>
 
@@ -209,635 +209,47 @@
 
       
           <span id="more"></span>
-<p>本文接着讲如何添加 dll 库和引用包，开始的时候，我看项目里有</p>
-<p>refrence 和 packages 两个部分，搞不清两者关系，后来从添加的内容看，</p>
-<p>refrence 中添加的都是和 .Net 有关的 dll 库，packages 里添加的是</p>
-<p>和网页开发相关的 js 库(当然也包括一部分和后台 C# 相关的 dll 文件)。</p>
-<p>后面一篇专门讲 log4net 的文章时会有提到！</p>
-<img src="/images/2016/0708/QQ20160708-0@2x.png" class="">
-
-<p>要添加系统库，需要在 Refrences 文件夹上右键，选择 Edit Refrences…</p>
-<p>或者直接双击 Refrences 文件夹。</p>
-<img src="/images/2016/0708/QQ20160708-1@2x.png" class="">
-
-
-<p>然后选择自己需要的库，这里添加最常见的 System.Data 库，</p>
-<p>因为你要保存查询出来的数据库结果集，这个使用非常方便。 打勾-OK！</p>
-<img src="/images/2016/0708/QQ20160708-2@2x.png" class="">
-
-<p>然后就可以看到 Refrences 中的 System.Data 引用。</p>
-<img src="/images/2016/0708/QQ20160708-3@2x.png" class="">
-
-<p>在.cs 文件中，添加 using 。然后在代码中就可以直接用 DataTable class</p>
-<p>进行代码处理了。</p>
-<img src="/images/2016/0708/QQ20160708-4@2x.png" class="">
-
-<p>添加包的引用和 Refrences 差不多，文件夹上右键，Add Packages… 或者双击，</p>
-<img src="/images/2016/0708/QQ20160708-5@2x.png" class="">
-
-<p>然后弹出添加引用的窗口，这里是使用官方 NuGet Gallery。 如果你够仔细的话，可以</p>
-<p>在配置中找到包源的配置界面，可以自己添加包源配置。</p>
-<img src="/images/2016/0708/QQ20160708-6@2x.png" class="">
-
-<p>比如，我们搜索 jQuery 。会出来 jQuery 库， 和 jQuery UI 库，我们选中</p>
-<p>jQuery UI 库， 能够看到在右侧的说明中，有 Dependencies 依赖， jQuery(≥1.6)。</p>
-<img src="/images/2016/0708/QQ20160708-7@2x.png" class="">
-
-<p>直接勾选 jQuery UI，点击 Add Package，然后能够看到正在安装的过程。</p>
-<img src="/images/2016/0708/QQ20160708-8@2x.png" class="">
-
-<p>安装好之后，就能在 Packages 中看到 jQuery  和 jQuery UI。</p>
-<p>这说明不需要担心你选择的库的依赖，直接点击安装，其它的事情，IDE 来帮你做。</p>
-<img src="/images/2016/0708/QQ20160708-9@2x.png" class="">
-
-<p>然后我们打开项目中的 packages.config 文件，来看一下我们项目中 yij</p>
-<p>引用的类库和包！</p>
-<img src="/images/2016/0708/QQ20160708-10@2x.png" class="">
-
-<p>打开 Scripts 文件夹，能够看到引用 jQuery 的文件都在这里了。</p>
-<img src="/images/2016/0708/QQ20160708-12@2x.png" class="">
-
-<p>这里需要严重吐槽一下，这种依赖添加只会按照最小版本进行添加，这里添加</p>
-<p>进来的 jQuery 的版本就是 1.6.4 ，所以如果想要使用更新版本的 jQuery，</p>
-<p>还需要自己手动添加。</p>
-<p>但是还有另外一点支持不好的地方，每个库都只能引用 NuGet 中最新的版本，</p>
-<p>比如这里的 jQuery 库是 1.6.4 版本，太旧了，想更新到新版本，就会直接更新</p>
-<p>到最新版本，而现在 NuGet 上最新的版本是 3.0.0, 而且其它依赖 jQuery 的</p>
-<p>库的版本还没有来得及更新到 3.0.0 的版本，所以这里就又是一个坑。</p>
-<p>需要自己手动下载 jQuery 库，进行添加引用。 我想如果添加库时，能够有一个</p>
-<p>版本选择的功能的话，是不是方便很多。</p>
-<img src="/images/2016/0708/QQ20160708-13@2x.png" class="">
-
-<img src="/images/2016/0708/QQ20160708-14@2x.png" class="">
-
-
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/06/the-files-struct-and-the-common-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/07/06/the-files-struct-and-the-common-config/" class="post-title-link" itemprop="url">基本配置和 MVC 文件的结构</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-07-06 19:45:54" itemprop="dateCreated datePublished" datetime="2016-07-06T19:45:54+08:00">2016-07-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xamarin/" itemprop="url" rel="index"><span itemprop="name">Xamarin</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>这一章主要介绍一些文件结构和基本配置</p>
-<ol>
-<li>MVC 文件结构。</li>
-</ol>
-<p>因为我们建立的是 MVC 项目，所以，Models-Views-Controllers 的文件夹是</p>
-<p>最明显可见的。 当然这些文件夹都包含了对应的文件和相关内容。</p>
-<img src="/images/2016/0706/QQ20160706-1@2x.png" class="">
-
-
-<p>比如：HomeController.cs 文件里就是在 Index 的 Action 中返回 View。</p>
-<img src="/images/2016/0706/QQ20160706-2@2x.png" class="">
-
-<p>这里是项目中引用的软件包</p>
-<img src="/images/2016/0706/QQ20160706-3@2x.png" class="">
-
-<p>这里是引用的 .Net 的类库</p>
-<img src="/images/2016/0706/QQ20160706-4@2x.png" class="">
-
-<p>_Layout.cshtml 文件模版，添加新的 view 时，可以选择以此为模版。</p>
-<p>可以看到这里调用了全局的变量 ViewBag.Title 和 RenderBody 进行渲染body</p>
-<img src="/images/2016/0706/QQ20160706-5@2x.png" class="">
-
-<p>这里是主页的 body 中的 html 内容。</p>
-<img src="/images/2016/0706/QQ20160706-6@2x.png" class="">
-
-<p>路由注册</p>
-<img src="/images/2016/0706/QQ20160706-7@2x.png" class="">
-
-<p>程序启动时的函数，用来注册信息，后面还会有很多信息会写在这里。</p>
-<img src="/images/2016/0706/QQ20160706-8@2x.png" class="">
-
-<p>项目的引用库配置文件</p>
-<img src="/images/2016/0706/QQ20160706-9@2x.png" class="">
-
-<p>每次加载一个新的 View 时 都会先运行一次 _ViewState.cshtml ,是为了防止已</p>
-<p>加载的内容影响模版的内容，所以重新加载。</p>
-<img src="/images/2016/0706/QQ20160706-10@2x.png" class="">
-
-<p>项目的配置信息，对应的 SDK 版本，可以看到支持 Mono 和 .Net 。</p>
-<img src="/images/2016/0706/QQ20160706-11@2x.png" class="">
-
-<p>项目版本号，所在路径，名称信息：</p>
-<img src="/images/2016/0706/QQ20160706-12@2x.png" class="">
-
-<p>输出信息：</p>
-<img src="/images/2016/0706/QQ20160706-13@2x.png" class="">
-
-<p>web 服务信息，Xamarin 使用的 XSP Web Server 作为 web 服务器，就是</p>
-<p>windows 下面的 IIS。</p>
-<img src="/images/2016/0706/QQ20160706-14@2x.png" class="">
-
-<p>Xamarin 的配置信息。Dark 比较酷！</p>
-<img src="/images/2016/0706/QQ20160706-15@2x.png" class="">
-
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/07/05/install-the-xamarin-on-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/07/05/install-the-xamarin-on-mac/" class="post-title-link" itemprop="url">在 Mac 上安装 Xamarin</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-07-05 14:01:38" itemprop="dateCreated datePublished" datetime="2016-07-05T14:01:38+08:00">2016-07-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xamarin/" itemprop="url" rel="index"><span itemprop="name">Xamarin</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>最近因为工作的原因，要把已有的 .Net Web 项目进行跨平台开发研究，项目部署</p>
-<p>在 CentOS 上，正好有机会研究一下 Xamarin 的开发，所以决定把这一系列</p>
-<p>的研究过程都记录下来，备忘和分享！</p>
-<p>.Net 的跨平台开发，现在无非是两种方式， 一种是 Mono SDK, 一种是</p>
-<p>Asp.Net Core. 但是 Asp.Net Core 还是太新，只能作为对比，还不敢拿</p>
-<p>来直接作为开发使用。所以，默认使用 Mono。</p>
-<p>Mono 是一个跨平台的 .Net 解决方案，最后被微软收购并进行维护和支持。</p>
-<p>应该说还是有一定的群众基础的。</p>
-<p>在 Linux 系统下推荐的是 MonoDeveloper</p>
-<p><a target="_blank" rel="noopener" href="http://www.monodevelop.com/">http://www.monodevelop.com</a></p>
-<p>在 Windows 和 Mac 系统下推荐的是 Xamarin Studio。</p>
-<p><a target="_blank" rel="noopener" href="http://www.monodevelop.com/download/">http://www.monodevelop.com/download/</a></p>
-<p>从 Mono-Develop 的官方页面下载的版本是 5.6</p>
-<p>但是从 Xamarin 的官方页面下载的是 6.0</p>
-<p><a target="_blank" rel="noopener" href="https://store.xamarin.com/account/my/subscription/downloads">https://store.xamarin.com/account/my/subscription/downloads</a></p>
-<p>如果只是开发 Web 页面，只下载 Xamarin Studio 的安装包即可。</p>
-<img src="/images/2016/0705/QQ20160705-0.png" class="">
-
-<p>然后直接双击安装， 如果没有安装 Mono SDK，会提示要先安装 SDK。当然也可以</p>
-<p>从网站先下载安装 Mono SDK，安装再安装 Xamarin Studio。</p>
-<p><a target="_blank" rel="noopener" href="http://www.mono-project.com/download/">http://www.mono-project.com/download/</a></p>
-<p>打开 Xamarin Studio，新建 Asp.Net Mvc 项目进行测试。</p>
-<img src="/images/2016/0705/QQ20160705-1@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-2@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-3@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-4@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-5@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-6@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-7@2x.png" class="">
-
-<img src="/images/2016/0705/QQ20160705-8@2x.png" class="">
-
-<p>至此，说明 Xamarin Studio 安装成功！</p>
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/14/how-to-upgrade-git-on-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/05/14/how-to-upgrade-git-on-mac/" class="post-title-link" itemprop="url">如何升级Mac上的git</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-05-14 21:24:09" itemprop="dateCreated datePublished" datetime="2016-05-14T21:24:09+08:00">2016-05-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>首先 需要检测仪安装的git的版本，貌似现在 mac 下面是默认安装 git 的说。</p>
-<p>我不知道我的电脑上是什么时候安装的，但是可以直接用。</p>
-<p>在 命令行中输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">1.8</span><span class="number">.5</span></span><br></pre></td></tr></table></figure>
-
-<p>下面开始升级：</p>
-<p>首先，从官网下载升级包，</p>
-<p>git-2.8.1-intel-universal-mavericks.dmg</p>
-<p>加载后，打开 readme，里面有个卸载的命令，先运行一下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/git/uninstall.sh</span><br></pre></td></tr></table></figure>
-
-<p>双击安装包</p>
-<p> git-2.8.1-intel-universal-mavericks.pkg</p>
-<p>一路Next。</p>
-<p>默认安装 Git 到 &#x2F;usr&#x2F;local&#x2F;git (需要输入mac密码赋予权限)</p>
-<p>然后完成安装。</p>
-<p>查看 git 版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ git --version</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">2.8</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-
-<p>这样就完成了 git 的生机。</p>
-<p>如果命令行中仍然显示旧的版本号，不要着急，只是程序的路径没有添加到环境变量中。</p>
-<p>打开命令行工具：</p>
-<p>jays-MacBook-Pro:~ jay$ vim ~&#x2F;.bash_profile</p>
-<p>把下面这行添加到 .bash_profile 文件的后面，</p>
-<p>export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;git&#x2F;bin:$PATH</p>
-<p>保存文件，退出编辑！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jays-MacBook-Pro:~ jay$ . ~/.bash_profile</span><br><span class="line">Executing Terminal bash profile...</span><br><span class="line"></span><br><span class="line">jays-MacBook-Pro:~ jay$</span><br></pre></td></tr></table></figure>
-
-<p>再验证版本，就会看到最新的升级版本号。</p>
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/05/10/miss-of-home/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/05/10/miss-of-home/" class="post-title-link" itemprop="url">乡愁</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-05-10 23:48:46" itemprop="dateCreated datePublished" datetime="2016-05-10T23:48:46+08:00">2016-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">文章</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>小时候,<br>乡愁不知道是什么,<br>谁在这头?<br>谁又在那头?<br>长大后,<br>乡愁是上学时的绿书包,<br>早晨在这头,<br>晚上到那头.<br>后来啊,<br>乡愁是一种回家的焦虑,<br>今天在这头,<br>明天在那头.<br>而现在,<br>乡愁是岁月的期盼,<br>父母在这头,<br>娃子在那头.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/03/16/the-four-totorises/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/03/16/the-four-totorises/" class="post-title-link" itemprop="url">我看忍者神龟-破壳而出</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-03-16 23:10:47" itemprop="dateCreated datePublished" datetime="2016-03-16T23:10:47+08:00">2016-03-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/" itemprop="url" rel="index"><span itemprop="name">看电影</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>本来是不准备写这篇的，可是憋了好久实在是憋不住了。</p>
-<p>小时候看忍者神龟的动画片，那是心仪神往，觉得这几个小乌龟，帅酷，动作麻利，干净利落。</p>
-<p>但是到了大电影的时候，就有点惨不忍睹了。</p>
-<p>忍1的时候，还有故事，有情节，有点来龙去脉。</p>
-<p>忍2就完全不能忍了好吗？</p>
-<p>故事没有，情节没有，连个推理逻辑都没有，就是一群小屁孩在那里过家家。</p>
-<p>乌龟的智商是越来越傻了，做的事情也是越来越蠢了，虽然明知道他们会胜利，但是绝对不能容忍编剧来侮辱观众的情商。</p>
-<p>这也弄不好，那也弄不好，乱七八糟一团黑，简直是什么玩意。</p>
-<p>上集的那个大 boss，没有打死，这次出来又光荣的跑了。这集又出来一个恶心的大脑，真的是太恶心了，我都怀疑，这算不算是爆米花电影。你还让别人怎么在电影院里吃爆米花。</p>
-<p>还有那一个猪，一个犀牛在那里吃的不知道是什么东西，让我的老胃差点抽搐了好吗？</p>
-<p>忍1一个 boss 没打死，准备出忍2，忍2两个 boss 没打死，准备出忍3。忍3的剧情我都替你想好了，那个人类 boss 又找到了个方法联合恶心大脑，制造军队，进攻人类，大胸小妞主要负责联络人类，四个小乌龟负责和两个大 boss打架。</p>
-<p>人类军队负责咔嚓小兵，最终 KO boos 军队。 人类 boss 最终又逃跑了。</p>
-<p>打完收工！！！！</p>
-<p>我会告诉你我看忍者神龟就是为了看女主的吗！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/03/06/qq-of-the-seven-years/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/03/06/qq-of-the-seven-years/" class="post-title-link" itemprop="url">七年之痒</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-03-06 23:47:23" itemprop="dateCreated datePublished" datetime="2016-03-06T23:47:23+08:00">2016-03-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">文章</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>只见我方这名后腰队员，一个人带着两个球，成功突入对方的防线，进入了小禁区。对方上来两名后卫进行拦截，这名队员左闪右躲，凭借着精壮的体力和娴熟的技巧，一脚角度极刁的香蕉球，成功的避开了守门员的视线，终于把球给射进了。</p>
-<p>全场的球迷都欢呼起来，</p>
+<p>只见我方这名后腰队员，一个人带着两个球，成功突入对方的防线，进入了小禁区。</p>
+<p>这时对方上来两名后卫进行拦截，这名队员左闪右躲，凭借着精壮的体力和娴熟的技巧，</p>
+<p>一脚角度极刁的香蕉球，成功的避开了守门员的视线，终于把球给射进了。全场的球迷都欢呼起来，</p>
 <p>出轨嫖娼队又得一分，陈思成单膝跪地，拉弓射箭，直上云霄。</p>
-<p>文章、陈赫、王全安…这些队友跑过去搂住他紧紧的，紧紧的拥抱在一起，空中传来他们欢呼的声音！</p>
+<p>文章、陈赫、王全安…这些队友跑过去搂住他紧紧的，紧紧的拥抱在一起，</p>
+<p>空中传来他们欢呼的声音！</p>
 <p>是的，网传陈思成出轨了，又一个男人没有勒紧自己的裤腰带。</p>
-<p>其实不只是娱乐圈的男人没有勒紧自己的裤腰带，好像无论哪个朝代总有些男人裤腰带会松的掉下来，从古代的文人骚客，到今天的明星演员，每个时代总有一些人过不了这个关！</p>
-<p>有的时候我就想，你都这么有钱了，这么出名了，老婆都那么漂亮了？为什么还要搞嫖娼劈腿的事呢？</p>
-<p>后来我想明白了，妻不如妾，妾不如偷。正是他们有名有权了，给办事提供了方便，正是因为有钱了，才不会忘乎所以，不为衣食而忧。</p>
-<p>★ 明·凌濛初《二刻拍案惊奇》卷二十八<br>这个程朝奉拥着巨万家私，所谓饱暖生淫欲，心里只喜欢的是女色。</p>
-<p>★明·凌濛初《二刻拍案惊奇》卷二十一<br>自古道：“饱暖思淫欲”，王禄手头饶裕，又见财物易得，便思量淫荡起来。</p>
-<p>饱暖思淫欲，说的就是这些货，吃饱了，穿暖了，嘴里叼个牙签舒舒服服躺在那里的时候，脑子开始滴流滴流的乱转想歪主意了。</p>
-<p>你要是平头百姓，出去搬一天的砖，挣的钱都不够一家人吃饭的，回到家躺在床上还要听老婆唠叨，恐怕也没有时间和精力考虑这些下半身的问题了。</p>
+<p>其实不只是娱乐圈的男人没有勒紧自己的裤腰带，好像无论哪个朝代总有些男人会出轨，</p>
+<p>像古代的那些文人骚客，到今天的明星演员，每个时代总有一些人过不了这个关！</p>
+<p>有的时候我就想，你都这么有钱了，这么出名了，老婆都那么漂亮了？</p>
+<p>为什么还要搞嫖娼劈腿的事呢？</p>
+<p>后来我想明白了，妻不如妾，妾不如偷。正是他们有名有权了，给办事提供了方便，正式因为有钱了，才不会</p>
+<p>无后顾之忧。</p>
+<p>★ 明·凌濛初《二刻拍案惊奇》卷二十八</p>
+<p>这个程朝奉拥着巨万家私，所谓饱暖生淫欲，心里只喜欢的是女色。</p>
+<p>★明·凌濛初《二刻拍案惊奇》卷二十一</p>
+<p>自古道：“饱暖思淫欲”，王禄手头饶裕，又见财物易得，便思量淫荡起来。</p>
+<p>饱暖思淫欲，说的就是他们这些货，吃饱了，穿暖了，嘴里要个牙签舒舒服服躺在那里的时候，</p>
+<p>脑子旧改滴流滴流的乱转想歪主意了，你要是平头百姓，出去搬一天的砖，挣的钱都不够一家人吃饭的，</p>
+<p>回到家就累得躺在床上起不来，恐怕也没有时间和精力考虑这些下半身的事情了吧。</p>
 <p>只有当脑子分泌的荷尔蒙过量的时候，才会拿下半身来思考。 可是在你下半身思考之前，你脖子上的那个是葫芦吗？</p>
-<p>曾经想过这个问题：如果人类仅仅是靠情感来控制自己，不需要家庭道德和法律约束，那人与人将会组成怎样的社会关系？</p>
-<p>每个人都会有相恋相爱，然后发现不合适，直接走开与另外一个人结合，然后发现更好的。每个人都在晋级，每个人都在挑选更好的。</p>
-<p>自己选择别人，然后被别人选择；自己抛弃别人，然后被别人抛弃。年轻的人一茬又一茬，年老的人在慢慢退出这个舞台，甚至于，各个年龄段的都在进行选择和抛弃？然后力量强大的男人可以多占用几个好看的女人；力量强大的女人可以多养几个健硕的男人。然后人们就生活在生存、斗争、和交配权的争夺上，最后，人们都不需要什么精神享受和道德约束了，也不需要多余的衣食住行了，我们就尽情的非洲草原上撒欢了。</p>
-<p>这时耳边响起了赵忠祥雌性的声音：又到了一年一度交配的季节，人群在草原上尽情的奔跑着，在为这次的狂欢做着准备。</p>
-<p>我艹，不忍直视！</p>
-<p>猴子费了千万年的时间，进化成了可以使用工具的人类，现代人类只用几十年甚至几年就退化为只用下半身思考的畜生。</p>
-<p>七年之痒，是每个家庭都要过的槛，掩耳盗铃总不是解决问题的方法。如果一个人想用下半身思考人生，躲都躲不过；如果不想，你把它丢到一堆裸体里面也能全身而退。</p>
-<p>所谓的七年之痒，关键是看你是上半身痒还是下半身痒。</p>
+<p>曾经我考过这个问题：如果人类仅仅是靠情感来控制自己，不需要家庭道德</p>
+<p>和法律约束，那人与人将会组成怎样的社会关系？</p>
+<p>每个人都会有初恋，初爱。然后发现不合适，或者找到更好的，直接走开与另</p>
+<p>外一个人结合，然后发现更好的。我挑选更好的，你也挑选更好的，每个人都</p>
+<p>在挑选更好的。自己选择别人，然后被别人选择；自己抛弃别人，然后被别人</p>
+<p>抛弃。年轻的人一茬又一茬，年老的人在慢慢退出这个舞台，</p>
+<p>甚至于，各个年龄段的都在进行选择和抛弃？</p>
+<p>然后力量强大的男人可以多占用几个好看的女人；力量强大的女人可以多养几</p>
+<p>个健硕的男人。</p>
+<p>然后人们就生活在生存、斗争、和交配权的争夺上，最后，人们都不需要什么</p>
+<p>精神享受和道德约束了，也不需要多余的衣食住行了，我们就尽情的非洲草原</p>
+<p>上撒欢了。</p>
+<p>这时耳边响起了赵忠祥雌性的声音：又到了一年一度交配的季节，人群在草原</p>
+<p>上尽情的奔跑着，在为这次的狂欢做着准备。</p>
+<p>我艹，明显的不忍直视。</p>
+<p>猴子费了千万年的时间，进化成了可以使用工具，具有情感和精神交互的</p>
+<p>人类，TMD的人只用几十或者几年年就可以退化为只用下半身思考畜生。</p>
+<p>七年之痒，就是洪水猛兽。但夫妻要过的槛，躲，总不是解决问题的方法。</p>
+<p>如果一个人想用下半身思考人生，躲都躲不过；如果不想，你把它丢到一堆裸体里面也能</p>
+<p>全身而退。关键是看，你的七年之痒是上半身痒还是下半身痒。</p>
 
       
     </div>
@@ -857,7 +269,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2016/03/04/the-little-prince/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/09/13/baby-say/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -871,7 +283,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/03/04/the-little-prince/" class="post-title-link" itemprop="url">我看小王子</a>
+            <a href="/2015/09/13/baby-say/" class="post-title-link" itemprop="url">娃子说</a>
         </h2>
 
         <div class="post-meta">
@@ -881,7 +293,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2016-03-04 23:16:24" itemprop="dateCreated datePublished" datetime="2016-03-04T23:16:24+08:00">2016-03-04</time>
+              <time title="创建时间：2015-09-13 10:14:21" itemprop="dateCreated datePublished" datetime="2015-09-13T10:14:21+08:00">2015-09-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -889,7 +301,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9C%8B%E7%94%B5%E5%BD%B1/" itemprop="url" rel="index"><span itemprop="name">看电影</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -905,32 +317,15 @@
 
       
           <span id="more"></span>
-<p>是的，每个人心里都有一个小王子！</p>
-<p>我和老婆刚认识的时候她就给我推荐过小王子，那个时候还没有电影呢，可惜一直没有放在心上，也一直没有特意的看书，于是趁着电影上映的时候陪着老婆和娃子去看了一遍。</p>
-<p>看完之后，确实被感动到了，应该说：每个人心里都有一个小王子。</p>
-<p>我们还能否记起小时候的英雄梦，是否还记得幼时的横冲直撞，是否还记得幼时的天真烂漫，是否还记得小时候的那些玩具朋友。</p>
-<p>有时候，我们是长大了，但是长大的过程中最可怕的不是年龄的增长，而是遗忘。很多时候，我们不是因为长大了而变得功名利禄，而是我们把有些东西遗忘了。忘在一个角落里再也想不起来了。</p>
-<p>如同小王子的玫瑰，小王子曾经是那么的深刻的爱着，可是当小女孩去找王子的时候，他还是想不起来玫瑰是什么了！</p>
-<p>那我们是否为了生存，为了面子，为了成长，为了金钱，为了工作，而忘记自己也曾经有过一朵玫瑰呢？</p>
-<p>其实，一直到现在，我都还不知道作者的名字，看电影的过程中我想，小王子的作者该有多孤单啊！</p>
-<p>想在成人的社会规则中保持自己的童心，想在成长之后保持自己的玫瑰，可是他不能被社会所接受。被听到掌声就脱帽致谢的自大狂鄙视，被自以为是高高在上的电梯员鄙视，被唯利是图的老板鄙视。</p>
-<p>他不能被世人理解，也许当初曾努力的保持自己的童心，可是发现在纷扰的尘世中，根本无法继续生存下去。所以他接受了所谓的帮助和教育。</p>
-<p>那些人把他教育成了现实中需要的人，一个不停打扫烟囱的好员工-王子！</p>
-<p>他忘记了自己是谁，忘记了小狐狸是谁，忘记了玫瑰是谁，甚至忘记了星星，忘记了绵羊。</p>
-<p>那些可怕的大人！</p>
-<p>有时候，我会想，也许作者本人就是那个飞行员老头，童年里有着飞行员的梦想，还喜欢每天在夜晚里看星星，或许他在乡下或农场里真的有一个狐狸好朋友，也许他第一次看到玫瑰花的时候，真的就深深的爱上了她，可是玫瑰刺伤了它，也许小的时候幼儿园的老师让他画绵羊的时候他就真的画了一个盒子，也许他曾看着天空中飞过的鸽子，幻想过让鸽子带着他飞过天空，飞到很远的星球，他甚至都给好多好多的其它星球起了名字和编号，其中一个就是长满猴面包树的星球，还有他的玫瑰也在那个星球上，还要不停的把猴面包树锄掉，不然就会变得很糟糕。</p>
-<p>他的脑子里长满了各种各样奇怪的想法。</p>
-<p>可是他必须要长大，他也要上学，也许他上的就是沃茨学院，学校把他按照标准规格制造成了合格的的大人，他有工作，有朋友，有生活。只是他没有了童年。</p>
-<p>他也许曾经试图保持自己的纯真，可是一丝不苟的警察，自大狂，电梯员，老板和生活一次又一次的把他打回了现实。</p>
-<p>他必须保持不停的工作，对于大人来说工作就是一切，只有工作才能获得大人的认同。每当一个小王子长成大人时，他的星星就被封闭在那个罐子里了，不但丢失了童年的一切，也丢失了找回童年的信心。</p>
-<p>在大人的世界里，会不停的有人提醒你：你是一个大人，做你该做的！</p>
-<p>是的我们必须要做我们该做的，不管为了什么，我们都应该去做。但是在成人的世界里，我们也许可以偷偷的保留一点童心。</p>
-<p>它可以时刻提醒我们，在面对孩子那些莫名其妙的想法，和不合规矩的举动时，应该蹲下来和孩子说话，而不是高高在上的怒吼，让孩子仰望你生气愤怒的脸庞。</p>
-<p>孩子仰望的应该是浩瀚的星空。</p>
-<p>小王子也许每两年就该看一次，也许每次看的心情和体会都不同。</p>
-<p>娃子现在五岁了，再过两年就该上小学了，那时她就有自己的玩伴和更多的想法了，目前来说她还属于天真烂漫的年龄，还没有作业考试的烦恼，还没有青春躁动的无处安放，更没有安家立业的压力，这是她最无忧无虑的时间，也许现在是她最接近小王子的状态。我希望能在她最好的季节里陪她经历生活中的每个细节，知道她每次的喜怒哀乐，陪着她渐渐长大，保护好她的小王子。</p>
-<p>我的小王子已经丢了，再也找不回来了。</p>
-<p>因为我是大人了！</p>
+<p> 娃娃在合肥上幼儿园，我会每个月都过去看她。</p>
+<p> 有天她上幼儿园回来的路上和妈妈说，</p>
+<p> “我还得去上海一趟！”</p>
+<p> “你去干什么？”</p>
+<p> “我去看爷爷奶奶，我好长时间没有看到他们了！”</p>
+<hr>
+<p> 想看小娃娃对性别的判断，就问她：幼儿园睡觉的时候，在你左边的是小美女还是小帅哥？“小美女”</p>
+<p>在你右边的是小美女还是小帅哥？“小帅哥”</p>
+<p>那你是小美女还是小帅哥？她嘿嘿一笑，“你能不知道我是小美女还是小帅哥吗？小美女！”</p>
 
       
     </div>
@@ -950,7 +345,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/24/merge-button-disabled-in-xcode/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/08/11/good-good-study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -964,7 +359,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/12/24/merge-button-disabled-in-xcode/" class="post-title-link" itemprop="url">在 XCode 中合并代码出现 Merge 按钮灰色Bug</a>
+            <a href="/2015/08/11/good-good-study/" class="post-title-link" itemprop="url">劝学三日</a>
         </h2>
 
         <div class="post-meta">
@@ -974,7 +369,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-12-24 22:44:38" itemprop="dateCreated datePublished" datetime="2015-12-24T22:44:38+08:00">2015-12-24</time>
+              <time title="创建时间：2015-08-11 22:31:28" itemprop="dateCreated datePublished" datetime="2015-08-11T22:31:28+08:00">2015-08-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -982,7 +377,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -998,8 +393,166 @@
 
       
           <span id="more"></span>
-<p> xCode 貌似有bug， 你打开项目提交过之后，貌似自动修改了某个文件，所以你Merge的时候会</p>
-<p> 判断有文件修改了，不让Merge，你revert一下就可以了！</p>
+<p>娃子回合肥上幼儿园了，预计的8.1开学，所以休假三天回去陪娃子。</p>
+<p>一是做好思想工作，二是在娃子上学的第一天能够陪着她，不至于让她太委屈，也满足一下</p>
+<p>当爸爸的小小心愿。</p>
+<p>提前两天赶着周末回到合肥，娃子见了我自然是很开心，很高兴。</p>
+<p>陪着她连玩了两天，8.1 号就开始去上幼儿园，由于她从来就没有离开过父母独处过，所以开始的</p>
+<p>时候是100个不情愿，虽然已经给她吹了两天的枕边风，可是一路上还是哼哼唧唧的，</p>
+<p>“爸爸，就其实我不想上学，我不想去幼儿园！”</p>
+<p>头一天，哪能那么容易迁就，所以，去！</p>
+<p>一路上，也是好话歹话一箩筐的说。</p>
+<p>到那里一看，老师没有来，说是给家长打电话没有通，周三才报到。</p>
+<p>没有办法，就回去了，然后再想法调休。</p>
+<p>周三到，早晨叫她起床，她还是不情愿，磨磨唧唧，哼哼唧唧，找各种理由，总算赶到8点将她送到</p>
+<p>幼儿园。幼儿园老师忙死了，暑假里也有幼托班，大孩小孩都有，我以为怎么着也得有个老师登记</p>
+<p>报名吧，谁知道，刚把娃子领进来，老师就开始催，</p>
+<p>”家长可以离开了，你们在这里没有办法工作！”</p>
+<p>我是和娃她妈一起去的，由于娃子黏我多些，我趁她不注意，一弯腰，从边上溜跑了。</p>
+<p>娃子回头一看我不在了，哇哇的喊着，“爸爸呢？爸爸呢！”</p>
+<p>娃她妈领着她在屋里走了一圈，也趁机溜出来了，我拉着她妈赶快躲到边上的树丛后面，</p>
+<p>就听到娃子在屋里撕心裂肺的，啊啊的喊着哭着，“妈妈，妈妈！”</p>
+<p>老师跟在后面出来，赶到门口出来，劝着说，”妈妈走了，你看门口还有没有，咱们回去给妈妈打电话”</p>
+<p>娃子木有办法，和老师回去了。过了几分钟，娃她妈进去看网上视频网址，顺便看了娃子一眼，</p>
+<p>“娃子正在老师边上看老师弄东西呢，也不哭了”</p>
+<p>心里稍微安生了一点，和娃她妈回去了。</p>
+<p>三年半，头一次感觉娃子不在身边怪怪的。</p>
+<p>下午，老师让3.去接娃子，我是老早的3.就去了，到班级门口，老师还不方便开门，我从门上窗户往里看，</p>
+<p>娃子在老师身边站着，看老师给其它小朋友修理头发呢。她正好转身看过来，看到我在门外看她，</p>
+<p>突然是百感交集，终于看到亲人了，是又高兴，有委屈，想让爸爸抱，又不敢自己和老师说，</p>
+<p>我就努力的对着她笑，使劲微笑，她也慢慢的笑。</p>
+<p>等老师稍微空闲下来，我进去和老师说，我来接娃子，娃子爬到我的身上，搂着我再也不下来了，</p>
+<p>结果书包也没有拿就回来了。</p>
+<p>娃子每次走出幼儿园的时候，总会问我，</p>
+<p>“爸爸，我今天表现可棒？”</p>
+<p>我总会很开心的夸她一句，”棒！”</p>
+<p>晚上的时候，娃子睡觉前就开始闹起，</p>
+<p>“爸爸，就其实我不想上幼儿园！”</p>
+<p>说着说着委屈的哭起来了，</p>
+<p>我告诉她说，家里人每个人都有自己的事情要做，爸爸要去上班，妈妈要去学开车，姥姥要去</p>
+<p>老年大学学画画，如果你不去幼儿园，就没有人给你做饭，没有人给你倒水喝。</p>
+<p>娃子问到，“姥姥那么老了还去上学吗？”</p>
+<p>我坚决的回答到，”是的！“</p>
+<p>娃子哭着哭着睡着了。</p>
+<p>第二天一早醒来就开始闹，“爸爸，就其实我不想去幼儿园，我就和爸爸妈妈在家里！”</p>
+<p>第二天是艰难期，哪能随便妥协，</p>
+<p>“不行，爸爸告诉你，你的任务就是去上幼儿园，就算你哭完之后还是要去幼儿园。”</p>
+<p>娃子就开启了讲理模式，</p>
+<p>“那什么时候可以不去幼儿园？”，</p>
+<p>“上 5 天，休息 2 天”，</p>
+<p>“那上 10 天休息 3 天好不好？”</p>
+<p>终于坐上车子拉她去幼儿园，到门口又哼哼唧唧，不care。</p>
+<p>到教室门口，老师一问，“小朋友，你昨天表现的棒不棒？”</p>
+<p>“棒！”</p>
+<p>自己乖乖的进教室去了。😊</p>
+<p>下午和她妈妈去接她，老师告知，娃子睡觉的时候，拉在床单上了。</p>
+<p>我猜可能是在幼儿园，吃什么都不习惯，有点拉肚子。因为她以前从来没有这样的事情。</p>
+<p>第一天上幼儿园回来问她小便了没有，她就说有一点想小便，但是夹住了。</p>
+<p>我猜她还是不习惯，再加上害羞，所以自己没有处理好，睡觉的时候拉被单上了。</p>
+<p>没有办法，只有拿回来洗！</p>
+<p>回来再对她进行一些疏导，告诉她不要害怕，大小便和老师打招呼，去厕所就可以了。</p>
+<p>走出幼儿园，娃子问，</p>
+<p>“爸爸，就我今天表现的可好？”</p>
+<p>“表现的很好，要是能自己上厕所拉大小便，就更好了！”</p>
+<p>晚上睡觉前，又免不了讲故事，又嘟囔一遍其实自己不想去幼儿园。</p>
+<p>第三天，自然也是早晨起来默默唧唧，连催带抱，送到幼儿园了。</p>
+<p>一到幼儿园，老师一和她说话，立马变成乖宝宝了。</p>
+<p>下午去接她，我故意等其它家长都进去一段时间，我再进去，从门窗往里看，</p>
+<p>娃子看到其它家长进来也不急，也不闹，也不失望，也不乱跑，在老师旁边看老师给小朋友扎辫子，</p>
+<p>看比她大的小朋友玩纸盒子。这下我放心了，娃子并不是娇滴滴的小公主！</p>
+<p>晚上带她出去玩，太晚了，谁不是说过，黄昏总能勾起某些人的伤心事吗！</p>
+<p>蓦然，娃子就哭闹起来，“爸爸，就其实我不想上幼儿园”</p>
+<p>晚上睡觉前，又哭了起来，“爸爸，就其实我不想上幼儿园”</p>
+<p>虽然心疼，但是不能松口，</p>
+<p>“好，爸爸知道了，周六周日可以不去！”</p>
+<p>“那过完两天呢？”</p>
+<p>“还得去！”</p>
+<p>“哇哇…”</p>
+<p>好在周末两天可以让她稍微转移一下注意力，周日中午，等她睡着的时候，</p>
+<p>我又匆匆的踏上了回上海的火车，宝贝，爸爸希望你更坚强，更勇敢。</p>
+<p>爸爸爱你！ 😍</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/26/www-thing-about-the-now/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/26/www-thing-about-the-now/" class="post-title-link" itemprop="url">写教程是真难！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-26 21:18:34" itemprop="dateCreated datePublished" datetime="2015-07-26T21:18:34+08:00">2015-07-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>  第二章终于写完了，原本打算 3 天写完，结果实际上花费了 7 天时间。</p>
+<p>  一般我的步骤是按照英文教程先编一遍应用，出来一个可以跑的应用。然后再</p>
+<p>  按照教程，再来一遍代码，在代码的过程中截图、写作，发现重心全放到文章的梳理和</p>
+<p>  协调上去了，根本对编程内容和技巧没有一点提高。</p>
+<p>  所以，改变了方法，第一遍还是按照英文教程编一个应用，</p>
+<p>  第二遍是细读，根据读得内容写文章，这个过程不牵涉到写代码和截图。</p>
+<p>  第三遍是写代码和截图。</p>
+<p>  这样的话，三遍下来，一章教程 300 页，第一遍基本是 6-7天，第二遍4-5天，第三遍基本是10天。</p>
+<p>  也就是说，300 页的教程要20天才能完成，现在真的觉得那些用心写教程，写书的人不容易。</p>
+<p>  在这方面做的比较牛逼的一个是李笑来，一个是阮一峰，他们的文章和出版的书，在他们的博客里都</p>
+<p>  有，你当然可以不花钱就能够读到。现在我觉得，如果觉得别人的劳动对你有所帮助，有价值，</p>
+<p>  还是掏钱买正版书籍看吧，一来养眼益目，二来是对别人劳动的尊重。</p>
+<p>  在第二章中，后半段纯粹就是应付差事了，把代码拿来输入一遍，也没有过脑子，也没有带 Xcode 7</p>
+<p>  中测试，需要 swift 2 版本的代码到 github 上下吧。</p>
+<p>  <a target="_blank" rel="noopener" href="https://github.com/googlegis/iOSApprentice">https://github.com/googlegis/iOSApprentice</a></p>
 <hr>
 
       
@@ -1020,7 +573,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/12/05/use-vscode-to-build-aspnet5-web-application/">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/16/red-bean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1034,7 +587,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2015/12/05/use-vscode-to-build-aspnet5-web-application/" class="post-title-link" itemprop="url">在 Mac 上使用VSCode开发asp.net5项目</a>
+            <a href="/2015/07/16/red-bean/" class="post-title-link" itemprop="url">红豆生南国的红豆</a>
         </h2>
 
         <div class="post-meta">
@@ -1044,7 +597,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2015-12-05 17:06:30" itemprop="dateCreated datePublished" datetime="2015-12-05T17:06:30+08:00">2015-12-05</time>
+              <time title="创建时间：2015-07-16 09:09:49" itemprop="dateCreated datePublished" datetime="2015-07-16T09:09:49+08:00">2015-07-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1052,7 +605,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
                 </span>
             </span>
 
@@ -1068,54 +621,518 @@
 
       
           <span id="more"></span>
-<p>1.安装 vscode</p>
-<p>vscode:  <a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?LinkID=534106">https://go.microsoft.com/fwlink/?LinkID=534106</a></p>
-<p>DNX-1.0.0-rc1-update1.pkg:<br><a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?LinkId=703940">https://go.microsoft.com/fwlink/?LinkId=703940</a></p>
+<img src="/images/2015/07/redbean.jpg" class="">
+
+<p>  红豆生南国</p>
+<p>  春来发几枝</p>
+<p>  愿君多采撷</p>
+<p>  此物最相思</p>
+<p>遇见路边花摊，小朋友说：妈妈，买束花吧！</p>
+<p>卖花阿姨说：买红豆吧，很特别。</p>
+<p>小朋友脱口说：是红豆生南国的红豆吗？</p>
+<p>阿姨说：是啊！</p>
+<p>小朋友就顺口背开了：红豆生南国，春来发几枝….</p>
+<p>然后，阿姨就奖励了小朋友一枝红豆，她高高兴兴的扛回来了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/14/kings-man-the-secret-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/14/kings-man-the-secret-service/" class="post-title-link" itemprop="url">王的男人之秘密服务</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-14 20:58:24" itemprop="dateCreated datePublished" datetime="2015-07-14T20:58:24+08:00">2015-07-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<img src="/images/2015/07/kingsman.jpg" class="">
+
+<p>王的男人-秘密服务，这个是我最近看到的最逗比的翻译，可是这个翻译可是正规的公司翻译的。</p>
+<p>这个片子也是因为听说好看才去看的，也是传统的故事情节，小人物的成长史。</p>
+<p>一个足够聪明和足够有能力的小混混，因为某些原因不得志，整日混来混去，幸得一位极好</p>
+<p>的老师指点，成为一代人才并最终力挽狂澜的故事。</p>
+<p>这样的故事情节被周星驰老师不知道炒了多少剩饭了，国内观众应该比较认可这样的故事套路，</p>
+<p>稍加处理就可以很容易得到好评，但是整个故事看完，就记住了男主角的师傅在教堂大开杀戒，</p>
+<p>杀的昏天暗地，神哭鬼号的那段，和结尾瑞典公主的大屁股。</p>
+<p>估计也只有瑞典的公主可以被影片拿来调戏吧。</p>
+<p>不过教堂杀戮那段拍的实在是太过瘾了，死的太惨太真实了，一个个活人在你眼前就那么眼睁睁的被</p>
+<p>杀死了，还都能看到被砍的位置，我想应该是位中国的武指设计的吧。国外的动作设计根本设计不了</p>
+<p>这么精细的动作和场面。</p>
+<p>如果非要王的男人和疯狂的max有个比较的话，但就导演功力上，王的男人要高疯狂的max一头。</p>
+<p>疯狂的max是用机械的轰鸣和躁动的电吉他，配上模特的身材刺激你的肾上腺，让你无暇思考它的故事</p>
+<p>情节啊，故事推动啊，合理性啊。 这要是在中国，被一个中国导演拍出个这样的片子，肯定被批个</p>
+<p>傻大粗装(如姜文);而王的男人则更注重细节，情节推动，故事的叙述性和完整性(再如姜文)。</p>
+<p>单个打斗场面细腻而清晰，是人物推动故事发展，而不是导演推动故事发展。</p>
+<p>虽然我找了疯狂的max和王的男人这么多缺点，但不可否认它们还都是好电影，只不过不是那种让人</p>
+<p>能记住的电影。</p>
+<p>疯狂的max导演就是要不走寻常路，王的男人导演是要突破007的极限。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/13/what-about-the-mad-max/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/13/what-about-the-mad-max/" class="post-title-link" itemprop="url">疯狂的麦克斯</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-13 19:34:11" itemprop="dateCreated datePublished" datetime="2015-07-13T19:34:11+08:00">2015-07-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<img src="/images/2015/07/085712.jpg" class="">
+
+<p>说实话，我是被影评吸引来看疯狂的麦克斯的，以前我都不知道是梅尔吉布森演了前面的三部，</p>
+<p>更不知道还有这样一部影片，如果只看海报，我是不会被它吸引的，但是我还是被微信里的好评给吸引</p>
+<p>了。其实是很老套的好莱坞式的个人英雄式影片，在我的个人观影生涯里不会留下太深印象，</p>
+<p>就如同匆匆过客，来的快去的快。</p>
+<p>有的人说是小成本电影，什么什么的….</p>
+<p>我其实不知道它的投资，但就整个影片的节奏来说，闹腾，闹心，除了那几个模特的身材看着还</p>
+<p>可以外其他都不怎么样？</p>
+<p>里面的造型恶心，音乐聒噪，故事推动简单粗暴，这样的影片在好莱坞应该有很多很多。</p>
+<p>但是它出来的太是时候，从温暖的大白之后，这段时间根本没有什么能够拿得出手的外国大片，</p>
+<p>它的太是时候，简单的节奏，粗狂的线条，有负责养眼的，有负责耍酷的，有负责恶心的，有负责良心</p>
+<p>救赎的。</p>
+<p>我不知道这个片子在国外是什么级别，就单开始的从人身上抽血补血我就受不了，更不用说那些头上</p>
+<p>刻着蚊香盘，嘴用针缝了一圈的野蛮人了。我想这部片子在国外应该不适合未成年人观看吧。</p>
+<p>然后就是负责追车和电吉他。</p>
+<p>比较意外的是女主角的查理斯塞隆，一开始我都没有看出来，无论外形和演技都更胜一筹。</p>
+<p>里面女主角的过去和男主角的过去，可能是为了续集做铺垫。</p>
+<p>这样的电影，正符合现在社会浮躁的心态，刺激and丑陋，恶心and漂亮，机械轰鸣and高音吉他，</p>
+<p>什么都是这样的快速而激情。</p>
+<p>其中比较有印象的就是模特的好身材，和那个会给枪装子弹的女孩，或许是阿富汗，塔利班之类的。</p>
+<p>续集或许会有她的戏！</p>
 <hr>
-<p>这里是安装brew的命令，但是用brew安装nvm和直接curl安装nvm有冲突，所以我使用的2中安装方法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby –e <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>2.安装nvm</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0<span class="number">.29</span><span class="number">.0</span>/install.sh | bash</span><br></pre></td></tr></table></figure>
+      
+    </div>
 
-<p>在 .profile 文件中添加路径。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="string">&quot;$PATH:$HOME/.nvm&quot;</span></span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<p>在文件 .bash_profile   .profile  .zshrc  .bashrc 中分别加入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=<span class="string">&quot;$HOME/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;$NVM_DIR/nvm.sh&quot;</span> ] &amp;&amp; . <span class="string">&quot;$NVM_DIR/nvm.sh&quot;</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/01/wave-us-company-to-china/">
 
-<p>3.安装node</p>
-<p>查看有多少版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
 
-<p>安装对应的版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0<span class="number">.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/07/01/wave-us-company-to-china/" class="post-title-link" itemprop="url">一大波美国互联网公司成功登陆中国--它想要啥就给它啥</a>
+        </h2>
 
-<p>使用对应的版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<p>设置全局的版本，不然在另外的command中node命令不起作用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nvm alias default <span class="number">0.12</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
+              <time title="创建时间：2015-07-01 06:30:15" itemprop="dateCreated datePublished" datetime="2015-07-01T06:30:15+08:00">2015-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+                </span>
+            </span>
 
-<p>4.安装Yeoman</p>
-<p>安装模版生成器，就是用yo命令来生成各个aspnet的项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g yo</span><br></pre></td></tr></table></figure>
+          
 
-<p>5.安装generator</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g generateor-aspnet</span><br></pre></td></tr></table></figure>
+        </div>
+      </header>
 
-<p>6.创建项目模版</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo aspnet</span><br></pre></td></tr></table></figure>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-<p>这里通过上下键来选择创建的类型。</p>
-<p>7.切换到当前项目目录</p>
-<p>项目依赖项</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu restore</span><br></pre></td></tr></table></figure>
-<p>8.运行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnx web</span><br></pre></td></tr></table></figure>
+      
+          <span id="more"></span>
+<p>一大波，确实，是一大波。</p>
+<p>2009年，Facebook 发现它被中国墙在外面了，同年twitter也被封锁。</p>
+<p>2010年，Google 在一次政府hack行为之后也从中国大陆撤出了搜索服务。</p>
+<p>北京，在给这些牛逼的美国互联网公司发出一个强烈的信号：想玩就按我的规则来玩，要么就别玩。</p>
+<p>自从 Google 退出之后，这三家公司一直没有回归的迹象。但是近些年，一些其他美国互联网公司</p>
+<p>在中国貌似已经取得了一定的成功–至少目前看来比它们前面那三家公司安全。</p>
+<p>方法很简单–公司交出数据和控制权，中国政府交给你进入市场的机会。</p>
+<p>中国市场研究集团的首席告诉 Quartz: 如果你想在中国发展互联网商业，就必需</p>
+<p>要把中国政府伺候舒服了，哪怕是内容审查和数据获取权利。</p>
+<h3 id="大象笔记-Evernote"><a href="#大象笔记-Evernote" class="headerlink" title="大象笔记 Evernote"></a>大象笔记 Evernote</h3><p>2o12年，这家位于加利福尼亚的笔记软件公司 Evernote，宣布他们将为中国用户一个独立的产品。</p>
+<p>公司配备了一个独立自主的本地团队来运营中国产品–印象笔记。并把他们自己的大象logo放上去。</p>
+<p>公司为印象笔记启用了单独的API以和国际版的Evernote区别开，包括社交分享功能，本地支付服务，</p>
+<p>和中国版的帮助界面。</p>
+<p>并且 Evernote 向中国政府屈服，公司CEO Phil Libin 在 2012 年 6 月的一篇博客中声明：</p>
+<p>印象笔记的用户数据存储在中国服务器上，以便当局能够有权获取。国际版Evernote的数据存储在</p>
+<p>加州服务器。</p>
+<p>中国政府从公司的一直以来的条款中移除了相矛盾的内容：这里的内容：与我们相关的事情，</p>
+<p>我们反对的事情，和我们做的每一个决定都息息相关的事情–就是说用户的数据就是 个人的，</p>
+<p>受保护的，自由的。</p>
+<p>这些战略部署是至少在用户数量方面是卓有成效的，2014年11月，Libin 宣布，印象笔记在中国已有</p>
+<p> 1150万用户，成为继美国之后的第二大市场。</p>
+<p>2015年1月，因为香港的雨伞行动，迫于政府的新的要求，公司停止了公开分享功能。</p>
+<h3 id="领英-LinkedIn的中国技巧"><a href="#领英-LinkedIn的中国技巧" class="headerlink" title="领英  LinkedIn的中国技巧"></a>领英  LinkedIn的中国技巧</h3><p>LinkedIn ,一家面向工作的社交网络公司，也同样同意在中国接受内容审查！</p>
+<p>从2014年2月，LinkedIn像Evernote一样，建立一个单独的中国版网站，开始在中国服务器上存储</p>
+<p>用户数据，不久，该公司就面临了严重的公关危机，澳大利亚记者 Fergus Ryan 发现，在中国能够对</p>
+<p>国外数据进行内容审核。LinkedIn 不久就改变了政策，中国只能对来自中国的用户数据进行审核。</p>
+<p>LinkedIn CEO Jeff Wiener 接受华尔街日报采访时坦言：接收审核是公司发展的一个折中方法，</p>
+<p>我们坚决支持言论自由，反对审查制度。但是如果我们想要在我们的会员数量上有所增加，就必须向</p>
+<p>这种制度屈服。</p>
+<p>这种策略也明显有成效，2014年6月，公司宣布，亚太地区收入从64分增长到 460 万美元，</p>
+<p>其中大部分来自中国。</p>
+<h3 id="Uber-推动社会稳定"><a href="#Uber-推动社会稳定" class="headerlink" title="Uber 推动社会稳定"></a>Uber 推动社会稳定</h3><p>Uber 貌似在中国的汹涌的波涛中顺风顺水，尽管最近有些因为它的外国资质和引起的一些抗议。</p>
+<p>在Uber进入中国不到一年的时间里，CEO Travis Kalanick 宣布，中国每日的用车量达到</p>
+<p>1 million，尽管有些人认为这个数字有些虚高。最近Uber在国内找到了一个重量级的投资者和</p>
+<p>合作伙伴–百度，将会投资10亿用来加快中国的扩张。</p>
+<p>Uber与其他的互联网公司不太一样的是，它对当地的经济有直接的影响。在当地，Uber让出租车司机</p>
+<p>失业，但是给另外的人创造了更多的就业机会，使得它远远超过了LinkedIn 和 Evernote，</p>
+<p>至少在争论的级别上更接近 Google  和 Facebook。</p>
+<p>在中国本地层面，Uber 正在其他市场积极部署，完全忽视晃动的拳头，政府镇压，和要求离境的呼声。</p>
+<p>尽管看起来态度傲慢，但是Uber已经明确表态在对待问题上和政府保持统一的战线–中国政府表述</p>
+<p>的社会稳定。</p>
+<p>当中国的两个南方城市，杭州和广州爆发支持hailing公司的抗议时，Uber 公司发表了反对示威游行</p>
+<p>的声明。</p>
+<p>它也曾被报道跟踪司机的GPS信息，告诫司机如果他们接近这些暴乱城市，就将会被公司开除。如果政府</p>
+<p>方面指责Uber推动暴乱，Uber公司就能够把上面这些拿出来作为证明表明自己的立场！</p>
+<p>这与Uber公司在美国的风格大相径庭，在美国，Uber公司不停的鼓励旅客和司机去游行集会以获取更</p>
+<p>多的利益。</p>
+<p>Uber，Evernote，LinkedIn， 都在中国存储用户数据，也就是说中国政府可能很容易就能获取公司</p>
+<p>用户和司机的动向。比如Uber，至少中国版的个人隐私条款和美国的个人隐私条款有很大区别，这也导</p>
+<p>致了大量的批评。</p>
+<h3 id="理想和现实"><a href="#理想和现实" class="headerlink" title="理想和现实"></a>理想和现实</h3><p>Evernote，Uber 和 LinkedIn 这样的公司，就该为同意中国政府获取用户数据和内容审核而羞愧吗？</p>
+<p>现在，这种问题的质疑声已经越来越少了。像 Google 和 Facebook 这样的被中国政府关在门外的</p>
+<p>互联网巨头也在想办法敲开中国市场的大门了。Facebook 被报道已经在北京建立了一家办公室，</p>
+<p>意在开发一个面向用户的产品;同时，Google 也有传言说将会开发一个中国版应用商店，不必通过</p>
+<p>它们的搜索引擎就能提供给用户使用。</p>
+<p>Cavender 说，Google 决定建立一个标准，有效的把自己锁在市场之外，但是中国市场对公司的发展</p>
+<p>和长期战略措施有着重要的意义。</p>
+<p>审查监控防火墙的隐藏发言人，Charlie Smith相信，大多数公司就算不把自己处于因屈从于中国的</p>
+<p>审查制度而丧失道德底线的地步，也同样能够从中国市场赚到钱。他特别指出Twitter公司作为其他</p>
+<p>公司从中国市场赚钱的榜样，Twitter公司以对中国商业卖广告位，而避免了社交网络审查而造成的</p>
+<p>道德沦丧。</p>
+<p>它们认识到中国的审查制度，但是他们不能到那种严格的自我审核的制度平台下，或许他能，但是他</p>
+<p>决定不过这个整天审查得日子，但是在中国，他们举办会议，让中国广告商在Twitter上打广告。</p>
+<p>这非常棒。</p>
+<p>Smith 认为，LinkedIn 和 Evernote 给其他想要在中东读取赚钱的互联网公司起了一个危险的开头。</p>
+<p>更多的美国公司将会认为把中国作为第二个信息处理中心会很好。</p>
+<hr>
+<p>此文为翻译文章，<a target="_blank" rel="noopener" href="http://qz.com/435764/a-new-wave-of-us-internet-companies-is-succeeding-in-china-by-giving-the-government-what-it-wants/">原文地址</a></p>
+<hr>
+<p>个人原创，转载请注明出处：<a target="_blank" rel="noopener" href="https://www.github.com/googlegis">GitHub</a></p>
 
-<p>9.查看网页</p>
-<p>在浏览器中输入 localhost:5000  出现Hello World! 说明创建成功。</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/15/i-am-afraid-i-can-not-escape/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/06/15/i-am-afraid-i-can-not-escape/" class="post-title-link" itemprop="url">我怕我到十二点时跑不掉</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-06-15 21:29:38" itemprop="dateCreated datePublished" datetime="2015-06-15T21:29:38+08:00">2015-06-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%82%B2%E5%84%BF%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">育儿经</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>女儿十分爱听故事，从小马过河道偷吃人参果，从白雪公主到三个和尚。中国的，外国的，古典的，现代的，</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015/06/15/i-am-afraid-i-can-not-escape/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/01/there-is-no-one/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/06/01/there-is-no-one/" class="post-title-link" itemprop="url">这里没有人</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-06-01 18:47:39" itemprop="dateCreated datePublished" datetime="2015-06-01T18:47:39+08:00">2015-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>没有人欠我任何东西，只有我欠他们的。他们还依然愿意听我的吼呵，完</p>
+<p>全是因为我是他们的亲人。所以，我对他们越是吼呵，越是欠他们的更</p>
+<p>多，作为亲人我吼了他们，因为亲人，他们忍受着我的吼喝。</p>
+<p>父母不欠我任何东西，辛苦把我养大到30岁，而自己前后加一起也不过是</p>
+<p>养了十个月，有什么资格对父母颐指气使，对他们吼来喝去。如果是我哥</p>
+<p>的话做事情肯定会冷静许多。</p>
+<p>娃子刚三岁，正是调皮淘气的时候，更不能对她横竖指责，压灭了天性，</p>
+<p>摧毁了信心。娃子受我责骂还依然不离不弃，因为是对我的依赖和信任，</p>
+<p>更不能作为我变本加厉的资本。</p>
+<p>妻子从08年认识以来，对我也是信任有加，结婚、买房、生娃，也是顶着</p>
+<p>巨大的压力和对我无比的信任和我一起跌跌撞撞走到今天。身无黄金万</p>
+<p>两，头无遮风片瓦，只凭当初一句话陪我走到今天，我怎么能够严加指</p>
+<p>责，又怎忍心呼来喝去。其实她的压力和负担也不比我小，人不能只考虑</p>
+<p>一面，换位思考一下或许会心地更宽。</p>
+<p>有次看三舅文章，他把三妗子当作自己生命的一部分，我就在想，到底是</p>
+<p>一种什么境界才能把对方当作生命保护，要经历多少风雨才能比翼双飞，</p>
+<p>同结连理。</p>
+<p>清明节，夜，雷雨交加，爸妈已睡，鼾声阵阵；娃子横睡在枕头上，半个</p>
+<p>头枕在我这边；老婆和岳母在那屋也已入睡。只有屋外隆隆雷声翻滚，闪</p>
+<p>电时时划过长空，急雨啪啪的点在玻璃上。其它再无声响。</p>
+<p>小鱼与小蝌蚪估计也已入睡，小乌龟吃了三个小蝌蚪，今天应该会美美睡</p>
+<p>一顿。春天真的来了，万物更新，自己也要把自己的思想更新到新的层</p>
+<p>次，不然根本无法应对新的人新的事，无法完成自己身负的责任。只凭自</p>
+<p>己的冲动和义气做事，只会伤人伤己，事情也会一塌糊涂，工作也会一塌</p>
+<p>糊涂。</p>
+<p>古人的每日必三醒吾身，真的是至理名言，自己要一点一滴的慢慢做起</p>
+<p>来，不能让父母受责委屈，不能让妻子举步维艰，不能让娃子每日看我脸</p>
+<p>色惴惴不安。</p>
+<p>哎！就从今天开始。</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<ol>
+<li><p>   为什么和老婆吵架？<br>工作没有找到，自己能力不够。 怨不得别人。<br>小娃生病，动不动就哭，怨不得别人。<br>娃子没有照顾好，怨不得别人。<br>别人终究是别人。不是自己人，<br>自己累死像条狗，也没有人来同情你。<br>只有自己有钱，才能有人来同情你。<br>为什么关了电视？<br>为什么看什么都不顺眼，有本事就自己去做，别总是指望别人来做。</p>
+</li>
+<li><p>   房子的事情，为什么那么烦心。<br>合肥买房子的时候，自己总是一概不问，不问的下场就是自己后悔。<br>为什么不问，生气，为什么生气？<br>结果落得两地都落实不下来。<br>有的时候，自己生气就什么都不问，不问的后果就是结果不如意，不如意到最后就是生气。</p>
+</li>
+<li><p>   俺妈不能生气，不能生气，对眼睛不好。</p>
+</li>
+<li><p>   学习的事情，不能怨别人，只能怨自己。自己不学，什么都别想会，别想得到。<br>总是为自己的学习找借口， 总是不能坚持下来，不能坚持下来，还能做什么？还有什么能够成功。</p>
+</li>
+</ol>
+<p>–••–•–•–•–•–•–•–•–••–•–•–•–•–•–•–•–••–•–•</p>
+<ol start="4">
+<li>努力什么的原来只说说并不起作用，需要自己去做。</li>
+</ol>
 <hr>
 
       
@@ -1135,7 +1152,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1201,20 +1218,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">159</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
