@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"googlegis.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="好看的颜色和机型的适配是一个应用必不可少的内容。 配色打开 storyboard, 选择 File inspector 中，的 Global Tint，然后 color picker 中 选择： Red:4  Green:169  Blue:235 。 然后在 ChecklistViewController.swift 中，添加函数： 123456789configuerCheckmarkFor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift 2.0 纯学习之旅 -- 14.UI 优化">
+<meta property="og:url" content="http://googlegis.github.io/2015/07/26/the-ui-things/index.html">
+<meta property="og:site_name" content="豆棚瓜架">
+<meta property="og:description" content="好看的颜色和机型的适配是一个应用必不可少的内容。 配色打开 storyboard, 选择 File inspector 中，的 Global Tint，然后 color picker 中 选择： Red:4  Green:169  Blue:235 。 然后在 ChecklistViewController.swift 中，添加函数： 123456789configuerCheckmarkFor">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-07-26T03:42:26.000Z">
+<meta property="article:modified_time" content="2017-05-25T11:02:16.000Z">
+<meta property="article:author" content="豆棚瓜架">
+<meta property="article:tag" content="iOS Apprentice">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://googlegis.github.io/2015/07/26/the-ui-things/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Swift 2.0 纯学习之旅 -- 14.UI 优化 | 豆棚瓜架</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">豆棚瓜架</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">姑妄言之姑听之，豆棚瓜架雨如丝，料应厌作人间语，爱听秋坟鬼唱诗。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/07/26/the-ui-things/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Swift 2.0 纯学习之旅 -- 14.UI 优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2015-07-26 11:42:26" itemprop="dateCreated datePublished" datetime="2015-07-26T11:42:26+08:00">2015-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2017-05-25 19:02:16" itemprop="dateModified" datetime="2017-05-25T19:02:16+08:00">2017-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<p>好看的颜色和机型的适配是一个应用必不可少的内容。</p>
+<h3 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h3><p>打开 storyboard, 选择 File inspector 中，的 Global Tint，然后 color picker 中</p>
+<p>选择： Red:4  Green:169  Blue:235 。</p>
+<p>然后在 ChecklistViewController.swift 中，添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">configuerCheckmarkForCell()&#123;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  label.textColor = view.tintColor</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>选择 Images.xcassets 中的 AppIcon ，然后拖放图标文件到其中，</p>
+<p>选择项目，Project Settings –&gt; General –&gt; App Icons and Launch Images,</p>
+<p>在 Launch Screen File 中，选择 Main.storyboard 。</p>
+<p>删除 LaunchScreen.xib 。 Clean， Build。</p>
+<h3 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h3><p>选择 storyboard 中的 Add Checklist ,选中 TextField。</p>
+<p>Pin Menu: top left right, 取消勾选 Constrain to margins, 勾选高度，</p>
+<p>Update Frames: Items of New Constraints 。</p>
+<p>对 Add Item 中的 TextField 也做同样的操作。</p>
+<p>这里 Xcode 6 和 Xcode 7 不太一致，教程中的方法在 Xcode 7 上可能实现不了，具体可以</p>
+<p>参考源码</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/googlegis/iOSApprentice">https://github.com/googlegis/iOSApprentice</a></p>
+<h3 id="弹出提醒"><a href="#弹出提醒" class="headerlink" title="弹出提醒"></a>弹出提醒</h3><p>弹出提醒是个很友好的功能，这个功能对于 ToDo 类的应用来说，更是好的不得了。定个时间，到时候</p>
+<p>在手机上弹出提示。</p>
+<p>首选需要在 AppDelegate.swift 中，在函数 application(didFinishLaunchingWithOptions)</p>
+<p>中添加代码；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let notificationSettings= UIUserNotificationSettings(</span><br><span class="line"></span><br><span class="line">                          forTypes:.Alert | .Sound, categories:nil)</span><br><span class="line"></span><br><span class="line">UIApplication.shareApplication().registerUserNotification(notificationSettings)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注册弹出权限，</p>
+<p>还在上面函数中，添加：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let date = NSDate(timeIntervalSinceNow:<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">let localNotification = UILocalNotification()</span><br><span class="line"></span><br><span class="line">localNotification.fireDate = date</span><br><span class="line"></span><br><span class="line">localNotification.timeZone = NSTimeZone.defaultTimeZone()</span><br><span class="line"></span><br><span class="line">localNotification.alertBody = <span class="string">&quot;I am a localNotification&quot;</span></span><br><span class="line"></span><br><span class="line">localNotification.soundName = UILocalNotificationDefaultSoundName</span><br><span class="line"></span><br><span class="line">UIApplication.sharedApplication().scheduleLocalNotification(localNotification)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在 AppDelegate.swift 中，添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func application(application:UIApplication,</span><br><span class="line"></span><br><span class="line">            didReceiveLocalNotification notification:UILocalNotification) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;didReceiveLocalNotification \(notification)&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行程序，按 Home 键，差不多 10 秒后，就会在顶部弹出提示框。</p>
+<p>为什么要按 Home 键， 因为如果应用在运行时，该应用的提醒不会弹出来。</p>
+<h4 id="扩展-DataModel"><a href="#扩展-DataModel" class="headerlink" title="扩展 DataModel"></a>扩展 DataModel</h4><p>在 ChecklistItem.swift 中添加变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var dueDate = NSDate()</span><br><span class="line"></span><br><span class="line">var shouldRemind = false</span><br><span class="line"></span><br><span class="line">var itemID: Int</span><br><span class="line"></span><br><span class="line">required init(coder aDecoder: NSObject) &#123;</span><br><span class="line"></span><br><span class="line">  text = aDecoder.decodeObjectForKey(<span class="string">&quot;Text&quot;</span>) <span class="keyword">as</span>! String</span><br><span class="line"></span><br><span class="line">  checked = aDecoder.decodeBoolForKey(<span class="string">&quot;Checked&quot;</span>)</span><br><span class="line"></span><br><span class="line">  dueDate = aDecoder.decodeObjectForKey(<span class="string">&quot;DueDate&quot;</span>) <span class="keyword">as</span>! NSDate</span><br><span class="line"></span><br><span class="line">  shouldRemind = aDecoder.decodeObjectForKey(<span class="string">&quot;ShouldRemind&quot;</span>)</span><br><span class="line"></span><br><span class="line">  itemID = aDecoder.decodeObjectForKey(<span class="string">&quot;ItemID&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func encodeWithCoder(aCoder:NSCoder) &#123;</span><br><span class="line"></span><br><span class="line">  aCoder.encodeObject(text,forKey:<span class="string">&quot;Text&quot;</span>)</span><br><span class="line"></span><br><span class="line">  aCoder.encodeBool(checked,forKey:<span class="string">&quot;Checked&quot;</span>)</span><br><span class="line"></span><br><span class="line">  aCoder.encodeObject(dueDate,forKey:<span class="string">&quot;DueDate&quot;</span>)</span><br><span class="line"></span><br><span class="line">  aCoder.encodeBool(shouldRemind,forKey:<span class="string">&quot;ShouldRemind&quot;</span>)</span><br><span class="line"></span><br><span class="line">  aCoder.encodeInteger(itemID,forKey:<span class="string">&quot;ItemID&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override init() &#123;</span><br><span class="line"></span><br><span class="line">  itemID = DataModel.nextChecklistItemID()</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.init()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 DataModel.swift 中，添加方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">func</span>  nextChecklistItemID() -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">  let userDefaults = NSUserDefaults.standardUserDefaults()</span><br><span class="line"></span><br><span class="line">  let itemID = userDefaults.integerForKey(<span class="string">&quot;ChecklistItemID&quot;</span>)</span><br><span class="line"></span><br><span class="line">  userDefaults.setInteger(itemID + <span class="number">1</span>, forKey:<span class="string">&quot;ChecklistItemID&quot;</span>)</span><br><span class="line"></span><br><span class="line">  userDefaults.synchronize()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> itemID</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func registerDefaults() &#123;</span><br><span class="line"></span><br><span class="line">  let dictionary = [<span class="string">&quot;ChecklistIndex&quot;</span>:-<span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">                    <span class="string">&quot;FirstTime&quot;</span>:true,</span><br><span class="line"></span><br><span class="line">                    <span class="string">&quot;ChecklistItemID&quot;</span>:<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 ChecklistViewController.swift 中，修改 configureTextForCell()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func configureTextForCell(cell:UITableViewCell,</span><br><span class="line"></span><br><span class="line">                  withChecklistItem item: ChecklistItem) &#123;</span><br><span class="line"></span><br><span class="line">     let label = cell.viewWithTag(<span class="number">1000</span>) <span class="keyword">as</span>! UILabel</span><br><span class="line"></span><br><span class="line">     label.text = <span class="string">&quot;\(item.itemID):\(item.text)&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 ItemDetailViewController.swift 中添加 outlets</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBOutlet weak var shouldRemindSwitch: UISwitch!</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@IBOutlet weak var dueDateLabel: UILabel!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 Add Item 的 viewContrller 中，在 Attributes inspector 的 Sections +1 ，</p>
+<p>删除新的 cell 中的 Text Field 。拖放一个 TableViewCell 到新的cell上，</p>
+<p>在第二个 cell 中左边放一个 label ，Text：Remind Me, Font:System 16</p>
+<p>右边放一个 Switch, 连接到代码中 shouldRemindSwitch Outlet。 State 设为 Off</p>
+<p>并 Pin 到 top right</p>
+<p>在第三个 cell 中放两个 label 中，右边一个 Style 设置为 Right Detail ,左边一个</p>
+<p>text 设置为 Due Date, 右边 label 连接到代码中 dueDateLabel 的 outlet。</p>
+<p>在 ItemDetailViewController.swift 中，添加变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var dueDate = NSDate()</span><br><span class="line"></span><br><span class="line">//修改函数</span><br><span class="line"></span><br><span class="line">override func viewDidLoad() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">  tableView.rowHeight = <span class="number">44</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    title = <span class="string">&quot;Edit Item&quot;</span></span><br><span class="line"></span><br><span class="line">    textField.text = item.text</span><br><span class="line"></span><br><span class="line">    doneBarButton.enabled  =  true</span><br><span class="line"></span><br><span class="line">    shouldRemindSwitch.on = item.shouldRemind</span><br><span class="line"></span><br><span class="line">    dueDate = item.dueDate</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  updateDueDateLabel()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func updateDueDateLabel() &#123;</span><br><span class="line"></span><br><span class="line">  let formatter = NSDateFormatter()</span><br><span class="line"></span><br><span class="line">  formatter.dateStyle = .MediumStyle</span><br><span class="line"></span><br><span class="line">  formatter.timeStyle = .ShortStyle</span><br><span class="line"></span><br><span class="line">  dueDateLabel.text = formatter.stringFromData(dueDate)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done() &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    item.shouldRemind = shouldRemindSwitch.on</span><br><span class="line"></span><br><span class="line">    item.dueDate = dueDate</span><br><span class="line"></span><br><span class="line">    delegate?.itemDetailViewController(self,didFinishEditingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    let item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    item.checked = false</span><br><span class="line"></span><br><span class="line">    item.shouldRemind = shouldRemindSwitch.on</span><br><span class="line"></span><br><span class="line">    item.dueDate = dueDate</span><br><span class="line"></span><br><span class="line">    delegate?.itemDetailViewController(self,didFinishAddingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="date-Picker"><a href="#date-Picker" class="headerlink" title="date Picker"></a>date Picker</h3><p>在 ItemDetailViewController.swift  中，添加变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var datePickerVisible = false</span><br><span class="line"></span><br><span class="line">//添加函数</span><br><span class="line"></span><br><span class="line">func showDatePicker() &#123;</span><br><span class="line"></span><br><span class="line">  datePickerVisible = true</span><br><span class="line"></span><br><span class="line">  let indexPathDatePicker = NSIndexPath(forRow:<span class="number">2</span>,inSection:<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  tabelView.insertRowsAtIndexPaths([indexPathDatePicker],withRowAnimation:.Fade)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加函数</span><br><span class="line"></span><br><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">        cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">    var cell: UITableViewCell! =</span><br><span class="line"></span><br><span class="line">         tableView.dequeueReusableCellWithIdentifier(<span class="string">&quot;DatePickerCell&quot;</span>)</span><br><span class="line"></span><br><span class="line">          <span class="keyword">as</span>? UITableViewCell</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> cell == nil &#123;</span><br><span class="line"></span><br><span class="line">      cell  = UITableViewCell(style:.Default,reuseIdentifier:<span class="string">&quot;DatePickerCell&quot;</span>)</span><br><span class="line"></span><br><span class="line">      cell.selectionStyle = .<span class="literal">None</span></span><br><span class="line"></span><br><span class="line">      let datePicker = UIDatePicker(frame:CGRect(x:<span class="number">0</span>,y:<span class="number">0</span>,width:<span class="number">320</span>,height:<span class="number">216</span>))</span><br><span class="line"></span><br><span class="line">      datePicker.tag = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">      cell.contentView.addSubView(datePicker)</span><br><span class="line"></span><br><span class="line">      datePicker.addTarget(self,action:Selector(<span class="string">&quot;dateChanged&quot;</span>),</span><br><span class="line"></span><br><span class="line">                            forControlEvents:.ValueChanged)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.tableView(tableView,cellForRowAtIndexPath:indexPath)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">              numberOfRowsInSection section:Int) -&gt; Int &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> section == <span class="number">1</span> &amp;&amp; datePickerVisible &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.tableView(tableView,numberOfRowsInSection:section)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">                heightForRowAtIndexPath indexPath:NSIndexPath) -&gt; CGFloat &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="number">217</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">super</span>.tableViwe(tableView,heightForRowAtIndexPath:indexPath)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">              didSelectRowAtIndexPath indexPath:NSIndexPath) &#123;</span><br><span class="line"></span><br><span class="line">    tableView.deselectRowAtIndexPath(indexPath,animated:true)</span><br><span class="line"></span><br><span class="line">    textField.resignFirstResponder()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">      showDatePicker()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//修改函数</span><br><span class="line"></span><br><span class="line">override tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">            willSelectRowAtIndexPath indexPath: NSIndexPath) -&gt; NSIndexPath? &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> indexPath</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nil</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">override tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">    var indentationLevelForRowAtIndexPath indexPath: NSIndexPath) -&gt; Int&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">2</span> &#123;</span><br><span class="line"></span><br><span class="line">      indexPath = NSIndexPath(forRow:<span class="number">0</span>,insection:indexPath.section)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>.tabelView(tableView,</span><br><span class="line"></span><br><span class="line">                           indentationLevelForRowAtIndexPath:indexPath)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//添加函数</span><br><span class="line"></span><br><span class="line">func dateChanged(datePicker:UIDatePicker) &#123;</span><br><span class="line"></span><br><span class="line">  dueDate = datePicker.date</span><br><span class="line"></span><br><span class="line">  updateDueDateLabel()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//修改函数</span><br><span class="line"></span><br><span class="line">func showDatePicker() &#123;</span><br><span class="line"></span><br><span class="line">  datePickerVisible = true</span><br><span class="line"></span><br><span class="line">  let indexPath</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let pickerCell = tableView.cellForRowAtIndexPath[indexPathDatePicker] &#123;</span><br><span class="line"></span><br><span class="line">    let datePicker = pickerCell.viewWithTag(<span class="number">100</span>) <span class="keyword">as</span>! UIDatePicker</span><br><span class="line"></span><br><span class="line">    datepicker.setDate(dueDate,animated:false)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func hideDatePicker() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> datePickerVisible &#123;</span><br><span class="line"></span><br><span class="line">    datePickerVisible = false</span><br><span class="line"></span><br><span class="line">    let indexPathDateRow = NSIndexPath(forRow:<span class="number">1</span>,inSection:<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    let indexPathDatePicker = NSIndexPath(forRow:<span class="number">2</span>,inSection:<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> let cell = tabelView.cellForRowAtIndexPath(indexPathDateRow) &#123;</span><br><span class="line"></span><br><span class="line">      cell.detailTextLabel!.textColor = UIColor(white:<span class="number">0</span>,alpha:<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tableView.beginUpdates()</span><br><span class="line"></span><br><span class="line">    tableView.reloadRowsAtIndexPath([indexPathDateRow],</span><br><span class="line"></span><br><span class="line">                                    withRowAnimation:.<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    tableView.deleteRowsAtIndexPaths([indexPathDatePicker],</span><br><span class="line"></span><br><span class="line">                                    withRowAnimation:.Fade)</span><br><span class="line"></span><br><span class="line">    tableView.endUpdates()</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">override func tableView(tableView:UITableView,</span><br><span class="line"></span><br><span class="line">                  didSelectRowAtIndexPath indexPath: NSIndexPath) &#123;</span><br><span class="line"></span><br><span class="line">      tableView.deselectRowAtIndexPath(indexPath,animated:true)</span><br><span class="line"></span><br><span class="line">      textField.resignFirstResponder()</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> indexPath.section == <span class="number">1</span> &amp;&amp; indexPath.row == <span class="number">1</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> !datePickerVisible &#123;</span><br><span class="line"></span><br><span class="line">          showDatePicker()</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">          hideDatePicker()</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func textFieldDidBeginEditing(textField:UITextField) &#123;</span><br><span class="line"></span><br><span class="line">  hideDatePicker()</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 ChecklistItem.swift 中，</p>
+<p>添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func scheduleNotification() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> shouldRemind &amp;&amp; dueDate.compare(NSDate()) !=</span><br><span class="line"></span><br><span class="line">                         NSComparisonResult.OrderedAscending &#123;</span><br><span class="line"></span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&quot;we should schedle a notification&quot;</span>)</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 ItemDetailViewController.swift 中，修改函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func done() &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let item = itemToEdit &#123;</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    item.shouldRemind = shouldRemindSwitch.on</span><br><span class="line"></span><br><span class="line">    item.dueDate = dueDate</span><br><span class="line"></span><br><span class="line">    item.scheduleNotification()</span><br><span class="line"></span><br><span class="line">    delegate?.itemDetailViewController(self,didFinishEditingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    let item = ChecklistItem()</span><br><span class="line"></span><br><span class="line">    item.text = textField.text</span><br><span class="line"></span><br><span class="line">    item.checked = false</span><br><span class="line"></span><br><span class="line">    item.shouldRemind = shouldRemindSwitch.on</span><br><span class="line"></span><br><span class="line">    item.dueDate = dueDate</span><br><span class="line"></span><br><span class="line">    item.scheduleNotification()</span><br><span class="line"></span><br><span class="line">    delegate?.itemDetailViewController(self,didFinishAddingItem:item)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 ChecklistItem.swift 中，修改函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line">func scheduleNotification() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> shouldRemind &amp;&amp; dueDate.compare(NSDate()) !=</span><br><span class="line"></span><br><span class="line">                                  NSComparisonResult.OrderedAscending &#123;</span><br><span class="line"></span><br><span class="line">        let localNotification = UILocalNotification()</span><br><span class="line"></span><br><span class="line">        localNotification.fireDate = dueDate</span><br><span class="line"></span><br><span class="line">        localNotification.timeZone = NSTimeZone.defaultTimeZOne()</span><br><span class="line"></span><br><span class="line">        localNotification.alertBody = text</span><br><span class="line"></span><br><span class="line">        localNotification.soundName = UILocalNotificationDefaultSoundName</span><br><span class="line"></span><br><span class="line">        localNotification.userInfo = [<span class="string">&quot;ItemID&quot;</span>:itemID]</span><br><span class="line"></span><br><span class="line">        UIApplication.shareApplication().scheduleNotification(localNotification)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Schedled notification\(localNotification) for itemID\(itemID)&quot;</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 ItemDetailViewController.swift 中，添加函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@IBAction func shouldRemindToggled(<span class="params">switchControl:UISwitch</span>) &#123;</span></span><br><span class="line"></span><br><span class="line">  textField.resignFirstResponder()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> switchControl.on &#123;</span><br><span class="line"></span><br><span class="line">    let notificationSettings = UIUserNotificationSettings(</span><br><span class="line"></span><br><span class="line">                  forTypes:.Alert | .Sound,categories:nil)</span><br><span class="line"></span><br><span class="line">    UIApplication.sharedApplication().registerUserNotificationSettings(</span><br><span class="line"></span><br><span class="line">                                                 notificationSettings)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 storyboard 中连接 shouldRemindToggled() 与 Outlet switch control</p>
+<p>在 ChecklistItem.swift 函数中，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">func scheduleNotifcation() &#123;</span><br><span class="line"></span><br><span class="line">  let existingNotification = notificationForThisItem()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let notification = existingNotification &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Found an existing notification \(notification)&quot;</span>)</span><br><span class="line"></span><br><span class="line">    UIApplication.sharedApplication().cancelLocalNotification(notification)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func notificationForThisItem() -&gt; UILocalNotification? &#123;</span><br><span class="line"></span><br><span class="line">  let allNotification = UIApplication.sharedApplication().scheduleNotifications</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">as</span>! [UILocalNotification]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> notification <span class="keyword">in</span> allNotification &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> let number = notification.userInfo?[<span class="string">&quot;ItemID&quot;</span>] <span class="keyword">as</span>? NSNumber &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> number.integerValue == itemID &#123;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> notification</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> nil</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">deinit &#123;</span><br><span class="line"></span><br><span class="line">  let existingNotification = notificationForThisItem()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> let notification = existingNotification&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Removing existing notification \(notification)&quot;</span>)</span><br><span class="line"></span><br><span class="line">    UIApplication.sharedApplication().cancelLocalNotification(notification)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS-Apprentice/" rel="tag"># iOS Apprentice</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/25/all-about-human-beings/" rel="prev" title="Swift 2.0 纯学习之旅 -- 13.优化用户体验">
+      <i class="fa fa-chevron-left"></i> Swift 2.0 纯学习之旅 -- 13.优化用户体验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/07/26/www-thing-about-the-now/" rel="next" title="写教程是真难！">
+      写教程是真难！ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E8%89%B2"><span class="nav-number">1.</span> <span class="nav-text">配色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D"><span class="nav-number">3.</span> <span class="nav-text">适配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E5%87%BA%E6%8F%90%E9%86%92"><span class="nav-number">4.</span> <span class="nav-text">弹出提醒</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95-DataModel"><span class="nav-number">4.1.</span> <span class="nav-text">扩展 DataModel</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date-Picker"><span class="nav-number">5.</span> <span class="nav-text">date Picker</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">豆棚瓜架</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">豆棚瓜架</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

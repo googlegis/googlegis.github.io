@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"googlegis.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Swift和GoogleMapiOSSDK开发地图应用示例(2)">
+<meta property="og:url" content="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/index.html">
+<meta property="og:site_name" content="豆棚瓜架">
+<meta property="og:description" content="我的位置在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们要在应用上添加更多功能使得应用更加实用。 地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，,value值将会在第一次运行时，弹出来进">
+<meta property="og:locale">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_21_plist_file.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_22_edit_scheme.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_23_default_location.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_24_search_address.png">
+<meta property="article:published_time" content="2015-05-29T04:16:56.000Z">
+<meta property="article:modified_time" content="2017-05-25T10:44:37.000Z">
+<meta property="article:author" content="豆棚瓜架">
+<meta property="article:tag" content="Google Map">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://googlegis.github.io/images/2015/05/googlemap/t33_21_plist_file.png">
+
+<link rel="canonical" href="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>使用Swift和GoogleMapiOSSDK开发地图应用示例(2) | 豆棚瓜架</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">豆棚瓜架</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">姑妄言之姑听之，豆棚瓜架雨如丝，料应厌作人间语，爱听秋坟鬼唱诗。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/05/29/google-map-ios-sdk-swift-demo-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Swift和GoogleMapiOSSDK开发地图应用示例(2)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2015-05-29 12:16:56" itemprop="dateCreated datePublished" datetime="2015-05-29T12:16:56+08:00">2015-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2017-05-25 18:44:37" itemprop="dateModified" datetime="2017-05-25T18:44:37+08:00">2017-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<h2 id="我的位置"><a href="#我的位置" class="headerlink" title="我的位置"></a>我的位置</h2><p>在屏幕上显示地图是相当有趣, 但是如果上面一直是空白的什么都没有，也是作用不大。所以现在开始我们<br>要在应用上添加更多功能使得应用更加实用。</p>
+<p>地图最常见的功能之一就是显示使用者当前的位置。这很简单，但是必须征得使用者同意使用当前位置服务。<br>从iOS8之后，征询使用者同意分两步走：1. 在项目.plist文件中添加一个新项. 这个项有一个key请求权限，<br>,value值将会在第一次运行时，弹出来进行询问说明. 2. 在代码中请求权限，如果以前还没有触发过，当<br>你运行时，弹出请求框。下面我们会看到。</p>
+<p>当我们调用核心位置服务时, 应用会一直更新位置(甚至当应用在后台时也会), 而另外一种只是在使用的<br>的时候才会调用;我们所要使用的就是这种方法。既然我们想要app请求位置权限，就要在.plist文件中<br>给予一个正确的key, 以备我们在代码中能够调用来请求权限. 这种情况我们不需要一直跟踪位置更新.<br>也就是说当app在后台时或者没有位置更新时不需要请求服务, 因为那样也会浪费很多电量。我们只在程序运行时<br>才请求用户的位置权限。</p>
+<p>打开项目导航栏中的 Info.plist 文件. Then, 在 Editor 页选择 Add Item项. key填写<br>NSLocationWhenInUseUsageDescription 字符, 在value值中填写一些简单说明，比如:<br>“Allowing access to your location, you can spot your position on the map.” (去掉括号).</p>
+<img src="/images/2015/05/googlemap/t33_21_plist_file.png" class="">
+
+<p>打开 ViewController.swift 文件, 声明两个我们下面会用到的属性值。在类文件顶部，IBOutlet属性下面:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var locationManager = CLLocationManager()</span><br><span class="line"></span><br><span class="line">var didFindMyLocation = false</span><br></pre></td></tr></table></figure>
+
+<p>locationManager属性用来请求用户权限并保持跟踪用户位置, 根据是否授权来判断是否显示用户的当前位置.<br>didFindMyLocation在下面就会用到,所以我们知道是否在地图上显示当前位置,避免不必要的更新。</p>
+<p>但是，在上面代码中已经看到 locationManager已经声明，但是还不够，还需在ViewController类中<br>viewDidLoad方法中声明委托,并请求用户权限. 如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">override func viewDidLoad() &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    locationManager.delegate = self</span><br><span class="line">    locationManager.requestWhenInUseAuthorization()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，我们在这里请求的权限必须和我们在 .plist 文件中填写的权限一致。当我们调用location<br>manager对象的requestWhenInUseAuthorization() 方法时,如果用户是第一次运行程序就会弹出对话框<br>询问是否授权跟踪当前的位置, 或者返回以前用户已经选择的选项. 无论哪种情况，我们都要检查<br>CLLocationManager委托协议返回的授权状态, 在这之前我们必须在类的头行中把协议加上:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController, CLLocationManagerDelegate &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后修改委托方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) &#123;</span><br><span class="line">    if status == CLAuthorizationStatus.AuthorizedWhenInUse &#123;</span><br><span class="line">        viewMap.myLocationEnabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里注意到，只有一种方法是我们感兴趣的就是授权状态值等于我们上面请求的Key. 只有在这一种情况下，我们<br>才能把 myLocationEnabled 设置为 true, 然后MapsSDK才会努力的查找用户当前的位置. 然后我们的工<br>作就是根据当前用户的位置来更新地图的位置。</p>
+<p>用户的当前位置被定位为mapView对象的一个属性，命名为 myLocation. 好消息就是这个属性被定义为 KVO<br>键值对 (key-value observing compliant), 就是我们只需要注意value值得变化, 就能判断用户的位置<br>是否发生了变化. 如果想了解更多关于 KVO 只是，可以参考<a target="_blank" rel="noopener" href="http://www.appcoda.com/understanding-key-value-observing-coding/">这篇教程</a>.</p>
+<p>根据上面的内容，下面我们要做的就是让我们来监视viewMap对象中的myLocation属性的变化. 在<br>viewDidLoad方法中, 添加下面的代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">override func viewDidLoad() &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    viewMap.addObserver(self, forKeyPath: &quot;myLocation&quot;, options: NSKeyValueObservingOptions.New, context: nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们想要的就是当用户位置更新时，GoogleMapsSDK会根据用户位置定位到地图中心，并显示一个蓝色图标,<br>其实蓝色图标不需要编码也会自动显示，我们需要关心的只是当用户位置有变化时，把用户的位置显示在地图上:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer&lt;Void&gt;) &#123;</span><br><span class="line">    if !didFindMyLocation &#123;</span><br><span class="line">        let myLocation: CLLocation = change[NSKeyValueChangeNewKey] as CLLocation</span><br><span class="line">        viewMap.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 10.0)</span><br><span class="line">        viewMap.settings.myLocationButton = true</span><br><span class="line"></span><br><span class="line">        didFindMyLocation = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前面说过，didFindMyLocation 标示会帮助app避免不必要的位置更新。当地图从change字典表中获取到新<br>位置时，该字典表会传递一个参数，使用NSKeyValueChangeNewKey关键字，我们能获取到一个新的值. 根据<br>这个位置,我们设置一个新的GMSCameraPosition对象并将它设置为mapView的camera属性.并把位置放置在<br>地图中心。 另外一个有趣的功能是返回到当前位置，放置一个myLocationButton，在地图右下方放置有个按钮<br>当我们移动地图后点击该按钮会返回到当前位置，这个按钮由Google Maps SDK提供，同时另外还有一个指南<br>按钮也同样适用，但我们这里不需要。</p>
+<p>现在可以来测试程序. 如果你是在模拟器中运行程序, 你必须提供一个假的位置给程序因为模拟器无法模拟真实<br>位置. 需要修改scheme 中 Options页，选择一个默认位置:</p>
+<img src="/images/2015/05/googlemap/t33_22_edit_scheme.png" class="">
+
+<img src="/images/2015/05/googlemap/t33_23_default_location.png" class="">
+
+<h2 id="自定义位置"><a href="#自定义位置" class="headerlink" title="自定义位置"></a>自定义位置</h2><p>比显示用户当前位置更深一步, 另外一个在地图应用中非常常见的功能就是自定义位置.这类API通常都是<br>提供一系列地址(比如街道、城市、县城、区域的名称),但是没有位置信息(经度和纬度)值,就像没有人能<br>够记得。但是你是否知道一个地图服务即使没有经纬度也能准确定位到地址。</p>
+<p>问题的答案就是geocoding(地理编码), 在显示到地图之前就把地址信息转换为了经纬度信息。其实地图<br>服务并不关心我们提供的地址信息，只是把它转为地理位置. 实际上重要的是我们如何把地址信息传给<br>Google Maps SDK, 让它转换为地理位置, 然后呈现在地图上。</p>
+<p>幸运的是Google提供了Google Geocoding API,一种 web service传入真实的地址信息，返回<br>经纬度信息。如果你真的对Google maps感兴趣, 那你最好去阅读一下 <a target="_blank" rel="noopener" href="https://developers.google.com/maps/documentation/geocoding/">geocoding API</a> 文档. 事实上，我建议你现在就去阅读一下文档，并对服务的详细信息快速浏览一遍。会帮助你理解我们下面<br>要做的内容。</p>
+<p>geocoding API 返回的内容一般为JSON或XML格式。下面这个例子中是JSON格式，在Swift或者<br>Objective-C中，只需一行代码就能转换为所需的数据格式(字典或数组),这个数据是从Google文档<br>中直接取出来的返回的JSON格式数据:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;results&quot; : [</span><br><span class="line">      &#123;</span><br><span class="line">         &quot;address_components&quot; : [</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;1600&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;1600&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;street_number&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;Amphitheatre Pkwy&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;Amphitheatre Pkwy&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;route&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;Mountain View&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;Mountain View&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;locality&quot;, &quot;political&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;Santa Clara&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;Santa Clara&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;administrative_area_level_2&quot;, &quot;political&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;California&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;CA&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;administrative_area_level_1&quot;, &quot;political&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;United States&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;US&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;country&quot;, &quot;political&quot; ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">               &quot;long_name&quot; : &quot;94043&quot;,</span><br><span class="line">               &quot;short_name&quot; : &quot;94043&quot;,</span><br><span class="line">               &quot;types&quot; : [ &quot;postal_code&quot; ]</span><br><span class="line">            &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;formatted_address&quot; : &quot;1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA&quot;,</span><br><span class="line">         &quot;geometry&quot; : &#123;</span><br><span class="line">            &quot;location&quot; : &#123;</span><br><span class="line">               &quot;lat&quot; : 37.42291810,</span><br><span class="line">               &quot;lng&quot; : -122.08542120</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;location_type&quot; : &quot;ROOFTOP&quot;,</span><br><span class="line">            &quot;viewport&quot; : &#123;</span><br><span class="line">               &quot;northeast&quot; : &#123;</span><br><span class="line">                  &quot;lat&quot; : 37.42426708029149,</span><br><span class="line">                  &quot;lng&quot; : -122.0840722197085</span><br><span class="line">               &#125;,</span><br><span class="line">               &quot;southwest&quot; : &#123;</span><br><span class="line">                  &quot;lat&quot; : 37.42156911970850,</span><br><span class="line">                  &quot;lng&quot; : -122.0867701802915</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         &quot;types&quot; : [ &quot;street_address&quot; ]</span><br><span class="line">      &#125;</span><br><span class="line">   ],</span><br><span class="line">   &quot;status&quot; : &quot;OK&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整的看下来,返回的内容通过两种方法来寻找地址:一种是作为字典表组成的数组地址对象，另一种是作为被格式<br>化的完整地址的字符串作为一个地址对象。另外上面的示例包括两个点：geometry字典包含了longitude和<br>latitude值,另外status明显的标示除了请求geocoding web service的结果。</p>
+<p>总得来看，app中需要使用到上面内容中的三个部分: 格式化后的地址, 几何体详细信息, 返回状态. 强烈建议<br>查看一下Google文档中关于status代码的内容，在这里详述真的有点超出了我们的范围了。在我们继续进行下<br>面内容之前，请确保你对JSON数据内容已经完全熟悉，如果自己还不是那么确定，请参考这两处文章<a target="_blank" rel="noopener" href="http://json.org/">1</a><a target="_blank" rel="noopener" href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/">2</a>。<br>需要注意的点就是以某个键开始的 “key” 是dictionary,以中括号 ([)开始的是array。</p>
+<p>现在回到代码中, 我们为GeoCodingAPI的请求和返回创建一个新的类，主要有两个原因:</p>
+<ol>
+<li>代码重用.</li>
+<li>后面我们还要用到其它的Google web service (API), 我们需要把所有这类服务放在一起方便管理。</li>
+</ol>
+<p>所以，创建一个新类，命名为 MapTasks，确定它继承了 NSObject。</p>
+<p>然后在 MapTasks.swift 文件中添加属性，供下面使用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let baseURLGeocode = &quot;https://maps.googleapis.com/maps/api/geocode/json?&quot;</span><br><span class="line"></span><br><span class="line">var lookupAddressResults: Dictionary&lt;NSObject, AnyObject&gt;!</span><br><span class="line"></span><br><span class="line">var fetchedFormattedAddress: String!</span><br><span class="line"></span><br><span class="line">var fetchedAddressLongitude: Double!</span><br><span class="line"></span><br><span class="line">var fetchedAddressLatitude: Double!</span><br></pre></td></tr></table></figure>
+
+<p>baseURLGeocode是我们请求geocoding的网址.当然，我们会在URL后面加上地址参数, 当然作为一个动态值，<br>我们会在程序代码中给它赋值. lookupAddressResults字典会存储返回结果集中的第一个地址.需要注意的是<br>，结果地理编码有可能返回不只一个地址, 这里只简单的处理获取第一个地址.后面是三个根据命名来进行存储的<br>三个值。</p>
+<p>首先添加一个初始化函数, ViewController类中才能对这个累创建一个对象. 没有必要写一个自定义init方法<br>，使用默认的即可:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">override init() &#123;</span><br><span class="line">    super.init()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，添加一个下面的方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func geocodeAddress(address: String!, withCompletionHandler completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数 address 使我们想要在地图标示出来的地址. 第二个参数是一个完成句柄，一旦接收到数据就被<br>调用进行数据处理。只有这个函数调用完成句柄处理好数据之后，应用才会在地图中显示结果。简单的说就是两个<br>参数: 第一个就是从返回内容中的status字符 第二个就是地址解析是否成功(是否返回了正确的数据)。</p>
+<p>下面我们会一步一步来实现这个函数. 开始, 我们必须正确的拼凑正确的URL字符串, 并转换为正确的格式, 并<br>用它去创建一个NSURL对象。首先要注意的就是要保证给予的地址要正确。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if let lookupAddress = address &#123;</span><br><span class="line">    var geocodeURLString = baseURLGeocode + &quot;address=&quot; + lookupAddress</span><br><span class="line">    geocodeURLString = geocodeURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</span><br><span class="line"></span><br><span class="line">    let geocodeURL = NSURL(string: geocodeURLString)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面将要请求 geocoding API 并用 NSData 对象来存储返回的结果集. 这里有一个比较重要的知识点就是<br>异步加载(asynchasynchronously), 就是说当你去获取数据的时候，app还能依然能够操作有反应。然后就<br>是将请求获取的数据从 JSON 格式转换到 dictionary 对象:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</span><br><span class="line">    let geocodingResultsData = NSData(contentsOfURL: geocodeURL!)</span><br><span class="line"></span><br><span class="line">    var error: NSError?</span><br><span class="line">    let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(geocodingResultsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最后一行代码就是将JSON数据转换为Swift数据对象.</p>
+<p>上面也能看到，我们使用 NSError 对象去捕获转换过程中出现的任何可能的错误。所以，我们首先需要注意的<br>是转换完成之后的值到底是不是nil,如果是空值，我们调用完成句柄并把标示符设置为falsely。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (error != nil) &#123;</span><br><span class="line">    println(error)</span><br><span class="line">    completionHandler(status: &quot;&quot;, success: false)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果一切顺利，我们首先获取返回数据 status 值. 如果包含 “OK” 我们就获取数据集的第一个结果并把它<br>存储到 lookupAddressResults 字典表中，然后我们再来获取其他我们所需要的值(格式化后的地址,经纬度)<br>如果status包含的是”OK”之外的其他值，调用完整句柄穿点 status 值，但标示符仍设置为false。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">else &#123;</span><br><span class="line">    // Get the response status.</span><br><span class="line">    let status = dictionary[&quot;status&quot;] as String</span><br><span class="line"></span><br><span class="line">    if status == &quot;OK&quot; &#123;</span><br><span class="line">        let allResults = dictionary[&quot;results&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</span><br><span class="line">        self.lookupAddressResults = allResults[0]</span><br><span class="line"></span><br><span class="line">        // Keep the most important values.</span><br><span class="line">        self.fetchedFormattedAddress = self.lookupAddressResults[&quot;formatted_address&quot;] as String</span><br><span class="line">        let geometry = self.lookupAddressResults[&quot;geometry&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</span><br><span class="line">        self.fetchedAddressLongitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lng&quot;] as NSNumber).doubleValue</span><br><span class="line">        self.fetchedAddressLatitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lat&quot;] as NSNumber).doubleValue</span><br><span class="line"></span><br><span class="line">        completionHandler(status: status, success: true)</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        completionHandler(status: status, success: false)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的这部分是整个函数的心脏部分. 需要注意在从JSON数据中取值时所使用这些Key值名称，这些能够在我前<br>面提到的Google Geocoding API 文档中找到。</p>
+<p>另外还需处理当地址为nil时的情况:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">else &#123;</span><br><span class="line">    completionHandler(status: &quot;No valid address.&quot;, success: false)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次给status参数传递的是一个自定义信息。</p>
+<p>下面是这个方法完整的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">func geocodeAddress(address: String!, withCompletionHandler completionHandler: ((status: String, success: Bool) -&gt; Void)) &#123;</span><br><span class="line">    if let lookupAddress = address &#123;</span><br><span class="line">        var geocodeURLString = baseURLGeocode + &quot;address=&quot; + lookupAddress</span><br><span class="line">        geocodeURLString = geocodeURLString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!</span><br><span class="line"></span><br><span class="line">        let geocodeURL = NSURL(string: geocodeURLString)</span><br><span class="line"></span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</span><br><span class="line">            let geocodingResultsData = NSData(contentsOfURL: geocodeURL!)</span><br><span class="line"></span><br><span class="line">            var error: NSError?</span><br><span class="line">            let dictionary: Dictionary&lt;NSObject, AnyObject&gt; = NSJSONSerialization.JSONObjectWithData(geocodingResultsData!, options: NSJSONReadingOptions.MutableContainers, error: &amp;error) as Dictionary&lt;NSObject, AnyObject&gt;</span><br><span class="line"></span><br><span class="line">            if (error != nil) &#123;</span><br><span class="line">                println(error)</span><br><span class="line">                completionHandler(status: &quot;&quot;, success: false)</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                // Get the response status.</span><br><span class="line">                let status = dictionary[&quot;status&quot;] as String</span><br><span class="line"></span><br><span class="line">                if status == &quot;OK&quot; &#123;</span><br><span class="line">                    let allResults = dictionary[&quot;results&quot;] as Array&lt;Dictionary&lt;NSObject, AnyObject&gt;&gt;</span><br><span class="line">                    self.lookupAddressResults = allResults[0]</span><br><span class="line"></span><br><span class="line">                    // Keep the most important values.</span><br><span class="line">                    self.fetchedFormattedAddress = self.lookupAddressResults[&quot;formatted_address&quot;] as String</span><br><span class="line">                    let geometry = self.lookupAddressResults[&quot;geometry&quot;] as Dictionary&lt;NSObject, AnyObject&gt;</span><br><span class="line">                    self.fetchedAddressLongitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lng&quot;] as NSNumber).doubleValue</span><br><span class="line">                    self.fetchedAddressLatitude = ((geometry[&quot;location&quot;] as Dictionary&lt;NSObject, AnyObject&gt;)[&quot;lat&quot;] as NSNumber).doubleValue</span><br><span class="line"></span><br><span class="line">                    completionHandler(status: status, success: true)</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    completionHandler(status: status, success: false)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        completionHandler(status: &quot;No valid address.&quot;, success: false)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面我们就可以在 ViewController.swift 中调用上面的函数了。首先定义并初始化一个 MapTasks 类:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var mapTasks = MapTasks()</span><br></pre></td></tr></table></figure>
+
+<p>然后找到 findAddress(_:) IBAction 函数. 每当工具栏左边的按钮被点击的时候就会调用该函数。这里<br>我们会弹出一个输入框让用户来输入地址。提供两个按钮，一个用来初始化地址查询，另外一个关闭当前对话框。<br>当点击第一个按钮时，我们就调用前面所创建的函数并获取完成句柄的结果集。来看代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@IBAction func findAddress(sender: AnyObject) &#123;</span><br><span class="line">    let addressAlert = UIAlertController(title: &quot;Address Finder&quot;, message: &quot;Type the address you want to find:&quot;, preferredStyle: UIAlertControllerStyle.Alert)</span><br><span class="line"></span><br><span class="line">    addressAlert.addTextFieldWithConfigurationHandler &#123; (textField) -&gt; Void in</span><br><span class="line">        textField.placeholder = &quot;Address?&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let findAction = UIAlertAction(title: &quot;Find Address&quot;, style: UIAlertActionStyle.Default) &#123; (alertAction) -&gt; Void in</span><br><span class="line">        let address = (addressAlert.textFields![0] as UITextField).text as String</span><br><span class="line"></span><br><span class="line">        self.mapTasks.geocodeAddress(address, withCompletionHandler: &#123; (status, success) -&gt; Void in</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    addressAlert.addAction(findAction)</span><br><span class="line">    addressAlert.addAction(closeAction)</span><br><span class="line"></span><br><span class="line">    presentViewController(addressAlert, animated: true, completion: nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在括号的代码中，我们已经获取到了数据集。如果 success 标示符为 false 我们就在命令行中显示 status.<br>如果 status 等于 “ZERO_RESULTS” 值, 我们会弹出另外一个提示框告诉用户没有找到对应地址信息。如果<br>一切顺利，我们就把地图的中心设置到当前位置:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@IBAction func findAddress(sender: AnyObject) &#123;</span><br><span class="line">    ...</span><br><span class="line">        self.mapTasks.geocodeAddress(address, withCompletionHandler: &#123; (status, success) -&gt; Void in</span><br><span class="line">            if !success &#123;</span><br><span class="line">                println(status)</span><br><span class="line"></span><br><span class="line">                if status == &quot;ZERO_RESULTS&quot; &#123;</span><br><span class="line">                    self.showAlertWithMessage(&quot;The location could not be found.&quot;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)</span><br><span class="line">                self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 14.0)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>showAlertWithMessage(_:) 是用来显示自定义信息的提示框方法. 它是一个完全可以复用的代码块。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func showAlertWithMessage(message: String) &#123;</span><br><span class="line">    let alertController = UIAlertController(title: &quot;GMapsDemo&quot;, message: message, preferredStyle: UIAlertControllerStyle.Alert)</span><br><span class="line"></span><br><span class="line">    let closeAction = UIAlertAction(title: &quot;Close&quot;, style: UIAlertActionStyle.Cancel) &#123; (alertAction) -&gt; Void in</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    alertController.addAction(closeAction)</span><br><span class="line"></span><br><span class="line">    presentViewController(alertController, animated: true, completion: nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有工作完成后，我们来测试应用。如果你输入了一个正确的地址，地图自动会以该位置为中心进行定位。</p>
+<img src="/images/2015/05/googlemap/t33_24_search_address.png" class="">
+<hr>
+<p>此文为翻译文章，原文地址:<a target="_blank" rel="noopener" href="http://www.appcoda.com/google-maps-api-tutorial/">http://www.appcoda.com/google-maps-api-tutorial/</a></p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Google-Map/" rel="tag"># Google Map</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/05/28/google-map-ios-sdk-swift-demo-1/" rel="prev" title="使用Swift和GoogleMapiOSSDK开发地图应用示例(1)">
+      <i class="fa fa-chevron-left"></i> 使用Swift和GoogleMapiOSSDK开发地图应用示例(1)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/05/30/google-map-ios-sdk-swift-demo-3/" rel="next" title="使用Swift和GoogleMapiOSSDK开发地图应用示例(3)">
+      使用Swift和GoogleMapiOSSDK开发地图应用示例(3) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">我的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">自定义位置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">豆棚瓜架</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">豆棚瓜架</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

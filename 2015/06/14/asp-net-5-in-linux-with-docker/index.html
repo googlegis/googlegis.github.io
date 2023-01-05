@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"googlegis.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介我们知道ASP.Net 5 提供了跨平台开发。我们能够在Android、Liunx和Mac系统上开发和部署ASP.Net 5 程序。微软介绍了第一款官方Docker镜像用来在Linux虚拟机上部署程序。所以这篇文章我们来介绍一下如何 使用Docker来创建和部署ASP.Net5程序。 现在第一个问题，什么事Docker？ 所以我们来谈一下。 DockerDocker是微软于2014年10月1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在linux上的docker容器中部署asp.net 5程序">
+<meta property="og:url" content="http://googlegis.github.io/2015/06/14/asp-net-5-in-linux-with-docker/index.html">
+<meta property="og:site_name" content="豆棚瓜架">
+<meta property="og:description" content="简介我们知道ASP.Net 5 提供了跨平台开发。我们能够在Android、Liunx和Mac系统上开发和部署ASP.Net 5 程序。微软介绍了第一款官方Docker镜像用来在Linux虚拟机上部署程序。所以这篇文章我们来介绍一下如何 使用Docker来创建和部署ASP.Net5程序。 现在第一个问题，什么事Docker？ 所以我们来谈一下。 DockerDocker是微软于2014年10月1">
+<meta property="og:locale">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/Docker.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/Dockerfiles.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/containerinfo.png">
+<meta property="og:image" content="http://googlegis.github.io/images/2015/06/asplinux/output.png">
+<meta property="article:published_time" content="2015-06-14T09:04:05.000Z">
+<meta property="article:modified_time" content="2017-05-25T10:44:34.000Z">
+<meta property="article:author" content="豆棚瓜架">
+<meta property="article:tag" content="asp.net linux Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://googlegis.github.io/images/2015/06/asplinux/Docker.png">
+
+<link rel="canonical" href="http://googlegis.github.io/2015/06/14/asp-net-5-in-linux-with-docker/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>在linux上的docker容器中部署asp.net 5程序 | 豆棚瓜架</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">豆棚瓜架</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">姑妄言之姑听之，豆棚瓜架雨如丝，料应厌作人间语，爱听秋坟鬼唱诗。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2015/06/14/asp-net-5-in-linux-with-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在linux上的docker容器中部署asp.net 5程序
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2015-06-14 17:04:05" itemprop="dateCreated datePublished" datetime="2015-06-14T17:04:05+08:00">2015-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2017-05-25 18:44:34" itemprop="dateModified" datetime="2017-05-25T18:44:34+08:00">2017-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>我们知道ASP.Net 5 提供了跨平台开发。我们能够在Android、Liunx和Mac系统上开发和部署ASP.Net 5</p>
+<p>程序。微软介绍了第一款官方Docker镜像用来在Linux虚拟机上部署程序。所以这篇文章我们来介绍一下如何</p>
+<p>使用Docker来创建和部署ASP.Net5程序。</p>
+<p>现在第一个问题，什么事Docker？ 所以我们来谈一下。</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>Docker是微软于2014年10月15日发布一款开源的微软工具，Docker主要的作用就是在任何平台上都能创建、</p>
+<p>加载、运行程序。这是一款非常流行的开源工具，因为它为开发人员和系统管理员在某个平台上创建和运行分发</p>
+<p>程序非常有用。Docker能够使我们在特殊环境下的程序运行在任何环境下。现在很多公司都在IT部署时使用</p>
+<p>Docker，因为它能够使同样的程序装载和运行在包括微软Azure云服务的任何其它操作系统上。</p>
+<img src="/images/2015/06/asplinux/Docker.png" class="">
+
+<p>现在我们学习如何在Linux虚拟机上，使用微软Azure和Docker来创建和部署Asp.Net5程序。程序可以在任何</p>
+<p>类型的操作系统上运行，但是有一点就是要安装特殊版本的系统Docker。如果Docker不合适，将不能在系统中</p>
+<p>运行命令，下面我们来一步一步来实现。</p>
+<h3 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h3><p>我们知道，目前为止Docker只能运行在Linux上，所以我们需要一个安装了Linux系统的机器或者是服务器上</p>
+<p>的Linux虚拟机能够运行运行Docker。安装Docker需要一些步骤，你可以在这个<a target="_blank" rel="noopener" href="https://docs.docker.com/installation/ubuntulinux/">Docker安装文档</a></p>
+<p>中查看安装步骤，或者使用专门的<a target="_blank" rel="noopener" href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-docker-ubuntu-quickstart/">Docker for Azure</a>。假设你已经在Linux系统中安装了Dock。下面继续下面的步骤。</p>
+<h3 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h3><p>想要在云或者Azure中部署程序就需要容器(Container)，所以我们首先创建一个容器镜像，我们的程序将部署</p>
+<p>在这个容器中。Docker容器镜像在容器中上面的位置，所以基本的镜像将会在容器镜像<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/u/microsoft/aspnet/">microsoft／aspnet</a>。</p>
+<p>这个镜像层会存储各种文件夹用来部署程序。有一个注意的是，当我们部署程序的时候，它既不包含任何ASP.Net</p>
+<p>的编译文件也不包含Linux的部署文件，只包含我们程序中的文件，这样能够让我们的部署文件更小一些，更容易</p>
+<p>部署到服务器上。为了创建Docker镜像，我们使用一个名为“Dockerfile”的文件。在这个文件里，说明了我们</p>
+<p>编译镜像需要条件。也就是说这就是我们需要用Docker编译镜像的先决文件。</p>
+<ul>
+<li><p>git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;</a>:aspnet&#x2F;Home.git aspnet-Home</p>
+</li>
+<li><p>cd aspnet&#x2F;samples&#x2F;HelloWeb</p>
+</li>
+</ul>
+<p>这个目录包含下面这些文件：</p>
+<ul>
+<li><p>startup.cs</p>
+</li>
+<li><p>image.jpg</p>
+</li>
+<li><p>project.json</p>
+</li>
+</ul>
+<p>现在我们在当前目录下创建一个文件，就是我们前面提到的 Dockerfile，并且包括以下内容：</p>
+<ul>
+<li><p>From microsoft&#x2F;aspnet</p>
+</li>
+<li><p>COPY .&#x2F;app</p>
+</li>
+<li><p>WORKDIR &#x2F;app</p>
+</li>
+<li><p>RUN[“kpm”,”restore”]</p>
+</li>
+<li><p>EXPOSE 5004</p>
+</li>
+<li><p>ENTRYPOINT[“k”,”kestrel”]</p>
+</li>
+</ul>
+<p>下面我们来一一说明这些都是什么意思，Dockerfile的内容包括六个文件，每个文件都很重要，所以我们来看</p>
+<p>一下：</p>
+<p>第一个内容：From microsoft&#x2F;aspnet 告诉Docker我们会使用官方ASP.Net镜像。</p>
+<p>第二个内容：COPY告诉Docker我们会使用当前目录下的内容，并拷贝这个目录下的内容到&#x2F;app目录下。</p>
+<p>第三个内容：WORKDIR高速容器，数据会移动到&#x2F;app 目录下。</p>
+<p>第四个内容:RUN告诉Docker，请运行kpm restore 命令来安装程序所需内容，并确定这个命令在第一次运行</p>
+<p>程序之前都是一直在运行的。</p>
+<p>第五个内容：EXPOse高速Docker，当前镜像使用的服务端口在5004</p>
+<p>最后一个内容：ENCRYPTION提供的kestral命令行来启动容器，并保证容器运行正常不出错。</p>
+<h3 id="步骤3"><a href="#步骤3" class="headerlink" title="步骤3"></a>步骤3</h3><p>完成上面那些步骤并设置好Dockerfile之后，我们的目录应该被改变为下面的结构：</p>
+<ul>
+<li><p>Dockerfile</p>
+</li>
+<li><p>startup.cs</p>
+</li>
+<li><p>image.jpg</p>
+</li>
+<li><p>project.json</p>
+</li>
+</ul>
+<p>下面我们就要编译Docker镜像，为了编译Docker镜像，我们需要运行下面给出的命令，这些命令必须在当前</p>
+<p>目录下运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker build -t myapp</span><br></pre></td></tr></table></figure>
+<p>如果你在目录下运行该命令，它会根据Dockerfile编译一个镜像， 就是 myapp。所以无论你什么时候使用</p>
+<p>这个处理命令来改变你的程序，都会编译一个新的镜像。 如果我们想在linux虚拟机上的Docker镜像中看到我</p>
+<p>们的程序，就需要运行下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker images</span><br></pre></td></tr></table></figure>
+
+<img src="/images/2015/06/asplinux/Dockerfiles.png" class="">
+
+<p>现在我们就能看到我们的程序镜像和ASP.NET镜像已经存在目录下了，下面就可以部署我们的程序了。</p>
+<h3 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h3><p>下面一步是运行容器，在Linux虚拟机上，在Docker中运行以下命令来启动容器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### docker run -t -d -p 80:5004 myapp</span><br></pre></td></tr></table></figure>
+
+<p>-t 是表示附加一个假的给容器的开关</p>
+<p>-d 是表示如果有其它进程运行在前台的时候，容器转到后台运行。</p>
+<p>-p 是表示映射 80端口到虚拟机 5004 端口的开关。</p>
+<p>这里是表示从80端口与容器5004端口创建链接。</p>
+<p>最终 myapp 镜像容器就要被启动了，下面我们的容器应该是启动状态，如果我们看运行容器的信息，会看到</p>
+<p>下面命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### $docker ps</span><br></pre></td></tr></table></figure>
+
+<p>信息应该如图所示：</p>
+<img src="/images/2015/06/asplinux/containerinfo.png" class="">
+
+<p>现在，我们的容器应该是运行状态，现在我们来完成其它任务。我们仅仅是完成了Azure VM的端口映射。所以</p>
+<p>我们要去Azure官网，映射公共端口80到我们自己linux虚拟机上的80端口。因为我们要在我们本地运行程序。</p>
+<p>现在，我们在浏览器中的地址栏中输入：”<a target="_blank" rel="noopener" href="http://your-cloud-service-name.cloudapp.net/">http://your-cloud-service-name.cloudapp.net:80/</a>“,</p>
+<img src="/images/2015/06/asplinux/output.png" class="">
+
+<p>这就是说明，我们在linux虚拟机上的Docker中运行程序成功了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里就是在linux虚拟机上安装Docker文件的所有知识点，我希望这篇文章能够那些想要在linux环境下用</p>
+<p>Docker部署程序的读者一些帮助，Docker是ASP.NET 5 的一部分，所以将来微软会对Docker做一些改进。</p>
+<p>Docker能够节省时间，并且最重要的是它能帮助你在任何系统下都能快速的部署你的程序。</p>
+<hr>
+<p>此文为翻译文章，原文地址：<a target="_blank" rel="noopener" href="http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/">http://www.c-sharpcorner.com/UploadFile/66489a/deploy-Asp-Net-5-applications-in-linux-containers-with-docke/</a></p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/asp-net-linux-Docker/" rel="tag"># asp.net linux Docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/06/12/the-ios-apprentice-one-bull-eyes/" rel="prev" title="Swift 2.0 纯学习之旅 -- 1.弹出提示框 和 Landscape 模式">
+      <i class="fa fa-chevron-left"></i> Swift 2.0 纯学习之旅 -- 1.弹出提示框 和 Landscape 模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/06/14/look-ios-mvc-from-showalert/" rel="next" title="从showalert方法中看iOS中的MVC">
+      从showalert方法中看iOS中的MVC <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41"><span class="nav-number">3.</span> <span class="nav-text">步骤1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42"><span class="nav-number">4.</span> <span class="nav-text">步骤2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43"><span class="nav-number">5.</span> <span class="nav-text">步骤3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A44"><span class="nav-number">6.</span> <span class="nav-text">步骤4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">豆棚瓜架</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">豆棚瓜架</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
