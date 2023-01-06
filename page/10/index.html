@@ -161,6 +161,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/03/01/make-disqus-visable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="豆棚瓜架">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/03/01/make-disqus-visable/" class="post-title-link" itemprop="url">Octopress中Disqus设置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-03-01 10:49:47" itemprop="dateCreated datePublished" datetime="2014-03-01T10:49:47+08:00">2014-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">搭建博客</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<h4 id="–-让-disqus显示出来"><a href="#–-让-disqus显示出来" class="headerlink" title="– 让 disqus显示出来"></a>– 让 disqus显示出来</h4><p>  特意为Disqus写一篇，是因为过程中出现了错误，或者说我没有理解透别人说的意思。</p>
+<p>   网上大多数的教程很简单，说是在Disqus注册个账号，然后把 short_name 写入 _config.yml中，我是菜鸟，写入了还是不能显示出来。</p>
+   <img src="/images/disqus.png" class="">
+
+
+<p>   就是上图中画红色圈方框的部分没显示。</p>
+<p>   擦！<br>   连续查了两天资料，终于搞定。</p>
+<ol>
+<li><p>disqus注册时，Shortname 随意写，Website Name 随意写， Website URL: 写入你的网站地址，如果你使用的github，那就写入你的Page Site： ***.github.com</p>
+</li>
+<li><p>如果还是出不来，请检查这两个文件。 &#x2F;Source&#x2F;_layout&#x2F;page.html 和 &#x2F;Source&#x2F;_layout&#x2F;post.html，  查看这部分：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   &lt;section id=&quot;comment&quot;&gt;  </span><br><span class="line">    &lt;h1 class=&quot;title&quot;&gt;Comments&lt;/h1&gt;  </span><br><span class="line">    &lt;div id=&quot;disqus_thread&quot; aria-live=&quot;polite&quot;&gt;&#123;% include post/disqus_thread.html %&#125;  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p> 然后查看 _includes&#x2F;post&#x2F;disqus_thread.html 这个里面的内容，如果仅仅是下面这个部分，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    &lt;noscript&gt;<span class="title class_">Please</span> enable <span class="title class_">JavaScript</span> to view the &lt;a href=<span class="string">&quot;http://disqus.com/? ref_noscript&quot;</span>&gt;comments powered by <span class="title class_">Disqus</span>.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">   那就说明，该修改 section 这部分代码了。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   查看 _includes/disqus.html 文件，查看源码，如果如下：</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"> &#123;% comment %&#125; <span class="title class_">Load</span> script <span class="keyword">if</span> disquss comments are enabled and <span class="string">`page.comments`</span></span><br><span class="line">  is either empty (index) or set to <span class="literal">true</span> &#123;% endcomment %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> site.<span class="property">disqus_short_name</span> and page.<span class="property">comments</span> != <span class="literal">false</span> %&#125;</span><br><span class="line">  &lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">      <span class="keyword">var</span> disqus_shortname = <span class="string">&#x27;&#123;&#123; site.disqus_short_name &#125;&#125;&#x27;</span>;</span><br><span class="line">      &#123;% <span class="keyword">if</span> page.<span class="property">comments</span> == <span class="literal">true</span> %&#125;</span><br><span class="line">        &#123;% comment %&#125; <span class="string">`page.comments`</span> can be only be set to <span class="literal">true</span> on pages/posts, so we embed the comments here. &#123;% endcomment %&#125;</span><br><span class="line">        <span class="comment">// var disqus_developer = 1;</span></span><br><span class="line">        <span class="keyword">var</span> disqus_identifier = <span class="string">&#x27;&#123;&#123; site.url &#125;&#125;&#123;&#123; page.url &#125;&#125;&#x27;</span>;</span><br><span class="line">        <span class="keyword">var</span> disqus_url = <span class="string">&#x27;&#123;&#123; site.url &#125;&#125;&#123;&#123; page.url &#125;&#125;&#x27;</span>;</span><br><span class="line">        <span class="keyword">var</span> disqus_script = <span class="string">&#x27;embed.js&#x27;</span>;</span><br><span class="line">      &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">        &#123;% comment %&#125; <span class="title class_">As</span> <span class="string">`page.comments`</span> is empty, we must be on the index page. &#123;% endcomment %&#125;</span><br><span class="line">        <span class="keyword">var</span> disqus_script = <span class="string">&#x27;count.js&#x27;</span>;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> dsq = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>); dsq.<span class="property">type</span> = <span class="string">&#x27;text/javascript&#x27;</span>; dsq.<span class="property">async</span> = <span class="literal">true</span>;</span><br><span class="line">      dsq.<span class="property">src</span> = <span class="string">&#x27;http://&#x27;</span> + disqus_shortname + <span class="string">&#x27;.disqus.com/&#x27;</span> + disqus_script;</span><br><span class="line">      (<span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;head&#x27;</span>)[<span class="number">0</span>] || <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;body&#x27;</span>)[<span class="number">0</span>]).<span class="title function_">appendChild</span>(dsq);</span><br><span class="line">    &#125;());</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>  请修改 section 中的代码为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   &lt;section id=<span class="string">&quot;comment&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Comments<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;disqus_thread&quot;</span> <span class="attr">aria-live</span>=<span class="string">&quot;polite&quot;</span>&gt;</span>&#123;% include disqus.html %&#125;  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<p> 然后 rake generate ; rake deploy 查看页面了。</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/02/17/you-know-or-not-know/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -983,119 +1069,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2011/09/09/all-eat-people/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="豆棚瓜架">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2011/09/09/all-eat-people/" class="post-title-link" itemprop="url">你们都吃人</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2011-09-09 21:42:00" itemprop="dateCreated datePublished" datetime="2011-09-09T21:42:00+08:00">2011-09-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">谈天说地</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>题图  《墙头记》</p>
-<p>我害怕，我身上疼，你们都吃人。</p>
-<p>你是谁，你是谁，你是不是要吃我？</p>
-<p>身上疼，我要挠，你为什么不让我挠，你们都吃人！</p>
-<p>我饿了，我要吃东西，你为什么不让我动？你们都吃人。</p>
-<p>天是蓝的吗？墙为什么是白的？</p>
-<p>你是谁？你为什么站在我面前对着我笑？</p>
-<p>我的孩子呢？</p>
-<p>你们说好了来看我，在哪里呢？</p>
-<p>你们都吃人。</p>
-<p>我的屋子是不是进贼了？</p>
-<p>我为什么在这里？</p>
-<p>为什么不让我回家？</p>
-<p>情况紧急！</p>
-<p>一定要给我反映上去。</p>
-<p>叫人来救我！</p>
-<p>快快上报。</p>
-<p>要人来救我。</p>
-<p>有人要吃我。</p>
-<p>我爱的人都在哪里啊？</p>
-<p>这里有人在掐我。</p>
-<p>屋子里都是冰冷的。</p>
-<p>那是什么？为什么有东西钻进我的身体？</p>
-<p>冷的疼啊。</p>
-<p>睁开眼无法看见你们。</p>
-<p>闭上眼想着你们。</p>
-<p>我只能呆在玻璃罩子里。</p>
-<p>冷的疼啊。</p>
-<p>谁能告诉我，车子要把我带到哪里去？</p>
-<p>这里不是我的家啊!</p>
-<p>这里冷冰冰的。</p>
-<p>四周都是墙啊。</p>
-<p>为什么不给我穿上衣服？</p>
-<p>什么东西撒在我的脸上？</p>
-<p>呛的我喘不过气来？</p>
-<p>为什么还不给我穿衣服？</p>
-<p>你们都吃人啊！</p>
-<p>太阳晒的疼，</p>
-<p>那么多人看着我笑，</p>
-<p>为什么还不给我穿衣服？</p>
-<p>我终于明白了，</p>
-<p>你们要吃人。</p>
-<hr>
-<blockquote>
-<p>一位 90 多岁的老人去世了。老夫妻俩30年代从安徽农村闯荡上海，白手起家，勤俭操持，儿女子孙一大家十几口人都过上了富裕的生活。男的年纪大了后，因为重病先走了，留下女的，被儿子安排在郊区的一个养老院里，开汽车得一个多小时，做地铁得转三趟，将近三个小时。子女三人为了父母的房子，为了赡养费争的不可开交就差打架了。最后落了有病无人治，住院无人看的地步。感觉老俩口挣一辈子不值。<br>其实说来说去不就是那点钱吗？<br>以前对大城市还有点倾慕的心态，慢慢的都被磨平了，其实在哪里都一样，在哪里都有孬种，都有吃人的人。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1165,7 +1138,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">117</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1178,7 +1151,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
