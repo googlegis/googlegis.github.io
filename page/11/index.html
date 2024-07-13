@@ -162,6 +162,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="西庐草堂">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" class="post-title-link" itemprop="url">解决搜狗输入法引起yosemite卡死在登录界面</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-07-10 11:30:05" itemprop="dateCreated datePublished" datetime="2014-07-10T11:30:05+08:00">2014-07-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/07/10/resolve-cannot-input-password-in-the-login-of-yoesmite/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<p>对着10.10流口水差不多一个多月了，从发布会那天起就开始想要装个系统。</p>
+<p>这么长时间过去了，在今天凌晨荷兰对阵阿根廷的那场无聊的比赛中，我从网上</p>
+<p>找来资源开始安装。</p>
+<p>从10.9.4冒险直接升级安装，反正球赛无聊，无聊到我想如果装叉了就想重新安装</p>
+<p>系统的冲动。</p>
+<p>还好，下载了一个 DP1安装后，一路Next，重启升级，在AppStore中系统升级，</p>
+<p>再安装重启，再到AppStore中升级，可以直接升级DP3. 貌似ok。 点击几个别人说</p>
+<p>的有bug的软件，好像还都启动的不错哦。而且重启了几次都可以进入。</p>
+<p>6.30球赛踢完睡觉，一场郁闷的比赛。</p>
+<p>11.起床，再去进系统，发现卡死在那个登陆框那里了。</p>
+<p>鼠标可以移动，形状是风火轮一直转，密码输入框无法获得焦点，更不用说按回车</p>
+<p>了。心里黯然，这下叉了。重启了几次，都是卡在这里，心里有了重新安装的冲</p>
+<p>动。</p>
+<p>上厕所期间，用手机搜索了一下 yosemite 10.10 被卡在登陆框的文章，还真有而且</p>
+<p>很多。说法不一，有的说是直接升级造成的，有的说法是搜狗输入法造成的。</p>
+<p>联想到windows登录的时候，都可以在登录界面切换输入法，莫不是这个也是这种</p>
+<p>原因，在登陆窗口想加载输入法信息，结果搜狗给卡成狗屎了。</p>
+<p>本着最小破坏原则，决定先试一下修复输入法的方案，实在不行，就再重新安装。</p>
+<p>在网上搜了一下，找到这个：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">找到解决办法了，试了，可以用，转自威锋</span><br><span class="line"></span><br><span class="line">查明是第三方输入法引起的问题，我用的是搜狗输入法，所以把搜狗卸载就好了。（注意是卸载，不是单纯的从输入源里移除）</span><br><span class="line">操作的思路是，首先要进入计算机，才能进行操作。</span><br><span class="line"></span><br><span class="line">办法是开机进入单机模式，删除苹果一个文件，让系统认为该计算机还没有被配置，开机后直接进入配置计算机和用户的界面，新建立一个用户，就可以进入桌面删除万恶的输入法了。</span><br><span class="line"></span><br><span class="line">首先开机的时候按 Command+s;</span><br><span class="line"></span><br><span class="line">进入命令提示符画面后</span><br><span class="line"></span><br><span class="line">1， 输入 sbin/mount -uaw 回车</span><br><span class="line">这里注意看回车后的提示，只要不是not found之类的就可以了</span><br><span class="line"></span><br><span class="line">2，输入 rm /var/db/.AppleSetupDone 回车</span><br><span class="line">这里注意rm后面有空格。这里回车后可能无提示，如果有，只要不是not found一类的就可以了，如果老提示not found 仔细检查有没有弄错，rm前面加／试试看等等。</span><br><span class="line"></span><br><span class="line">字母符号别打错</span><br><span class="line"></span><br><span class="line">3，输入 reboot 回车重启</span><br><span class="line"></span><br><span class="line">重启后配置建立完用户就进入系统了</span><br><span class="line"></span><br><span class="line">下载一个搜狗输入法的DMG，打开后选择卸载搜狗输入法。</span><br><span class="line"></span><br><span class="line">重启，删除刚才为了进入系统新配置的账户，天下大吉。</span><br></pre></td></tr></table></figure>
+
+<p>终于可以进来了，谢天谢地。</p>
+<p>程序员这种折腾的精神，就是那种不作就不会的精神。</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/07/09/germany-in-the-world-cup-2014/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1231,94 +1336,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="豆棚瓜架">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="西庐草堂">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2014/05/15/compile-android-source-in-mac/" class="post-title-link" itemprop="url">在Mac下编译Android源码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-05-15 13:28:03" itemprop="dateCreated datePublished" datetime="2014-05-15T13:28:03+08:00">2014-05-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2014/05/15/compile-android-source-in-mac/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/05/15/compile-android-source-in-mac/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最好的教程就是官方文档。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2014/05/15/compile-android-source-in-mac/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1388,7 +1405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">143</span>
+          <span class="site-state-item-count">144</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1401,7 +1418,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">89</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

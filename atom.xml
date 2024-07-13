@@ -6,7 +6,7 @@
   <link href="http://googlegis.github.io/atom.xml" rel="self"/>
   
   <link href="http://googlegis.github.io/"/>
-  <updated>2023-11-14T09:09:15.665Z</updated>
+  <updated>2024-07-13T02:00:01.543Z</updated>
   <id>http://googlegis.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最后的记忆</title>
+    <link href="http://googlegis.github.io/2024/07/13/last-memory/"/>
+    <id>http://googlegis.github.io/2024/07/13/last-memory/</id>
+    <published>2024-07-12T23:46:48.000Z</published>
+    <updated>2024-07-13T02:00:01.543Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天的梦，我一直很犹豫，好像记得又好像模糊，时隐时现的不知道到底是不是做了这个梦。&lt;/p&gt;
+&lt;p&gt;2022年末那波瘟疫散去的时候，也带走了我的一位至亲，看到照片的那刻起，一直到昨天，内心也不曾认为这是一个事实，仿佛我还可以随时给他打电话，也有可能随时接到他的电话，而他去世后</summary>
+      
+    
+    
+    
+    <category term="第四季" scheme="http://googlegis.github.io/categories/%E7%AC%AC%E5%9B%9B%E5%AD%A3/"/>
+    
+    
+    <category term="谈天说地" scheme="http://googlegis.github.io/tags/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/"/>
+    
+    <category term="第四季" scheme="http://googlegis.github.io/tags/%E7%AC%AC%E5%9B%9B%E5%AD%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>‘致哀’与‘志哀’</title>
@@ -402,25 +427,6 @@
     
     
     <category term="看电影" scheme="http://googlegis.github.io/tags/%E7%9C%8B%E7%94%B5%E5%BD%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序员的节日</title>
-    <link href="http://googlegis.github.io/2017/10/24/the-day-of-code-man/"/>
-    <id>http://googlegis.github.io/2017/10/24/the-day-of-code-man/</id>
-    <published>2017-10-24T07:24:47.000Z</published>
-    <updated>2023-01-30T06:53:22.000Z</updated>
-    
-    
-    <summary type="html">&lt;img src=&quot;/images/2017/10/24/01.jfif&quot; class=&quot;&quot;&gt;</summary>
-    
-    
-    
-    <category term="谈天说地" scheme="http://googlegis.github.io/categories/%E8%B0%88%E5%A4%A9%E8%AF%B4%E5%9C%B0/"/>
-    
-    
-    <category term="程序员节日" scheme="http://googlegis.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82%E6%97%A5/"/>
     
   </entry>
   
