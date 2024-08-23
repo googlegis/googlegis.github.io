@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"googlegis.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最好的教程就是官方文档。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Mac下编译Android源码">
+<meta property="og:url" content="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/index.html">
+<meta property="og:site_name" content="西庐草堂">
+<meta property="og:description" content="最好的教程就是官方文档。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-05-15T05:28:03.000Z">
+<meta property="article:modified_time" content="2024-08-23T06:58:09.120Z">
+<meta property="article:author" content="豆棚瓜架">
+<meta property="article:tag" content="Android编译">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>在Mac下编译Android源码 | 西庐草堂</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="西庐草堂" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">西庐草堂</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">姑妄言之姑听之，豆棚瓜架雨如丝，料应厌作人间语，爱听秋坟鬼唱诗。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="豆棚瓜架">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="西庐草堂">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在Mac下编译Android源码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-05-15 13:28:03" itemprop="dateCreated datePublished" datetime="2014-05-15T13:28:03+08:00">2014-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2014/05/15/compile-android-source-in-mac/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/05/15/compile-android-source-in-mac/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最好的教程就是官方文档。</p>
+<span id="more"></span>
+
+<p>1.需要至少15G大的大小写敏感分区，以免build debug版本空间不够</p>
+<p>  在Mac下编译android的源代码需要一个大小写敏感(Case Sensitive)的分区格式如果你原来的分区不是HFS一类大小写敏感的文件格式，那么最简单的办法就是新建一个这种分区格式的dmg出来，命令如下：</p>
+<p>  sudo hdiutil create -size 15g -type UDIF -fs HFSX -volname android  ~&#x2F;android.dmg<br>  sudo chown $USER  ~&#x2F;android.dmg</p>
+<p>  1)双击android.dmg，mount volume到&#x2F;Volumes&#x2F;android。</p>
+<p>  2)进入系统偏好设置–&gt;帐户–&gt;登录项–&gt;点”+”，选android.dmg这样系统启动的时候会自动mount volume</p>
+<p>2.下载代码或者直接拷贝已有源代码到&#x2F;Volumes&#x2F;android目录下</p>
+<p>  下载源码需要安装Repo工具，该工具是为了更好的使用Git源代码管理软件（类似于CVS等版本控制系统），执行以下命令创建~&#x2F;bin目录：</p>
+<p>  $ cd ~<br>  $ mkdir bin<br>  $ echo $PATH</p>
+<p>  下载Repo：</p>
+<p>  $ curl <a target="_blank" rel="noopener" href="http://git-repo.googlecode.com/files/repo-1.13">http://git-repo.googlecode.com/files/repo-1.13</a> &gt; ~&#x2F;bin&#x2F;repo<br>  $ chmod a+x ~&#x2F;bin&#x2F;repo</p>
+<p>  之后在&#x2F;Volumes&#x2F;android目录下创建android目录以存放android源码：</p>
+<p>  $ cd &#x2F;Volumes&#x2F;android<br>  $ mkdir android<br>  $ cd android</p>
+<p>接着初始化Repo客户端：</p>
+<p>  $ r~bin&#x2F;repo init -u <a target="_blank" rel="noopener" href="https://android.googlesource.com/platform/manifest">https://android.googlesource.com/platform/manifest</a> -b master</p>
+<p>成功后显示：</p>
+<p>  repo initialized in &#x2F;Volumes&#x2F;android&#x2F;android</p>
+<p>这时在&#x2F;Volumes&#x2F;android&#x2F;android目录下就会有.repo的目录用来同步manifest文件，该文件是用来同步源码的，下载源码使用命令：</p>
+<p>  $ repo sync</p>
+<p>  大概要下载4G多的文件，所有下载过程会比较长。</p>
+<p>非常重要的，下载完成之后需要打几个补丁，请分别执行以下命令，按顺序打以下四个补丁：<br>  cd build<br>git pull git:&#x2F;&#x2F;android.git.kernel.org&#x2F;platform&#x2F;build refs&#x2F;changes&#x2F;74&#x2F;12074&#x2F;3</p>
+<p>cd system&#x2F;core<br>git pull git:&#x2F;&#x2F;android.git.kernel.org&#x2F;platform&#x2F;system&#x2F;core refs&#x2F;changes&#x2F;45&#x2F;11845&#x2F;3</p>
+<p>cd external&#x2F;qemu<br>git pull git:&#x2F;&#x2F;android.git.kernel.org&#x2F;platform&#x2F;external&#x2F;qemu refs&#x2F;changes&#x2F;46&#x2F;11846&#x2F;3</p>
+<p>cd system&#x2F;core<br>git pull git:&#x2F;&#x2F;android.git.kernel.org&#x2F;platform&#x2F;system&#x2F;core refs&#x2F;changes&#x2F;97&#x2F;12597&#x2F;1</p>
+<p>3.下载并安装XCode和MacPorts</p>
+<p>  首先下载安装最新的XCode，下载地址：<a target="_blank" rel="noopener" href="http://developer.apple.com/">http://developer.apple.com</a><br>  然后下载MacPorts，下载地址： <a target="_blank" rel="noopener" href="http://www.macports.org/">http://www.macports.org/</a><br>  修改~&#x2F;.profile文件，添加：</p>
+<h1 id="set-the-number-of-open-files-to-be-1024"><a href="#set-the-number-of-open-files-to-be-1024" class="headerlink" title="set the number of open files to be 1024"></a>set the number of open files to be 1024</h1><p>  ulimit -S -n 1024</p>
+<p>4.编译源码</p>
+<p>  首先修改~&#x2F;.profile文件，内容类似：</p>
+<h1 id="MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-PATH-variable-for-use-with-MacPorts"><a href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-PATH-variable-for-use-with-MacPorts" class="headerlink" title="MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate PATH variable for use with MacPorts."></a>MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate PATH variable for use with MacPorts.</h1><p>export ANDROID_PRODUCT_OUT&#x3D;&#x2F;Volumes&#x2F;android&#x2F;Android-Source&#x2F;out&#x2F;target&#x2F;product&#x2F;generic</p>
+<p>export ANDROID_PRODUCT_OUT_BIN&#x3D;&#x2F;Volumes&#x2F;android&#x2F;Android-Source&#x2F;out&#x2F;host&#x2F;darwin-x86&#x2F;bin</p>
+<p>export PATH&#x3D;&#x2F;opt&#x2F;local&#x2F;bin:&#x2F;opt&#x2F;local&#x2F;sbin:${ANDROID_PRODUCT_OUT_BIN}:${ANDROID_PRODUCT_OUT}:$PATH</p>
+<h1 id="Finished-adapting-your-PATH-environment-variable-for-use-with-MacPorts"><a href="#Finished-adapting-your-PATH-environment-variable-for-use-with-MacPorts" class="headerlink" title="Finished adapting your PATH environment variable for use with MacPorts."></a>Finished adapting your PATH environment variable for use with MacPorts.</h1><h1 id="MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-MANPATH-variable-for-use-with-MacPorts"><a href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-MANPATH-variable-for-use-with-MacPorts" class="headerlink" title="MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate MANPATH variable for use with MacPorts."></a>MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate MANPATH variable for use with MacPorts.</h1><p>export MANPATH&#x3D;&#x2F;opt&#x2F;local&#x2F;share&#x2F;man:$MANPATH</p>
+<h1 id="Finished-adapting-your-MANPATH-environment-variable-for-use-with-MacPorts"><a href="#Finished-adapting-your-MANPATH-environment-variable-for-use-with-MacPorts" class="headerlink" title="Finished adapting your MANPATH environment variable for use with MacPorts."></a>Finished adapting your MANPATH environment variable for use with MacPorts.</h1><p>  然后打开一个新的命令行窗口，执行以下命令：</p>
+<p>  $ cd &#x2F;Volumes&#x2F;android&#x2F;Android-Source<br>  $ make</p>
+<p>  源码编译时间较长，大概需要4～5个小时，请耐心等待，编译完成之后，执行命令：</p>
+<p>  $ emulator</p>
+<p>将 调出模拟器，说明编译成功！</p>
+<ol>
+<li>打最后补丁时出错，错误如下：<br> “Pull is not possible because you have unmerged files.<br>Please, fix them up in the work tree, and then use ‘git add&#x2F;rm ‘<br>as appropriate to mark resolution, or use ‘git commit -a’.”<br> 改用命令：<br>“git clone git:&#x2F;&#x2F;android.git.kernel.org&#x2F;platform&#x2F;system&#x2F;core  refs&#x2F;changes&#x2F;97&#x2F;12597&#x2F;1″</li>
+</ol>
+<p>出错原因：<br>.&#x2F;external&#x2F;elfutils&#x2F;config-compat-darwin.h:42: error: static declaration of ‘strnlen’ follows non-static declaration<br>&#x2F;usr&#x2F;include&#x2F;string.h:143: error: previous declaration of ‘strnlen’ was here<br>make: *** [out&#x2F;host&#x2F;darwin-x86&#x2F;obj&#x2F;STATIC_LIBRARIES&#x2F;libelf_intermediates&#x2F;lib&#x2F;xmalloc.o] Error 1</p>
+<p>解决方案：参考别人些的文章<br><a target="_blank" rel="noopener" href="http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/">http://blog.sephiroth.it/2011/10/17/compiling-android-source-on-mac-lion/</a></p>
+<p>modify .&#x2F;external&#x2F;elfutils&#x2F;config-compat-darwin.h.</p>
+<p>replace:</p>
+<p>static inline size_t strnlen (const char *__string, size_t __maxlen)</p>
+<p>{</p>
+<p>int len &#x3D; 0;</p>
+<p>while (__maxlen– &amp;&amp; *__string++)</p>
+<p>len++;</p>
+<p>return len;</p>
+<p>}</p>
+<p>with:</p>
+<p> #if 0</p>
+<p>static inline size_t strnlen (const char *__string, size_t __maxlen)</p>
+<p>{</p>
+<p>int len &#x3D; 0;</p>
+<p>while (__maxlen– &amp;&amp; *__string++)</p>
+<p>len++;</p>
+<p>return len;</p>
+<p>}<br> #endif</p>
+<p>Well, at the end of the process I just edited the Android.mk makefile into external&#x2F;skia adding a new entry for BUILD_STATIC_LIBRARY and the next command was simply:</p>
+<p>mmm external&#x2F;skia<br>which produced the required libskia.a file to be linked in my project.</p>
+<p>第二个问题：<br>warning: ignoring file out&#x2F;host&#x2F;darwin-x86&#x2F;obj&#x2F;STATIC_LIBRARIES&#x2F;<br>libSDL_intermediates&#x2F;libSDL.a, file was built for archive which is not<br>the architecture being linked (i386)<br>Undefined symbols for architecture i386:</p>
+<p>Do this by commenting out all lines in</p>
+<p>external&#x2F;qemu&#x2F;Android.mk</p>
+<p>The toolchain problem stems from the fact that Android actually supports the mac toolchain from Snow Leopard and onwards. So put homebrew path LAST in $PATH, so that it uses the Mac toolchain first.</p>
+<p>When building DevNull&#x2F;Oxygen ROM you in addition to the steps above also need to make a symlink in &#x2F;usr&#x2F;local&#x2F;bin from sed to gsed, since they explicitly call gsed at one point. Also you have to disable WITH_DEXPREOPT like so:<br>make -j8 ［devnull］ WITH_DEXPREOPT&#x3D;false</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/googlegis">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android%E7%BC%96%E8%AF%91/" rel="tag"># Android编译</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2014/05/01/study-the-iphone-dev/" rel="prev" title="学习iPhone开发">
+      <i class="fa fa-chevron-left"></i> 学习iPhone开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2014/05/15/androi-source-evervolv-default-manifest-jellybean-htc-bravo/" rel="next" title="androi source evervolv default manifest jellybean htc bravo">
+      androi source evervolv default manifest jellybean htc bravo <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#set-the-number-of-open-files-to-be-1024"><span class="nav-number">1.</span> <span class="nav-text">set the number of open files to be 1024</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-PATH-variable-for-use-with-MacPorts"><span class="nav-number">2.</span> <span class="nav-text">MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate PATH variable for use with MacPorts.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Finished-adapting-your-PATH-environment-variable-for-use-with-MacPorts"><span class="nav-number">3.</span> <span class="nav-text">Finished adapting your PATH environment variable for use with MacPorts.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MacPorts-Installer-addition-on-2010-05-19-at-19-14-53-adding-an-appropriate-MANPATH-variable-for-use-with-MacPorts"><span class="nav-number">4.</span> <span class="nav-text">MacPorts Installer addition on 2010-05-19_at_19:14:53: adding an appropriate MANPATH variable for use with MacPorts.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Finished-adapting-your-MANPATH-environment-variable-for-use-with-MacPorts"><span class="nav-number">5.</span> <span class="nav-text">Finished adapting your MANPATH environment variable for use with MacPorts.</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">豆棚瓜架</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">145</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">豆棚瓜架</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://googlegis.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://googlegis.github.io/2014/05/15/compile-android-source-in-mac/";
+    this.page.identifier = "2014/05/15/compile-android-source-in-mac/";
+    this.page.title = "在Mac下编译Android源码";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://googlegis.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
